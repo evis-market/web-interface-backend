@@ -1,0 +1,7 @@
+Django
+django-environ
+django-ipware
+djangorestframework
+drf-jwt
+drf-yasg
+django-filter
