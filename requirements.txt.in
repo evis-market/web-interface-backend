@@ -1,7 +1,10 @@
-Django
+mysqlclient
+markdown
+django
 django-environ
 django-ipware
+django-filter
+django-split-settings
 djangorestframework
 drf-jwt
 drf-yasg
-django-filter
