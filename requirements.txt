@@ -6,6 +6,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 cryptography==3.4.7
 Django==3.2.6
+django-cors-headers==3.7.0
 django-environ==0.4.5
 django-filter==2.4.0
 django-ipware==3.0.7

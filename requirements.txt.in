@@ -5,6 +5,7 @@ django-environ
 django-ipware
 django-filter
 django-split-settings
+django-cors-headers
 djangorestframework
 drf-jwt
 drf-yasg
