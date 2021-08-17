@@ -10,21 +10,24 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 from pathlib import Path
-
-from split_settings.tools import optional, include
+from split_settings.tools import include, optional
 
 from app.conf.environ import env
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-SECRET_KEY = env('SECRET_KEY', cast=str, default='voj3ep7uw7eje7tyuhff=a5fm_hn2qjgomj$rui42uz-wo!ymukhuf53_b8-)&(*+(')
+DEBUG = env('DEBUG', cast=bool)
+SECRET_KEY = env('SECRET_KEY', cast=str)
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 include(
+    'conf/auth.py',
+    'conf/api.py',
     'conf/base.py',
     'conf/db.py',
     'conf/installed_apps.py',
