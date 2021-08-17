@@ -1,6 +1,6 @@
 check-venv:
 ifndef VIRTUAL_ENV
-    $(error virtualenv is not activated, please activate it by command: source .venv/bin/activate)
+    $(error virtualenv is not activated, please activate it by command: source src/.venv/bin/activate)
 endif
 
 setup: check-venv upgrade-pip deps load-initial-data ## Setup whole project for production: venv, deps, load-initial-data
@@ -33,6 +33,10 @@ load-dev-data: ## Load extra data for developer
 
 lint: ## Run flake8 linter
 	flake8 src
+
+serve-dev: ## Run server in developmet mode
+	cd src && ./manage.py runserver 0.0.0.0:8000
+
 
 help: ## This help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
