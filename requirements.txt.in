@@ -6,6 +6,8 @@ django-ipware
 django-filter
 django-split-settings
 django-cors-headers
+django-admin-list-filter-dropdown
+django-admin-rangefilter
 djangorestframework
 drf-jwt
 drf-yasg
