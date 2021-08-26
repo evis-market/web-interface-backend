@@ -10,6 +10,11 @@ class User(AbstractUser):
 
     objects = UserManager()
 
+    class Meta:
+        db_table = 'users'
+        verbose_name_plural = 'Users'
+        ordering = ('last_name', 'first_name')
+
     @classmethod
     def parse_name(cls, name: str) -> dict:
         if name is None:
