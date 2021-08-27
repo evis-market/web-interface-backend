@@ -1,7 +1,7 @@
 from django.urls import path
 
-from auth.views import CustomLoginView
+from auth.views import GrantJWTTokenView
 
 urlpatterns = [
-    path('jwt/grant/', CustomLoginView.as_view()),
+    path('jwt/grant/', GrantJWTTokenView.as_view()),
 ]

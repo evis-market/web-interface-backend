@@ -3,10 +3,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from auth.serializers import LoginSerializer
-from auth.service import LoginUserService
+from auth.service import JWTAuthService
 
 
-class CustomLoginView(APIView, LoginUserService):
+class GrantJWTTokenView(APIView, JWTAuthService):
     """
     URL: /api/v1/auth/jwt/grant
     METHOD: POST
@@ -29,6 +29,6 @@ class CustomLoginView(APIView, LoginUserService):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        response = self.grant_token(validate_data=serializer.validated_data,
+        response = self.grant_jwt_token(validate_data=serializer.validated_data,
                                     request=request)
         return Response(status=status.HTTP_200_OK, data=response)

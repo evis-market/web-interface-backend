@@ -20,10 +20,8 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/token/', TokenObtainPairView.as_view()),
-    path('api/token/refresh/', TokenRefreshView.as_view()),
     path('api/v1/auth/', include('auth.urls')),
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
