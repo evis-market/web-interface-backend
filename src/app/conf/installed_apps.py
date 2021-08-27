@@ -1,5 +1,4 @@
 # Application definition
-
 INSTALLED_APPS = [
     'users',
     'categories',
@@ -7,7 +6,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 
     'rangefilter',
     'django_admin_listfilter_dropdown',
@@ -19,3 +18,4 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+

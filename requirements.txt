@@ -12,7 +12,6 @@ django-filter==2.4.0
 django-ipware==3.0.7
 django-split-settings==1.0.1
 djangorestframework==3.12.4
-drf-jwt==1.19.1
 drf-yasg==1.20.0
 idna==3.2
 importlib-metadata==4.6.4

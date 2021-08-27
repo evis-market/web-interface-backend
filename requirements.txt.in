@@ -9,5 +9,7 @@ django-cors-headers
 django-admin-list-filter-dropdown
 django-admin-rangefilter
 djangorestframework
-drf-jwt
+djangorestframework-simplejwt
 drf-yasg
+django-admin-list-filter-dropdown
+django-admin-rangefilter
