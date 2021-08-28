@@ -2,6 +2,7 @@ from datetime import timedelta
 
 from app import settings
 
+
 AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = [
