@@ -5,6 +5,8 @@ ROOT_URLCONF = 'app.urls'
 
 DEBUG = env('DEBUG', cast=bool)
 
+APPEND_SLASH=False
+
 ALLOWED_HOSTS = [
     'evis.market',
 ]
