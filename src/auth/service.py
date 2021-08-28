@@ -1,32 +1,34 @@
 import jwt
-from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.exceptions import APIException
 
+from app import exceptions
 from app.conf.auth import SIMPLE_JWT
 from app.settings import SECRET_KEY
 from users.models import User
 
 
-class GrantTypes:
-    password = 'password'
-    refresh_token = 'refresh_token'
-
-
 class JWTAuthService:
+    GRANT_TYPE_PASSWORD = 'password'
+    GRANT_TYPE_REFRESH_TOKEN = 'refresh_token'
+
+    @staticmethod
+    def valid_grant_types():
+        return (JWTAuthService.GRANT_TYPE_PASSWORD, JWTAuthService.GRANT_TYPE_REFRESH_TOKEN)
 
     def grant_jwt_token(self,
                         data: dict) -> dict:
         if 'grant_type' not in data:
-            raise APIException(code=status.HTTP_400_BAD_REQUEST, detail='please specify grant_type, valid grant_type: password, refresh_token')
+            raise exceptions.BadRequest(
+                msg='please specify grant_type, valid grant_type: ' + ', '.join(JWTAuthService.valid_grant_types()))
 
-        if data['grant_type'] == GrantTypes.password:
-            return self.grant_jwt_token_by_password(login=data['login'], password=data['password'])
+        if data['grant_type'] == JWTAuthService.GRANT_TYPE_PASSWORD:
+            return self.grant_jwt_token_by_password(login=data.get('login', None), password=data.get('password', None))
 
-        if data['grant_type'] == GrantTypes.refresh_token:
-            return self.grant_jwt_token_by_refresh_token(data['refresh_token'])
+        if data['grant_type'] == JWTAuthService.GRANT_TYPE_REFRESH_TOKEN:
+            return self.grant_jwt_token_by_refresh_token(data.get('refresh_token', None))
 
-        raise APIException(code=status.HTTP_400_BAD_REQUEST, detail='unsupported grant_type, valid grant_type: password, refresh_token')
+        raise exceptions.BadRequest(
+            msg='please specify grant_type, valid grant_type: ' + ', '.join(JWTAuthService.valid_grant_types()))
 
     def grant_jwt_token_by_password(self,
                                     login: str,
@@ -37,7 +39,7 @@ class JWTAuthService:
             user = User.objects.filter(phone=login).first()
 
         if not user or not user.check_password(password):
-            raise APIException(code=status.HTTP_400_BAD_REQUEST, detail='login or password is not match')
+            raise exceptions.BadRequest(msg='invalid credentials')
 
         return self.get_tokens_for_user(user)
 
@@ -46,11 +48,12 @@ class JWTAuthService:
         try:
             payload = jwt.decode(token, SECRET_KEY, algorithms=SIMPLE_JWT['ALGORITHM'])
         except Exception:
-            raise APIException(code=status.HTTP_400_BAD_REQUEST, detail='Authentication error. Unable to decode token')
+            raise exceptions.BadRequest(msg='invalid token')
         try:
             user = User.objects.get(uuid=payload['user_id'])
         except User.DoesNotExist:
-            raise APIException(code=status.HTTP_400_BAD_REQUEST, detail='No user matching this token was found')
+            raise exceptions.BadRequest(msg='invalid token')
+
         return self.get_tokens_for_user(user)
 
     @staticmethod
@@ -59,5 +62,5 @@ class JWTAuthService:
         return {
             'access_token': str(refresh.access_token),
             'refresh_token': str(refresh),
-            'token_type': SIMPLE_JWT['AUTH_HEADER_TYPES'][0]
+            'token_type': SIMPLE_JWT['AUTH_HEADER_TYPES'][0],
         }
