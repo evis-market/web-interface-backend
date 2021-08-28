@@ -71,7 +71,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         name = self.first_name + ' ' + self.last_name
 
         if len(name) < 3:
-            return 'Anonymous'
+            return self.username()
 
         return name.strip()
 
