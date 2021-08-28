@@ -15,7 +15,7 @@ django-filter==2.4.0
 django-ipware==4.0.0
 django-split-settings==1.1.0
 djangorestframework==3.12.4
-djangorestframework-simplejwt==4.4.0
+djangorestframework-simplejwt==4.8.0
 drf-yasg==1.20.0
 eradicate==2.0.0
 flake8==3.9.2
