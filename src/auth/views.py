@@ -2,6 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from app.response import response_ok
+
 from auth.serializers import LoginSerializer
 from auth.service import JWTAuthService
 
@@ -29,6 +31,5 @@ class GrantJWTTokenView(APIView, JWTAuthService):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        response = self.grant_jwt_token(request=request,
-                                        validate_data=serializer.validated_data)
-        return Response(status=status.HTTP_200_OK, data=response)
+        result = self.grant_jwt_token(request=request, data=serializer.validated_data)
+        return response_ok(result, status=status.HTTP_200_OK)
