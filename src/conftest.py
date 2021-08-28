@@ -1,8 +1,9 @@
-import uuid
-
 import pytest
+import uuid
 from mixer.backend.django import mixer
+
 from users.models import User
+
 
 mixer.register(User,
                uuid=lambda: uuid.uuid4())

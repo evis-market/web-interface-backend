@@ -1,9 +1,8 @@
-import uuid
 import pytz
-
+import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from django.db import models
 from django.core.mail import send_mail
+from django.db import models
 
 from users.managers import UserManager
 
@@ -35,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     secret_code = models.CharField('Secret code', max_length=8, blank=True, default='')
     timezone = models.CharField(choices=tuple(zip(pytz.all_timezones, pytz.all_timezones)),
-        max_length=32, default='UTC')
+                                max_length=32, default='UTC')
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
@@ -83,7 +82,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         """
         Return the first_name plus the last_name, with a space in between.
         """
-        full_name = '%s %s' % (self.first_name, self.last_name)
+        full_name = f'{self.first_name} {self.last_name}'
         return full_name.strip()
 
     def get_short_name(self):
