@@ -3,7 +3,7 @@ from rest_framework import status
 
 BAD_REQUEST_CODE = 400
 UNAUTHORIZED_CODE = 401
-FORBIDDEN_CODE = 402
+FORBIDDEN_CODE = 403
 NOT_FOUND = 404
 
 
@@ -27,7 +27,7 @@ class Unauthorized(Errno):
 
 
 class Forbidden(Errno):
-    default_code = UNAUTHORIZED_CODE
+    default_code = FORBIDDEN_CODE
     default_msg = 'Forbidden'
     default_http_code = status.HTTP_403_FORBIDDEN
 
