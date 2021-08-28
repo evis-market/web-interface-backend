@@ -34,7 +34,7 @@ load-dev-data: ## Load extra data for developer
 lint: ## Run flake8 linter
 	flake8 src
 
-serve-dev: ## Run server in developmet mode
+serve: ## Run server in developmet mode
 	cd src && ./manage.py runserver 0.0.0.0:8000
 
 
