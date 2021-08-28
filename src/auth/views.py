@@ -2,7 +2,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 
 from app.response import response_ok
-from auth.serializers import LoginSerializer
+from auth.serializers import GrantTokenSerializer
 from auth.service import JWTAuthService
 
 
@@ -22,7 +22,7 @@ class GrantJWTTokenView(APIView, JWTAuthService):
               "token_type": "Bearer"
             }
     """
-    serializer_class = LoginSerializer
+    serializer_class = GrantTokenSerializer
     authentication_classes = ()
     permission_classes = ()
 

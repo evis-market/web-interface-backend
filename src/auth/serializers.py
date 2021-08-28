@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 
-class LoginSerializer(serializers.Serializer):
+class GrantTokenSerializer(serializers.Serializer):
     grant_type = serializers.CharField(required=True)
     login = serializers.CharField(required=False)
     password = serializers.CharField(required=False)
