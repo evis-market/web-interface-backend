@@ -6,6 +6,10 @@ from users.models import User
 
 
 class JWTAuthService:
+    GRANT_TYPE_CHOICES = (
+        ("password", "password"),
+        ("refresh_token", "refresh_token")
+    )
 
     def grant_jwt_token(self,
                         request,
@@ -13,20 +17,19 @@ class JWTAuthService:
 
         if validate_data['grant_type'] == 'password':
             user, tokens = self.grant_jwt_token_by_password(login=validate_data['login'],
-                                                 password=validate_data['password'])
-            login(request, user, backend=AUTHENTICATION_BACKENDS[0])
+                                                            password=validate_data['password'])
             return tokens
-
         if validate_data['grant_type'] == 'refresh_token':
-            # TODO: реализовать
-            pass
+            user, tokens = self.grant_jwt_token_by_password(login=validate_data['login'],
+                                                            password=validate_data['password'])
+        login(request, user, backend=AUTHENTICATION_BACKENDS[0])
 
         # TODO: http status code: 405, error code 405, error message: unsupported grant_type, valid grant_type: password, refresh_token
         # по хорошему взять данные для valid grant_type из GRANT_TYPE_CHOICES, или убрать GRANT_TYPE_CHOICES
 
     def grant_jwt_token_by_password(self,
-                         login: str,
-                         password: str) -> (User, dict):
+                                    login: str,
+                                    password: str) -> (User, dict):
         if login.count('@'):
             user = User.objects.filter(email=login).first()
         else:
@@ -43,6 +46,7 @@ class JWTAuthService:
     def get_tokens_for_user(user: User) -> dict:
         refresh = RefreshToken.for_user(user)
         return {
+            'status': 'OK',
             'access_token': str(refresh.access_token),
             'refresh_token': str(refresh),
             'token_type': SIMPLE_JWT['AUTH_HEADER_TYPES'][0]

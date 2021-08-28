@@ -29,6 +29,6 @@ class GrantJWTTokenView(APIView, JWTAuthService):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        response = self.grant_jwt_token(validate_data=serializer.validated_data,
-                                    request=request)
+        response = self.grant_jwt_token(request=request,
+                                        validate_data=serializer.validated_data)
         return Response(status=status.HTTP_200_OK, data=response)
