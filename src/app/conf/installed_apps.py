@@ -1,5 +1,6 @@
 # Application definition
 INSTALLED_APPS = [
+    'auth',
     'users',
     'categories',
 
@@ -18,4 +19,3 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
