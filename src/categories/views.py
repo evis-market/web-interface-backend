@@ -1,9 +1,8 @@
-from django.views.generic import ListView
-from django.views import View
-from django.http import HttpResponse
-from django.http import Http404
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import QuerySet
+from django.http import Http404, HttpResponse
+from django.views import View
+from django.views.generic import ListView
 
 from categories.models import Category
 

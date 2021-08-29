@@ -1,3 +1,4 @@
+import json
 from django.core.management.base import BaseCommand, CommandError
 
 from auth.service import JWTAuthService
@@ -22,7 +23,7 @@ class Command(BaseCommand):
             try:
                 user = UserManager.get_by_login(options['grant'][1])
             except User.DoesNotExist:
-                raise CommandError(f'User does not exist')
-            print(JWTAuthService.get_tokens_for_user(user))
+                raise CommandError('User does not exist')
+            self.stdout.write(json.dumps(JWTAuthService.get_tokens_for_user(user), indent=4))
 
         self.stdout.write(self.style.SUCCESS('Successfully received a tokens'))

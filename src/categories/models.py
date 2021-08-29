@@ -1,5 +1,5 @@
-from django.db import models
 import mptt.models as mptt_models
+from django.db import models
 from django.utils.text import slugify
 
 from categories.managers import CategoryManager
