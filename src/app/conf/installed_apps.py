@@ -4,6 +4,8 @@ INSTALLED_APPS = [
     'users',
     'categories',
 
+    'mptt',
+
     'corsheaders',
     'django_filters',
     'rest_framework',

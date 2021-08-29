@@ -1,6 +1,5 @@
 from app.conf.environ import env
 
-
 DATABASES = {
     'default': env.db(),
 }

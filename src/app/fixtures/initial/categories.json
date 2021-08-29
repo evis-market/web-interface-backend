@@ -1,0 +1,2200 @@
+[
+  {
+    "model": "categories.category",
+    "pk": 1,
+    "fields": {
+      "name": "Geospatial Data",
+      "slug": "geospatial-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 20,
+      "tree_id": 1,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 2,
+    "fields": {
+      "name": "Location Data",
+      "slug": "location-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 3,
+    "fields": {
+      "name": "Point of Interest (POI) Data",
+      "slug": "point-of-interest-poi-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 4,
+    "fields": {
+      "name": "Map Data",
+      "slug": "map-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 5,
+    "fields": {
+      "name": "Satellite Data",
+      "slug": "satellite-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 6,
+    "fields": {
+      "name": "Cell Tower Data",
+      "slug": "cell-tower-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 7,
+    "fields": {
+      "name": "GIS Data",
+      "slug": "gis-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 8,
+    "fields": {
+      "name": "Geographic Data",
+      "slug": "geographic-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 9,
+    "fields": {
+      "name": "Mobility Data",
+      "slug": "mobility-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 10,
+    "fields": {
+      "name": "Geodemographic Data",
+      "slug": "geodemographic-data",
+      "sort_id": 2147483647,
+      "parent": 1,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 1,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 11,
+    "fields": {
+      "name": "Commerce Data",
+      "slug": "commerce-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 26,
+      "tree_id": 2,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 12,
+    "fields": {
+      "name": "Transaction Data",
+      "slug": "transaction-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 13,
+    "fields": {
+      "name": "Retail Data",
+      "slug": "retail-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 14,
+    "fields": {
+      "name": "Ecommerce Data",
+      "slug": "ecommerce-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 15,
+    "fields": {
+      "name": "Receipt Data",
+      "slug": "receipt-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 16,
+    "fields": {
+      "name": "Consumer Review Data ",
+      "slug": "consumer-review-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 17,
+    "fields": {
+      "name": "Consumer Spending Data",
+      "slug": "consumer-spending-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 18,
+    "fields": {
+      "name": "Shopper Data",
+      "slug": "shopper-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 19,
+    "fields": {
+      "name": "Product Data",
+      "slug": "product-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 20,
+    "fields": {
+      "name": "In-store Data",
+      "slug": "in-store-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 21,
+    "fields": {
+      "name": "Brand Data",
+      "slug": "brand-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 22,
+    "fields": {
+      "name": "O2O Commerce Data",
+      "slug": "o2o-commerce-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 23,
+    "fields": {
+      "name": "Brand Sentiment Data",
+      "slug": "brand-sentiment-data",
+      "sort_id": 2147483647,
+      "parent": 11,
+      "lft": 24,
+      "rght": 25,
+      "tree_id": 2,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 24,
+    "fields": {
+      "name": "Financial Market Data",
+      "slug": "financial-market-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 30,
+      "tree_id": 3,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 25,
+    "fields": {
+      "name": "ESG Data",
+      "slug": "esg-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 26,
+    "fields": {
+      "name": "Alternative Data",
+      "slug": "alternative-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 27,
+    "fields": {
+      "name": "Proprietary Market Data",
+      "slug": "proprietary-market-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 28,
+    "fields": {
+      "name": "Real-Time Market Data",
+      "slug": "real-time-market-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 29,
+    "fields": {
+      "name": "Delayed Market Data",
+      "slug": "delayed-market-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 30,
+    "fields": {
+      "name": "Equity Market Data",
+      "slug": "equity-market-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 31,
+    "fields": {
+      "name": "Share Market Data",
+      "slug": "share-market-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 32,
+    "fields": {
+      "name": "Stock Market Data",
+      "slug": "stock-market-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 33,
+    "fields": {
+      "name": "Reference Data",
+      "slug": "reference-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 34,
+    "fields": {
+      "name": "Commodity Data",
+      "slug": "commodity-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 35,
+    "fields": {
+      "name": "Currency Data",
+      "slug": "currency-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 36,
+    "fields": {
+      "name": "Implied Volatility Data",
+      "slug": "implied-volatility-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 24,
+      "rght": 25,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 37,
+    "fields": {
+      "name": "Fixed Income Data",
+      "slug": "fixed-income-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 26,
+      "rght": 27,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 38,
+    "fields": {
+      "name": "Derivatives Data",
+      "slug": "derivatives-data",
+      "sort_id": 2147483647,
+      "parent": 24,
+      "lft": 28,
+      "rght": 29,
+      "tree_id": 3,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 39,
+    "fields": {
+      "name": "Consumer Data",
+      "slug": "consumer-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 28,
+      "tree_id": 4,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 40,
+    "fields": {
+      "name": "Demographic Data",
+      "slug": "demographic-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 41,
+    "fields": {
+      "name": "Marketing Data",
+      "slug": "marketing-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 42,
+    "fields": {
+      "name": "Audience Data",
+      "slug": "audience-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 43,
+    "fields": {
+      "name": "Ownership Data",
+      "slug": "ownership-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 44,
+    "fields": {
+      "name": "Psychographic Data",
+      "slug": "psychographic-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 45,
+    "fields": {
+      "name": "Social Media Data",
+      "slug": "social-media-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 46,
+    "fields": {
+      "name": "Consumer Purchase Data",
+      "slug": "consumer-purchase-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 47,
+    "fields": {
+      "name": "Consumer Finance Data",
+      "slug": "consumer-finance-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 48,
+    "fields": {
+      "name": "Consumer Panel Data",
+      "slug": "consumer-panel-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 49,
+    "fields": {
+      "name": "Consented Consumer Data",
+      "slug": "consented-consumer-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 50,
+    "fields": {
+      "name": "Household-Level Consumer Data",
+      "slug": "household-level-consumer-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 51,
+    "fields": {
+      "name": "Individual-Level Consumer Data",
+      "slug": "individual-level-consumer-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 24,
+      "rght": 25,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 52,
+    "fields": {
+      "name": "Zip-Code Level Consumer Data",
+      "slug": "zip-code-level-consumer-data",
+      "sort_id": 2147483647,
+      "parent": 39,
+      "lft": 26,
+      "rght": 27,
+      "tree_id": 4,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 53,
+    "fields": {
+      "name": "B2B Data",
+      "slug": "b2b-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 24,
+      "tree_id": 5,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 54,
+    "fields": {
+      "name": "B2B Contact Data",
+      "slug": "b2b-contact-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 55,
+    "fields": {
+      "name": "B2B Leads Data",
+      "slug": "b2b-leads-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 56,
+    "fields": {
+      "name": "B2B Intent Data",
+      "slug": "b2b-intent-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 57,
+    "fields": {
+      "name": "B2B Marketing Data",
+      "slug": "b2b-marketing-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 58,
+    "fields": {
+      "name": "Firmographic Data",
+      "slug": "firmographic-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 59,
+    "fields": {
+      "name": "Technographic Data",
+      "slug": "technographic-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 60,
+    "fields": {
+      "name": "Business Ownership Data",
+      "slug": "business-ownership-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 61,
+    "fields": {
+      "name": "Company Data",
+      "slug": "company-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 62,
+    "fields": {
+      "name": "Job Postings Data",
+      "slug": "job-postings-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 63,
+    "fields": {
+      "name": "Salary Data",
+      "slug": "salary-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 64,
+    "fields": {
+      "name": "Employee Data",
+      "slug": "employee-data",
+      "sort_id": 2147483647,
+      "parent": 53,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 5,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 65,
+    "fields": {
+      "name": "Identity Data",
+      "slug": "identity-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 18,
+      "tree_id": 6,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 66,
+    "fields": {
+      "name": "Consumer Identity Data",
+      "slug": "consumer-identity-data",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 67,
+    "fields": {
+      "name": "Identity Graph Data",
+      "slug": "identity-graph-data",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 68,
+    "fields": {
+      "name": "Cross-Device Identity Data",
+      "slug": "cross-device-identity-data",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 69,
+    "fields": {
+      "name": "Deterministic Identity Data",
+      "slug": "deterministic-identity-data",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 70,
+    "fields": {
+      "name": "First-Party Identity Data",
+      "slug": "first-party-identity-data",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 71,
+    "fields": {
+      "name": "Identity Data US",
+      "slug": "identity-data-us",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 72,
+    "fields": {
+      "name": "Identity Data LATAM",
+      "slug": "identity-data-latam",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 73,
+    "fields": {
+      "name": "Identity Data EU",
+      "slug": "identity-data-eu",
+      "sort_id": 2147483647,
+      "parent": 65,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 6,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 74,
+    "fields": {
+      "name": "Transport and Logistics Data",
+      "slug": "transport-and-logistics-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 16,
+      "tree_id": 7,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 75,
+    "fields": {
+      "name": "Traffic Data",
+      "slug": "traffic-data",
+      "sort_id": 2147483647,
+      "parent": 74,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 7,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 76,
+    "fields": {
+      "name": "Trucking Fleet Data",
+      "slug": "trucking-fleet-data",
+      "sort_id": 2147483647,
+      "parent": 74,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 7,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 77,
+    "fields": {
+      "name": "Aviation Data",
+      "slug": "aviation-data",
+      "sort_id": 2147483647,
+      "parent": 74,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 7,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 78,
+    "fields": {
+      "name": "Road Data",
+      "slug": "road-data",
+      "sort_id": 2147483647,
+      "parent": 74,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 7,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 79,
+    "fields": {
+      "name": "Freight Data",
+      "slug": "freight-data",
+      "sort_id": 2147483647,
+      "parent": 74,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 7,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 80,
+    "fields": {
+      "name": "Trade Data",
+      "slug": "trade-data",
+      "sort_id": 2147483647,
+      "parent": 74,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 7,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 81,
+    "fields": {
+      "name": "Maritime Data",
+      "slug": "maritime-data",
+      "sort_id": 2147483647,
+      "parent": 74,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 7,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 82,
+    "fields": {
+      "name": "Environmental Data",
+      "slug": "environmental-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 28,
+      "tree_id": 8,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 83,
+    "fields": {
+      "name": "Weather Data",
+      "slug": "weather-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 84,
+    "fields": {
+      "name": "Climate Data",
+      "slug": "climate-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 85,
+    "fields": {
+      "name": "Air Quality Index",
+      "slug": "air-quality-index",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 86,
+    "fields": {
+      "name": "Pollen Data",
+      "slug": "pollen-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 87,
+    "fields": {
+      "name": "Wildfires Data",
+      "slug": "wildfires-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 88,
+    "fields": {
+      "name": "Marine Data",
+      "slug": "marine-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 89,
+    "fields": {
+      "name": "Water Data",
+      "slug": "water-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 90,
+    "fields": {
+      "name": "Land Use Data",
+      "slug": "land-use-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 91,
+    "fields": {
+      "name": "Geological Data",
+      "slug": "geological-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 92,
+    "fields": {
+      "name": "Surface Data",
+      "slug": "surface-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 93,
+    "fields": {
+      "name": "Atmosphere Data",
+      "slug": "atmosphere-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 94,
+    "fields": {
+      "name": "Ionospheric Data",
+      "slug": "ionospheric-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 24,
+      "rght": 25,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 95,
+    "fields": {
+      "name": "Thermosphere Data",
+      "slug": "thermosphere-data",
+      "sort_id": 2147483647,
+      "parent": 82,
+      "lft": 26,
+      "rght": 27,
+      "tree_id": 8,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 96,
+    "fields": {
+      "name": "Credit Rating Data",
+      "slug": "credit-rating-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 14,
+      "tree_id": 9,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 97,
+    "fields": {
+      "name": "Corporate Credit Rating Data",
+      "slug": "corporate-credit-rating-data",
+      "sort_id": 2147483647,
+      "parent": 96,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 9,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 98,
+    "fields": {
+      "name": "Bank Credit Rating Data",
+      "slug": "bank-credit-rating-data",
+      "sort_id": 2147483647,
+      "parent": 96,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 9,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 99,
+    "fields": {
+      "name": "Financial Institution Credit Rating Data",
+      "slug": "financial-institution-credit-rating-data",
+      "sort_id": 2147483647,
+      "parent": 96,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 9,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 100,
+    "fields": {
+      "name": "Sovereign Credit Rating Data",
+      "slug": "sovereign-credit-rating-data",
+      "sort_id": 2147483647,
+      "parent": 96,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 9,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 101,
+    "fields": {
+      "name": "Bond Credit Rating Data",
+      "slug": "bond-credit-rating-data",
+      "sort_id": 2147483647,
+      "parent": 96,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 9,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 102,
+    "fields": {
+      "name": "Corporate Loan Data",
+      "slug": "corporate-loan-data",
+      "sort_id": 2147483647,
+      "parent": 96,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 9,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 103,
+    "fields": {
+      "name": "Real Estate Data",
+      "slug": "real-estate-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 26,
+      "tree_id": 10,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 104,
+    "fields": {
+      "name": "Real Estate Market Data",
+      "slug": "real-estate-market-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 105,
+    "fields": {
+      "name": "Property Data",
+      "slug": "property-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 106,
+    "fields": {
+      "name": "Mortgage Data",
+      "slug": "mortgage-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 107,
+    "fields": {
+      "name": "Construction Project Leads Data",
+      "slug": "construction-project-leads-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 108,
+    "fields": {
+      "name": "Commercial Real Estate Data",
+      "slug": "commercial-real-estate-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 109,
+    "fields": {
+      "name": "Flexible Workspace Data",
+      "slug": "flexible-workspace-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 110,
+    "fields": {
+      "name": "Residential Real Estate Data",
+      "slug": "residential-real-estate-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 111,
+    "fields": {
+      "name": "Real Estate Valuation Data",
+      "slug": "real-estate-valuation-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 112,
+    "fields": {
+      "name": "Public Real Estate Data",
+      "slug": "public-real-estate-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 113,
+    "fields": {
+      "name": "Global Real Estate Data",
+      "slug": "global-real-estate-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 114,
+    "fields": {
+      "name": "Real-Time Real Estate Data",
+      "slug": "real-time-real-estate-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 115,
+    "fields": {
+      "name": "Real Estate Transaction Data",
+      "slug": "real-estate-transaction-data",
+      "sort_id": 2147483647,
+      "parent": 103,
+      "lft": 24,
+      "rght": 25,
+      "tree_id": 10,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 116,
+    "fields": {
+      "name": "Web Data",
+      "slug": "web-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 24,
+      "tree_id": 11,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 117,
+    "fields": {
+      "name": "Clickstream Data",
+      "slug": "clickstream-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 118,
+    "fields": {
+      "name": "IP Address Data",
+      "slug": "ip-address-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 119,
+    "fields": {
+      "name": "Web Search Data",
+      "slug": "web-search-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 120,
+    "fields": {
+      "name": "Web Activity Data",
+      "slug": "web-activity-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 121,
+    "fields": {
+      "name": "Web Browsing Data",
+      "slug": "web-browsing-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 122,
+    "fields": {
+      "name": "Web Traffic Data",
+      "slug": "web-traffic-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 123,
+    "fields": {
+      "name": "Web Scraping Data",
+      "slug": "web-scraping-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 124,
+    "fields": {
+      "name": "News Data",
+      "slug": "news-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 125,
+    "fields": {
+      "name": "Semantic Website Data",
+      "slug": "semantic-website-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 126,
+    "fields": {
+      "name": "Sentiment Data",
+      "slug": "sentiment-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 127,
+    "fields": {
+      "name": "Domain Name Data",
+      "slug": "domain-name-data",
+      "sort_id": 2147483647,
+      "parent": 116,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 11,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 128,
+    "fields": {
+      "name": "Mobile App Data",
+      "slug": "mobile-app-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 20,
+      "tree_id": 12,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 129,
+    "fields": {
+      "name": "App Store Data",
+      "slug": "app-store-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 130,
+    "fields": {
+      "name": "App Usage Data",
+      "slug": "app-usage-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 131,
+    "fields": {
+      "name": "App Install Data",
+      "slug": "app-install-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 132,
+    "fields": {
+      "name": "App Revenue Data",
+      "slug": "app-revenue-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 133,
+    "fields": {
+      "name": "App Market Data",
+      "slug": "app-market-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 134,
+    "fields": {
+      "name": "App Industry Data",
+      "slug": "app-industry-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 135,
+    "fields": {
+      "name": "App Session Data",
+      "slug": "app-session-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 136,
+    "fields": {
+      "name": "Android App Data",
+      "slug": "android-app-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 137,
+    "fields": {
+      "name": "YouTube Data",
+      "slug": "youtube-data",
+      "sort_id": 2147483647,
+      "parent": 128,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 12,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 138,
+    "fields": {
+      "name": "Legal Data",
+      "slug": "legal-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 16,
+      "tree_id": 13,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 139,
+    "fields": {
+      "name": "Intellectual Property Data",
+      "slug": "intellectual-property-data",
+      "sort_id": 2147483647,
+      "parent": 138,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 13,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 140,
+    "fields": {
+      "name": "Patent Data",
+      "slug": "patent-data",
+      "sort_id": 2147483647,
+      "parent": 138,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 13,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 141,
+    "fields": {
+      "name": "Court Data",
+      "slug": "court-data",
+      "sort_id": 2147483647,
+      "parent": 138,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 13,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 142,
+    "fields": {
+      "name": "Bankruptcy Data",
+      "slug": "bankruptcy-data",
+      "sort_id": 2147483647,
+      "parent": 138,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 13,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 143,
+    "fields": {
+      "name": "Litigation Data",
+      "slug": "litigation-data",
+      "sort_id": 2147483647,
+      "parent": 138,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 13,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 144,
+    "fields": {
+      "name": "Royalty Rates Data",
+      "slug": "royalty-rates-data",
+      "sort_id": 2147483647,
+      "parent": 138,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 13,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 145,
+    "fields": {
+      "name": "Trademark Data",
+      "slug": "trademark-data",
+      "sort_id": 2147483647,
+      "parent": 138,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 13,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 146,
+    "fields": {
+      "name": "Healthcare Data",
+      "slug": "healthcare-data",
+      "sort_id": 2147483647,
+      "parent": null,
+      "lft": 1,
+      "rght": 24,
+      "tree_id": 14,
+      "level": 0
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 147,
+    "fields": {
+      "name": "Patient Data",
+      "slug": "patient-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 148,
+    "fields": {
+      "name": "Electronic Health Record (EHR) Data",
+      "slug": "electronic-health-record-ehr-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 149,
+    "fields": {
+      "name": "Wearables Data",
+      "slug": "wearables-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 150,
+    "fields": {
+      "name": "Clinical Data",
+      "slug": "clinical-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 8,
+      "rght": 9,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 151,
+    "fields": {
+      "name": "Healthcare Provider (HCP) Data",
+      "slug": "healthcare-provider-hcp-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 10,
+      "rght": 11,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 152,
+    "fields": {
+      "name": "Medical Imagery Data",
+      "slug": "medical-imagery-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 12,
+      "rght": 13,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 153,
+    "fields": {
+      "name": "Pharma Data",
+      "slug": "pharma-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 14,
+      "rght": 15,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 154,
+    "fields": {
+      "name": "Telemedicine Data",
+      "slug": "telemedicine-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 16,
+      "rght": 17,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 155,
+    "fields": {
+      "name": "Medical Claims Data",
+      "slug": "medical-claims-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 18,
+      "rght": 19,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 156,
+    "fields": {
+      "name": "COVID-19 Data",
+      "slug": "covid-19-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 20,
+      "rght": 21,
+      "tree_id": 14,
+      "level": 1
+    }
+  },
+  {
+    "model": "categories.category",
+    "pk": 157,
+    "fields": {
+      "name": "Xray Data",
+      "slug": "xray-data",
+      "sort_id": 2147483647,
+      "parent": 146,
+      "lft": 22,
+      "rght": 23,
+      "tree_id": 14,
+      "level": 1
+    }
+  }
+]
