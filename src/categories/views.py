@@ -1,81 +1,67 @@
-from django.core.exceptions import ImproperlyConfigured
-from django.db.models import QuerySet
-from django.http import Http404
-from django.views.generic import ListView
+from rest_framework.views import APIView
 
+from app.response import response_ok
+from categories.filters import CategoryFilter
 from categories.models import Category
+from categories.serializers import CategorySerializer
 
 
-class CategoryListView(ListView):
-    model = Category
-    filters = ['parent_id', 'name']
+class CategoryListView(APIView):
+    """
+    URL: `/api/v1/categories/`
 
-    def get(self, request, *args, **kwargs):
-        self.object_list = self.get_queryset()
-        allow_empty = self.get_allow_empty()
+    Method: `GET`
 
-        if not allow_empty:
-            # When pagination is enabled and object_list is a queryset,
-            # it's better to do a cheap query than to load the unpaginated
-            # queryset in memory.
-            if self.get_paginate_by(self.object_list) is not None and hasattr(self.object_list, 'exists'):
-                is_empty = not self.object_list.exists()
-            else:
-                is_empty = not self.object_list
-            if is_empty:
-                raise Http404(_('Empty list and “%(class_name)s.allow_empty” is False.') % {
-                    'class_name': self.__class__.__name__,
-                })
-        context = self.get_context_data()
+    **URL params**
 
-        #todo: replace by serializing context
-        return self.render_to_response(context)
+    * parent_id - parent category id
+    * name - category name filter
 
-    def get_queryset(self):
-        """
-        Return the list of items for this view.
+    **Example query**
 
-        The return value must be an iterable and may be an instance of
-        `QuerySet` in which case `QuerySet` specific behavior will be enabled.
-        """
-        if self.queryset is not None:
-            queryset = self.queryset
-            if isinstance(queryset, QuerySet):
-                queryset = queryset.all()
-        elif self.model is not None:
-            queryset = self.model._default_manager.all()
-        else:
-            raise ImproperlyConfigured(
-                '%(cls)s is missing a QuerySet. Define '
-                '%(cls)s.model, %(cls)s.queryset, or override '
-                '%(cls)s.get_queryset().' % {
-                    'cls': self.__class__.__name__,
-                },
-            )
+        /api/v1/categories/?name=data&parent_id=1
 
-        queryset = self.filter_queryset(queryset)
 
-        ordering = self.get_ordering()
-        if ordering:
-            if isinstance(ordering, str):
-                ordering = (ordering,)
-            queryset = queryset.order_by(*ordering)
+    **Successful response**
 
-        return queryset
+        HTTP status Code: 200
 
-    def filter_queryset(self, queryset):
-        filters_data = {}
+        {
+          "status": "OK",
 
-        if self.filters:
+          "categories": [
+            {
+              "id": 1,
+              "parent_id": null,
+              "name": "Category1 name",
+              "descr": "Category1 description",
+              "logo_url": "https://domain.com/logo1.jpg",
+              "slug": "category1",
+              "sort_id": 1
+            },
+            {
+              "id": 2,
+              "parent_id": null,
+              "name": "Category2 name",
+              "descr": "Category2 description",
+              "logo_url": "https://domain.com/logo2.jpg",
+              "slug": "category2",
+              "sort_id": 90
+            }
+          ]
+        }
 
-            for _filter in self.filters:
-                value = self.request.GET.get(_filter)
-                if value:
-                    filters_data[_filter] = self.request.GET.get(_filter)
+    **Empty or not found response**
 
-            if filters_data:
-                return queryset.filter(
-                    **filters_data,
-                )
+        HTTP status Code: 200
 
-        return queryset
+        {
+          "status": "OK",
+          "categories": []
+        }
+    """
+    def get(self, request, format=None):
+        queryset = Category.objects.all()
+        categories_filter = CategoryFilter(request.GET.copy(), queryset=queryset)
+        serializer = CategorySerializer(categories_filter.qs, many=True)
+        return response_ok({'categories': serializer.data})
