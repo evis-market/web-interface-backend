@@ -45,7 +45,7 @@ class GrantJWTTokenView(APIView, JWTAuthService):
 
           "error": {
               "code": 400,
-              "msg" : "login or password is invalid"
+              "msg": "invalid credentials"
           }
         }
 
@@ -81,8 +81,12 @@ class GrantJWTTokenView(APIView, JWTAuthService):
         HTTP status Code: 400
 
         {
-            "code": 400,
-            "msg": "invalid credentials"
+          "status": "ERR",
+
+          "error": {
+              "code": 400,
+              "msg": "invalid token"
+          }
         }
     """
     serializer_class = GrantTokenSerializer
