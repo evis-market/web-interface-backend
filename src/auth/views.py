@@ -8,19 +8,85 @@ from auth.service import JWTAuthService
 
 class GrantJWTTokenView(APIView, JWTAuthService):
     """
-    URL: /api/v1/auth/jwt/grant
-    METHOD: POST
-    PAYLOAD: {
-              "grant_type": "password",
-              "login": "email_or_phone",
-              "password": "user_password"
+    ## Authentication by email or phone
+
+    Returns JWT access and refresh tokens.
+
+    URL: `/api/v1/auth/jwt/grant`
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "grant_type": "password",
+          "login": "email_or_phone",
+          "password": "user_password"
+        }
+
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+          "access_token": "....jwt_token_data...",
+          "refresh_token": "....jwt_token_data...",
+          "token_type": "Bearer"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 400
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 400,
+              "msg" : "login or password is invalid"
+          }
+        }
+
+
+    ## Refresh tokens
+
+    Returns JWT access and refresh tokens.
+
+    URL: `/api/v1/auth/jwt/grant`
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "grant_type": "refresh_token",
+          "refresh_token": "....jwt_token_data..."
+        }
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+          "access_token": "....jwt_token_data...",
+          "refresh_token": "....jwt_token_data...",
+          "token_type": "Bearer"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 400
+
+        {
+            "code": 400,
+            "msg": "bad request",
+            "invalid_fields": {
+                "grant_type": "This field may not be blank."
             }
-    RESPONSE: {
-              "status": "OK",
-              "access_token": "....jwt_token_data...",
-              "refresh_token": "....jwt_token_data...",
-              "token_type": "Bearer"
-            }
+        }
     """
     serializer_class = GrantTokenSerializer
     authentication_classes = ()
