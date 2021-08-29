@@ -82,10 +82,7 @@ class GrantJWTTokenView(APIView, JWTAuthService):
 
         {
             "code": 400,
-            "msg": "bad request",
-            "invalid_fields": {
-                "grant_type": "This field may not be blank."
-            }
+            "msg": "invalid credentials"
         }
     """
     serializer_class = GrantTokenSerializer
