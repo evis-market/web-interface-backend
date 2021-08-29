@@ -36,3 +36,11 @@ class UserManager(UserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self._create_user(email=email, phone=phone, wallet_erc20=wallet_erc20, password=password, **extra_fields)
+
+    @staticmethod
+    def get_by_login(login):
+        if login.count('@'):
+            user = models.User.objects.get(email=login)
+        else:
+            user = models.User.objects.get(phone=login)
+        return user

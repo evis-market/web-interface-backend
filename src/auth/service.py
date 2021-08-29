@@ -4,6 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from app import exceptions
 from app.conf.auth import SIMPLE_JWT
 from app.settings import SECRET_KEY
+from users.managers import UserManager
 from users.models import User
 
 
@@ -33,12 +34,11 @@ class JWTAuthService:
     def grant_jwt_token_by_password(self,
                                     login: str,
                                     password: str) -> dict:
-        if login.count('@'):
-            user = User.objects.filter(email=login).first()
-        else:
-            user = User.objects.filter(phone=login).first()
-
-        if not user or not user.check_password(password):
+        try:
+            user = UserManager.get_by_login(login)
+        except User.DoesNotExist:
+            raise exceptions.BadRequest(msg='invalid credentials')
+        if not user.check_password(password):
             raise exceptions.BadRequest(msg='invalid credentials')
 
         return self.get_tokens_for_user(user)
