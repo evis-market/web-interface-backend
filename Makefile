@@ -20,16 +20,10 @@ deps-dev: ## Install developer dependencies
 	pip3 install -r requirements.dev.txt
 
 load-initial-data: ## Load initial data
-#	cd ./src
-#	./manage.py migrate
-#	./manage.py createsuperuser
-#	./manage.py loaddata
+	cd ./src && ./manage.py migrate && ./manage.py loaddata app/fixtures/initial/*.json && ./manage.py createsuperuser
 
-load-dev-data: ## Load extra data for developer
-#	cd ./src
-#	./manage.py migrate
-#	./manage.py createsuperuser
-#	./manage.py loaddata
+load-dev-data: ## Load extra data for developer (temporary command looks identical to load-initial-data)
+	cd ./src && ./manage.py migrate && ./manage.py loaddata app/fixtures/initial/*.json && ./manage.py createsuperuser
 
 lint: ## Run flake8 linter
 	flake8 src
@@ -37,6 +31,8 @@ lint: ## Run flake8 linter
 serve: ## Run server in developmet mode
 	cd src && ./manage.py runserver 0.0.0.0:8000
 
+shell:
+	cd src && ./manage.py shell
 
 help: ## This help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
