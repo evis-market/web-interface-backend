@@ -8,6 +8,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from auth.views import GrantJWTTokenView
 from users.models import User
 
+
 pytestmark = pytest.mark.django_db
 
 
@@ -70,15 +71,15 @@ class TestCustomLoginView:
         user = mixer.blend(User)
         token = RefreshToken.for_user(user)
         data = {
-            "grant_type": "refresh_token",
-            "refresh_token": str(token) + "1234"
+            'grant_type': 'refresh_token',
+            'refresh_token': str(token) + '1234',
         }
-        url = reverse("GrantJWTTokenView")
-        request = APIRequestFactory().post(url, data=json.dumps(data), content_type="application/json")
+        url = reverse('GrantJWTTokenView')
+        request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
         response = GrantJWTTokenView.as_view()(request=request)
         assert response.status_code == 400
-        assert response.data["status"] == "ERR"
-        assert response.data["error"] == {'code': 400, 'msg': 'invalid token'}
+        assert response.data['status'] == 'ERR'
+        assert response.data['error'] == {'code': 400, 'msg': 'invalid token'}
 
     def test_post_with_wrong_password_email_phone(self):
         """
@@ -90,19 +91,21 @@ class TestCustomLoginView:
                            password='test_password_1')
         user.set_password('test_password_1')
         user.save()
-        data_cases = [{
-            'grant_type': 'password',
-            'login': user.email,
-            'password': 'wrong_password',  # case with wrong password
-        }, {
-            'grant_type': 'password',
-            'login': "wrongmail@com.com",  # case with wrong email
-            'password': 'test_password_1',
-        }, {
-            'grant_type': 'password',
-            'login': "87654321",  # case with wrong phone
-            'password': 'test_password_1',
-        }]
+        data_cases = [
+            {
+                'grant_type': 'password',
+                'login': user.email,
+                'password': 'wrong_password',  # case with wrong password
+            }, {
+                'grant_type': 'password',
+                'login': 'wrongmail@com.com',  # case with wrong email
+                'password': 'test_password_1',
+            }, {
+                'grant_type': 'password',
+                'login': '87654321',  # case with wrong phone
+                'password': 'test_password_1',
+            },
+        ]
         url = reverse('GrantJWTTokenView')
         for data in data_cases:
             request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
@@ -116,11 +119,11 @@ class TestCustomLoginView:
         Test: login by user with wrong grant_type
         """
         data = {
-            "grant_type": "wrong_grant_type"
+            'grant_type': 'wrong_grant_type',
         }
-        url = reverse("GrantJWTTokenView")
-        request = APIRequestFactory().post(url, data=json.dumps(data), content_type="application/json")
+        url = reverse('GrantJWTTokenView')
+        request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
         response = GrantJWTTokenView.as_view()(request=request)
         assert response.status_code == 400
-        assert response.data["status"] == "ERR"
-        assert response.data["error"] == {'code': 400, 'msg': 'please specify grant_type, valid grant_type: password, refresh_token'}
+        assert response.data['status'] == 'ERR'
+        assert response.data['error'] == {'code': 400, 'msg': 'please specify grant_type, valid grant_type: password, refresh_token'}
