@@ -23,9 +23,6 @@ class Command(BaseCommand):
                 user = UserManager.get_by_login(options['grant'][1])
             except User.DoesNotExist:
                 raise CommandError(f'User does not exist')
-            if user.is_superuser:
-                print(JWTAuthService.get_tokens_for_user(user))
-            else:
-                raise CommandError(f'User is not a superuser')
+            print(JWTAuthService.get_tokens_for_user(user))
 
         self.stdout.write(self.style.SUCCESS('Successfully received a tokens'))
