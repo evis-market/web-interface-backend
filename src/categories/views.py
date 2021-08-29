@@ -1,7 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import QuerySet
-from django.http import Http404, HttpResponse
-from django.views import View
+from django.http import Http404
 from django.views.generic import ListView
 
 from categories.models import Category
@@ -47,11 +46,11 @@ class CategoryListView(ListView):
             queryset = self.model._default_manager.all()
         else:
             raise ImproperlyConfigured(
-                "%(cls)s is missing a QuerySet. Define "
-                "%(cls)s.model, %(cls)s.queryset, or override "
-                "%(cls)s.get_queryset()." % {
-                    'cls': self.__class__.__name__
-                }
+                '%(cls)s is missing a QuerySet. Define '
+                '%(cls)s.model, %(cls)s.queryset, or override '
+                '%(cls)s.get_queryset().' % {
+                    'cls': self.__class__.__name__,
+                },
             )
 
         queryset = self.filter_queryset(queryset)
@@ -76,7 +75,7 @@ class CategoryListView(ListView):
 
             if filters_data:
                 return queryset.filter(
-                    **filters_data
+                    **filters_data,
                 )
 
         return queryset
