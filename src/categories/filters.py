@@ -12,11 +12,12 @@ class CategoryFilter(filters.FilterSet):
         fields = []
 
     def parent_id_filter(self, queryset, name, value):
-        int_val = int(value)
-        if value == 'null' or int_val == 0:
+        try:
+            int_val = int(value)
+        except ValueError:
+            int_val = 0
+
+        if value == 'null' or int_val < 1:
             return queryset.filter(parent_id__isnull=True)
 
-        if int_val > 0:
-            return queryset.filter(parent_id__eq=int_val)
-
-        return queryset
+        return queryset.filter(parent_id=int_val)
