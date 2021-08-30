@@ -3,9 +3,9 @@ ifndef VIRTUAL_ENV
     $(error virtualenv is not activated, please activate it by command: source src/.venv/bin/activate)
 endif
 
-setup: check-venv upgrade-pip deps load-initial-data ## Setup whole project for production: venv, deps, load-initial-data
+setup: check-venv upgrade-pip deps migrate load-initial-data createsuperuser ## Setup whole project for production
 
-setup-dev: check-venv upgrade-pip deps-dev load-initial-data load-dev-data ## Setup whole project for developer: venv, deps-dev, load-initial-data, load-dev-data
+setup-dev: check-venv upgrade-pip deps-dev migrate load-initial-data createsuperuser## Setup whole project for developer
 
 venv: ## Create virtual environment
 	python3 -m venv src/.venv
@@ -16,14 +16,20 @@ upgrade-pip: ## Upgrade pip
 deps: ## Install production dependencies
 	pip3 install -r requirements.txt
 
-deps-dev: ## Install developer dependencies
+deps-dev: deps ## Install developer dependencies
 	pip3 install -r requirements.dev.txt
 
-load-initial-data: ## Load initial data
-	cd ./src && ./manage.py migrate && ./manage.py loaddata app/fixtures/initial/*.json && ./manage.py createsuperuser
+migrations: check-venv ## Generate database migrations
+	cd src && ./manage.py makemigrations
 
-load-dev-data: ## Load extra data for developer (temporary command looks identical to load-initial-data)
-	cd ./src && ./manage.py migrate && ./manage.py loaddata app/fixtures/initial/*.json && ./manage.py createsuperuser
+migrate: check-venv ## Apply database migrations
+	cd src && ./manage.py migrate
+
+load-initial-data: check-venv ## Load initial data
+	cd ./src && ./manage.py loaddata app/fixtures/initial/*.json
+
+createsuperuser: check-venv ## Create admin user
+	cd src && ./manage.py createsuperuser
 
 lint: ## Run flake8 linter
 	flake8 src
