@@ -6,4 +6,4 @@ from categories.models import Category
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name', 'slug', 'parent_id']
+        fields = ['id', 'parent_id', 'name', 'descr', 'logo_url', 'slug', 'sort_id']

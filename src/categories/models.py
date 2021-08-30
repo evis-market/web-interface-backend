@@ -7,6 +7,8 @@ from categories.managers import CategoryManager
 
 class Category(mptt_models.MPTTModel):
     name = models.CharField('Name', max_length=190, db_index=True, unique=True)
+    descr = models.TextField('Description', blank=True, null=False, default='')
+    logo_url = models.URLField('Logo URL', blank=True, null=False, default='')
     slug = models.SlugField('Slug', max_length=190, blank=True, db_index=True, unique=True)
     sort_id = models.PositiveIntegerField('Ordering', blank=True, default=2147483647)
     parent = mptt_models.TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
