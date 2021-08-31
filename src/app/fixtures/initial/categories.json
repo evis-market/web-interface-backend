@@ -3,28 +3,28 @@
     "model": "categories.recommendedfor",
     "pk": 1,
     "fields": {
-      "for_whom": "For Scientists"
+      "name": "For Scientists"
     }
   },
   {
     "model": "categories.recommendedfor",
     "pk": 2,
     "fields": {
-      "for_whom": "For Traiders"
+      "name": "For Traiders"
     }
   },
   {
     "model": "categories.recommendedfor",
     "pk": 3,
     "fields": {
-      "for_whom": "For Analytics"
+      "name": "For Analytics"
     }
   },
   {
     "model": "categories.recommendedfor",
     "pk": 4,
     "fields": {
-      "for_whom": "For Personal Use"
+      "name": "For Personal Use"
     }
   },
   {

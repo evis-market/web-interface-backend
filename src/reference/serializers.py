@@ -1,20 +1,9 @@
 from rest_framework import serializers
 
-from categories.models import Category, RecommendedFor
+from reference.models import GeoRegion
 
 
-class RecommendedForSerializer(serializers.ModelSerializer):
-    def to_representation(self, value):
-        return value.name
-
+class GeoRegionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RecommendedFor
-        fields = ['name']
-
-
-class CategorySerializer(serializers.ModelSerializer):
-    recommended_for = RecommendedForSerializer(read_only=True, many=True)
-
-    class Meta:
-        model = Category
-        fields = ['id', 'parent_id', 'name', 'descr', 'logo_url', 'slug', 'sort_id', 'recommended_for']
+        model = GeoRegion
+        fields = ['id', 'name', 'parent_id', 'iso_code']
