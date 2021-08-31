@@ -35,16 +35,6 @@ class Category(mptt_models.MPTTModel):
             self.slug = slugify(self.name, allow_unicode=True)
             super().save(*args, **kwargs)
 
-    def get_all_children(self):
-        children = [self]
-        try:
-            child_list = self.children.all()
-        except AttributeError:
-            return children
-        for child in child_list:
-            children.extend(child.get_all_children())
-        return children
-
     class Meta:
         db_table = 'categories'
         verbose_name_plural = 'Categories'
