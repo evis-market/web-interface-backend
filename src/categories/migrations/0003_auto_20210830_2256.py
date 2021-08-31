@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name='RecommendedFor',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('for_whom', models.CharField(db_index=True, max_length=50, unique=True, verbose_name='For whom is recommended')),
+                ('name', models.CharField(db_index=True, max_length=120, unique=True, verbose_name='For whom is recommended')),
             ],
             options={
                 'db_table': 'recommended_for',

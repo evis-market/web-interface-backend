@@ -6,13 +6,13 @@ from categories.managers import CategoryManager
 
 
 class RecommendedFor(models.Model):
-    for_whom = models.CharField('For whom is recommended', max_length=50, db_index=True, unique=True)
+    name = models.CharField('For whom is recommended', max_length=120, db_index=True, unique=True)
 
     class Meta:
         db_table = 'recommended_for'
 
     def __str__(self):
-        return self.for_whom
+        return self.name
 
 
 class Category(mptt_models.MPTTModel):
