@@ -4,5 +4,5 @@ from categories.views import CategoryListView
 
 
 urlpatterns = [
-    path('', CategoryListView.as_view(), name='CategoriesList'),
+    path('', CategoryListView.as_view(), name='CategoriesList')
 ]
