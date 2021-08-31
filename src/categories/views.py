@@ -37,7 +37,12 @@ class CategoryListView(APIView):
               "descr": "Category1 description",
               "logo_url": "https://domain.com/logo1.jpg",
               "slug": "category1",
-              "sort_id": 1
+              "sort_id": 1,
+              "recommended_for": [
+                "For Traiders",
+                "For Analytics",
+                "For Personal Use"
+              ]
             },
             {
               "id": 2,
@@ -46,7 +51,11 @@ class CategoryListView(APIView):
               "descr": "Category2 description",
               "logo_url": "https://domain.com/logo2.jpg",
               "slug": "category2",
-              "sort_id": 90
+              "sort_id": 90,
+              "recommended_for": [
+                "For Scientists",
+                "For Personal Use"
+              ]
             }
           ]
         }
