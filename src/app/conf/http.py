@@ -7,37 +7,15 @@ DEBUG = env('DEBUG', cast=bool)
 
 APPEND_SLASH = False
 
-ALLOWED_HOSTS = [
-    'evis.market',
-]
+ALLOWED_HOSTS = ['evis.market']
+
+CORS_ALLOWED_ORIGINS = ['https://evis.market']
+
+CSRF_TRUSTED_ORIGINS = ['evis.market']
 
 if DEBUG:
-    ALLOWED_HOSTS += [
-        'localhost',
-        'localhost:8000',
-        'evis.market:8000',
-        'dev.evis.market',
-    ]
-
-CORS_ALLOWED_ORIGINS = [
-    'https://evis.market',
-]
-
-if DEBUG:
-    CORS_ALLOWED_ORIGINS += [
-        'http://evis.market:8000',
-        'http://dev.evis.market',
-    ]
-
-CSRF_TRUSTED_ORIGINS = [
-    'evis.market',
-]
-
-if DEBUG:
-    CSRF_TRUSTED_ORIGINS += [
-        'evis.market:8000',
-        'dev.evis.market',
-    ]
+    ALLOWED_HOSTS = ['*']
+    CORS_ORIGIN_ALLOW_ALL = True
 
 if not DEBUG:
     CSRF_COOKIE_SECURE = True
