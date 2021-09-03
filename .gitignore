@@ -134,3 +134,6 @@ dmypy.json
 *.orig
 src/static/
 .TODO
+tmp/
+*.log
+*_log
