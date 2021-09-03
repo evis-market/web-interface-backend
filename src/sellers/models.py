@@ -31,10 +31,15 @@ class Contact(models.Model):
     TYPE_ID_URL = 1
     TYPE_ID_PHONE = 2
     TYPE_ID_EMAIL = 3
+    TYPES = [
+        (TYPE_ID_URL, 'URL'),
+        (TYPE_ID_PHONE, 'Phone'),
+        (TYPE_ID_EMAIL, 'Email'),
+    ]
 
     id = models.AutoField('ID', primary_key=True)
     seller_id = models.ForeignKey('Seller', related_name='Contact', on_delete=models.CASCADE)
-    type_id = models.IntegerField('Contact types')
+    type_id = models.IntegerField('Contact types', choices=TYPES)
     value = models.CharField('Value', max_length=190)
     comment = models.CharField('Comment', max_length=190, blank=True, default='')
 
