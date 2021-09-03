@@ -3,6 +3,7 @@ INSTALLED_APPS = [
     'auth',
     'users',
     'categories',
+    'sellers',
 
     'mptt',
 
