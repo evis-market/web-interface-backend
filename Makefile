@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 setup: upgrade-pip deps migrate load-initial-data createsuperuser ## Setup whole project for production
 
 setup-dev: upgrade-pip deps-dev migrate load-initial-data createsuperuser ## Setup whole project for developer
