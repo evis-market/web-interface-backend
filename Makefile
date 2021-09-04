@@ -40,6 +40,9 @@ serve-bg: ## Run server in development mode in background
 shell:
 	@source .venv/bin/activate && cd src && ./manage.py shell
 
+test:
+	@source .venv/bin/activate && cd src && pytest .
+
 help: ## This help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
