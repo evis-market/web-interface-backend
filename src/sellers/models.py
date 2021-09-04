@@ -47,3 +47,6 @@ class Contact(models.Model):
         db_table = 'seller_contacts'
         verbose_name_plural = 'Seller contacts'
         ordering = ('type_id',)
+
+    def __str__(self):
+        return self.value

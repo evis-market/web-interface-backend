@@ -13,4 +13,5 @@ class SellerAdmin(admin.ModelAdmin):
         ContactInline,
     ]
 
+
 admin.site.register(Seller, SellerAdmin)

@@ -1,7 +1,6 @@
 import json
 import pytest
 from django.forms import model_to_dict
-from django.test import Client
 from django.urls import reverse
 from mixer.backend.django import mixer
 from rest_framework.test import APIRequestFactory, force_authenticate
@@ -57,16 +56,16 @@ class TestSellerSettingsView:
         user = mixer.blend(User)
         url = reverse('SellerSettingsView')
         data = {
-            "seller_id": user.id,
-            "name": "Seller name",
-            "description": "Seller description",
-            "logo_url": "https://www.goog.ru/",
-            "wallet_for_payments_erc20": "0x....",
-            "contacts": [
-                {"type_id": 1, "value": "https://domain1.com/", "comment": "main site"},
-                {"type_id": 2, "value": "1231231231", "comment": "phone1 comment"},
-                {"type_id": 3, "value": "email1@test.com", "comment": "email1 comment"},
-            ]
+            'seller_id': user.id,
+            'name': 'Seller name',
+            'description': 'Seller description',
+            'logo_url': 'https://www.goog.ru/',
+            'wallet_for_payments_erc20': '0x....',
+            'contacts': [
+                {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
+                {'type_id': 2, 'value': '1231231231', 'comment': 'phone1 comment'},
+                {'type_id': 3, 'value': 'email1@test.com', 'comment': 'email1 comment'},
+            ],
         }
         request = APIRequestFactory().put(url, data=json.dumps(data), content_type='application/json')
         force_authenticate(request, user=user)
@@ -75,7 +74,7 @@ class TestSellerSettingsView:
         seller = SellerManager.get_seller_by_user_id(user_id=user.id)
         url_contact, phone_contact, email_contact = SellerManager.get_seller_contacts_by_seller_id(seller_id=seller.id)
         for key, value in data.items():
-            if key == "contacts":
+            if key == 'contacts':
                 for k, v in data['contacts'][0].items():
                     assert model_to_dict(url_contact)[k] == v
                 for i, j in data['contacts'][1].items():
@@ -93,16 +92,16 @@ class TestSellerSettingsView:
                                   seller_id=seller)
         url = reverse('SellerSettingsView')
         data = {
-            "seller_id": user.id,
-            "name": "New seller name",
-            "description": "New seller description",
-            "logo_url": "https://www.goog.ru/",
-            "wallet_for_payments_erc20": "0x....",
-            "contacts": [
-                {"type_id": 1, "value": "https://domain1.com/", "comment": "main site"},
-                {"type_id": 2, "value": "1231231231", "comment": "phone1 comment"},
-                {"type_id": 3, "value": "email1@test.com", "comment": "email1 comment"},
-            ]
+            'seller_id': user.id,
+            'name': 'New seller name',
+            'description': 'New seller description',
+            'logo_url': 'https://www.goog.ru/',
+            'wallet_for_payments_erc20': '0x....',
+            'contacts': [
+                {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
+                {'type_id': 2, 'value': '1231231231', 'comment': 'phone1 comment'},
+                {'type_id': 3, 'value': 'email1@test.com', 'comment': 'email1 comment'},
+            ],
         }
         request = APIRequestFactory().put(url, data=json.dumps(data), content_type='application/json')
         force_authenticate(request, user=user)
@@ -111,7 +110,7 @@ class TestSellerSettingsView:
         seller = SellerManager.get_seller_by_user_id(user_id=user.id)
         url_contact, phone_contact, email_contact = SellerManager.get_seller_contacts_by_seller_id(seller_id=seller.id)
         for key, value in data.items():
-            if key == "contacts":
+            if key == 'contacts':
                 for k, v in data['contacts'][0].items():
                     assert model_to_dict(url_contact)[k] == v
                 for i, j in data['contacts'][1].items():
