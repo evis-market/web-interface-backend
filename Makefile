@@ -5,40 +5,40 @@ setup: upgrade-pip deps migrate load-initial-data createsuperuser ## Setup whole
 setup-dev: upgrade-pip deps-dev migrate load-initial-data createsuperuser ## Setup whole project for developer
 
 venv: ## Create virtual environment
-	python3 -m venv src/.venv
+	python3 -m venv .venv
 
 upgrade-pip: ## Upgrade pip
-	@source src/.venv/bin/activate && pip3 install --upgrade pip
+	@source .venv/bin/activate && pip3 install --upgrade pip
 
 deps: ## Install production dependencies
-	@source src/.venv/bin/activate && pip3 install -r requirements.txt
+	@source .venv/bin/activate && pip3 install -r requirements.txt
 
 deps-dev: deps ## Install developer dependencies
-	@source src/.venv/bin/activate && pip3 install -r requirements.dev.txt
+	@source .venv/bin/activate && pip3 install -r requirements.dev.txt
 
 migrations: ## Generate database migrations
-	@source src/.venv/bin/activate && cd src && ./manage.py makemigrations
+	@source .venv/bin/activate && cd src && ./manage.py makemigrations
 
 migrate: ## Apply database migrations
-	@source src/.venv/bin/activate && cd src && ./manage.py migrate
+	@source .venv/bin/activate && cd src && ./manage.py migrate
 
 load-initial-data: ## Load initial data
-	@source src/.venv/bin/activate && cd ./src && ./manage.py loaddata app/fixtures/initial/*.json
+	@source .venv/bin/activate && cd ./src && ./manage.py loaddata app/fixtures/initial/*.json
 
 createsuperuser: ## Create admin user
-	@source src/.venv/bin/activate && cd src && ./manage.py createsuperuser
+	@source .venv/bin/activate && cd src && ./manage.py createsuperuser
 
 lint: ## Run flake8 linter
-	@source src/.venv/bin/activate && flake8 src
+	@source .venv/bin/activate && flake8 src
 
 serve: ## Run server in development mode
-	@source src/.venv/bin/activate && cd src && ./manage.py runserver 0.0.0.0:8000
+	@source .venv/bin/activate && cd src && ./manage.py runserver 0.0.0.0:8000
 
 serve-bg: ## Run server in development mode in background
-	@source src/.venv/bin/activate && cd src && nohup ./manage.py runserver 0.0.0.0:8000 > serve.log 2>&1 &
+	@source .venv/bin/activate && cd src && nohup ./manage.py runserver 0.0.0.0:8000 > serve.log 2>&1 &
 
 shell:
-	@source src/.venv/bin/activate && cd src && ./manage.py shell
+	@source .venv/bin/activate && cd src && ./manage.py shell
 
 help: ## This help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
