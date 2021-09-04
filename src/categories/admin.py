@@ -2,7 +2,7 @@ from django.contrib import admin
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 from mptt.admin import MPTTModelAdmin
 
-from categories.models import Category
+from categories.models import Category, RecommendedFor
 
 
 class CategoryAdmin(MPTTModelAdmin):
@@ -14,3 +14,8 @@ class CategoryAdmin(MPTTModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
+
+class RecommendedForAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+admin.site.register(RecommendedFor, RecommendedForAdmin)
