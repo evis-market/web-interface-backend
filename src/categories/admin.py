@@ -13,9 +13,9 @@ class CategoryAdmin(MPTTModelAdmin):
     search_fields = ('name', 'slug')
 
 
-admin.site.register(Category, CategoryAdmin)
-
 class RecommendedForAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
+
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(RecommendedFor, RecommendedForAdmin)

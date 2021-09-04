@@ -1,10 +1,10 @@
 from django.db import transaction
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
-from sellers.managers import SellerManager
 
 from app.response import response_ok
-from sellers.serializer import SellerViewSerializer, SellerUpdateSerializer
+from sellers.managers import SellerManager
+from sellers.serializer import SellerUpdateSerializer, SellerViewSerializer
 from sellers.service import SellerService
 
 

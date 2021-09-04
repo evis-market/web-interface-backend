@@ -1,15 +1,16 @@
 import json
 import pytest
 from django.forms import model_to_dict
+from django.test import Client
 from django.urls import reverse
 from mixer.backend.django import mixer
 from rest_framework.test import APIRequestFactory, force_authenticate
 
 from sellers.managers import SellerManager
-from sellers.models import Seller, Contact
+from sellers.models import Contact, Seller
 from sellers.views import SellerSettingsView
 from users.models import User
-from django.test import Client
+
 
 pytestmark = pytest.mark.django_db
 

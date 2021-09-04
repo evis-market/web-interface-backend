@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from sellers.models import Seller, Contact
+from sellers.models import Contact, Seller
 
 
 class ContactViewSerializer(serializers.ModelSerializer):

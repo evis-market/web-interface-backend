@@ -4,7 +4,6 @@ from app.response import response_ok
 from categories.filters import CategoryFilter
 from categories.models import Category
 from categories.serializers import CategorySerializer
-from categories.managers import CategoryManager
 
 
 class CategoryListView(APIView):
