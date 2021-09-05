@@ -35,7 +35,7 @@ serve: ## Run server in development mode
 	@source .venv/bin/activate && cd src && ./manage.py runserver 0.0.0.0:8000
 
 serve-bg: ## Run server in development mode in background
-	@source .venv/bin/activate && cd src && nohup ./manage.py runserver 0.0.0.0:8000 > serve.log 2>&1 &
+	@source .venv/bin/activate && cd src && nohup ./manage.py runserver 0.0.0.0:8000 > ../serve.log 2>&1 &
 
 shell:
 	@source .venv/bin/activate && cd src && ./manage.py shell
