@@ -1,16 +1,17 @@
-from sellers import models
+from django.db import models
 
 
-class SellerManager:
+class SellerManager(models.Manager):
 
-    @staticmethod
-    def get_seller_by_user_id(user_id):
-        return models.Seller.objects.filter(seller_id=user_id).first()
+    def get_seller_by_user_id(self, user_id):
+        return self.model.objects.filter(seller_id=user_id).first()
 
-    @staticmethod
-    def get_seller_contacts_by_seller_id(seller_id):
-        return models.Contact.objects.filter(seller_id=seller_id)
 
-    @staticmethod
-    def delete_seller_contacts_by_seller_id(seller_id):
-        return models.Contact.objects.filter(seller_id=seller_id).delete()
+class ContactManager(models.Manager):
+
+    def get_seller_contacts_by_seller_id(self, seller_id):
+        return self.model.Contact.objects.filter(seller_id=seller_id)
+
+    def delete_seller_contacts_by_seller_id(self, seller_id):
+        return self.model.Contact.objects.filter(seller_id=seller_id).delete()
+

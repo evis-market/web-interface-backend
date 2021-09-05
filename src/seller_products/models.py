@@ -42,10 +42,9 @@ class DataUrl(models.Model):
         return f'{self.name} - {self.url}'
 
 
-class SellerProduct(models.Model):
+class SellerProductBase(models.Model):
     name = models.CharField('Product for sale', max_length=500)
     descr = models.TextField('Description', blank=True, null=False, default='')
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='products')
     price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=False, default=None)
     price_per_month = models.FloatField('Price per month', blank=True, null=False, default=None)
     price_per_year = models.FloatField('Price per year', blank=True, null=False, default=None)
@@ -55,6 +54,21 @@ class SellerProduct(models.Model):
     rating = models.FloatField('Rating', blank=True, null=True, default=None)
     total_reviews_cnt = models.IntegerField('Total count of reviews')
 
+    version = models.IntegerField('Version', default=1)
+    created = models.DateTimeField('Created', auto_now_add=True)
+    updated = models.DateTimeField('Updated', auto_now=True)
+
+    class Meta:
+        abstract = True
+        verbose_name = 'Seller Product'
+        verbose_name_plural = 'Seller Products'
+
+    def __str__(self):
+        return f'{self.name} (Seller={self.seller.name}) {self.descr[:100]}...'
+
+
+class SellerProduct(SellerProductBase):
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='products')
     categories = models.ManyToManyField(Category, verbose_name='Content categories', related_name='seller_products', blank=True)
     geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', related_name='seller_products', blank=True)
     # languages = models.ManyToManyField(Language, verbose_name='Content languages', related_name='seller_products', blank=True)
@@ -63,14 +77,23 @@ class SellerProduct(models.Model):
     # data_delivery_types = models.ManyToManyField(DataDeliveryType, verbose_name='Content data types', related_name='seller_products', blank=True)
     data_samples = models.ManyToManyField(DataSample, verbose_name='Content data samples', related_name='seller_products', blank=True)
     data_urls = models.ManyToManyField(DataUrl, verbose_name='Content data urls', related_name='seller_products', blank=True)
-    version = models.IntegerField('Version', default=1)
-    created = models.DateTimeField('Created', auto_now_add=True)
-    updated = models.DateTimeField('Updated', auto_now=True)
 
     class Meta:
+        abstract = False
         db_table = 'seller_products'
-        verbose_name = 'Seller Product'
-        verbose_name_plural = 'Seller Products'
 
-    def __str__(self):
-        return f'{self.name} (Seller={self.seller.name}) {self.descr[:100]}...'
+
+class SellerProductArchive(SellerProductBase):
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='products_archive')
+    categories = models.ManyToManyField(Category, verbose_name='Content categories', related_name='seller_products_archive', blank=True)
+    geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', related_name='seller_products_archive', blank=True)
+    # languages = models.ManyToManyField(Language, verbose_name='Content languages', related_name='seller_products_archive', blank=True)
+    # data_types = models.ManyToManyField(DataType, verbose_name='Content data types', related_name='seller_products_archive', blank=True)
+    # data_format = models.ManyToManyField(DataFormat, verbose_name='Content data formats', related_name='seller_products_archive', blank=True)
+    # data_delivery_types = models.ManyToManyField(DataDeliveryType, verbose_name='Content data types', related_name='seller_products_archive', blank=True)
+    data_samples = models.ManyToManyField(DataSample, verbose_name='Content data samples', related_name='seller_products_archive', blank=True)
+    data_urls = models.ManyToManyField(DataUrl, verbose_name='Content data urls', related_name='seller_products_archive', blank=True)
+
+    class Meta:
+        abstract = False
+        db_table = 'seller_products_archive'

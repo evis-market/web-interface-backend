@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView
 
 from app.response import response_ok
-from sellers.managers import SellerManager
+from sellers.models import Seller, Contact
 from sellers.serializer import SellerUpdateSerializer, SellerViewSerializer
 from sellers.service import SellerService
 
@@ -68,7 +68,7 @@ class SellerSettingsView(GenericAPIView, SellerService):
               }
             }
         """
-        seller = SellerManager.get_seller_by_user_id(user_id=request.user.id)
+        seller = Seller.objects.get_seller_by_user_id(user_id=request.user.id)
         result = self.serializer_class(seller).data
         return response_ok({'seller': result}, http_code=status.HTTP_200_OK)
 

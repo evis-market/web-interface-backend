@@ -5,7 +5,6 @@ from django.urls import reverse
 from mixer.backend.django import mixer
 from rest_framework.test import APIRequestFactory, force_authenticate
 
-from sellers.managers import SellerManager
 from sellers.models import Contact, Seller
 from sellers.views import SellerSettingsView
 from users.models import User
@@ -71,8 +70,8 @@ class TestSellerSettingsView:
         force_authenticate(request, user=user)
         response = SellerSettingsView.as_view()(request=request)
         assert response.status_code == 200
-        seller = SellerManager.get_seller_by_user_id(user_id=user.id)
-        url_contact, phone_contact, email_contact = SellerManager.get_seller_contacts_by_seller_id(seller_id=seller.id)
+        seller = Seller.objects.get_seller_by_user_id(user_id=user.id)
+        url_contact, phone_contact, email_contact = Contact.objects.get_seller_contacts_by_seller_id(seller_id=seller.id)
         for key, value in data.items():
             if key == 'contacts':
                 for k, v in data['contacts'][0].items():
@@ -107,8 +106,8 @@ class TestSellerSettingsView:
         force_authenticate(request, user=user)
         response = SellerSettingsView.as_view()(request=request)
         assert response.status_code == 200
-        seller = SellerManager.get_seller_by_user_id(user_id=user.id)
-        url_contact, phone_contact, email_contact = SellerManager.get_seller_contacts_by_seller_id(seller_id=seller.id)
+        seller = Seller.objects.get_seller_by_user_id(user_id=user.id)
+        url_contact, phone_contact, email_contact = Contact.objects.get_seller_contacts_by_seller_id(seller_id=seller.id)
         for key, value in data.items():
             if key == 'contacts':
                 for k, v in data['contacts'][0].items():
