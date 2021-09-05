@@ -16,5 +16,5 @@ class GeoRegion(mptt_models.MPTTModel):
 
     class Meta:
         db_table = 'geo_regions'
-        verbose_name = 'GeoRegion'
-        verbose_name_plural = 'GeoRegions'
+        verbose_name = 'Geo region'
+        verbose_name_plural = 'Geo regions'
