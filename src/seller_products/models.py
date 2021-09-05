@@ -38,11 +38,11 @@ class SellerProductBase(models.Model):
 
 
 class SellerProduct(SellerProductBase):
-    categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True)
-    geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo regions', blank=True)
+    categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True, db_table='seller_product_categories')
+    geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo regions', blank=True, db_table='seller_product_geo_regions')
     # languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True)
-    data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True)
-    data_format = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True)
+    data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True, db_table='seller_product_data_types')
+    data_format = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True, db_table='seller_product_data_formats')
     # data_delivery_types = models.ManyToManyField(DataDeliveryType, verbose_name='Content data types', blank=True)
     # data_samples = models.ManyToManyField(SellerProductDataSample, verbose_name='Content data samples', blank=True)
     # data_urls = models.ManyToManyField(SellerProductDataUrl, verbose_name='Content data urls', blank=True)
