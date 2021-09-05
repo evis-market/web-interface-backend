@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.generics import GenericAPIView
 
 from app.response import response_ok
-from sellers.models import Seller, Contact
+from sellers.models import Seller
 from sellers.serializer import SellerUpdateSerializer, SellerViewSerializer
 from sellers.service import SellerService
 

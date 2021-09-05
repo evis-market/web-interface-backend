@@ -1,4 +1,3 @@
-from sellers.managers import SellerManager
 from sellers.models import Contact, Seller
 from users.models import User
 

@@ -14,4 +14,3 @@ class ContactManager(models.Manager):
 
     def delete_seller_contacts_by_seller_id(self, seller_id):
         return self.model.Contact.objects.filter(seller_id=seller_id).delete()
-

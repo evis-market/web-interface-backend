@@ -1,7 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from sellers.managers import SellerManager, ContactManager
+from sellers.managers import ContactManager, SellerManager
 
 
 class Seller(models.Model):
