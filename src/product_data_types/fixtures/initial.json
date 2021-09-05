@@ -1,0 +1,83 @@
+[
+  {
+    "model": "product_data_types.datatype",
+    "pk": 1,
+    "fields": {
+      "name": "Image"
+    }
+  },
+  {
+    "model": "product_data_types.datatype",
+    "pk": 2,
+    "fields": {
+      "name": "Table"
+    }
+  },
+  {
+    "model": "product_data_types.datatype",
+    "pk": 3,
+    "fields": {
+      "name": "Database dump"
+    }
+  },
+  {
+    "model": "product_data_types.datatype",
+    "pk": 4,
+    "fields": {
+      "name": "API"
+    }
+  },
+  {
+    "model": "product_data_types.dataformat",
+    "pk": 1,
+    "fields": {
+      "data_type_id": 2,
+      "name": "XLS"
+    }
+  },
+  {
+    "model": "product_data_types.dataformat",
+    "pk": 2,
+    "fields": {
+      "data_type_id": 2,
+      "name": "XLSX"
+    }
+  },
+  {
+    "model": "product_data_types.dataformat",
+    "pk": 3,
+    "fields": {
+      "data_type_id": 4,
+      "name": "XML"
+    }
+  },
+  {
+    "model": "product_data_types.dataformat",
+    "pk": 4,
+    "fields": {
+      "data_type_id": 2,
+      "name": "SQL"
+    }
+  },
+  {
+    "model": "product_data_types.dataformat",
+    "pk": 5,
+    "fields": {
+      "data_type_id": 3,
+      "name": "JSON"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2021-09-05T14:34:46.808Z",
+      "user": 1,
+      "content_type": 13,
+      "object_id": "1",
+      "object_repr": "Image",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  }
+]

@@ -5,6 +5,7 @@ INSTALLED_APPS = [
     'categories',
     'sellers',
     'geo_regions',
+    'product_data_types',
 
     'mptt',
 
