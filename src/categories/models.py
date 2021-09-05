@@ -35,7 +35,7 @@ class Category(mptt_models.MPTTModel):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name, allow_unicode=True)
-            super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'categories'
