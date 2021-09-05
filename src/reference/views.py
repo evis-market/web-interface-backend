@@ -19,7 +19,7 @@ class GeoRegionListView(APIView):
 
     **Example query**
 
-        /api/v1/categories/?name=Brazil&parent_id=1
+        /api/v1/reference/geo_region/?name=Brazil&parent_id=1
 
 
     **Successful response**
@@ -50,8 +50,8 @@ class GeoRegionListView(APIView):
         HTTP status Code: 200
 
         {
-          "status": "OK",
-          "categories": []
+            "geo_regions": [],
+            "status": "OK"
         }
     """
     def get(self, request, format=None):
