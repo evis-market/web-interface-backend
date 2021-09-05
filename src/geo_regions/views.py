@@ -1,14 +1,14 @@
 from rest_framework.views import APIView
 
 from app.response import response_ok
-from reference.filters import GeoRegionFilter
-from reference.models import GeoRegion
-from reference.serializers import GeoRegionSerializer
+from geo_regions.filters import GeoRegionFilter
+from geo_regions.models import GeoRegion
+from geo_regions.serializers import GeoRegionSerializer
 
 
 class GeoRegionListView(APIView):
     """
-    URL: `/api/v1/reference/geo_region/`
+    URL: `/api/v1/geo_region/`
 
     Method: `GET`
 
@@ -19,7 +19,7 @@ class GeoRegionListView(APIView):
 
     **Example query**
 
-        /api/v1/reference/geo_region/?name=Brazil&parent_id=1
+        /api/v1/geo_region/?name=Brazil&parent_id=1
 
 
     **Successful response**

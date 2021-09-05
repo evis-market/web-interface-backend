@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from reference.models import GeoRegion
+from geo_regions.models import GeoRegion
 
 
 class GeoRegionSerializer(serializers.ModelSerializer):

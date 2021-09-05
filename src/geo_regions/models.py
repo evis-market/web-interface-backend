@@ -2,7 +2,7 @@ import mptt.models as mptt_models
 from django.db import models
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 
-from reference.managers import GeoRegionManager
+from geo_regions.managers import GeoRegionManager
 
 
 class GeoRegion(mptt_models.MPTTModel):

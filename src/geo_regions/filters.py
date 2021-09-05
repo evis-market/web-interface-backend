@@ -1,6 +1,6 @@
 from django_filters import rest_framework as filters
 
-from reference.models import GeoRegion
+from geo_regions.models import GeoRegion
 
 
 class GeoRegionFilter(filters.FilterSet):

@@ -4,7 +4,7 @@ INSTALLED_APPS = [
     'users',
     'categories',
     'sellers',
-    'reference',
+    'geo_regions',
 
     'mptt',
 
