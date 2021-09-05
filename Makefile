@@ -23,7 +23,7 @@ migrate: ## Apply database migrations
 	@source .venv/bin/activate && cd src && ./manage.py migrate
 
 load-initial-data: ## Load initial data
-	@source .venv/bin/activate && cd ./src && ./manage.py loaddata app/fixtures/initial/*.json
+	@source .venv/bin/activate && cd ./src && ./manage.py loaddata initial.json
 
 createsuperuser: ## Create admin user
 	@source .venv/bin/activate && cd src && ./manage.py createsuperuser
