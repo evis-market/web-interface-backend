@@ -3699,12 +3699,4 @@
       "model": "session"
     }
   },
-  {
-    "model": "sessions.session",
-    "pk": "armkvxumtbx37fkyudmet4wchpqwvttk",
-    "fields": {
-      "session_data": ".eJxVjEEOwiAQRe_C2hCYFlJcuvcMZGYYpGogKe3KeHdt0oVu_3vvv1TEbS1x67LEOamzsur0uxHyQ-oO0h3rrWludV1m0ruiD9r1tSV5Xg7376BgL9-ayFhApmwEZAQ3gQUPaL1xEIJlT8kNRAGH4CQbnjJndCGTcYFkzOr9AeH8OE8:1mMqr6:nWD8v5TgbUqxd7HmukkKKTL1O1SvdXhvD6R7alhR1qk",
-      "expire_date": "2021-09-19T12:02:36.502Z"
-    }
-  }
 ]
