@@ -29,6 +29,7 @@ include(
     'conf/auth.py',
     'conf/api.py',
     'conf/base.py',
+    'conf/log.py',
     'conf/db.py',
     'conf/installed_apps.py',
     'conf/http.py',
