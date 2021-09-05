@@ -1,7 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from sellers.managers import SellerManager
+from sellers.managers import SellerManager, ContactManager
 
 
 class Seller(models.Model):
@@ -42,6 +42,8 @@ class Contact(models.Model):
     type_id = models.IntegerField('Contact types', choices=TYPES)
     value = models.CharField('Value', max_length=190)
     comment = models.CharField('Comment', max_length=190, blank=True, default='')
+
+    objects = ContactManager()
 
     class Meta:
         db_table = 'seller_contacts'

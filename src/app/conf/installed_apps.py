@@ -3,9 +3,10 @@ INSTALLED_APPS = [
     'auth',
     'users',
     'categories',
-    'sellers',
     'geo_regions',
     'product_data_types',
+    'sellers',
+    'seller_products',
 
     'mptt',
 

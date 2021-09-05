@@ -17,12 +17,12 @@ class SellerService:
                 'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
             })
         self.save_contacts(contacts=data['contacts'],
-                           seller=seller if created else SellerManager.get_seller_by_user_id(user.id))
+                           seller=seller if created else Seller.objects.get_seller_by_user_id(user.id))
 
     @staticmethod
     def save_contacts(contacts: list,
                       seller: Seller) -> None:
-        SellerManager.delete_seller_contacts_by_seller_id(seller.id)
+        Contact.objects.delete_seller_contacts_by_seller_id(seller.id)
         for contact in contacts:
             Contact(seller_id=seller,
                     type_id=contact['type_id'],
