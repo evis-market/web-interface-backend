@@ -10,6 +10,8 @@ class RecommendedFor(models.Model):
 
     class Meta:
         db_table = 'recommended_for'
+        verbose_name = 'Recommended for'
+        verbose_name_plural = 'Recommended for'
 
     def __str__(self):
         return self.name
@@ -37,5 +39,6 @@ class Category(mptt_models.MPTTModel):
 
     class Meta:
         db_table = 'categories'
+        verbose_name = 'Category'
         verbose_name_plural = 'Categories'
         ordering = ('sort_id', 'name')
