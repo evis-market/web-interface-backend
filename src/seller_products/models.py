@@ -6,44 +6,14 @@ from sellers.models import Seller
 
 
 # from languages.models import Language
-# from product_data_types.models import DateType, DataFormat
+from product_data_types.models import DataType, DataFormat
 # from data_delivery_types.models import DataDeliveryType
 # from data_samples.models import DataSamples
 
 
-class DataSample(models.Model):
-    name = models.CharField('Data Sample', max_length=100)
-    descr = models.TextField('Description', blank=True, null=False, default='')
-    path = models.FilePathField('Path to data sample', max_length=255)
-
-    class Meta:
-        db_table = 'data_samples'
-        verbose_name = 'Data sample'
-        verbose_name_plural = 'Data samples'
-
-    def __str__(self):
-        return f'{self.name} - {self.path}'
-
-
-class DataUrl(models.Model):
-    name = models.CharField('Data url', max_length=100)
-    descr = models.TextField('Description', blank=True, null=False, default='')
-    url = models.URLField('Path to data sample')
-
-    # data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
-    # data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
-
-    class Meta:
-        db_table = 'data_urls'
-        verbose_name = 'Data url'
-        verbose_name_plural = 'Data urls'
-
-    def __str__(self):
-        return f'{self.name} - {self.url}'
-
-
 class SellerProductBase(models.Model):
-    name = models.CharField('Product for sale', max_length=500)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    name = models.CharField('Name', max_length=500)
     descr = models.TextField('Description', blank=True, null=False, default='')
     price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=False, default=None)
     price_per_month = models.FloatField('Price per month', blank=True, null=False, default=None)
@@ -55,8 +25,8 @@ class SellerProductBase(models.Model):
     total_reviews_cnt = models.IntegerField('Total count of reviews')
 
     version = models.IntegerField('Version', default=1)
-    created = models.DateTimeField('Created', auto_now_add=True)
-    updated = models.DateTimeField('Updated', auto_now=True)
+    created_at = models.DateTimeField('Created', auto_now_add=True)
+    updated_at = models.DateTimeField('Updated', auto_now=True)
 
     class Meta:
         abstract = True
@@ -68,15 +38,14 @@ class SellerProductBase(models.Model):
 
 
 class SellerProduct(SellerProductBase):
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='products')
-    categories = models.ManyToManyField(Category, verbose_name='Content categories', related_name='seller_products', blank=True)
-    geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', related_name='seller_products', blank=True)
-    # languages = models.ManyToManyField(Language, verbose_name='Content languages', related_name='seller_products', blank=True)
-    # data_types = models.ManyToManyField(DataType, verbose_name='Content data types', related_name='seller_products', blank=True)
-    # data_format = models.ManyToManyField(DataFormat, verbose_name='Content data formats', related_name='seller_products', blank=True)
-    # data_delivery_types = models.ManyToManyField(DataDeliveryType, verbose_name='Content data types', related_name='seller_products', blank=True)
-    data_samples = models.ManyToManyField(DataSample, verbose_name='Content data samples', related_name='seller_products', blank=True)
-    data_urls = models.ManyToManyField(DataUrl, verbose_name='Content data urls', related_name='seller_products', blank=True)
+    categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True)
+    geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo regions', blank=True)
+    # languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True)
+    data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True)
+    data_format = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True)
+    # data_delivery_types = models.ManyToManyField(DataDeliveryType, verbose_name='Content data types', blank=True)
+    # data_samples = models.ManyToManyField(SellerProductDataSample, verbose_name='Content data samples', blank=True)
+    # data_urls = models.ManyToManyField(SellerProductDataUrl, verbose_name='Content data urls', blank=True)
 
     class Meta:
         abstract = False
@@ -84,16 +53,46 @@ class SellerProduct(SellerProductBase):
 
 
 class SellerProductArchive(SellerProductBase):
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE, related_name='products_archive')
-    categories = models.ManyToManyField(Category, verbose_name='Content categories', related_name='seller_products_archive', blank=True)
-    geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', related_name='seller_products_archive', blank=True)
-    # languages = models.ManyToManyField(Language, verbose_name='Content languages', related_name='seller_products_archive', blank=True)
-    # data_types = models.ManyToManyField(DataType, verbose_name='Content data types', related_name='seller_products_archive', blank=True)
-    # data_format = models.ManyToManyField(DataFormat, verbose_name='Content data formats', related_name='seller_products_archive', blank=True)
-    # data_delivery_types = models.ManyToManyField(DataDeliveryType, verbose_name='Content data types', related_name='seller_products_archive', blank=True)
-    data_samples = models.ManyToManyField(DataSample, verbose_name='Content data samples', related_name='seller_products_archive', blank=True)
-    data_urls = models.ManyToManyField(DataUrl, verbose_name='Content data urls', related_name='seller_products_archive', blank=True)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE,)
+    # categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True)
+    # geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', blank=True)
+    # languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True)
+    # data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True)
+    # data_format = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True)
+    # data_delivery_types = models.ManyToManyField(DataDeliveryType, verbose_name='Content data types', blank=True)
+    # data_samples = models.ManyToManyField(DataSample, verbose_name='Content data samples', blank=True)
+    # data_urls = models.ManyToManyField(DataUrl, verbose_name='Content data urls', blank=True)
 
     class Meta:
         abstract = False
         db_table = 'seller_products_archive'
+
+
+class SellerProductDataSample(models.Model):
+    seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE)
+    url = models.URLField('URL')
+    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'seller_product_data_samples'
+        verbose_name = 'Data sample'
+        verbose_name_plural = 'Data samples'
+
+    def __str__(self):
+        return f'{self.name} - {self.path}'
+
+
+class SellerProductDataUrl(models.Model):
+    seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE)
+    url = models.URLField('URL')
+    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'seller_product_data_urls'
+        verbose_name = 'Data url'
+        verbose_name_plural = 'Data urls'
+
+    def __str__(self):
+        return f'{self.name} - {self.url}'
