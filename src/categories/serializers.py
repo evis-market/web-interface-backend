@@ -4,12 +4,9 @@ from categories.models import Category, RecommendedFor
 
 
 class RecommendedForSerializer(serializers.ModelSerializer):
-    def to_representation(self, value):
-        return value.name
-
     class Meta:
         model = RecommendedFor
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class CategorySerializer(serializers.ModelSerializer):

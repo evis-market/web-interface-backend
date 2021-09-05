@@ -39,9 +39,8 @@ class CategoryListView(APIView):
               "slug": "category1",
               "sort_id": 1,
               "recommended_for": [
-                "For Traiders",
-                "For Analytics",
-                "For Personal Use"
+                { "id": 3, "name": "For Analytics" },
+                { "id": 4, "name": "For Personal Use"}
               ]
             },
             {
@@ -53,8 +52,8 @@ class CategoryListView(APIView):
               "slug": "category2",
               "sort_id": 90,
               "recommended_for": [
-                "For Scientists",
-                "For Personal Use"
+                { "id": 3, "name": "For Analytics" },
+                { "id": 4, "name": "For Personal Use"}
               ]
             }
           ]
