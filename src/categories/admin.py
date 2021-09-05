@@ -15,7 +15,7 @@ class CategoryAdmin(MPTTModelAdmin):
         ('parent', RelatedDropdownFilter),
     )
     search_fields = ('name', 'slug')
-    inlines = [RecommendedForInline, ]
+    inlines = [RecommendedForInline]
 
 
 class RecommendedForAdmin(admin.ModelAdmin):

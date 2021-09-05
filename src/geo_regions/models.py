@@ -1,6 +1,6 @@
 import mptt.models as mptt_models
+from django.core.validators import MaxLengthValidator, MinLengthValidator
 from django.db import models
-from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 from geo_regions.managers import GeoRegionManager
 
@@ -18,4 +18,3 @@ class GeoRegion(mptt_models.MPTTModel):
         db_table = 'geo_regions'
         verbose_name = 'GeoRegion'
         verbose_name_plural = 'GeoRegions'
-
