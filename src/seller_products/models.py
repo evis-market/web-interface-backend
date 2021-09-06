@@ -2,11 +2,11 @@ from django.db import models
 
 from categories.models import Category
 from geo_regions.models import GeoRegion
+# from languages.models import Language
+from product_data_types.models import DataFormat, DataType
 from sellers.models import Seller
 
 
-# from languages.models import Language
-from product_data_types.models import DataType, DataFormat
 # from data_delivery_types.models import DataDeliveryType
 # from data_samples.models import DataSamples
 
@@ -53,7 +53,7 @@ class SellerProduct(SellerProductBase):
 
 
 class SellerProductArchive(SellerProductBase):
-    seller = models.ForeignKey(Seller, on_delete=models.CASCADE,)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     # categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True)
     # geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', blank=True)
     # languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True)

@@ -5,4 +5,3 @@ class DataDeliveryTypesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'data_delivery_types'
     verbose_name = 'Data delivery types'
-
