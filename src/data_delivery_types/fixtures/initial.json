@@ -1,0 +1,51 @@
+[
+  {
+    "model": "data_delivery_types.datadeliverytype",
+    "pk": 1,
+    "fields": {
+      "name": "Amazon S3"
+    }
+  },
+  {
+    "model": "data_delivery_types.datadeliverytype",
+    "pk": 2,
+    "fields": {
+      "name": "Google Drive"
+    }
+  },
+  {
+    "model": "data_delivery_types.datadeliverytype",
+    "pk": 3,
+    "fields": {
+      "name": "SFTP"
+    }
+  },
+  {
+    "model": "data_delivery_types.datadeliverytype",
+    "pk": 4,
+    "fields": {
+      "name": "REST API"
+    }
+  },
+  {
+    "model": "data_delivery_types.datadeliverytype",
+    "pk": 5,
+    "fields": {
+      "name": "SOAP API"
+    }
+  },
+  {
+    "model": "data_delivery_types.datadeliverytype",
+    "pk": 6,
+    "fields": {
+      "name": "Streaming API"
+    }
+  },
+  {
+    "model": "data_delivery_types.datadeliverytype",
+    "pk": 7,
+    "fields": {
+      "name": "Feed API"
+    }
+  }
+]

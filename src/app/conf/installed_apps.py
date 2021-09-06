@@ -7,6 +7,7 @@ INSTALLED_APPS = [
     'product_data_types',
     'sellers',
     'seller_products',
+    'data_delivery_types',
 
     'mptt',
 
