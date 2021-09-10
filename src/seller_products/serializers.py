@@ -139,3 +139,8 @@ class SellerProductsSerializer(serializers.ModelSerializer):
         seller_product_archived.save()
 
         return seller_product
+
+    def update(self, instance, validated_data):
+        SellerProduct.objects.get(pk=instance.pk)
+        super().update(instance, validated_data)
+        # call for copying instance into archive data
