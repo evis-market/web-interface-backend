@@ -133,6 +133,7 @@ dmypy.json
 *.prev
 *.orig
 src/static/
+static/
 .TODO
 tmp/
 *.log
