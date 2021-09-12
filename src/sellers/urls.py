@@ -4,5 +4,5 @@ from sellers.views import SellerSettingsView
 
 
 urlpatterns = [
-    path('settings/my', SellerSettingsView.as_view(), name='SellerSettingsView'),
+    path('settings/my/', SellerSettingsView.as_view(), name='SellerSettingsView'),
 ]

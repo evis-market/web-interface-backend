@@ -4,7 +4,7 @@ from seller_products.models import SellerProduct
 
 
 class SellerProductFilter(filters.FilterSet):
-    seller = filters.NumberFilter()
+    seller = filters.NumberFilter(required=True)
 
     class Meta:
         model = SellerProduct

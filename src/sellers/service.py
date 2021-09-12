@@ -23,7 +23,7 @@ class SellerService:
                       seller: Seller) -> None:
         Contact.objects.delete_seller_contacts_by_seller_id(seller.id)
         for contact in contacts:
-            Contact(seller_id=seller,
-                    type_id=contact['type_id'],
+            Contact(seller=seller,
+                    type=contact['type'],
                     value=contact['value'],
                     comment=contact['comment']).save()
