@@ -1,6 +1,6 @@
 from django.db import models
 
-from product_data_types.managers import DataTypeManager, DataFormatManager
+from product_data_types.managers import DataFormatManager, DataTypeManager
 
 
 class DataType(models.Model):
