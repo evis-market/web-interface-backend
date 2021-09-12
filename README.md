@@ -48,12 +48,12 @@ Create database and load initial data:
 ```sh
 ./manage.py migrate
 ./manage.py createsuperuser
-./manage.py loaddata
+./manage.py loaddata initial.json
 ```
 
 Run tests:
 ```bash
-$ ./manage.py test
+$ pytest .
 ```
 
 Run development server:
