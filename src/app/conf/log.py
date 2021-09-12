@@ -1,7 +1,5 @@
 from app.conf.environ import env
 
-print("DEBUG_SQL")
-print(env('DEBUG_SQL'))
 
 if env('DEBUG_SQL', cast=bool):
     LOGGING = {
