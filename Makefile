@@ -1,8 +1,8 @@
 SHELL := /bin/bash
 
-setup: upgrade-pip deps migrate load-initial-data createsuperuser ## Setup whole project for production
+setup: venv upgrade-pip deps migrate load-initial-data createsuperuser ## Setup whole project for production
 
-setup-dev: upgrade-pip deps-dev migrate load-initial-data createsuperuser ## Setup whole project for developer
+setup-dev: venv upgrade-pip deps-dev migrate load-initial-data createsuperuser ## Setup whole project for developer
 
 venv: ## Create virtual environment
 	python3 -m venv .venv
@@ -37,10 +37,10 @@ serve: ## Run server in development mode
 serve-bg: ## Run server in development mode in background
 	@source .venv/bin/activate && cd src && nohup ./manage.py runserver 0.0.0.0:8000 > ../serve.log 2>&1 &
 
-shell:
+shell: ## Run django shell
 	@source .venv/bin/activate && cd src && ./manage.py shell
 
-test:
+test: ## Run tests
 	@source .venv/bin/activate && cd src && pytest .
 
 help: ## This help
