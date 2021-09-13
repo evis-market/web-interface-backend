@@ -83,11 +83,8 @@ class SellerProductsView(APIView, SellerProductMixin):
 
     @transaction.atomic
     def delete(self, request, pk, format=None):
+        # todo: seller_product_archive instance will not be created !
         seller = self.get_seller(request)
         seller_product = self.get_object(pk, seller)
-        seller_product_archive = SellerProductArchive()
-        seller_product_archive = copy_instance(seller_product, seller_product_archive)
-        seller_product_archive.is_deleted = True
-        seller_product_archive.save()
         seller_product.delete()
         return response_ok({}, 204)
