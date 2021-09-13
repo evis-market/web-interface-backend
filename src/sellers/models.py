@@ -5,7 +5,7 @@ from sellers.managers import ContactManager, SellerManager
 
 
 class Seller(models.Model):
-    seller = models.ForeignKey('users.User', related_name='Seller', on_delete=models.CASCADE)
+    seller = models.OneToOneField('users.User', related_name='Seller', on_delete=models.CASCADE, primary_key=True)
     name = models.CharField('Name', max_length=190, db_index=True)
     description = models.TextField('Description')
     logo_url = models.URLField('Logo URL', max_length=1000, help_text='URL link to logo', blank=True)
@@ -14,6 +14,10 @@ class Seller(models.Model):
         MinValueValidator(0), MaxValueValidator(5.0)])
 
     objects = SellerManager()
+
+    def save(self, *args, **kwargs):
+
+        return super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'sellers'

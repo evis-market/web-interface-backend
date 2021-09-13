@@ -1,19 +1,15 @@
 from django.db import transaction
-from rest_framework.exceptions import APIException, NotFound
 from rest_framework.generics import GenericAPIView
-from rest_framework import permissions
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
+from rest_framework import status
 
-from app.response import response_ok, response_err
-from app.utils import copy_instance
-from seller_products.models import SellerProduct, SellerProductArchive
-from seller_products.serializers import SellerProductsSerializer
-from seller_products.filters import SellerProductFilter
-from seller_products.service import SellerProductMixin
-from sellers.models import Seller
+from app.response import response_ok
+from seller_products.serializers import SellerProductsSerializer, SellerProductsUpdateSerializer
+from seller_products.service import SellerProductService
 
 
-class SellerProductsListView(GenericAPIView, SellerProductMixin):
+class SellerProductsListView(GenericAPIView, SellerProductService):
     """
     Get list of all products belong to the current user (must be a seller)
     Creates a new product
@@ -21,70 +17,53 @@ class SellerProductsListView(GenericAPIView, SellerProductMixin):
     METHODS: GET, POST
     """
     serializer_class = SellerProductsSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    update_serializer_class = SellerProductsUpdateSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
-        user_id = request.user.id
-        seller = Seller.objects.get_seller_by_user_id(user_id)
-
-        if user_id and not Seller.objects.get_seller_by_user_id(user_id):
-            raise APIException('The current user is not registered as a Seller', 403)
-
-        queryset = SellerProduct.objects.all()
-        seller_product_filter = SellerProductFilter({'seller': seller.id}, queryset=queryset)
-        serializer = self.serializer_class(seller_product_filter.qs, many=True)
+        seller_products = self.get_seller_products(request.user.id)
+        serializer = self.serializer_class(seller_products, many=True)
         return response_ok({'seller-products': serializer.data})
 
     def post(self, request, format=None):
-        seller = self.get_seller(request)
-
-        request.data['seller_id'] = seller.id
-        serializer = self.serializer_class(data=request.data)
-
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
+        seller = self.get_seller(request.user.id)
+        request.data['seller'] = seller.seller_id
+        serializer = self.update_serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        with transaction.atomic():
+            self.create_object(serializer.validated_data)
         return response_ok(serializer.data)
 
 
-class SellerProductsView(APIView, SellerProductMixin):
+class SellerProductsView(APIView, SellerProductService):
     """
     Get, update or delete a single product by specified ID if it belongs to the current user (must be a seller)
     URL: `/api/v1/seller-products/my/`
     METHODS: GET, PUT, DELETE
     """
     serializer_class = SellerProductsSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_object(self, pk, seller):
-        try:
-            return SellerProduct.objects.get_product_by_seller_id(pk=pk, seller=seller)
-        except SellerProduct.DoesNotExist:
-            raise NotFound(
-                f'Either the product not found or '
-                f'the current user does not have access permissions to the product'
-            )
+    update_serializer_class = SellerProductsUpdateSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, pk, format=None):
-        seller = self.get_seller(request)
-        seller_product = self.get_object(pk, seller)
+        seller = self.get_seller(request.user.id)
+        seller_product = self.get_seller_product(pk, seller)
         serializer = self.serializer_class(seller_product)
         return response_ok(serializer.data)
 
     def put(self, request, pk, format=None):
-        seller = self.get_seller(request)
-        seller_product = self.get_object(pk, seller)
-        serializer = self.serializer_class(seller_product, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return response_ok(serializer.data)
-
-        return response_err(400, serializer.errors)
+        seller = self.get_seller(request.user.id)
+        seller_product = self.get_seller_product(pk, request.user.id)
+        request.data['seller'] = seller
+        serializer = self.update_serializer_class(seller_product, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        with transaction.atomic():
+            self.update_object(seller_product, serializer.validated_data)
+        return response_ok(serializer.validated_data)
 
     @transaction.atomic
     def delete(self, request, pk, format=None):
         # todo: seller_product_archive instance will not be created !
-        seller = self.get_seller(request)
-        seller_product = self.get_object(pk, seller)
-        seller_product.delete()
-        return response_ok({}, 204)
+        seller_product = self.get_seller_product(pk, request.user.id)
+        self.delete_object(seller_product)
+        return response_ok({}, status.HTTP_204_NO_CONTENT)

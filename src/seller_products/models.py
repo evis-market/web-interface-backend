@@ -6,16 +6,16 @@ from geo_regions.models import GeoRegion
 # from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from sellers.models import Seller
-from seller_products.managers import SellerProductBaseManager, SellerProductDataSampleManager, SellerProductDataUrlManager
-
-# from data_delivery_types.models import DataDeliveryType
-# from data_samples.models import DataSamples
+from seller_products.managers import (
+    SellerProductBaseManager, SellerProductManager, SellerProductArchiveManager, SellerProductDataSampleManager,
+    SellerProductDataUrlManager,
+)
 
 
 class SellerProductBase(models.Model):
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=500)
-    descr = models.TextField('Description', blank=True, null=True, default='')
+    descr = models.TextField('Description', blank=True, default='')
     price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=True, default=None)
     price_per_month = models.FloatField('Price per month', blank=True, null=True, default=None)
     price_per_year = models.FloatField('Price per year', blank=True, null=True, default=None)
@@ -49,14 +49,16 @@ class SellerProduct(SellerProductBase):
         DataDeliveryType, verbose_name='Content data types', blank=True, db_table='seller_product_data_delivery_types'
     )
 
+    objects = SellerProductManager()
+
     class Meta:
         abstract = False
         db_table = 'seller_products'
 
 
 class SellerProductArchive(SellerProductBase):
-    archive_id = models.BigAutoField(primary_key=True)  # this is actual autocrmented primary key field
-    id = models.IntegerField()  # this field would be populated from SellerProduct model
+    id = models.BigAutoField(primary_key=True)
+    seller_product_id = models.IntegerField()  # this field would be populated from id field of SellerProduct model
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True, db_table='seller_product_categories_archive')
     geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', blank=True, db_table='seller_product_geo_regions_archive')
@@ -67,6 +69,8 @@ class SellerProductArchive(SellerProductBase):
         DataDeliveryType, verbose_name='Content data types', blank=True, db_table='seller_product_data_delivery_types_archive'
     )
     is_deleted = models.BooleanField(default=False)
+
+    objects = SellerProductArchiveManager()
 
     class Meta:
         abstract = False
@@ -108,31 +112,31 @@ class SellerProductDataUrl(models.Model):
         return f'{self.seller_product.name} - {self.url}'
 
 
-# class SellerProductDataSampleArchive(models.Model):
-#     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_samples_archive')
-#     url = models.URLField('URL')
-#     data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
-#     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
-#
-#     class Meta:
-#         db_table = 'seller_product_archive_data_samples'
-#         verbose_name = 'Data sample'
-#         verbose_name_plural = 'Data samples'
-#
-#     def __str__(self):
-#         return f'{self.seller_product.name} - {self.url}'
-#
-#
-# class SellerProductDataUrlArchive(models.Model):
-#     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_urls_archive')
-#     url = models.URLField('URL')
-#     data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
-#     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
-#
-#     class Meta:
-#         db_table = 'seller_product_archive_data_urls'
-#         verbose_name = 'Data url'
-#         verbose_name_plural = 'Data urls'
-#
-#     def __str__(self):
-#         return f'{self.seller_product.name} - {self.url}'
+class SellerProductDataSampleArchive(models.Model):
+    seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_samples_archive')
+    url = models.URLField('URL')
+    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'seller_product_archive_data_samples'
+        verbose_name = 'Data sample'
+        verbose_name_plural = 'Data samples'
+
+    def __str__(self):
+        return f'{self.seller_product.name} - {self.url}'
+
+
+class SellerProductDataUrlArchive(models.Model):
+    seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_urls_archive')
+    url = models.URLField('URL')
+    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = 'seller_product_archive_data_urls'
+        verbose_name = 'Data url'
+        verbose_name_plural = 'Data urls'
+
+    def __str__(self):
+        return f'{self.seller_product.name} - {self.url}'
