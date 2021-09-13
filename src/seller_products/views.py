@@ -53,7 +53,7 @@ class SellerProductsView(APIView, SellerProductService):
 
     def put(self, request, pk, format=None):
         seller = self.get_seller(request.user.id)
-        seller_product = self.get_seller_product(pk, request.user.id)
+        seller_product = self.get_seller_product(pk, seller)
         request.data['seller'] = seller
         serializer = self.update_serializer_class(seller_product, data=request.data)
         serializer.is_valid(raise_exception=True)

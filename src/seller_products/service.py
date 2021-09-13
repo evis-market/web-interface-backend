@@ -1,8 +1,6 @@
 import typing
 
-from app.utils import copy_instance
 from sellers.models import Seller
-from rest_framework.exceptions import APIException
 from seller_products.models import SellerProduct, SellerProductDataSample, SellerProductDataUrl, SellerProductArchive
 from app import exceptions
 
