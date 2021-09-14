@@ -1,13 +1,13 @@
 from django.db import transaction
+from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
-from rest_framework import status
 
 from app.response import response_ok
+from seller_products.models import SellerProduct
 from seller_products.serializers import SellerProductsSerializer, SellerProductsUpdateSerializer
 from seller_products.service import SellerProductService
-from seller_products.models import SellerProduct
 
 
 class SellerProductsListView(GenericAPIView, SellerProductService):

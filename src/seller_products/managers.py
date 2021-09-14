@@ -2,6 +2,7 @@ import typing as tp
 
 from django.db import models
 from rest_framework.exceptions import NotFound
+
 from app.utils import copy_instance
 
 

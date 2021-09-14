@@ -1,15 +1,14 @@
 from django.db import models
 
-from data_delivery_types.models import DataDeliveryType
 from categories.models import Category
+from data_delivery_types.models import DataDeliveryType
 from geo_regions.models import GeoRegion
 # from languages.models import Language
 from product_data_types.models import DataFormat, DataType
-from sellers.models import Seller
 from seller_products.managers import (
-    SellerProductBaseManager, SellerProductManager, SellerProductArchiveManager, SellerProductDataSampleManager,
-    SellerProductDataUrlManager, SellerProductDataSampleArchiveManager, SellerProductDataUrlArchiveManager
-)
+    SellerProductArchiveManager, SellerProductBaseManager, SellerProductDataSampleArchiveManager, SellerProductDataSampleManager,
+    SellerProductDataUrlArchiveManager, SellerProductDataUrlManager, SellerProductManager)
+from sellers.models import Seller
 
 
 class SellerProductBase(models.Model):

@@ -31,6 +31,7 @@ include(
     'conf/base.py',
     'conf/log.py',
     'conf/db.py',
+    'conf/mail.py',
     'conf/installed_apps.py',
     'conf/http.py',
     'conf/middleware.py',

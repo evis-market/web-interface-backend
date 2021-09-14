@@ -1,6 +1,6 @@
 from rest_framework.views import exception_handler
 
-from app.exceptions import Errno
+from app.exceptions import Errno, BAD_REQUEST_CODE
 from app.response import response_err
 
 
@@ -23,6 +23,9 @@ def extract_err_data_from_exc(exc):
 def default_exception_handler(exc, context):
     if issubclass(type(exc), Errno) or isinstance(exc, Errno):
         return response_err(exc.code, exc.msg, http_code=exc.http_code)
+
+    if issubclass(type(exc), ValueError) or isinstance(exc, ValueError):
+        return response_err(BAD_REQUEST_CODE, str(exc), http_code=BAD_REQUEST_CODE)
 
     # Call REST framework's default exception handler first,
     # to get the standard error response.

@@ -1,11 +1,9 @@
 import typing
 
-from sellers.models import Seller
-from seller_products.models import (
-    SellerProduct, SellerProductDataSample, SellerProductDataUrl, SellerProductArchive, SellerProductDataSampleArchive,
-    SellerProductDataUrlArchive
-)
 from app import exceptions
+from seller_products.models import (
+    SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl, SellerProductDataUrlArchive)
+from sellers.models import Seller
 
 
 class SellerProductService:
@@ -15,7 +13,7 @@ class SellerProductService:
     def get_seller(self, user_id: int):
         seller = Seller.objects.get_seller_by_user_id(user_id)
         if not seller:
-            raise exceptions.Forbidden(msg=self.FORBIDDEN_SELLER_ACCESS_MSG)
+            raise exceptions.NotFound(msg=self.FORBIDDEN_SELLER_ACCESS_MSG)
         return seller
 
     def get_seller_product(self, pk: int, user_id: int):

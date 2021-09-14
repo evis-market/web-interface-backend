@@ -1,10 +1,10 @@
 from rest_framework import serializers
 
-from data_delivery_types.models import DataDeliveryType
-from product_data_types.models import DataType, DataFormat
-from seller_products.models import SellerProduct, SellerProductDataSample, SellerProductDataUrl
 from categories.models import Category
+from data_delivery_types.models import DataDeliveryType
 from geo_regions.models import GeoRegion
+from product_data_types.models import DataFormat, DataType
+from seller_products.models import SellerProduct, SellerProductDataSample, SellerProductDataUrl
 from sellers.models import Seller
 
 

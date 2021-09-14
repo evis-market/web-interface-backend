@@ -118,11 +118,11 @@ class SellerSettingsView(GenericAPIView, SellerService):
     def get(self, request):
         seller = Seller.objects.get_seller_by_user_id(user_id=request.user.id)
         result = self.serializer(seller).data
-        return response_ok({'seller': result}, http_code=status.HTTP_200_OK)
+        return response_ok({'seller': result})
 
     def put(self, request):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             self.create_seller(data=serializer.validated_data, user=request.user)
-        return response_ok({}, http_code=status.HTTP_200_OK)
+        return response_ok()
