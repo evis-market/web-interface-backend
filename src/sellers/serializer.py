@@ -21,7 +21,6 @@ class SellerViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seller
         fields = (
-            'id',
             'seller',
             'name',
             'description',

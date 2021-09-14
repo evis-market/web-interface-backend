@@ -7,6 +7,7 @@ from rest_framework import status
 from app.response import response_ok
 from seller_products.serializers import SellerProductsSerializer, SellerProductsUpdateSerializer
 from seller_products.service import SellerProductService
+from seller_products.models import SellerProduct
 
 
 class SellerProductsListView(GenericAPIView, SellerProductService):
@@ -21,7 +22,7 @@ class SellerProductsListView(GenericAPIView, SellerProductService):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
-        seller_products = self.get_seller_products(request.user.id)
+        seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
         serializer = self.serializer_class(seller_products, many=True)
         return response_ok({'seller-products': serializer.data})
 
@@ -32,7 +33,7 @@ class SellerProductsListView(GenericAPIView, SellerProductService):
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             self.create_object(serializer.validated_data)
-        return response_ok(serializer.data)
+        return response_ok({}, http_code=status.HTTP_200_OK)
 
 
 class SellerProductsView(APIView, SellerProductService):
@@ -46,24 +47,21 @@ class SellerProductsView(APIView, SellerProductService):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, pk, format=None):
-        seller = self.get_seller(request.user.id)
-        seller_product = self.get_seller_product(pk, seller)
+        seller_product = SellerProduct.objects.get_product_by_seller_id(request.user.id)
         serializer = self.serializer_class(seller_product)
         return response_ok(serializer.data)
 
     def put(self, request, pk, format=None):
-        seller = self.get_seller(request.user.id)
-        seller_product = self.get_seller_product(pk, seller)
-        request.data['seller'] = seller
+        seller_product = self.get_seller_product(pk, request.user.id)
+        request.data['seller'] = request.user.id
         serializer = self.update_serializer_class(seller_product, data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             self.update_object(seller_product, serializer.validated_data)
-        return response_ok(serializer.validated_data)
+        return response_ok({}, http_code=status.HTTP_200_OK)
 
     @transaction.atomic
     def delete(self, request, pk, format=None):
-        # todo: seller_product_archive instance will not be created !
         seller_product = self.get_seller_product(pk, request.user.id)
         self.delete_object(seller_product)
-        return response_ok({}, status.HTTP_204_NO_CONTENT)
+        return response_ok({}, http_code=status.HTTP_204_NO_CONTENT)

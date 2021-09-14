@@ -28,8 +28,10 @@ class SellerProductManager(SellerProductBaseManager):
         instance.save()
         return instance
 
-    def update(self, instance, categories: tp.List[int], geo_regions: tp.List[int], data_types: tp.List[int],
-        data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs):
+    def update(
+        self, instance, categories: tp.List[int], geo_regions: tp.List[int], data_types: tp.List[int],
+        data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
+    ):
         for column, column_value in kwargs.items():
             setattr(instance, column, column_value)
         instance.version += 1
@@ -49,15 +51,33 @@ class SellerProductManager(SellerProductBaseManager):
 
 class SellerProductArchiveManager(SellerProductBaseManager):
     def create_instance_from_seller_product(self, seller_product):
-        seller_product_archive = self.model()
-        seller_product_archive.seller_product_id = seller_product.id
-        seller_product_archive = copy_instance(seller_product, seller_product_archive, exclude_fields=['id'])
-        seller_product_archive.save()
+        instance = self.model()
+        instance.seller_product_id = seller_product.id
+        instance = copy_instance(seller_product, instance, exclude_fields=['id'])
+        instance.save()
+        return instance
 
 
 class SellerProductDataSampleManager(models.Manager):
-    pass
+
+    def get_by_seller_product(self, seller_product):
+        return self.model.objects.filter(seller_product=seller_product)
+
+    def delete_by_seller_product(self, seller_product):
+        self.model.objects.filter(seller_product=seller_product).delete()
 
 
 class SellerProductDataUrlManager(models.Manager):
+    def get_by_seller_product(self, seller_product):
+        return self.model.objects.filter(seller_product=seller_product)
+
+    def delete_by_seller_product(self, seller_product):
+        self.model.objects.filter(seller_product=seller_product).delete()
+
+
+class SellerProductDataSampleArchiveManager(models.Manager):
+    pass
+
+
+class SellerProductDataUrlArchiveManager(models.Manager):
     pass

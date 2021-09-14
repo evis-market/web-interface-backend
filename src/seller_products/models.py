@@ -8,7 +8,7 @@ from product_data_types.models import DataFormat, DataType
 from sellers.models import Seller
 from seller_products.managers import (
     SellerProductBaseManager, SellerProductManager, SellerProductArchiveManager, SellerProductDataSampleManager,
-    SellerProductDataUrlManager,
+    SellerProductDataUrlManager, SellerProductDataSampleArchiveManager, SellerProductDataUrlArchiveManager
 )
 
 
@@ -118,25 +118,29 @@ class SellerProductDataSampleArchive(models.Model):
     data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 
+    objects = SellerProductDataSampleArchiveManager()
+
     class Meta:
-        db_table = 'seller_product_archive_data_samples'
-        verbose_name = 'Data sample'
-        verbose_name_plural = 'Data samples'
+        db_table = 'seller_product_data_samples_archive'
+        verbose_name = 'Data sample archive'
+        verbose_name_plural = 'Data samples archive'
 
     def __str__(self):
         return f'{self.seller_product.name} - {self.url}'
 
 
 class SellerProductDataUrlArchive(models.Model):
-    seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_urls_archive')
+    seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_urls_archive')
     url = models.URLField('URL')
     data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 
+    objects = SellerProductDataUrlArchiveManager()
+
     class Meta:
-        db_table = 'seller_product_archive_data_urls'
-        verbose_name = 'Data url'
-        verbose_name_plural = 'Data urls'
+        db_table = 'seller_product_data_urls_archive'
+        verbose_name = 'Data url archive'
+        verbose_name_plural = 'Data urls archive'
 
     def __str__(self):
         return f'{self.seller_product.name} - {self.url}'
