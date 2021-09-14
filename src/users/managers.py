@@ -1,17 +1,19 @@
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth.models import UserManager
-
+from django.contrib.auth.models import BaseUserManager
+from django.db.models import Q
 from users import models
 
+from app import exceptions
 
-class UserManager(UserManager):
+
+class UserManager(BaseUserManager):
 
     def _create_user(self, email=None, phone=None, wallet_erc20=None, password=None, **extra_fields):
         """
         Create and save a user with the given email or phone, or wallet_erc20, and password.
         """
         if not email and not phone and not wallet_erc20:
-            raise ValueError('The email or phone, or wallet_erc20 must be set')
+            raise exceptions.BadRequest('The email or phone, or wallet_erc20 must be set')
 
         if email:
             email = self.normalize_email(email)
@@ -31,11 +33,28 @@ class UserManager(UserManager):
         extra_fields.setdefault('is_superuser', True)
 
         if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser must have is_staff=True.')
+            raise exceptions.BadRequest('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser must have is_superuser=True.')
+            raise exceptions.BadRequest('Superuser must have is_superuser=True.')
 
         return self._create_user(email=email, phone=phone, wallet_erc20=wallet_erc20, password=password, **extra_fields)
+
+    @staticmethod
+    def is_exists(email=None, phone=None, wallet_erc20=None):
+        if not email and not phone and not wallet_erc20:
+            raise exceptions.BadRequest('One of email, phone, wallet_erc20 should be set')
+
+        conds = Q()
+        if email:
+            conds.add(Q(email=email), Q.OR)
+        if phone:
+            conds.add(Q(phone=phone), Q.OR)
+        if wallet_erc20:
+            conds.add(Q(wallet_erc20=wallet_erc20), Q.OR)
+
+        if models.User.objects.filter(conds).first():
+            return True
+        return False
 
     @staticmethod
     def get_by_login(login):
