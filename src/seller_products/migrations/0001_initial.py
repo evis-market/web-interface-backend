@@ -75,7 +75,7 @@ class Migration(migrations.Migration):
             options={
                 'db_table': 'seller_products_archive',
                 'abstract': False,
-                'unique_together': {('id', 'version')},
+                'unique_together': {('seller_product_id', 'version')},
             },
         ),
         migrations.CreateModel(
