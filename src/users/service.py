@@ -9,11 +9,10 @@ class UsersService:
         self.domain = domain
 
     def signup(self, data: dict):
-        """
         for p in ('phone', 'email', 'wallet_erc20'):
             if not data[p]:
                 del data[p]
-        """
+
         user = User.objects.create_user(**data)
 
         if data['email']:
