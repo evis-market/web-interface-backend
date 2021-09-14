@@ -4,8 +4,8 @@ from rest_framework import status
 BAD_REQUEST_CODE = 400
 UNAUTHORIZED_CODE = 401
 FORBIDDEN_CODE = 403
-NOT_FOUND = 404
-
+NOT_FOUND_CODE = 404
+CONFLICT_CODE = 409
 
 class Errno(Exception):
     def __init__(self, code=None, msg=None, http_code=None):
@@ -33,6 +33,12 @@ class Forbidden(Errno):
 
 
 class NotFound(Errno):
-    default_code = NOT_FOUND
+    default_code = NOT_FOUND_CODE
     default_msg = 'Not found'
     default_http_code = status.HTTP_404_NOT_FOUND
+
+
+class Conflict(Errno):
+    default_code = CONFLICT_CODE
+    default_msg = 'Conflict'
+    default_http_code = status.HTTP_409_CONFLICT
