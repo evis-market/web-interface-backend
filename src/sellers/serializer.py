@@ -8,8 +8,8 @@ class ContactViewSerializer(serializers.ModelSerializer):
         model = Contact
         fields = (
             'id',
-            'seller_id',
-            'type_id',
+            'seller',
+            'type',
             'value',
             'comment',
         )
@@ -21,8 +21,7 @@ class SellerViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seller
         fields = (
-            'id',
-            'seller_id',
+            'seller',
             'name',
             'description',
             'logo_url',
@@ -36,7 +35,7 @@ class ContactUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = (
-            'type_id',
+            'type',
             'value',
             'comment',
         )
