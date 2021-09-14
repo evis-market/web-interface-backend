@@ -8,9 +8,9 @@ NOT_FOUND_CODE = 404
 CONFLICT_CODE = 409
 
 class Errno(Exception):
-    def __init__(self, code=None, msg=None, http_code=None):
-        self.code = code or self.default_code
+    def __init__(self, msg=None, code=None, http_code=None):
         self.msg = msg or self.default_msg
+        self.code = code or self.default_code
         self.http_code = http_code or self.default_http_code
 
 
