@@ -1,9 +1,10 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import BaseUserManager
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
-from users import models
 
 from app import exceptions
+from users import models
 
 
 class UserManager(BaseUserManager):
@@ -54,12 +55,28 @@ class UserManager(BaseUserManager):
 
         if models.User.objects.filter(conds).first():
             return True
+
         return False
 
     @staticmethod
+    def get_by_email(email):
+        try:
+            return models.User.objects.get(email=email)
+        except ObjectDoesNotExist:
+            raise exceptions.NotFound('User not found')
+
+    @staticmethod
     def get_by_login(login):
-        if login.count('@'):
-            user = models.User.objects.get(email=login)
-        else:
-            user = models.User.objects.get(phone=login)
+        try:
+            if login.count('@'):
+                user = models.User.objects.get(email=login)
+            else:
+                user = models.User.objects.get(phone=login)
+        except ObjectDoesNotExist:
+            raise exceptions.NotFound('User not found')
+
         return user
+
+    def update_secret_code(self, user, secret_code=''):
+        user.secret_code = secret_code
+        user.save(update_fields=['secret_code'])
