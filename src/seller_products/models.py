@@ -74,7 +74,7 @@ class SellerProductArchive(SellerProductBase):
     class Meta:
         abstract = False
         db_table = 'seller_products_archive'
-        unique_together = ['id', 'version']
+        unique_together = ['seller_product_id', 'version']
 
 
 class SellerProductDataSample(models.Model):
