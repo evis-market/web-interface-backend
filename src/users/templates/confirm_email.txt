@@ -1,0 +1,3 @@
+Please, confirm your email by this link
+
+https://{{ domain }}/users/confirm_email?email={{ user.email }}&code={{ user.secret_code }}
