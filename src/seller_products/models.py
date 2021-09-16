@@ -35,7 +35,11 @@ class SellerProductBase(models.Model):
         verbose_name_plural = 'Seller Products'
 
     def __str__(self):
-        return f'{self.name} (Seller={self.seller.name}) {self.descr[:100]}...'
+        return f'{self.name} {self.descr[:100]}...'
+
+
+class SellerProductQuerySet(models.QuerySet):
+    pass
 
 
 class SellerProduct(SellerProductBase):

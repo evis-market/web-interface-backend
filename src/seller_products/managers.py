@@ -1,12 +1,18 @@
 import typing as tp
 
 from django.db import models
+from django.db.models import Exists, OuterRef
 from rest_framework.exceptions import NotFound
+from django.apps import apps
+
 
 from app.utils import copy_instance
 
 
 class SellerProductBaseManager(models.Manager):
+
+    def get_seller_product(self, pk):
+        return self.model.objects.filter(pk=pk).first()
 
     def get_products_by_seller_id(self, seller):
         return self.model.objects.filter(seller=seller)
@@ -14,6 +20,29 @@ class SellerProductBaseManager(models.Manager):
     def get_product_by_seller_id(self, pk, seller):
         return self.model.objects.filter(pk=pk, seller=seller).first()
 
+    def get_seller_product_detailed(self, pk):
+        return self.model.objects.select_related(
+            'seller',
+        ).prefetch_related(
+            'categories'
+        ).filter(pk=pk).first()
+
+    def get_related_seller_products(self, pk):
+        category_model = apps.get_model('categories', 'Category')
+
+        return self.model.objects.prefetch_related(
+          'categories'
+        ).filter(
+            Exists(category_model.objects.filter(
+                id=OuterRef('categories'),
+                id__in=(
+                    category_model.objects.get_queryset_descendants(
+                        category_model.objects.filter(sellerproduct__id=pk),
+                        include_self=True
+                    )
+                ))
+            )
+        )
 
 class SellerProductManager(SellerProductBaseManager):
     def create(

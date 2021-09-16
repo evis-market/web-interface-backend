@@ -2,13 +2,16 @@
 INSTALLED_APPS = [
     'auth',
     'users',
+    'data_delivery_types',
+    'product_data_types',
     'categories',
     'geo_regions',
-    'product_data_types',
     'sellers',
     'seller_products',
     'data_delivery_types',
     'languages',
+    'shop',
+    'data_generator',
 
     'mptt',
 

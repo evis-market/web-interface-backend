@@ -47,7 +47,7 @@ class SellerProductsView(APIView, SellerProductService):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, pk, format=None):
-        seller_product = SellerProduct.objects.get_product_by_seller_id(request.user.id)
+        seller_product = SellerProduct.objects.get_product_by_seller_id(pk, request.user.id)
         serializer = self.serializer_class(seller_product)
         return response_ok(serializer.data)
 

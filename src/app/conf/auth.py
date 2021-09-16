@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from app import settings
-
+from app.conf.environ import env
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -10,8 +10,10 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'ACCESS_TOKEN_LIFETIME': (timedelta(minutes=int(env('ACCESS_TOKEN_LIFETIME'))
+                              if env('ACCESS_TOKEN_LIFETIME') else timedelta(minutes=10))),
+    'REFRESH_TOKEN_LIFETIME': (timedelta(minutes=int(env('REFRESH_TOKEN_LIFETIME')))
+                               if env('REFRESH_TOKEN_LIFETIME') else timedelta(days=10)),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
