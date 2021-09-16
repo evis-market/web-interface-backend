@@ -6,6 +6,37 @@ from languages.serializers import LanguageSerializer
 
 
 class LanguagesListView(APIView):
+    """
+    Get languages list
+
+    URL: /api/v1/langs/
+
+    Method: GET
+
+    Successful response
+
+    HTTP status Code: 200
+
+    {
+      "status": "OK",
+
+      "langs": [
+        {
+          "id": 1,
+          "name_native": "English",
+          "name_en": "English",
+          "slug": "en"
+        },
+        {
+          "id": 2,
+          "name_native": "Русский",
+          "name_en": "Russian",
+          "slug": "ru"
+        }
+      ]
+    }
+    """
+
     def get(self):
         langs = Language.objects.all()
         serializer = LanguageSerializer(langs, many=True)
