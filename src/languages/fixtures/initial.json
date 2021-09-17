@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name_native": "English",
+    "name_en": "English",
+    "slug": "en"
+  },
+  {
+    "id": 2,
+    "name_native": "Русский",
+    "name_en": "Russian",
+    "slug": "ru"
+  },
+  {
+    "id": 2,
+    "name_native": "Русский",
+    "name_en": "Russian",
+    "slug": "ru"
+  },
+  {
+    "id": 3,
+    "name_native": "Французский",
+    "name_en": "French",
+    "slug": "fr"
+  },
+  {
+    "id": 4,
+    "name_native": "Немецкий",
+    "name_en": "Deutch",
+    "slug": "de"
+  },
+  {
+    "id": 5,
+    "name_native": "Испанский",
+    "name_en": "Spanish",
+    "slug": "es"
+  },
+  {
+    "id": 6,
+    "name_native": "Португальский",
+    "name_en": "Portuguese",
+    "slug": "pt"
+  },
+  {
+    "id": 7,
+    "name_native": "Турецкий",
+    "name_en": "Turkish",
+    "slug": "tr"
+  },
+  {
+    "id": 8,
+    "name_native": "Арабский",
+    "name_en": "Arabic",
+    "slug": "ar"
+  },
+  {
+    "id": 9,
+    "name_native": "Хинди",
+    "name_en": "Hindi",
+    "slug": "hi"
+  },
+  {
+    "id": 10,
+    "name_native": "Китайский",
+    "name_en": "Chinese",
+    "slug": "cn"
+  },
+  {
+    "id": 11,
+    "name_native": "Вьетнамский",
+    "name_en": "Vietnamese",
+    "slug": "vi"
+  },
+  {
+    "id": 12,
+    "name_native": "Корейский",
+    "name_en": "Korean",
+    "slug": "ko"
+  },
+  {
+    "id": 13,
+    "name_native": "Индонезийский",
+    "name_en": "Indonesian",
+    "slug": "id"
+  },
+  {
+    "id": 14,
+    "name_native": "Японский",
+    "name_en": "Japanese",
+    "slug": "ja"
+  }
+]
