@@ -4,7 +4,6 @@ from django.db import models
 from django.db.models import Exists, OuterRef
 from django.apps import apps
 
-
 from app.utils import copy_instance
 
 
@@ -22,15 +21,13 @@ class SellerProductBaseManager(models.Manager):
     def get_seller_product_detailed(self, pk):
         return self.model.objects.select_related(
             'seller',
-        ).prefetch_related(
-            'categories'
         ).filter(pk=pk).first()
 
     def get_related_seller_products(self, pk):
         Category = apps.get_model('categories', 'Category')
 
         return self.model.objects.prefetch_related(
-          'categories'
+            'categories'
         ).filter(
             Exists(Category.objects.filter(
                 id=OuterRef('categories'),
@@ -47,18 +44,11 @@ class SellerProductBaseManager(models.Manager):
         Category = apps.get_model('categories', 'Category')
 
         return self.model.objects.values('name', 'id').prefetch_related(
-          'categories'
-        ).filter(
-            Exists(Category.objects.filter(
-                id=OuterRef('categories'),
-                id__in=(
-                    Category.objects.get_queryset_descendants(
-                        Category.objects.filter(id__in=categories),
-                        include_self=True
-                    )
-                ))
-            )
-        ).distinct()
+            'categories'
+        ).filter(categories__id__in=Category.objects.get_queryset_descendants(
+            Category.objects.filter(id__in=categories),
+            include_self=True
+        )).distinct()
 
 
 class SellerProductManager(SellerProductBaseManager):
