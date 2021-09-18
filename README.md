@@ -13,24 +13,24 @@ Frontend is built on Vue.js in the [separate repo](https://github.com/evis-marke
 ## Installation
 
 If you have `make` installed - run
-```sh
+```bash
 make help
 ```
 
 ### Install by one command:
-```sh
+```bash
 ./install.sh
 ```
 
 ### Step by step installation
 
 Create virtual environment:
-```sh
-cd src && python3 -m venv .venv
+```bash
+python3 -m venv .venv
 ```
 
 Activate virtual environment:
-```sh
+```bash
 source .venv/bin/activate
 ```
 
@@ -40,12 +40,13 @@ pip3 install --upgrade pip
 ```
 
 Install dependencies:
-```sh
-pip3 install -r ../requirements.dev.txt
+```bash
+pip3 install -r requirements.dev.txt
 ```
 
 Create database and load initial data:
-```sh
+```bash
+cd src
 ./manage.py migrate
 ./manage.py createsuperuser
 ./manage.py loaddata initial.json
@@ -59,6 +60,7 @@ $ pytest .
 Run development server:
 
 ```bash
+$ cd src
 $ ./manage.py runserver
 
 ```
