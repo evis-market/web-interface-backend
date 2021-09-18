@@ -1,350 +1,524 @@
 [
-  {
-    "id": 1,
-    "name_en": "Afrikaans",
-    "name_native": "Afrikaans",
-    "slug": "af"
-  },
-  {
-    "id": 2,
-    "name_en": "Albanian",
-    "name_native": "Shqip",
-    "slug": "sq"
-  },
-  {
-    "id": 3,
-    "name_en": "Arabic",
-    "name_native": "عربي",
-    "slug": "ar"
-  },
-  {
-    "id": 4,
-    "name_en": "Armenian",
-    "name_native": "Հայերէն",
-    "slug": "hy"
-  },
-  {
-    "id": 5,
-    "name_en": "Azerbaijani",
-    "name_native": "آذربایجان دیلی",
-    "slug": "az"
-  },
-  {
-    "id": 6,
-    "name_en": "Basque",
-    "name_native": "Euskara",
-    "slug": "eu"
-  },
-  {
-    "id": 7,
-    "name_en": "Belarusian",
-    "name_native": "Беларуская",
-    "slug": "be"
-  },
-  {
-    "id": 8,
-    "name_en": "Bulgarian",
-    "name_native": "Български",
-    "slug": "bg"
-  },
-  {
-    "id": 9,
-    "name_en": "Catalan",
-    "name_native": "Català",
-    "slug": "ca"
-  },
-  {
-    "id": 10,
-    "name_en": "Chinese (Simplified)",
-    "name_native": "中文简体",
-    "slug": "zh-CN"
-  },
-  {
-    "id": 11,
-    "name_en": "Chinese (Traditional)",
-    "name_native": "中文繁體",
-    "slug": "zh-TW"
-  },
-  {
-    "id": 12,
-    "name_en": "Croatian",
-    "name_native": "Hrvatski",
-    "slug": "hr"
-  },
-  {
-    "id": 13,
-    "name_en": "Czech",
-    "name_native": "Čeština",
-    "slug": "cs"
-  },
-  {
-    "id": 14,
-    "name_en": "Danish",
-    "name_native": "Dansk",
-    "slug": "da"
-  },
-  {
-    "id": 15,
-    "name_en": "Dutch",
-    "name_native": "Nederlands",
-    "slug": "nl"
-  },
-  {
-    "id": 16,
-    "name_en": "English",
-    "name_native": "English",
-    "slug": "en"
-  },
-  {
-    "id": 17,
-    "name_en": "Estonian",
-    "name_native": "Eesti keel",
-    "slug": "et"
-  },
-  {
-    "id": 18,
-    "name_en": "Filipino",
-    "name_native": "Filipino",
-    "slug": "tl"
-  },
-  {
-    "id": 19,
-    "name_en": "Finnish",
-    "name_native": "Suomi",
-    "slug": "fi"
-  },
-  {
-    "id": 20,
-    "name_en": "French",
-    "name_native": "Français",
-    "slug": "fr"
-  },
-  {
-    "id": 21,
-    "name_en": "Galician",
-    "name_native": "Galego",
-    "slug": "gl"
-  },
-  {
-    "id": 22,
-    "name_en": "Georgian",
-    "name_native": "ქართული",
-    "slug": "ka"
-  },
-  {
-    "id": 23,
-    "name_en": "German",
-    "name_native": "Deutsch",
-    "slug": "de"
-  },
-  {
-    "id": 24,
-    "name_en": "Greek",
-    "name_native": "Ελληνικά",
-    "slug": "el"
-  },
-  {
-    "id": 25,
-    "name_en": "Haitian Creole",
-    "name_native": "Kreyòl ayisyen",
-    "slug": "ht"
-  },
-  {
-    "id": 26,
-    "name_en": "Hebrew",
-    "name_native": "עברית",
-    "slug": "iw"
-  },
-  {
-    "id": 27,
-    "name_en": "Hindi",
-    "name_native": "हिन्दी",
-    "slug": "hi"
-  },
-  {
-    "id": 28,
-    "name_en": "Hungarian",
-    "name_native": "Magyar",
-    "slug": "hu"
-  },
-  {
-    "id": 29,
-    "name_en": "Icelandic",
-    "name_native": "Íslenska",
-    "slug": "is"
-  },
-  {
-    "id": 30,
-    "name_en": "Indonesian",
-    "name_native": "Bahasa Indonesia",
-    "slug": "id"
-  },
-  {
-    "id": 31,
-    "name_en": "Gaeilge",
-    "name_native": "Irish",
-    "slug": "ga"
-  },
-  {
-    "id": 32,
-    "name_en": "Italian",
-    "name_native": "Italiano",
-    "slug": "it"
-  },
-  {
-    "id": 33,
-    "name_en": "Japanese",
-    "name_native": "日本語",
-    "slug": "ja"
-  },
-  {
-    "id": 34,
-    "name_en": "Korean",
-    "name_native": "한국어",
-    "slug": "ko"
-  },
-  {
-    "id": 35,
-    "name_en": "Latvian",
-    "name_native": "Latviešu",
-    "slug": "lv"
-  },
-  {
-    "id": 36,
-    "name_en": "Lithuanian",
-    "name_native": "Lietuvių kalba",
-    "slug": "lt"
-  },
-  {
-    "id": 37,
-    "name_en": "Macedonian",
-    "name_native": "Македонски",
-    "slug": "mk"
-  },
-  {
-    "id": 38,
-    "name_en": "Malay",
-    "name_native": "Malay",
-    "slug": "ms"
-  },
-  {
-    "id": 39,
-    "name_en": "Maltese",
-    "name_native": "Malti",
-    "slug": "mt"
-  },
-  {
-    "id": 40,
-    "name_en": "Norwegian",
-    "name_native": "Norsk",
-    "slug": "no"
-  },
-  {
-    "id": 41,
-    "name_en": "Persian",
-    "name_native": "فارسی",
-    "slug": "fa"
-  },
-  {
-    "id": 42,
-    "name_en": "Polish",
-    "name_native": "Polski",
-    "slug": "pl"
-  },
-  {
-    "id": 43,
-    "name_en": "Portuguese",
-    "name_native": "Português",
-    "slug": "pt"
-  },
-  {
-    "id": 44,
-    "name_en": "Romanian",
-    "name_native": "Română",
-    "slug": "ro"
-  },
-  {
-    "id": 45,
-    "name_en": "Russian",
-    "name_native": "Русский",
-    "slug": "ru"
-  },
-  {
-    "id": 46,
-    "name_en": "Serbian",
-    "name_native": "Српски",
-    "slug": "sr"
-  },
-  {
-    "id": 47,
-    "name_en": "Slovak",
-    "name_native": "Slovenčina",
-    "slug": "sk"
-  },
-  {
-    "id": 48,
-    "name_en": "Slovenian",
-    "name_native": "Slovensko",
-    "slug": "sl"
-  },
-  {
-    "id": 49,
-    "name_en": "Spanish",
-    "name_native": "Español",
-    "slug": "es"
-  },
-  {
-    "id": 50,
-    "name_en": "Swahili",
-    "name_native": "Kiswahili",
-    "slug": "sw"
-  },
-  {
-    "id": 51,
-    "name_en": "Swedish",
-    "name_native": "Svenska",
-    "slug": "sv"
-  },
-  {
-    "id": 52,
-    "name_en": "Thai",
-    "name_native": "ไทย",
-    "slug": "th"
-  },
-  {
-    "id": 53,
-    "name_en": "Turkish",
-    "name_native": "Türkçe",
-    "slug": "tr"
-  },
-  {
-    "id": 54,
-    "name_en": "Ukrainian",
-    "name_native": "Українська",
-    "slug": "uk"
-  },
-  {
-    "id": 55,
-    "name_en": "Urdu",
-    "name_native": "اردو",
-    "slug": "ur"
-  },
-  {
-    "id": 56,
-    "name_en": "Vietnamese",
-    "name_native": "Tiếng Việt",
-    "slug": "vi"
-  },
-  {
-    "id": 57,
-    "name_en": "Welsh",
-    "name_native": "Cymraeg",
-    "slug": "cy"
-  },
-  {
-    "id": 58,
-    "name_en": "Yiddish",
-    "name_native": "ייִדיש",
-    "slug": "yi"
-  }
+    {
+        "model": "languages.language",
+        "pk": 1,
+        "fields": {
+            "name_en": "Afrikaans",
+            "name_native": "Afrikaans",
+            "slug": "af"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 2,
+        "fields": {
+            "name_en": "Albanian",
+            "name_native": "Shqip",
+            "slug": "sq"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 3,
+        "fields": {
+            "name_en": "Arabic",
+            "name_native": "\u0639\u0631\u0628\u064a",
+            "slug": "ar"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 4,
+        "fields": {
+            "name_en": "Armenian",
+            "name_native": "\u0540\u0561\u0575\u0565\u0580\u0567\u0576",
+            "slug": "hy"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 5,
+        "fields": {
+            "name_en": "Azerbaijani",
+            "name_native": "\u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646 \u062f\u06cc\u0644\u06cc",
+            "slug": "az"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 6,
+        "fields": {
+            "name_en": "Basque",
+            "name_native": "Euskara",
+            "slug": "eu"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 7,
+        "fields": {
+            "name_en": "Belarusian",
+            "name_native": "\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u043a\u0430\u044f",
+            "slug": "be"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 8,
+        "fields": {
+            "name_en": "Bulgarian",
+            "name_native": "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0438",
+            "slug": "bg"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 9,
+        "fields": {
+            "name_en": "Catalan",
+            "name_native": "Catal\u00e0",
+            "slug": "ca"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 10,
+        "fields": {
+            "name_en": "Chinese (Simplified)",
+            "name_native": "\u4e2d\u6587\u7b80\u4f53",
+            "slug": "zh-CN"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 11,
+        "fields": {
+            "name_en": "Chinese (Traditional)",
+            "name_native": "\u4e2d\u6587\u7e41\u9ad4",
+            "slug": "zh-TW"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 12,
+        "fields": {
+            "name_en": "Croatian",
+            "name_native": "Hrvatski",
+            "slug": "hr"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 13,
+        "fields": {
+            "name_en": "Czech",
+            "name_native": "\u010ce\u0161tina",
+            "slug": "cs"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 14,
+        "fields": {
+            "name_en": "Danish",
+            "name_native": "Dansk",
+            "slug": "da"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 15,
+        "fields": {
+            "name_en": "Dutch",
+            "name_native": "Nederlands",
+            "slug": "nl"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 16,
+        "fields": {
+            "name_en": "English",
+            "name_native": "English",
+            "slug": "en"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 17,
+        "fields": {
+            "name_en": "Estonian",
+            "name_native": "Eesti keel",
+            "slug": "et"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 18,
+        "fields": {
+            "name_en": "Filipino",
+            "name_native": "Filipino",
+            "slug": "tl"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 19,
+        "fields": {
+            "name_en": "Finnish",
+            "name_native": "Suomi",
+            "slug": "fi"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 20,
+        "fields": {
+            "name_en": "French",
+            "name_native": "Fran\u00e7ais",
+            "slug": "fr"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 21,
+        "fields": {
+            "name_en": "Galician",
+            "name_native": "Galego",
+            "slug": "gl"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 22,
+        "fields": {
+            "name_en": "Georgian",
+            "name_native": "\u10e5\u10d0\u10e0\u10d7\u10e3\u10da\u10d8",
+            "slug": "ka"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 23,
+        "fields": {
+            "name_en": "German",
+            "name_native": "Deutsch",
+            "slug": "de"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 24,
+        "fields": {
+            "name_en": "Greek",
+            "name_native": "\u0395\u03bb\u03bb\u03b7\u03bd\u03b9\u03ba\u03ac",
+            "slug": "el"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 25,
+        "fields": {
+            "name_en": "Haitian Creole",
+            "name_native": "Krey\u00f2l ayisyen",
+            "slug": "ht"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 26,
+        "fields": {
+            "name_en": "Hebrew",
+            "name_native": "\u05e2\u05d1\u05e8\u05d9\u05ea",
+            "slug": "iw"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 27,
+        "fields": {
+            "name_en": "Hindi",
+            "name_native": "\u0939\u093f\u0928\u094d\u0926\u0940",
+            "slug": "hi"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 28,
+        "fields": {
+            "name_en": "Hungarian",
+            "name_native": "Magyar",
+            "slug": "hu"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 29,
+        "fields": {
+            "name_en": "Icelandic",
+            "name_native": "\u00cdslenska",
+            "slug": "is"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 30,
+        "fields": {
+            "name_en": "Indonesian",
+            "name_native": "Bahasa Indonesia",
+            "slug": "id"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 31,
+        "fields": {
+            "name_en": "Gaeilge",
+            "name_native": "Irish",
+            "slug": "ga"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 32,
+        "fields": {
+            "name_en": "Italian",
+            "name_native": "Italiano",
+            "slug": "it"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 33,
+        "fields": {
+            "name_en": "Japanese",
+            "name_native": "\u65e5\u672c\u8a9e",
+            "slug": "ja"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 34,
+        "fields": {
+            "name_en": "Korean",
+            "name_native": "\ud55c\uad6d\uc5b4",
+            "slug": "ko"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 35,
+        "fields": {
+            "name_en": "Latvian",
+            "name_native": "Latvie\u0161u",
+            "slug": "lv"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 36,
+        "fields": {
+            "name_en": "Lithuanian",
+            "name_native": "Lietuvi\u0173 kalba",
+            "slug": "lt"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 37,
+        "fields": {
+            "name_en": "Macedonian",
+            "name_native": "\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u043a\u0438",
+            "slug": "mk"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 38,
+        "fields": {
+            "name_en": "Malay",
+            "name_native": "Malay",
+            "slug": "ms"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 39,
+        "fields": {
+            "name_en": "Maltese",
+            "name_native": "Malti",
+            "slug": "mt"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 40,
+        "fields": {
+            "name_en": "Norwegian",
+            "name_native": "Norsk",
+            "slug": "no"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 41,
+        "fields": {
+            "name_en": "Persian",
+            "name_native": "\u0641\u0627\u0631\u0633\u06cc",
+            "slug": "fa"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 42,
+        "fields": {
+            "name_en": "Polish",
+            "name_native": "Polski",
+            "slug": "pl"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 43,
+        "fields": {
+            "name_en": "Portuguese",
+            "name_native": "Portugu\u00eas",
+            "slug": "pt"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 44,
+        "fields": {
+            "name_en": "Romanian",
+            "name_native": "Rom\u00e2n\u0103",
+            "slug": "ro"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 45,
+        "fields": {
+            "name_en": "Russian",
+            "name_native": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
+            "slug": "ru"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 46,
+        "fields": {
+            "name_en": "Serbian",
+            "name_native": "\u0421\u0440\u043f\u0441\u043a\u0438",
+            "slug": "sr"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 47,
+        "fields": {
+            "name_en": "Slovak",
+            "name_native": "Sloven\u010dina",
+            "slug": "sk"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 48,
+        "fields": {
+            "name_en": "Slovenian",
+            "name_native": "Slovensko",
+            "slug": "sl"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 49,
+        "fields": {
+            "name_en": "Spanish",
+            "name_native": "Espa\u00f1ol",
+            "slug": "es"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 50,
+        "fields": {
+            "name_en": "Swahili",
+            "name_native": "Kiswahili",
+            "slug": "sw"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 51,
+        "fields": {
+            "name_en": "Swedish",
+            "name_native": "Svenska",
+            "slug": "sv"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 52,
+        "fields": {
+            "name_en": "Thai",
+            "name_native": "\u0e44\u0e17\u0e22",
+            "slug": "th"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 53,
+        "fields": {
+            "name_en": "Turkish",
+            "name_native": "T\u00fcrk\u00e7e",
+            "slug": "tr"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 54,
+        "fields": {
+            "name_en": "Ukrainian",
+            "name_native": "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430",
+            "slug": "uk"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 55,
+        "fields": {
+            "name_en": "Urdu",
+            "name_native": "\u0627\u0631\u062f\u0648",
+            "slug": "ur"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 56,
+        "fields": {
+            "name_en": "Vietnamese",
+            "name_native": "Ti\u1ebfng Vi\u1ec7t",
+            "slug": "vi"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 57,
+        "fields": {
+            "name_en": "Welsh",
+            "name_native": "Cymraeg",
+            "slug": "cy"
+        }
+    },
+    {
+        "model": "languages.language",
+        "pk": 58,
+        "fields": {
+            "name_en": "Yiddish",
+            "name_native": "\u05d9\u05d9\u05b4\u05d3\u05d9\u05e9",
+            "slug": "yi"
+        }
+    }
 ]
