@@ -1,86 +1,182 @@
 [
   {
     "id": 1,
-    "name_native": "English",
-    "name_en": "English",
-    "slug": "en"
+    "name_en": "Afrikaans",
+    "name_native": "Afrikaans",
+    "slug": "af"
   },
   {
     "id": 2,
-    "name_native": "Русский",
-    "name_en": "Russian",
-    "slug": "ru"
+    "name_en": "Albanian",
+    "name_native": "Shqip",
+    "slug": "sq"
   },
   {
     "id": 3,
-    "name_native": "Французский",
-    "name_en": "French",
-    "slug": "fr"
-  },
-  {
-    "id": 4,
-    "name_native": "Немецкий",
-    "name_en": "Deutch",
-    "slug": "de"
-  },
-  {
-    "id": 5,
-    "name_native": "Испанский",
-    "name_en": "Spanish",
-    "slug": "es"
-  },
-  {
-    "id": 6,
-    "name_native": "Португальский",
-    "name_en": "Portuguese",
-    "slug": "pt"
-  },
-  {
-    "id": 7,
-    "name_native": "Турецкий",
-    "name_en": "Turkish",
-    "slug": "tr"
-  },
-  {
-    "id": 8,
-    "name_native": "Арабский",
     "name_en": "Arabic",
+    "name_native": "عربي",
     "slug": "ar"
   },
   {
+    "id": 4,
+    "name_en": "Armenian",
+    "name_native": "Հայերէն",
+    "slug": "hy"
+  },
+  {
+    "id": 5,
+    "name_en": "Azerbaijani",
+    "name_native": "آذربایجان دیلی",
+    "slug": "az"
+  },
+  {
+    "id": 6,
+    "name_en": "Basque",
+    "name_native": "Euskara",
+    "slug": "eu"
+  },
+  {
+    "id": 7,
+    "name_en": "Belarusian",
+    "name_native": "Беларуская",
+    "slug": "be"
+  },
+  {
+    "id": 8,
+    "name_en": "Bulgarian",
+    "name_native": "Български",
+    "slug": "bg"
+  },
+  {
     "id": 9,
-    "name_native": "Хинди",
-    "name_en": "Hindi",
-    "slug": "hi"
+    "name_en": "Catalan",
+    "name_native": "Català",
+    "slug": "ca"
   },
   {
     "id": 10,
-    "name_native": "Китайский",
-    "name_en": "Chinese",
-    "slug": "cn"
+    "name_en": "Chinese (Simplified)",
+    "name_native": "中文简体",
+    "slug": "zh-CN"
   },
   {
     "id": 11,
-    "name_native": "Вьетнамский",
-    "name_en": "Vietnamese",
-    "slug": "vi"
+    "name_en": "Chinese (Traditional)",
+    "name_native": "中文繁體",
+    "slug": "zh-TW"
   },
   {
     "id": 12,
-    "name_native": "Корейский",
-    "name_en": "Korean",
-    "slug": "ko"
+    "name_en": "Croatian",
+    "name_native": "Hrvatski",
+    "slug": "hr"
   },
   {
     "id": 13,
-    "name_native": "Индонезийский",
-    "name_en": "Indonesian",
-    "slug": "id"
+    "name_en": "Czech",
+    "name_native": "Čeština",
+    "slug": "cs"
   },
   {
     "id": 14,
-    "name_native": "Японский",
-    "name_en": "Japanese",
-    "slug": "ja"
+    "name_en": "Danish",
+    "name_native": "Dansk",
+    "slug": "da"
+  },
+  {
+    "id": 15,
+    "name_en": "Dutch",
+    "name_native": "Nederlands",
+    "slug": "nl"
+  },
+  {
+    "id": 16,
+    "name_en": "English",
+    "name_native": "English",
+    "slug": "en"
+  },
+  {
+    "id": 17,
+    "name_en": "Estonian",
+    "name_native": "Eesti keel",
+    "slug": "et"
+  },
+  {
+    "id": 18,
+    "name_en": "Filipino",
+    "name_native": "Filipino",
+    "slug": "tl"
+  },
+  {
+    "id": 19,
+    "name_en": "Finnish",
+    "name_native": "Suomi",
+    "slug": "fi"
+  },
+  {
+    "id": 20,
+    "name_en": "French",
+    "name_native": "Français",
+    "slug": "fr"
+  },
+  {
+    "id": 21,
+    "name_en": "Galician",
+    "name_native": "Galego",
+    "slug": "gl"
+  },
+  {
+    "id": 22,
+    "name_en": "Georgian",
+    "name_native": "ქართული",
+    "slug": "ka"
+  },
+  {
+    "id": 23,
+    "name_en": "German",
+    "name_native": "Deutsch",
+    "slug": "de"
+  },
+  {
+    "id": 24,
+    "name_en": "Greek",
+    "name_native": "Ελληνικά",
+    "slug": "el"
+  },
+  {
+    "id": 25,
+    "name_en": "Haitian Creole",
+    "name_native": "Kreyòl ayisyen",
+    "slug": "ht"
+  },
+  {
+    "id": 26,
+    "name_en": "Hebrew",
+    "name_native": "עברית",
+    "slug": "iw"
+  },
+  {
+    "id": 27,
+    "name_en": "Hindi",
+    "name_native": "हिन्दी",
+    "slug": "hi"
+  },
+  {
+    "id": 28,
+    "name_en": "Hungarian",
+    "name_native": "Magyar",
+    "slug": "hu"
+  },
+  {
+    "id": 29,
+    "name_en": "Icelandic",
+    "name_native": "Íslenska",
+    "slug": "is"
+  },
+  {
+    "id": 30,
+    "name_en": "Indonesian",
+    "name_native": "Bahasa Indonesia",
+    "slug": "id"
   }
 ]
