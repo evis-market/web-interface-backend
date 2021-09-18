@@ -97,4 +97,4 @@ class GrantJWTTokenView(APIView, JWTAuthService):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         result = self.grant_jwt_token(data=serializer.validated_data)
-        return response_ok(result, http_code=status.HTTP_200_OK)
+        return response_ok(result)

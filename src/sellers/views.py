@@ -80,7 +80,7 @@ class SellerSettingsView(GenericAPIView, SellerService):
             "contacts": [
               { "id": 1, "type_id": 1, "value": "https://domain1.com/", "comment": "main site" },
               { "id": 3, "type_id": 2, "value": "1231231231", "comment": "phone1 comment" },
-              { "id": 5, "type_id": 3: "value": "email1@test.com", "comment": "email1 comment" },
+              { "id": 5, "type_id": 3, "value": "email1@test.com", "comment": "email1 comment" }
             ]
           }
         }
@@ -111,19 +111,18 @@ class SellerSettingsView(GenericAPIView, SellerService):
           }
         }
     """
-    serializer_class = SellerViewSerializer
+    serializer = SellerViewSerializer
     update_serializer = SellerUpdateSerializer
-    authentication_classes = ()
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         seller = Seller.objects.get_seller_by_user_id(user_id=request.user.id)
-        result = self.serializer_class(seller).data
-        return response_ok({'seller': result}, http_code=status.HTTP_200_OK)
+        result = self.serializer(seller).data
+        return response_ok({'seller': result})
 
     def put(self, request):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             self.create_seller(data=serializer.validated_data, user=request.user)
-        return response_ok({}, http_code=status.HTTP_200_OK)
+        return response_ok()

@@ -36,8 +36,9 @@ class JWTAuthService:
                                     password: str) -> dict:
         try:
             user = UserManager.get_by_login(login)
-        except User.DoesNotExist:
+        except exceptions.NotFound:
             raise exceptions.BadRequest(msg='invalid credentials')
+
         if not user.check_password(password):
             raise exceptions.BadRequest(msg='invalid credentials')
 

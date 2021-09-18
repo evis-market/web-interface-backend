@@ -5,7 +5,7 @@ from sellers.managers import ContactManager, SellerManager
 
 
 class Seller(models.Model):
-    seller_id = models.ForeignKey('users.User', related_name='Seller', on_delete=models.CASCADE)
+    seller = models.OneToOneField('users.User', related_name='Seller', on_delete=models.CASCADE, primary_key=True)
     name = models.CharField('Name', max_length=190, db_index=True)
     description = models.TextField('Description')
     logo_url = models.URLField('Logo URL', max_length=1000, help_text='URL link to logo', blank=True)
@@ -14,6 +14,10 @@ class Seller(models.Model):
         MinValueValidator(0), MaxValueValidator(5.0)])
 
     objects = SellerManager()
+
+    def save(self, *args, **kwargs):
+
+        return super().save(*args, **kwargs)
 
     class Meta:
         db_table = 'sellers'
@@ -24,7 +28,7 @@ class Seller(models.Model):
         return self.name
 
     def contacts(self):
-        return SellerManager.get_seller_contacts_by_seller_id(seller_id=self)
+        return Contact.objects.get_seller_contacts_by_seller_id(seller_id=self)
 
 
 class Contact(models.Model):
@@ -38,8 +42,8 @@ class Contact(models.Model):
     ]
 
     id = models.AutoField('ID', primary_key=True)
-    seller_id = models.ForeignKey('Seller', related_name='Contact', on_delete=models.CASCADE)
-    type_id = models.IntegerField('Contact types', choices=TYPES)
+    seller = models.ForeignKey('Seller', related_name='Contact', on_delete=models.CASCADE)
+    type = models.IntegerField('Contact types', choices=TYPES)
     value = models.CharField('Value', max_length=190)
     comment = models.CharField('Comment', max_length=190, blank=True, default='')
 
@@ -48,7 +52,7 @@ class Contact(models.Model):
     class Meta:
         db_table = 'seller_contacts'
         verbose_name_plural = 'Seller contacts'
-        ordering = ('type_id',)
+        ordering = ('type',)
 
     def __str__(self):
         return self.value

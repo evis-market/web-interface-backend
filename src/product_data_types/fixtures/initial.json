@@ -66,18 +66,5 @@
       "data_type_id": 3,
       "name": "JSON"
     }
-  },
-  {
-    "model": "admin.logentry",
-    "pk": 1,
-    "fields": {
-      "action_time": "2021-09-05T14:34:46.808Z",
-      "user": 1,
-      "content_type": 13,
-      "object_id": "1",
-      "object_repr": "Image",
-      "action_flag": 1,
-      "change_message": "[{\"added\": {}}]"
-    }
   }
 ]
