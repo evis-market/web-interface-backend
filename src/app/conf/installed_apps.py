@@ -8,6 +8,7 @@ INSTALLED_APPS = [
     'sellers',
     'seller_products',
     'data_delivery_types',
+    'languages',
 
     'mptt',
 

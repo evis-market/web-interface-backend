@@ -1,0 +1,350 @@
+[
+  {
+    "id": 1,
+    "name_en": "Afrikaans",
+    "name_native": "Afrikaans",
+    "slug": "af"
+  },
+  {
+    "id": 2,
+    "name_en": "Albanian",
+    "name_native": "Shqip",
+    "slug": "sq"
+  },
+  {
+    "id": 3,
+    "name_en": "Arabic",
+    "name_native": "عربي",
+    "slug": "ar"
+  },
+  {
+    "id": 4,
+    "name_en": "Armenian",
+    "name_native": "Հայերէն",
+    "slug": "hy"
+  },
+  {
+    "id": 5,
+    "name_en": "Azerbaijani",
+    "name_native": "آذربایجان دیلی",
+    "slug": "az"
+  },
+  {
+    "id": 6,
+    "name_en": "Basque",
+    "name_native": "Euskara",
+    "slug": "eu"
+  },
+  {
+    "id": 7,
+    "name_en": "Belarusian",
+    "name_native": "Беларуская",
+    "slug": "be"
+  },
+  {
+    "id": 8,
+    "name_en": "Bulgarian",
+    "name_native": "Български",
+    "slug": "bg"
+  },
+  {
+    "id": 9,
+    "name_en": "Catalan",
+    "name_native": "Català",
+    "slug": "ca"
+  },
+  {
+    "id": 10,
+    "name_en": "Chinese (Simplified)",
+    "name_native": "中文简体",
+    "slug": "zh-CN"
+  },
+  {
+    "id": 11,
+    "name_en": "Chinese (Traditional)",
+    "name_native": "中文繁體",
+    "slug": "zh-TW"
+  },
+  {
+    "id": 12,
+    "name_en": "Croatian",
+    "name_native": "Hrvatski",
+    "slug": "hr"
+  },
+  {
+    "id": 13,
+    "name_en": "Czech",
+    "name_native": "Čeština",
+    "slug": "cs"
+  },
+  {
+    "id": 14,
+    "name_en": "Danish",
+    "name_native": "Dansk",
+    "slug": "da"
+  },
+  {
+    "id": 15,
+    "name_en": "Dutch",
+    "name_native": "Nederlands",
+    "slug": "nl"
+  },
+  {
+    "id": 16,
+    "name_en": "English",
+    "name_native": "English",
+    "slug": "en"
+  },
+  {
+    "id": 17,
+    "name_en": "Estonian",
+    "name_native": "Eesti keel",
+    "slug": "et"
+  },
+  {
+    "id": 18,
+    "name_en": "Filipino",
+    "name_native": "Filipino",
+    "slug": "tl"
+  },
+  {
+    "id": 19,
+    "name_en": "Finnish",
+    "name_native": "Suomi",
+    "slug": "fi"
+  },
+  {
+    "id": 20,
+    "name_en": "French",
+    "name_native": "Français",
+    "slug": "fr"
+  },
+  {
+    "id": 21,
+    "name_en": "Galician",
+    "name_native": "Galego",
+    "slug": "gl"
+  },
+  {
+    "id": 22,
+    "name_en": "Georgian",
+    "name_native": "ქართული",
+    "slug": "ka"
+  },
+  {
+    "id": 23,
+    "name_en": "German",
+    "name_native": "Deutsch",
+    "slug": "de"
+  },
+  {
+    "id": 24,
+    "name_en": "Greek",
+    "name_native": "Ελληνικά",
+    "slug": "el"
+  },
+  {
+    "id": 25,
+    "name_en": "Haitian Creole",
+    "name_native": "Kreyòl ayisyen",
+    "slug": "ht"
+  },
+  {
+    "id": 26,
+    "name_en": "Hebrew",
+    "name_native": "עברית",
+    "slug": "iw"
+  },
+  {
+    "id": 27,
+    "name_en": "Hindi",
+    "name_native": "हिन्दी",
+    "slug": "hi"
+  },
+  {
+    "id": 28,
+    "name_en": "Hungarian",
+    "name_native": "Magyar",
+    "slug": "hu"
+  },
+  {
+    "id": 29,
+    "name_en": "Icelandic",
+    "name_native": "Íslenska",
+    "slug": "is"
+  },
+  {
+    "id": 30,
+    "name_en": "Indonesian",
+    "name_native": "Bahasa Indonesia",
+    "slug": "id"
+  },
+  {
+    "id": 31,
+    "name_en": "Gaeilge",
+    "name_native": "Irish",
+    "slug": "ga"
+  },
+  {
+    "id": 32,
+    "name_en": "Italian",
+    "name_native": "Italiano",
+    "slug": "it"
+  },
+  {
+    "id": 33,
+    "name_en": "Japanese",
+    "name_native": "日本語",
+    "slug": "ja"
+  },
+  {
+    "id": 34,
+    "name_en": "Korean",
+    "name_native": "한국어",
+    "slug": "ko"
+  },
+  {
+    "id": 35,
+    "name_en": "Latvian",
+    "name_native": "Latviešu",
+    "slug": "lv"
+  },
+  {
+    "id": 36,
+    "name_en": "Lithuanian",
+    "name_native": "Lietuvių kalba",
+    "slug": "lt"
+  },
+  {
+    "id": 37,
+    "name_en": "Macedonian",
+    "name_native": "Македонски",
+    "slug": "mk"
+  },
+  {
+    "id": 38,
+    "name_en": "Malay",
+    "name_native": "Malay",
+    "slug": "ms"
+  },
+  {
+    "id": 39,
+    "name_en": "Maltese",
+    "name_native": "Malti",
+    "slug": "mt"
+  },
+  {
+    "id": 40,
+    "name_en": "Norwegian",
+    "name_native": "Norsk",
+    "slug": "no"
+  },
+  {
+    "id": 41,
+    "name_en": "Persian",
+    "name_native": "فارسی",
+    "slug": "fa"
+  },
+  {
+    "id": 42,
+    "name_en": "Polish",
+    "name_native": "Polski",
+    "slug": "pl"
+  },
+  {
+    "id": 43,
+    "name_en": "Portuguese",
+    "name_native": "Português",
+    "slug": "pt"
+  },
+  {
+    "id": 44,
+    "name_en": "Romanian",
+    "name_native": "Română",
+    "slug": "ro"
+  },
+  {
+    "id": 45,
+    "name_en": "Russian",
+    "name_native": "Русский",
+    "slug": "ru"
+  },
+  {
+    "id": 46,
+    "name_en": "Serbian",
+    "name_native": "Српски",
+    "slug": "sr"
+  },
+  {
+    "id": 47,
+    "name_en": "Slovak",
+    "name_native": "Slovenčina",
+    "slug": "sk"
+  },
+  {
+    "id": 48,
+    "name_en": "Slovenian",
+    "name_native": "Slovensko",
+    "slug": "sl"
+  },
+  {
+    "id": 49,
+    "name_en": "Spanish",
+    "name_native": "Español",
+    "slug": "es"
+  },
+  {
+    "id": 50,
+    "name_en": "Swahili",
+    "name_native": "Kiswahili",
+    "slug": "sw"
+  },
+  {
+    "id": 51,
+    "name_en": "Swedish",
+    "name_native": "Svenska",
+    "slug": "sv"
+  },
+  {
+    "id": 52,
+    "name_en": "Thai",
+    "name_native": "ไทย",
+    "slug": "th"
+  },
+  {
+    "id": 53,
+    "name_en": "Turkish",
+    "name_native": "Türkçe",
+    "slug": "tr"
+  },
+  {
+    "id": 54,
+    "name_en": "Ukrainian",
+    "name_native": "Українська",
+    "slug": "uk"
+  },
+  {
+    "id": 55,
+    "name_en": "Urdu",
+    "name_native": "اردو",
+    "slug": "ur"
+  },
+  {
+    "id": 56,
+    "name_en": "Vietnamese",
+    "name_native": "Tiếng Việt",
+    "slug": "vi"
+  },
+  {
+    "id": 57,
+    "name_en": "Welsh",
+    "name_native": "Cymraeg",
+    "slug": "cy"
+  },
+  {
+    "id": 58,
+    "name_en": "Yiddish",
+    "name_native": "ייִדיש",
+    "slug": "yi"
+  }
+]
