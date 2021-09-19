@@ -1,19 +1,18 @@
 from rest_framework.generics import GenericAPIView
-from rest_framework.permissions import IsAuthenticated
 
 from app.response import response_ok
-from shop.serializers import SellerProductSerializer
+from categories.models import Category
+from categories.serializers import CategorySerializer
+from geo_regions.models import GeoRegion
+from geo_regions.serializers import GeoRegionSerializer
+from data_delivery_types.models import DataDeliveryType
+from data_delivery_types.serializers import DataDeliveryTypeSerializer
+from product_data_types.models import DataFormat, DataType
+from product_data_types.serializers import DataTypeSerializer, DataFormatSerializer
 from seller_products.serializers import SellerProductsSerializer
 from seller_products.models import SellerProduct
 from sellers.serializer import SellerViewSerializer
-from geo_regions.models import GeoRegion
-from categories.models import Category
-from data_delivery_types.models import DataDeliveryType
-from product_data_types.models import DataFormat, DataType
-from categories.serializers import CategorySerializer
-from data_delivery_types.serializers import DataDeliveryTypeSerializer
-from product_data_types.serializers import DataTypeSerializer, DataFormatSerializer
-from geo_regions.serializers import GeoRegionSerializer
+from shop.serializers import SellerProductSerializer
 
 
 class ProductCategoriesListView(GenericAPIView):

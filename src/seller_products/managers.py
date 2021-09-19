@@ -26,29 +26,22 @@ class SellerProductBaseManager(models.Manager):
     def get_related_seller_products(self, pk):
         Category = apps.get_model('categories', 'Category')
 
-        return self.model.objects.prefetch_related(
-            'categories'
-        ).filter(
-            Exists(Category.objects.filter(
-                id=OuterRef('categories'),
-                id__in=(
-                    Category.objects.get_queryset_descendants(
-                        Category.objects.filter(sellerproduct__id=pk),
-                        include_self=True
-                    )
-                ))
+        return self.model.objects.values('id').filter(
+            categories__id__in=Category.objects.get_queryset_descendants(
+                Category.objects.filter(sellerproduct__id=pk),
+                include_self=True
             )
-        )
+        ).distinct()
 
     def get_seller_products_by_categories(self, categories):
         Category = apps.get_model('categories', 'Category')
 
-        return self.model.objects.values('name', 'id').prefetch_related(
-            'categories'
-        ).filter(categories__id__in=Category.objects.get_queryset_descendants(
-            Category.objects.filter(id__in=categories),
-            include_self=True
-        )).distinct()
+        return self.model.objects.values('id').filter(
+            categories__id__in=Category.objects.get_queryset_descendants(
+                Category.objects.filter(id__in=categories),
+                include_self=True
+            )
+        ).distinct()
 
 
 class SellerProductManager(SellerProductBaseManager):
