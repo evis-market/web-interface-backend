@@ -46,12 +46,23 @@ class SellerProductBaseManager(models.Manager):
     def get_seller_products_by_categories(self, categories):
         Category = apps.get_model('categories', 'Category')
 
-        return self.model.objects.values('id').filter(
+        return self.model.objects.values(
+            'id', 'name', 'price_per_one_time', 'price_per_month', 'price_per_year', 'price_by_request', 'rating'
+        ).filter(
             categories__id__in=Category.objects.get_queryset_descendants(
                 Category.objects.filter(id__in=categories),
                 include_self=True,
             ),
         ).distinct()
+
+    price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=True, default=None)
+    price_per_month = models.FloatField('Price per month', blank=True, null=True, default=None)
+    price_per_year = models.FloatField('Price per year', blank=True, null=True, default=None)
+    price_by_request = models.FloatField('Price by request', blank=True, null=True, default=None)
+    rating = models.FloatField('Rating', blank=True, null=True, default=None)
+
+    # def order_by_quersyset(self, order_by_fields):
+    #     return self.models.objects
 
 
 class SellerProductManager(SellerProductBaseManager):

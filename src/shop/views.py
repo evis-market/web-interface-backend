@@ -13,6 +13,8 @@ from seller_products.models import SellerProduct
 from seller_products.serializers import SellerProductsSerializer
 from sellers.serializer import SellerViewSerializer
 from shop.serializers import SellerProductSerializer
+from shop.paginators import ProductsPaginator
+from shop.service import ShopService
 
 
 class ProductCategoriesListView(GenericAPIView):
@@ -29,18 +31,23 @@ class ProductCategoriesListView(GenericAPIView):
         return response_ok({'categories': serializer.data})
 
 
-class ProductsListView(GenericAPIView):
+class ProductsListView(GenericAPIView, ShopService):
     """
     Displaying products by applied filters on product categories
     URL: `/api/v1/shop/products/`
     METHODS: GET
     """
     serializer_class = SellerProductSerializer
+    pagination_class = ProductsPaginator
+    order_by_allowed_fields = ['id', '-id', 'name', '-name', 'rating', '-rating']
 
     def get(self, request, format=None):
         category_ids = request.GET.getlist('category_id')
+        order_by_fields = request.GET.getlist('order_by')
         seller_products = SellerProduct.objects.get_seller_products_by_categories(category_ids)
-        serializer = self.serializer_class(seller_products, many=True)
+        seller_products = self.order_by_queryset(seller_products, order_by_fields, self.order_by_allowed_fields)
+        seller_products_page = self.paginate_queryset(seller_products)
+        serializer = self.serializer_class(seller_products_page, many=True)
         return response_ok({'seller_products': serializer.data})
 
 
