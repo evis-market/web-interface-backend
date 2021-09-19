@@ -8,7 +8,6 @@ INSTALLED_APPS = [
     'geo_regions',
     'sellers',
     'seller_products',
-    'data_delivery_types',
     'languages',
     'shop',
     'data_generator',
