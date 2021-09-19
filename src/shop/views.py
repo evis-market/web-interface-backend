@@ -47,7 +47,7 @@ class ProductsListView(GenericAPIView):
 class ProductDetailView(GenericAPIView):
     """
     Displaying detailed product information
-    URL: `/api/v1/shop/product/<int:seller_product_id>/`
+    URL: `/api/v1/shop/product/<int:seller_product_id>`
     METHODS: GET
     """
     seller_serializer_class = SellerViewSerializer
@@ -68,7 +68,7 @@ class RelatedProductsListView(GenericAPIView):
     """
     Displaying related products of the specified product.
     Products are related if they share at least one category or descendant category
-    URL: `/api/v1/shop/related_products/<int:seller_product_id>/`
+    URL: `/api/v1/shop/related_products/<int:seller_product_id>`
     METHODS: GET
     """
     serializer_class = SellerProductSerializer
@@ -84,7 +84,7 @@ class RelatedProductsListView(GenericAPIView):
 class ProductOptionsListView(GenericAPIView):
     """
     Displaying all filter options available for products
-    URL: `/api/v1/shop/all_product_options/`
+    URL: `/api/v1/shop/all_product_options`
     METHODS: GET
     """
     category_serializer = CategorySerializer
