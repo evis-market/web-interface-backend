@@ -18,4 +18,5 @@ class DataFormatSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
+            'data_type_id',
         ]
