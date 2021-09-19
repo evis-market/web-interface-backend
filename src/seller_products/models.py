@@ -3,7 +3,7 @@ from django.db import models
 from categories.models import Category
 from data_delivery_types.models import DataDeliveryType
 from geo_regions.models import GeoRegion
-# from languages.models import Language
+from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from seller_products.managers import (
     SellerProductArchiveManager, SellerProductBaseManager, SellerProductDataSampleArchiveManager, SellerProductDataSampleManager,
@@ -35,13 +35,17 @@ class SellerProductBase(models.Model):
         verbose_name_plural = 'Seller Products'
 
     def __str__(self):
-        return f'{self.name} (Seller={self.seller.name}) {self.descr[:100]}...'
+        return f'{self.name} {self.descr[:100]}...'
+
+
+class SellerProductQuerySet(models.QuerySet):
+    pass
 
 
 class SellerProduct(SellerProductBase):
     categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True, db_table='seller_product_categories')
     geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo regions', blank=True, db_table='seller_product_geo_regions')
-    # languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True)
+    languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True, db_table='seller_product_languages')
     data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True, db_table='seller_product_data_types')
     data_formats = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True, db_table='seller_product_data_formats')
     data_delivery_types = models.ManyToManyField(
@@ -61,7 +65,7 @@ class SellerProductArchive(SellerProductBase):
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True, db_table='seller_product_categories_archive')
     geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo-regions', blank=True, db_table='seller_product_geo_regions_archive')
-    # languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True)
+    languages = models.ManyToManyField(Language, verbose_name='Content languages', blank=True, db_table='seller_product_languages_archive')
     data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True, db_table='seller_product_data_types_archive')
     data_formats = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True, db_table='seller_product_data_formats_archive')
     data_delivery_types = models.ManyToManyField(

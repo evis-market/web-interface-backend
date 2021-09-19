@@ -2,8 +2,10 @@ from django.db import models
 
 
 class DataTypeManager(models.Manager):
-    pass
+    def get_all(self):
+        return self.model.objects.all()
 
 
 class DataFormatManager(models.Manager):
-    pass
+    def get_all(self):
+        return self.model.objects.all()
