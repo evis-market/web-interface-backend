@@ -26,13 +26,14 @@ class SellerProductService:
         seller = data.pop('seller')
         categories = data.pop('categories')
         geo_regions = data.pop('geo_regions')
+        languages = data.pop('languages')
         data_types = data.pop('data_types')
         data_formats = data.pop('data_formats')
         data_delivery_types = data.pop('data_delivery_types')
         data_samples = data.pop('data_samples')
         data_urls = data.pop('data_urls')
         seller_product = SellerProduct.objects.create(
-            seller, categories, geo_regions, data_types, data_formats, data_delivery_types, **data
+            seller, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data,
         )
 
         SellerProductDataSample.objects.bulk_create([
@@ -53,6 +54,7 @@ class SellerProductService:
     def update_object(self, seller_product, data: typing.Dict):
         categories = data.pop('categories')
         geo_regions = data.pop('geo_regions')
+        languages = data.pop('languages')
         data_types = data.pop('data_types')
         data_formats = data.pop('data_formats')
         data_delivery_types = data.pop('data_delivery_types')
@@ -60,7 +62,7 @@ class SellerProductService:
         data_urls = data.pop('data_urls')
 
         seller_product = SellerProduct.objects.update(
-            seller_product, categories, geo_regions, data_types, data_formats, data_delivery_types, **data
+            seller_product, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data,
         )
 
         SellerProductDataSample.objects.delete_by_seller_product(seller_product=seller_product)

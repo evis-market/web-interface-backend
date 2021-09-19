@@ -7,6 +7,7 @@ FORBIDDEN_CODE = 403
 NOT_FOUND_CODE = 404
 CONFLICT_CODE = 409
 
+
 class Errno(Exception):
     def __init__(self, msg=None, code=None, http_code=None):
         self.msg = msg or self.default_msg

@@ -1,6 +1,6 @@
 from rest_framework.views import exception_handler
 
-from app.exceptions import Errno, BAD_REQUEST_CODE
+from app.exceptions import BAD_REQUEST_CODE, Errno
 from app.response import response_err
 
 

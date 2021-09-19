@@ -1,7 +1,8 @@
 from django.db import models
+from mptt.managers import TreeManager
 
 
-class GeoRegionManager(models.Manager):
+class GeoRegionManager(TreeManager):
 
     def get_all_children(self, pk):
         geo_region = self.model.objects.get(pk=pk)

@@ -4,7 +4,6 @@ from django.core.management.base import BaseCommand, CommandError
 from app import exceptions
 from auth.service import JWTAuthService
 from users.managers import UserManager
-from users.models import User
 
 
 class Command(BaseCommand):
