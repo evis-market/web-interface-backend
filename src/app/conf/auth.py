@@ -12,7 +12,7 @@ AUTHENTICATION_BACKENDS = [
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env('ACCESS_TOKEN_LIFETIME_MINUTES', cast=int)),
-    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=env('REFRESH_TOKEN_LIFETIME_DAYS', cast=int)),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=env('REFRESH_TOKEN_LIFETIME_DAYS', cast=int)),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
