@@ -3,6 +3,7 @@ from datetime import timedelta
 from app import settings
 from app.conf.environ import env
 
+
 AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = [

@@ -3,14 +3,14 @@ from rest_framework.generics import GenericAPIView
 from app.response import response_ok
 from categories.models import Category
 from categories.serializers import CategorySerializer
-from geo_regions.models import GeoRegion
-from geo_regions.serializers import GeoRegionSerializer
 from data_delivery_types.models import DataDeliveryType
 from data_delivery_types.serializers import DataDeliveryTypeSerializer
+from geo_regions.models import GeoRegion
+from geo_regions.serializers import GeoRegionSerializer
 from product_data_types.models import DataFormat, DataType
-from product_data_types.serializers import DataTypeSerializer, DataFormatSerializer
-from seller_products.serializers import SellerProductsSerializer
+from product_data_types.serializers import DataFormatSerializer, DataTypeSerializer
 from seller_products.models import SellerProduct
+from seller_products.serializers import SellerProductsSerializer
 from sellers.serializer import SellerViewSerializer
 from shop.serializers import SellerProductSerializer
 
@@ -77,7 +77,7 @@ class RelatedProductsListView(GenericAPIView):
         related_products = SellerProduct.objects.get_related_seller_products(seller_product_id)
         serializer = self.serializer_class(related_products, many=True)
         return response_ok({
-            'related_products': serializer.data
+            'related_products': serializer.data,
         })
 
 

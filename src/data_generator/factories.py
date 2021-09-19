@@ -2,11 +2,10 @@ import factory
 from factory import fuzzy
 from factory.django import DjangoModelFactory
 
-
-from users.models import User
-from sellers.models import Seller
 from categories.models import Category
 from seller_products.models import SellerProduct
+from sellers.models import Seller
+from users.models import User
 
 
 class CategoryFactory(DjangoModelFactory):

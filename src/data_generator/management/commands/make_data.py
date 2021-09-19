@@ -1,14 +1,15 @@
-from faker import Faker
-from django.core.management.base import BaseCommand, CommandError
 import factory
-from factory.django import DjangoModelFactory
 import random
-from users.models import User
+from django.core.management.base import BaseCommand, CommandError
+from django.db import transaction
+from factory.django import DjangoModelFactory
+from faker import Faker
+
 from categories.models import Category
 from data_generator import factories
 from seller_products.models import SellerProduct
 from sellers.models import Seller
-from django.db import transaction
+from users.models import User
 
 
 class Command(BaseCommand):

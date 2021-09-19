@@ -1,7 +1,8 @@
 import typing as tp
 
-from django.db import models
 from django.apps import apps
+from django.db import models
+
 from app.utils import copy_instance
 
 
@@ -12,7 +13,7 @@ class SellerProductBaseManager(models.Manager):
 
     def get_products_by_seller_id(self, seller):
         return self.model.objects.select_related(
-            'seller'
+            'seller',
         ).prefetch_related(
             'categories',
             'geo_regions',
@@ -21,7 +22,7 @@ class SellerProductBaseManager(models.Manager):
             'data_formats',
             'data_delivery_types',
             'data_urls',
-            'data_samples'
+            'data_samples',
         ).filter(seller=seller)
 
     def get_product_by_seller_id(self, pk, seller):
@@ -38,8 +39,8 @@ class SellerProductBaseManager(models.Manager):
         return self.model.objects.values('id').filter(
             categories__id__in=Category.objects.get_queryset_descendants(
                 Category.objects.filter(sellerproduct__id=pk),
-                include_self=True
-            )
+                include_self=True,
+            ),
         ).distinct()
 
     def get_seller_products_by_categories(self, categories):
@@ -48,8 +49,8 @@ class SellerProductBaseManager(models.Manager):
         return self.model.objects.values('id').filter(
             categories__id__in=Category.objects.get_queryset_descendants(
                 Category.objects.filter(id__in=categories),
-                include_self=True
-            )
+                include_self=True,
+            ),
         ).distinct()
 
 

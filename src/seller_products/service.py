@@ -33,7 +33,7 @@ class SellerProductService:
         data_samples = data.pop('data_samples')
         data_urls = data.pop('data_urls')
         seller_product = SellerProduct.objects.create(
-            seller, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data
+            seller, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data,
         )
 
         SellerProductDataSample.objects.bulk_create([
@@ -62,7 +62,7 @@ class SellerProductService:
         data_urls = data.pop('data_urls')
 
         seller_product = SellerProduct.objects.update(
-            seller_product, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data
+            seller_product, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data,
         )
 
         SellerProductDataSample.objects.delete_by_seller_product(seller_product=seller_product)

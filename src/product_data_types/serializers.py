@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from product_data_types.models import DataType, DataFormat
+from product_data_types.models import DataFormat, DataType
 
 
 class DataTypeSerializer(serializers.ModelSerializer):
@@ -8,7 +8,7 @@ class DataTypeSerializer(serializers.ModelSerializer):
         model = DataType
         fields = [
             'id',
-            'name'
+            'name',
         ]
 
 
@@ -17,5 +17,5 @@ class DataFormatSerializer(serializers.ModelSerializer):
         model = DataFormat
         fields = [
             'id',
-            'name'
+            'name',
         ]

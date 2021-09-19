@@ -49,7 +49,7 @@ class SellerProduct(SellerProductBase):
     data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True, db_table='seller_product_data_types')
     data_formats = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True, db_table='seller_product_data_formats')
     data_delivery_types = models.ManyToManyField(
-        DataDeliveryType, verbose_name='Content data types', blank=True, db_table='seller_product_data_delivery_types'
+        DataDeliveryType, verbose_name='Content data types', blank=True, db_table='seller_product_data_delivery_types',
     )
 
     objects = SellerProductManager()
@@ -69,7 +69,7 @@ class SellerProductArchive(SellerProductBase):
     data_types = models.ManyToManyField(DataType, verbose_name='Content data types', blank=True, db_table='seller_product_data_types_archive')
     data_formats = models.ManyToManyField(DataFormat, verbose_name='Content data formats', blank=True, db_table='seller_product_data_formats_archive')
     data_delivery_types = models.ManyToManyField(
-        DataDeliveryType, verbose_name='Content data types', blank=True, db_table='seller_product_data_delivery_types_archive'
+        DataDeliveryType, verbose_name='Content data types', blank=True, db_table='seller_product_data_delivery_types_archive',
     )
     is_deleted = models.BooleanField(default=False)
 
