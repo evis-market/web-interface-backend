@@ -47,7 +47,15 @@ class SellerProductBaseManager(models.Manager):
         Category = apps.get_model('categories', 'Category')
 
         return self.model.objects.values(
-            'id', 'name', 'price_per_one_time', 'price_per_month', 'price_per_year', 'price_by_request', 'rating'
+            'id',
+            'name',
+            'price_per_one_time',
+            'price_per_month',
+            'price_per_year',
+            'price_by_request',
+            'price_per_usage',
+            'price_per_usage_descr',
+            'rating'
         ).filter(
             categories__id__in=Category.objects.get_queryset_descendants(
                 Category.objects.filter(id__in=categories),

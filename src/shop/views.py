@@ -39,16 +39,24 @@ class ProductsListView(GenericAPIView, ShopService):
     """
     serializer_class = SellerProductSerializer
     pagination_class = ProductsPaginator
-    order_by_allowed_fields = ['id', '-id', 'name', '-name', 'rating', '-rating']
+    order_by_allowed_fields = [
+        'id', '-id', 'name', '-name', 'rating', '-rating', 'price_per_one_time', '-price_per_one_time',
+        'price_per_month', '-price_per_month', 'price_per_year', '-price_per_year', 'price_by_request',
+        '-price_by_request'
+    ]
 
     def get(self, request, format=None):
-        category_ids = request.GET.getlist('category_id')
-        order_by_fields = request.GET.getlist('order_by')
-        seller_products = SellerProduct.objects.get_seller_products_by_categories(category_ids)
-        seller_products = self.order_by_queryset(seller_products, order_by_fields, self.order_by_allowed_fields)
+        seller_products = self.get_shop_products(
+            request.GET.getlist('category_id'), request.GET.getlist('order_by'), self.order_by_allowed_fields
+        )
         seller_products_page = self.paginate_queryset(seller_products)
         serializer = self.serializer_class(seller_products_page, many=True)
-        return response_ok({'seller_products': serializer.data})
+        return response_ok(
+            {
+                'seller_products_count': seller_products.count(),
+                'seller_products': serializer.data
+            },
+        )
 
 
 class ProductDetailView(GenericAPIView):

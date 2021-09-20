@@ -41,7 +41,7 @@ class GeoRegionSerializer(serializers.ModelSerializer):
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GeoRegion
+        model = Language
         fields = ['id', 'name_native', 'name_en', 'slug']
 
 
@@ -80,6 +80,13 @@ class SellerProductsSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'descr',
+            'price_per_one_time',
+            'price_per_month',
+            'price_per_year',
+            'price_by_request',
+            'price_per_usage',
+            'price_per_usage_descr',
+            'rating',
             'seller',
             'categories',
             'geo_regions',
@@ -108,6 +115,12 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
         fields = [
             'name',
             'descr',
+            'price_per_one_time',
+            'price_per_month',
+            'price_per_year',
+            'price_by_request',
+            'price_per_usage',
+            'price_per_usage_descr',
             'seller',
             'categories',
             'geo_regions',
