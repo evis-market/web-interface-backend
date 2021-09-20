@@ -12,10 +12,113 @@ from seller_products.service import SellerProductService
 
 class SellerProductsListView(GenericAPIView, SellerProductService):
     """
-    Get list of all products belong to the current user (must be a seller)
-    Creates a new product
-    URL: `/api/v1/seller-products/my/`
-    METHODS: GET, POST
+    URL: `/api/v1/seller_products/my/`
+
+    Method: `GET`
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "products": [
+            {
+              "name": "Product1 name",
+              "descr": "Product1 description",
+              ...
+            },
+            {
+              "name": "Product2 name",
+              "descr": "Product2 description",
+              ...
+            }
+          ]
+        }
+    **Successful empty response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "products": []
+        }
+
+    **Failed response**
+
+        HTTP status Code: 403
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 403,
+              "msg" : "forbidden"
+          }
+        }
+
+    URL: /api/v1/sellers/settings/my/
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "name": "Product name",
+          "descr": "Product description",
+          "price_one_time": 99.99,
+          "price_per_month": 199,
+          "price_per_year": 999,
+          "price_by_request": false,
+          "price_per_usage": true,
+          "price_per_usage_descr": "$10 per 1000 API requests",
+
+          "data_categories_ids": [1, 2, 3],
+          "data_langs_ids": [1, 2, 3],
+          "data_geo_regions_ids": [1, 2, 3],
+          "data_types_ids": [1],
+          "data_formats_ids": [1, 2],
+          "data_delivery_types_ids": [1, 2],
+          "data_urls": [
+            { "data_delivery_type_id": 1, "data_format_id": 1, "url": "http://domain.com/data1.xlsx" },
+            { "data_delivery_type_id": 1, "data_format_id": 2, "url": "http://domain.com/data1.xml" }
+          ],
+          "data_sample_urls": [
+            "http://domain.com/data_sample1.xls",
+            "http://domain.com/data_sample2.xls"
+          ]
+        }
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 400
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 400,
+              "msg" : "bad request",
+
+              "invalid_fields": {
+                "name": "required field",
+                "descr": "to long, 300 symbols maximum",
+                "data_urls": [
+                    { "data_delivery_type_id": 1, "data_format_id": 1, "error": "invalid format" }
+                ]
+              }
+          }
+        }
     """
     serializer_class = SellerProductsSerializer
     update_serializer_class = SellerProductsUpdateSerializer
@@ -38,9 +141,121 @@ class SellerProductsListView(GenericAPIView, SellerProductService):
 
 class SellerProductsView(APIView, SellerProductService):
     """
-    Get, update or delete a single product by specified ID if it belongs to the current user (must be a seller)
-    URL: `/api/v1/seller-products/my/`
-    METHODS: GET, PUT, DELETE
+    URL: `/api/v1/seller_products/my/:seller_product_id`
+
+    Method: `GET`
+
+    URL parameters
+
+    seller_product_id - seller product ID, example: 1
+
+    **Successful response**
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "product": {
+            "name": "Product1 name",
+            "descr": "Product1 description",
+            ...
+          }
+        }
+    **Failed response**
+        HTTP status Code: 401
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 401,
+              "msg" : "unauthorized"
+          }
+        }
+
+    URL: `/api/v1/sellers/settings/my/`
+
+    Method: `PUT`
+
+    **Request**
+
+        {
+          "name": "Product name",
+          "descr": "Product description",
+          "price_one_time": 99.99,
+          "price_per_month": 199,
+          "price_per_year": 999,
+          "price_by_request": false,
+          "price_per_usage": true,
+          "price_per_usage_descr": "$10 per 1000 API requests",
+
+          "data_categories_ids": [1, 2, 3],
+          "data_langs_ids": [1, 2, 3],
+          "data_geo_regions_ids": [1, 2, 3],
+          "data_types_ids": [1],
+          "data_formats_ids": [1, 2],
+          "data_delivery_types_ids": [1, 2],
+          "data_urls": [
+            { "data_delivery_type_id": 1, "data_format_id": 1, "url": "http://domain.com/data1.xlsx" },
+            { "data_delivery_type_id": 1, "data_format_id": 2, "url": "http://domain.com/data1.xml" }
+          ],
+          "data_sample_urls": [
+            "http://domain.com/data_sample1.xls",
+            "http://domain.com/data_sample2.xls"
+          ]
+        }
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK"
+        }
+    **Failed response**
+
+        HTTP status Code: 400
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 400,
+              "msg" : "bad request",
+
+              "invalid_fields": {
+                "name": "required field",
+                "descr": "to long, 300 symbols maximum",
+                "data_urls": [
+                    { "data_delivery_type_id": 1, "data_format_id": 1, "error": "invalid format" }
+                ]
+              }
+          }
+        }
+
+    URL: `/api/v1/sellers/settings/my/:seller_product_id`
+
+    Method: `DELETE`
+
+    **Successful response**
+
+        HTTP status Code: 204
+
+        {
+          "status": "OK"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 403
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 403,
+              "msg" : "Forbidden"
+          }
+        }
     """
     serializer_class = SellerProductsSerializer
     update_serializer_class = SellerProductsUpdateSerializer
@@ -60,7 +275,6 @@ class SellerProductsView(APIView, SellerProductService):
             self.update_object(seller_product, serializer.validated_data)
         return response_ok({}, http_code=status.HTTP_200_OK)
 
-    @transaction.atomic
     def delete(self, request, pk, format=None):
         seller_product = self.get_seller_product(pk, request.user.id)
         self.delete_object(seller_product)

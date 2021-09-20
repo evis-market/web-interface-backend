@@ -19,9 +19,28 @@ from shop.service import ShopService
 
 class ProductCategoriesListView(GenericAPIView):
     """
-    Displaying categories that has at least one product
     URL: `/api/v1/shop/categories/`
-    METHODS: GET
+
+    Method: `GET`
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "categories": [
+            {
+              "name": "Category1 name",
+              ...
+            },
+            {
+              "name": "Category2 name",
+              ...
+            }
+          ]
+        }
     """
     serializer_class = CategorySerializer
 
@@ -33,9 +52,37 @@ class ProductCategoriesListView(GenericAPIView):
 
 class ProductsListView(GenericAPIView, ShopService):
     """
-    Displaying products by applied filters on product categories
     URL: `/api/v1/shop/products/`
-    METHODS: GET
+
+    Method: `GET`
+
+    **URL parameters**
+
+        all filter options:
+
+        category_ids - products category ID, example: 1,2,3
+        pagination:
+
+        offset
+
+        limit
+
+        order_by
+
+        valid order_by values: name, -name, 'price_per_one_time', '-price_per_one_time',
+        'price_per_month', '-price_per_month', 'price_per_year', '-price_per_year', 'price_by_request',
+        '-price_by_request', rating, -rating
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+          "products": [
+            ...
+          ]
+        }
     """
     serializer_class = SellerProductSerializer
     pagination_class = ProductsPaginator
@@ -61,9 +108,41 @@ class ProductsListView(GenericAPIView, ShopService):
 
 class ProductDetailView(GenericAPIView):
     """
-    Displaying detailed product information
-    URL: `/api/v1/shop/product/<int:seller_product_id>`
-    METHODS: GET
+    URL: `/api/v1/shop/product/:seller_product_id`
+
+    Method: `GET`
+
+    **URL parameters**
+
+        seller_product_id - seller product ID, example: 1
+        Query parameters
+
+        related_products_limit - default 20
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "seller_product": {
+            "name": "Product1 name",
+            "descr": "Product1 description",
+            ...
+          },
+
+          "seller": {
+            "name": "Seller name",
+            "descr": "Seller description",
+            "rating": 4.96,
+            ...
+          }
+
+          "related_products": [
+            ...
+          ]
+        }
     """
     seller_serializer_class = SellerViewSerializer
     seller_product_serializer_class = SellerProductsSerializer
@@ -81,10 +160,39 @@ class ProductDetailView(GenericAPIView):
 
 class RelatedProductsListView(GenericAPIView):
     """
-    Displaying related products of the specified product.
-    Products are related if they share at least one category or descendant category
-    URL: `/api/v1/shop/related_products/<int:seller_product_id>`
-    METHODS: GET
+    URL: `/api/v1/shop/related_products/:seller_product_id`
+
+    Method: `GET`
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "related_products": [
+            {
+              "name": "Product1 name",
+              "descr": "Product1 description",
+              ...
+            },
+            {
+              "name": "Product2 name",
+              "descr": "Product2 description",
+              ...
+            }
+          ]
+        }
+    **Successful empty response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "related_products": []
+        }
     """
     serializer_class = SellerProductSerializer
 
@@ -98,9 +206,24 @@ class RelatedProductsListView(GenericAPIView):
 
 class ProductOptionsListView(GenericAPIView):
     """
-    Displaying all filter options available for products
-    URL: `/api/v1/shop/all_options`
-    METHODS: GET
+    URL: `/api/v1/shop/all_product_options`
+
+    Method: `GET`
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK",
+
+          "categories": [],
+          "langs": [],
+          "geo_regions": [],
+          "data_types": [],
+          "data_formats": [],
+          "data_delivery_types": []
+        }
     """
     category_serializer = CategorySerializer
     geo_region_serializer = GeoRegionSerializer
@@ -109,7 +232,7 @@ class ProductOptionsListView(GenericAPIView):
     data_type_serializer = DataTypeSerializer
 
     def get(self, request, format=None):
-        categories = Category.objects.get_queryset()
+        categories = Category.objects.get_categories_with_recommended()
         geo_regions = GeoRegion.objects.get_queryset()
         data_delivery_types = DataDeliveryType.objects.get_all()
         data_formats = DataFormat.objects.get_all()

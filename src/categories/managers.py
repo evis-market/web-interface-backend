@@ -16,3 +16,10 @@ class CategoryManager(TreeManager):
                 categories=OuterRef('id'),
             )),
         )
+
+    def get_categories_with_recommended(self):
+        SellerProduct = apps.get_model('seller_products', 'SellerProduct')
+
+        return self.model.objects.prefetch_related(
+            'recommended_for',
+        )
