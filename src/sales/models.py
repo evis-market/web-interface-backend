@@ -30,7 +30,7 @@ class SaleProduct(models.Model):
     objects = SaleManager()
 
     class Meta:
-        db_table = 'sale_product'
+        db_table = 'sale_products'
         verbose_name = 'SaleProduct'
         verbose_name_plural = 'SaleProducts'
         ordering = ('sale_id',)
