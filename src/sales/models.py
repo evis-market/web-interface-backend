@@ -1,7 +1,7 @@
 import uuid as uuid
 from django.db import models
 from djmoney.models.fields import MoneyField
-from sale.managers import SaleManager
+from sales.managers import SaleManager
 
 
 class Sale(models.Model):

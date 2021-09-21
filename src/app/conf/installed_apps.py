@@ -12,6 +12,7 @@ INSTALLED_APPS = [
     'shop',
     'data_generator',
     'djmoney',
+    'sales',
 
     'mptt',
 
