@@ -7,10 +7,11 @@ from data_delivery_types.models import DataDeliveryType
 from data_delivery_types.serializers import DataDeliveryTypeSerializer
 from geo_regions.models import GeoRegion
 from geo_regions.serializers import GeoRegionSerializer
+from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from product_data_types.serializers import DataFormatSerializer, DataTypeSerializer
 from seller_products.models import SellerProduct
-from seller_products.serializers import SellerProductsSerializer
+from seller_products.serializers import SellerProductsSerializer, LanguageSerializer
 from sellers.serializer import SellerViewSerializer
 from shop.serializers import SellerProductSerializer
 from shop.paginators import ProductsPaginator
@@ -232,6 +233,7 @@ class ProductOptionsListView(GenericAPIView):
     data_delivery_type_serializer = DataDeliveryTypeSerializer
     data_format_serializer = DataFormatSerializer
     data_type_serializer = DataTypeSerializer
+    language_serializer = LanguageSerializer
 
     def get(self, request, format=None):
         categories = Category.objects.get_categories_with_recommended()
@@ -239,12 +241,14 @@ class ProductOptionsListView(GenericAPIView):
         data_delivery_types = DataDeliveryType.objects.get_all()
         data_formats = DataFormat.objects.get_all()
         data_types = DataType.objects.get_all()
+        languages = Language.objects.get_all()
 
         category_serializer = self.category_serializer(categories, many=True)
         geo_regions = self.geo_region_serializer(geo_regions, many=True)
         data_delivery_types = self.data_delivery_type_serializer(data_delivery_types, many=True)
         data_formats = self.data_format_serializer(data_formats, many=True)
         data_types = self.data_type_serializer(data_types, many=True)
+        languages = self.language_serializer(languages, many=True)
 
         return response_ok({
             'categories': category_serializer.data,
@@ -252,4 +256,5 @@ class ProductOptionsListView(GenericAPIView):
             'data_delivery_types': data_delivery_types.data,
             'data_formats': data_formats.data,
             'data_types': data_types.data,
+            'languages': languages.data
         })
