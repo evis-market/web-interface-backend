@@ -36,7 +36,18 @@ class SellerProductBaseManager(models.Manager):
     def get_related_seller_products(self, pk):
         Category = apps.get_model('categories', 'Category')
 
-        return self.model.objects.values('id').filter(
+        return self.model.objects.values(
+            'id',
+            'name',
+            'descr',
+            'price_per_one_time',
+            'price_per_month',
+            'price_per_year',
+            'price_by_request',
+            'price_per_usage',
+            'price_per_usage_descr',
+            'rating'
+        ).filter(
             categories__id__in=Category.objects.get_queryset_descendants(
                 Category.objects.filter(sellerproduct__id=pk),
                 include_self=True,

@@ -55,14 +55,16 @@ class ProductDetailView(GenericAPIView):
 
     def get(self, request, seller_product_id, format=None):
         seller_product = SellerProduct.objects.get_seller_product_detailed(seller_product_id)
+        related_products = SellerProduct.objects.get_related_seller_products(seller_product_id)
+        related_products_serializer = self.seller_product_serializer_class(related_products, many=True)
         seller = seller_product.seller
         seller_serializer = self.seller_serializer_class(seller)
         seller_product_serializer = self.seller_product_serializer_class(seller_product)
         return response_ok({
             'seller': seller_serializer.data,
             'seller_product': seller_product_serializer.data,
+            'related_products': related_products_serializer.data
         })
-
 
 class RelatedProductsListView(GenericAPIView):
     """
