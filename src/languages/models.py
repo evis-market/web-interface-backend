@@ -7,6 +7,7 @@ class Language(models.Model):
     name_native = models.CharField('Native language name', max_length=150, db_index=True, unique=True)
     name_en = models.CharField('Language name in english', max_length=150, db_index=True, unique=True)
     slug = models.SlugField('slug', max_length=150, db_index=True, unique=True)
+
     objects = LanguageManager()
 
     def __str__(self):

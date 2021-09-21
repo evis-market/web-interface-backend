@@ -2,4 +2,5 @@ from django.db import models
 
 
 class LanguageManager(models.Manager):
-    pass
+    def get_all(self):
+        return self.model.objects.all()

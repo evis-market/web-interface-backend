@@ -41,7 +41,7 @@ class GeoRegionSerializer(serializers.ModelSerializer):
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GeoRegion
+        model = Language
         fields = ['id', 'name_native', 'name_en', 'slug']
 
 
