@@ -20,7 +20,7 @@ class SellerProductBase(models.Model):
     price_per_year = models.FloatField('Price per year', blank=True, null=True, default=None)
     price_by_request = models.FloatField('Price by request', blank=True, null=True, default=None)
     price_per_usage = models.BooleanField('Price per usage True/False', blank=True, null=True, default=None)
-    price_per_usage_descr = models.TextField('Purhcase method description', blank=True, null=True, default=None)
+    price_per_usage_descr = models.TextField('Purchase method description', blank=True, null=True, default=None)
     rating = models.FloatField('Rating', blank=True, null=True, default=None)
     total_reviews_cnt = models.IntegerField('Total count of reviews', default=0)
     version = models.IntegerField('Version', default=1)
