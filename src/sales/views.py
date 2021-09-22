@@ -8,13 +8,6 @@ from sales.selializers import SalesSerializer
 
 class SalesBuyerShoppingListView(GenericAPIView, SalesService):
     """
-    Get buyer shopping list
-    URL: `/api/v1/sales/buyer_shopping_list`
-    METHODS: GET
-    """
-    serializer_class = SalesSerializer
-
-    """
     ## Get buyer shopping list
 
     URL: `/api/v1/sales/buyer_shopping_list`
@@ -35,8 +28,8 @@ class SalesBuyerShoppingListView(GenericAPIView, SalesService):
             }
           ]
         }
-
     """
+    serializer_class = SalesSerializer
 
     def get(self, request):
         salesSvc = SalesService()
@@ -47,13 +40,6 @@ class SalesBuyerShoppingListView(GenericAPIView, SalesService):
 
 
 class SellerSalesListView(GenericAPIView, SalesService):
-    """
-    Get seller sales list
-    URL: `/api/v1/sales/seller_sales_list`
-    METHODS: GET
-    """
-    serializer_class = SalesSerializer
-
     """
     ## Get seller sales list
 
@@ -77,6 +63,7 @@ class SellerSalesListView(GenericAPIView, SalesService):
         }
 
     """
+    serializer_class = SalesSerializer
 
     def get(self, request):
         salesSvc = SalesService()
