@@ -18,7 +18,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-
 urlpatterns = [
     path('api/v1/auth/', include('auth.urls')),
     path('api/v1/users/', include('users.urls')),
@@ -28,6 +27,7 @@ urlpatterns = [
     path('api/v1/seller-products/', include('seller_products.urls')),
     path('api/v1/langs/', include('languages.urls')),
     path('api/v1/shop/', include('shop.urls')),
+    path('api/v1/sales', include('sales.urls')),
     path('admin/', admin.site.urls),
 ]
 
