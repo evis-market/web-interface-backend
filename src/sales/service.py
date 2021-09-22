@@ -1,5 +1,3 @@
-from app import exceptions
-
 from sales.models import Sale
 
 

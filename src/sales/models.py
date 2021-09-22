@@ -25,7 +25,7 @@ class Sale(models.Model):
 
 class SaleProduct(models.Model):
     sale_id = models.ForeignKey('Sale', related_name='SaleProduct', on_delete=models.SET_NULL, null=True)
-    seller_product_archive_id = models.ForeignKey('SellerProductArchive', related_name='SaleProduct', on_delete=models.SET_NULL, null=True)
+    seller_product_archive_id = models.ForeignKey('seller_products.SellerProductArchive', related_name='SaleProduct', on_delete=models.SET_NULL, null=True)
 
     objects = SaleManager()
 
