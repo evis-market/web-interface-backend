@@ -72,7 +72,36 @@ class SendConfirmationEmailView(APIView):
     serializer_class = serializers.SendConfirmationEmailRequestSerializer
     permission_classes = (AllowAny,)
     """
-    TODO: copy from API docs
+    ## Generates new secret_code and sends email with link to confirm email.
+
+    URL: `/api/v1/users/send_email_confirmation`
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "email": "test@test.com"
+        }
+
+    **Successful response**
+
+        {
+          "status": "OK",
+        }
+
+    **Failed response**
+
+        HTTP status Code: 400
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 400,
+              "msg": "email not found"
+          }
+        }
     """
     def post(self, request, *args, **kwargs):
         usersSvc = UsersService(domain=get_current_site(request))
