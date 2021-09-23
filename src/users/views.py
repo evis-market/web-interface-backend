@@ -60,6 +60,7 @@ class SignupView(APIView):
           }
         }
     """
+
     def post(self, request, *args, **kwargs):
         usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
@@ -74,10 +75,26 @@ class SendConfirmationEmailView(APIView):
     """
     TODO: copy from API docs
     """
+
     def post(self, request, *args, **kwargs):
         usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = User.objects.get_by_email(serializer.validated_data['email'])
         usersSvc.send_confirmation_email(user)
+        return response_ok()
+
+
+class UserProfileView(APIView):
+    serializer_class = serializers.UserProfileSerializer
+    permission_classes = (AllowAny,)
+    """
+    TODO: copy from API docs
+    """
+
+    def get(self, request, *args, **kwargs):
+        usersSvc = UsersService(domain=get_current_site(request))
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        usersSvc.get_logged_in_user_profile(user)
         return response_ok()

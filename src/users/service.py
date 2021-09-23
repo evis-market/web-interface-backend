@@ -27,3 +27,6 @@ class UsersService:
             'domain': self.domain,
         })
         send_mail('Confirm your email', message, None, [user.email])
+
+    def get_logged_in_user_profile(self, user: User):
+        pass

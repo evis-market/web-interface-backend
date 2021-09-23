@@ -15,3 +15,10 @@ class SignupRequestSerializer(serializers.ModelSerializer):
 
 class SendConfirmationEmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True, validators=[EmailValidator])
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'phone', 'email', 'wallet_erc20')
