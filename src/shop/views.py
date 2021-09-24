@@ -51,7 +51,7 @@ class ProductCategoriesListView(GenericAPIView):
         return response_ok({'categories': serializer.data})
 
 
-class ProductsListView(GenericAPIView, ShopService):
+class ProductsListView(GenericAPIView):
     """
     URL: `/api/v1/shop/products/`
 
@@ -94,7 +94,8 @@ class ProductsListView(GenericAPIView, ShopService):
     ]
 
     def get(self, request, format=None):
-        seller_products = self.get_shop_products(
+        shop_service = ShopService()
+        seller_products = shop_service.get_shop_products(
             request.GET.getlist('category_id'), request.GET.getlist('order_by'), self.order_by_allowed_fields
         )
         seller_products_page = self.paginate_queryset(seller_products)
@@ -160,6 +161,7 @@ class ProductDetailView(GenericAPIView):
             'seller_product': seller_product_serializer.data,
             'related_products': related_products_serializer.data
         })
+
 
 class RelatedProductsListView(GenericAPIView):
     """

@@ -61,10 +61,10 @@ class SignupView(APIView):
         }
     """
     def post(self, request, *args, **kwargs):
-        usersSvc = UsersService(domain=get_current_site(request))
+        users_service = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = usersSvc.signup(data=serializer.validated_data)
+        user = users_service.signup(data=serializer.validated_data)
         return response_ok({'user_id': user.id})
 
 
@@ -75,9 +75,9 @@ class SendConfirmationEmailView(APIView):
     TODO: copy from API docs
     """
     def post(self, request, *args, **kwargs):
-        usersSvc = UsersService(domain=get_current_site(request))
+        users_service = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = User.objects.get_by_email(serializer.validated_data['email'])
-        usersSvc.send_confirmation_email(user)
+        users_service.send_confirmation_email(user)
         return response_ok()
