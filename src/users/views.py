@@ -98,4 +98,4 @@ class UserProfileView(APIView):
         serializer.is_valid(raise_exception=True)
         user = User.objects.get_by_email(serializer.validated_data['email'])
         usersSvc.get_logged_in_user_profile(user)
-        return response_ok()
+        return response_ok({'profile': serializer.data})
