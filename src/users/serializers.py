@@ -28,3 +28,7 @@ class UserProfileUpdateSerializer(serializers.ModelSerializer):
     phone = serializers.CharField(required=False)
     email = serializers.EmailField(required=False)
     wallet_for_payments_erc20 = serializers.CharField(required=False)
+
+    def is_valid(self, raise_exception=False):
+        super().is_valid(raise_exception)
+        return self.email or self.phone or self.wallet_for_payments_erc20
