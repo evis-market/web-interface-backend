@@ -95,17 +95,13 @@ class UserProfileView(APIView):
     """
 
     def get(self, request, *args, **kwargs):
-        usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = User.objects.get_by_email(serializer.validated_data['email'])
-        usersSvc.get_logged_in_user_profile(user)
         return response_ok({'profile': serializer.data})
 
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        usersSvc = UsersService(domain=get_current_site(request))
         with transaction.atomic():
-            self.update_user_profile(user=request.user, data=serializer.validated_data)
+            usersSvc.update_user_profile(user=request.user, data=serializer.validated_data)
         return response_ok()
-
