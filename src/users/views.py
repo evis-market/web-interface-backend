@@ -1,4 +1,5 @@
 from django.contrib.sites.shortcuts import get_current_site
+from django.db import transaction
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
@@ -60,6 +61,7 @@ class SignupView(APIView):
           }
         }
     """
+
     def post(self, request, *args, **kwargs):
         usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
@@ -74,10 +76,32 @@ class SendConfirmationEmailView(APIView):
     """
     TODO: copy from API docs
     """
+
     def post(self, request, *args, **kwargs):
         usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = User.objects.get_by_email(serializer.validated_data['email'])
         usersSvc.send_confirmation_email(user)
+        return response_ok()
+
+
+class UserProfileView(APIView):
+    serializer_class = serializers.UserProfileSerializer
+    update_serializer = serializers.UserProfileUpdateSerializer
+    permission_classes = (AllowAny,)
+    """
+    TODO: copy from API docs
+    """
+
+    def get(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        return response_ok({'profile': serializer.data})
+
+    def put(self, request, *args, **kwargs):
+        serializer = self.update_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        usersSvc = UsersService(domain=get_current_site(request))
+        with transaction.atomic():
+            usersSvc.update_user_profile(user=request.user, data=serializer.validated_data)
         return response_ok()
