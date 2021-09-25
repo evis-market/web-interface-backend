@@ -10,12 +10,12 @@ class UsersService:
 
     def signup(self, data: dict):
         for p in ('phone', 'email', 'wallet_erc20'):
-            if not data[p]:
+            if p in data and not data[p]:
                 del data[p]
 
         user = User.objects.create_user(**data)
 
-        if data['email']:
+        if 'email' in data and data['email']:
             self.send_confirmation_email(user)
 
         return user
