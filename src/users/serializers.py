@@ -32,3 +32,7 @@ class UserProfileUpdateSerializer(serializers.ModelSerializer):
     def is_valid(self, raise_exception=False):
         super().is_valid(raise_exception)
         return self.email or self.phone or self.wallet_for_payments_erc20
+
+
+class UserPasswordUpdateSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(min_length=8, required=True)

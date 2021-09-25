@@ -38,3 +38,10 @@ class UsersService:
                 'email': data['email'],
                 'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
             })
+
+    def update_user_password(self, user: User, data: dict) -> None:
+        User.objects.update(
+            user=user,
+            defaults={
+                'password': data['password'],
+            })

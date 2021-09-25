@@ -105,3 +105,19 @@ class UserProfileView(APIView):
         with transaction.atomic():
             usersSvc.update_user_profile(user=request.user, data=serializer.validated_data)
         return response_ok()
+
+
+class UserPasswordView(APIView):
+    update_serializer = serializers.UserPasswordUpdateSerializer
+    permission_classes = (AllowAny,)
+    """
+    TODO: copy from API docs 
+    """
+
+    def put(self, request, *args, **kwargs):
+        serializer = self.update_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        usersSvc = UsersService(domain=get_current_site(request))
+        with transaction.atomic():
+            usersSvc.update_user_password(user=request.user, data=serializer.validated_data)
+        return response_ok()
