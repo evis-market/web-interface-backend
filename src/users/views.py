@@ -96,5 +96,6 @@ class UserProfileView(APIView):
         usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
+        user = User.objects.get_by_email(serializer.validated_data['email'])
         usersSvc.get_logged_in_user_profile(user)
         return response_ok()
