@@ -23,8 +23,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class UserProfileUpdateSerializer(serializers.ModelSerializer):
-    first_name = serializers.CharField(required=True)
-    last_name = serializers.CharField(required=True)
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
     phone = serializers.CharField(required=False)
-    email = serializers.EmailField(required=True)
+    email = serializers.EmailField(required=False)
     wallet_for_payments_erc20 = serializers.CharField(required=False)
