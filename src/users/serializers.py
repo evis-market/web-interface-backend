@@ -5,7 +5,6 @@ from users.models import User
 
 
 class SignupRequestSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'phone', 'email', 'wallet_erc20', 'password')
@@ -18,7 +17,14 @@ class SendConfirmationEmailRequestSerializer(serializers.Serializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'phone', 'email', 'wallet_erc20')
+
+
+class UserProfileUpdateSerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(required=True)
+    last_name = serializers.CharField(required=True)
+    phone = serializers.CharField(required=False)
+    email = serializers.EmailField(required=True)
+    wallet_for_payments_erc20 = serializers.CharField(required=False)

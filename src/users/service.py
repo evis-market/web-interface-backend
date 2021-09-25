@@ -28,5 +28,13 @@ class UsersService:
         })
         send_mail('Confirm your email', message, None, [user.email])
 
-    def get_logged_in_user_profile(self, user: User):
-        pass
+    def update_user_profile(self, user: User, data: dict) -> None:
+        User.objects.update_or_create(
+            user=user,
+            defaults={
+                'first_name': data['first_name'],
+                'last_name': data['last_name'],
+                'phone': data['phone'],
+                'email': data['email'],
+                'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
+            })
