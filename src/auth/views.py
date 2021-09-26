@@ -6,7 +6,7 @@ from auth.serializers import GrantTokenSerializer
 from auth.service import JWTAuthService
 
 
-class GrantJWTTokenView(APIView, JWTAuthService):
+class GrantJWTTokenView(APIView):
     """
     ## Authentication by email or phone
 
@@ -94,7 +94,8 @@ class GrantJWTTokenView(APIView, JWTAuthService):
     permission_classes = ()
 
     def post(self, request):
+        jwt_auth_service = JWTAuthService()
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = self.grant_jwt_token(data=serializer.validated_data)
+        result = jwt_auth_service.grant_jwt_token(data=serializer.validated_data)
         return response_ok(result)

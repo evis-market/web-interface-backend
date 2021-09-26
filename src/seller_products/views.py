@@ -10,7 +10,7 @@ from seller_products.serializers import SellerProductsSerializer, SellerProducts
 from seller_products.service import SellerProductService
 
 
-class SellerProductsListView(GenericAPIView, SellerProductService):
+class SellerProductsListView(GenericAPIView):
     """
     URL: `/api/v1/seller_products/my/`
 
@@ -130,16 +130,17 @@ class SellerProductsListView(GenericAPIView, SellerProductService):
         return response_ok({'seller-products': serializer.data})
 
     def post(self, request, format=None):
-        seller = self.get_seller(request.user.id)
+        seller_product_service = SellerProductService()
+        seller = seller_product_service.get_seller(request.user.id)
         request.data['seller'] = seller.seller_id
         serializer = self.update_serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
-            self.create_object(serializer.validated_data)
+            seller_product_service.create_object(serializer.validated_data)
         return response_ok({}, http_code=status.HTTP_200_OK)
 
 
-class SellerProductsView(APIView, SellerProductService):
+class SellerProductsView(APIView):
     """
     URL: `/api/v1/seller_products/my/:seller_product_id`
 
@@ -267,15 +268,17 @@ class SellerProductsView(APIView, SellerProductService):
         return response_ok(serializer.data)
 
     def put(self, request, pk, format=None):
-        seller_product = self.get_seller_product(pk, request.user.id)
+        seller_product_service = SellerProductService()
+        seller_product = seller_product_service.get_seller_product(pk, request.user.id)
         request.data['seller'] = request.user.id
         serializer = self.update_serializer_class(seller_product, data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
-            self.update_object(seller_product, serializer.validated_data)
+            seller_product_service.update_object(seller_product, serializer.validated_data)
         return response_ok({}, http_code=status.HTTP_200_OK)
 
     def delete(self, request, pk, format=None):
-        seller_product = self.get_seller_product(pk, request.user.id)
-        self.delete_object(seller_product)
+        seller_product_service = SellerProductService()
+        seller_product = seller_product_service.get_seller_product(pk, request.user.id)
+        seller_product_service.delete_object(seller_product)
         return response_ok({}, http_code=status.HTTP_204_NO_CONTENT)
