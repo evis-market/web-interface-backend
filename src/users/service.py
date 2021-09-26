@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 from users.models import User
 
 
-class UsersService:
+class SignupService:
     def __init__(self, domain: str):
         self.domain = domain
 
@@ -28,7 +28,9 @@ class UsersService:
         })
         send_mail('Confirm your email', message, None, [user.email])
 
-    def update_user_profile(self, user: User, data: dict) -> None:
+
+class UsersService:
+    def update_profile(self, user: User, data: dict) -> None:
         User.objects.update(
             user=user,
             defaults={
@@ -39,7 +41,7 @@ class UsersService:
                 'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
             })
 
-    def update_user_password(self, user: User, data: dict) -> None:
+    def update_password(self, user: User, data: dict) -> None:
         User.objects.update(
             user=user,
             defaults={

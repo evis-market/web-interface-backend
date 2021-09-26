@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from app.response import response_ok
 from users import serializers
 from users.models import User
-from users.service import UsersService
+from users.service import SignupService, UsersService
 
 
 class SignupView(APIView):
@@ -63,10 +63,10 @@ class SignupView(APIView):
     """
 
     def post(self, request, *args, **kwargs):
-        usersSvc = UsersService(domain=get_current_site(request))
+        signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = usersSvc.signup(data=serializer.validated_data)
+        user = signup_service.signup(data=serializer.validated_data)
         return response_ok({'user_id': user.id})
 
 
@@ -78,11 +78,11 @@ class SendConfirmationEmailView(APIView):
     """
 
     def post(self, request, *args, **kwargs):
-        usersSvc = UsersService(domain=get_current_site(request))
+        signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = User.objects.get_by_email(serializer.validated_data['email'])
-        usersSvc.send_confirmation_email(user)
+        signup_service.send_confirmation_email(user)
         return response_ok()
 
 
@@ -90,6 +90,7 @@ class UserProfileView(APIView):
     serializer_class = serializers.UserProfileSerializer
     update_serializer = serializers.UserProfileUpdateSerializer
     permission_classes = (AllowAny,)
+    users_service = UsersService()
     """
     TODO: copy from API docs
     """
@@ -101,15 +102,14 @@ class UserProfileView(APIView):
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        usersSvc = UsersService(domain=get_current_site(request))
-        with transaction.atomic():
-            usersSvc.update_user_profile(user=request.user, data=serializer.validated_data)
+        self.users_service.update_user_profile(user=request.user, data=serializer.validated_data)
         return response_ok()
 
 
-class UserPasswordView(APIView):
+class UserUpdatePasswordView(APIView):
     update_serializer = serializers.UserPasswordUpdateSerializer
     permission_classes = (AllowAny,)
+    users_service = UsersService()
     """
     TODO: copy from API docs 
     """
@@ -117,7 +117,5 @@ class UserPasswordView(APIView):
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        usersSvc = UsersService(domain=get_current_site(request))
-        with transaction.atomic():
-            usersSvc.update_user_password(user=request.user, data=serializer.validated_data)
+        self.users_service.update_user_password(user=request.user, data=serializer.validated_data)
         return response_ok()
