@@ -4,18 +4,18 @@ from django.template.loader import render_to_string
 from users.models import User
 
 
-class UsersService:
+class SignupService:
     def __init__(self, domain: str):
         self.domain = domain
 
     def signup(self, data: dict):
         for p in ('phone', 'email', 'wallet_erc20'):
-            if not data[p]:
+            if p in data and not data[p]:
                 del data[p]
 
         user = User.objects.create_user(**data)
 
-        if data['email']:
+        if 'email' in data and data['email']:
             self.send_confirmation_email(user)
 
         return user
@@ -27,3 +27,23 @@ class UsersService:
             'domain': self.domain,
         })
         send_mail('Confirm your email', message, None, [user.email])
+
+
+class UsersService:
+    def update_profile(self, user: User, data: dict) -> None:
+        User.objects.update(
+            user=user,
+            defaults={
+                'first_name': data['first_name'],
+                'last_name': data['last_name'],
+                'phone': data['phone'],
+                'email': data['email'],
+                'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
+            })
+
+    def update_password(self, user: User, data: dict) -> None:
+        User.objects.update(
+            user=user,
+            defaults={
+                'password': data['password'],
+            })
