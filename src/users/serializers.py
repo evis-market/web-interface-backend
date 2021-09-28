@@ -2,6 +2,8 @@ from django.core.validators import EmailValidator
 from rest_framework import serializers
 
 from users.models import User
+import re
+from app import exceptions
 
 
 class SignupRequestSerializer(serializers.ModelSerializer):
@@ -10,6 +12,13 @@ class SignupRequestSerializer(serializers.ModelSerializer):
         fields = ('first_name', 'last_name', 'phone', 'email', 'wallet_erc20', 'password')
         extra_kwargs = {'password': {'write_only': True}}
         # TODO: привести email к нижнему регистру, сделать валидацию email (валидный email), телефона (цифры от 7шт до 15шт)
+
+    def is_valid(self, raise_exception=False):
+        super().is_valid(raise_exception)
+        self.data['email'] = self.data['email'].lower()
+        email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        if not re.fullmatch(email_pattern, self.data['email']):
+            raise exceptions.BadRequest('The email is Invalid')
 
 
 class SendConfirmationEmailRequestSerializer(serializers.Serializer):
