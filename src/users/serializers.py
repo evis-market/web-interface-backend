@@ -5,6 +5,8 @@ from users.models import User
 import re
 from app import exceptions
 
+EMAIL_PATTERN = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+WALLET_ERC_20_PATTERN = r'^0x[a-fA-F0-9]{40}$'
 MIN_PASSWORD_LENGTH = 8
 
 
@@ -18,11 +20,14 @@ class SignupRequestSerializer(serializers.ModelSerializer):
     def is_valid(self, raise_exception=False):
         super().is_valid(raise_exception)
         self.data['email'] = self.data['email'].lower()
-        email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-        if not re.fullmatch(email_pattern, self.data['email']):
+        if not re.fullmatch(EMAIL_PATTERN, self.data['email']):
             raise exceptions.BadRequest('The email is Invalid')
         if len(self.data['password']) < MIN_PASSWORD_LENGTH:
             raise exceptions.BadRequest(f'The password should be {MIN_PASSWORD_LENGTH} or more symbols')
+        if not self.data['phone'].isdigit() or len(self.data['phone']) < 11 or len(self.data['phone']) > 15:
+            raise exceptions.BadRequest(f'The phone should be only digits with length from 11 to 15')
+        if not re.fullmatch(WALLET_ERC_20_PATTERN, self.data['wallet_for_payments_erc20']):
+            raise exceptions.BadRequest('The wallet ERC-20 is Invalid')
 
 
 class SendConfirmationEmailRequestSerializer(serializers.Serializer):
