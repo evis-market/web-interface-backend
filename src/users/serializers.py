@@ -5,6 +5,8 @@ from users.models import User
 import re
 from app import exceptions
 
+MIN_PASSWORD_LENGTH = 8
+
 
 class SignupRequestSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,6 +21,8 @@ class SignupRequestSerializer(serializers.ModelSerializer):
         email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if not re.fullmatch(email_pattern, self.data['email']):
             raise exceptions.BadRequest('The email is Invalid')
+        if len(self.data['password']) < MIN_PASSWORD_LENGTH:
+            raise exceptions.BadRequest(f'The password should be {MIN_PASSWORD_LENGTH} or more symbols')
 
 
 class SendConfirmationEmailRequestSerializer(serializers.Serializer):
