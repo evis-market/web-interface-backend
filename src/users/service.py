@@ -21,18 +21,18 @@ class TokenGenerator(PasswordResetTokenGenerator):
 account_activation_token = TokenGenerator()
 
 
-class UsersService:
+class SignupService:
     def __init__(self, domain: str):
         self.domain = domain
 
     def signup(self, data: dict):
         for p in ('phone', 'email', 'wallet_erc20'):
-            if not data[p]:
+            if p in data and not data[p]:
                 del data[p]
 
         user = User.objects.create_user(**data)
 
-        if data['email']:
+        if 'email' in data and data['email']:
             self.send_confirmation_email(user)
 
         return user
@@ -53,3 +53,24 @@ class UsersService:
             raise exceptions.NotFound(msg=INVALID_SECRET_CODE_MSG)
         user.is_active = True
         user.save()
+
+
+class UsersService:
+    def update_profile(self, user: User, data: dict) -> None:
+        User.objects.update(
+            user=user,
+            defaults={
+                'first_name': data['first_name'],
+                'last_name': data['last_name'],
+                'phone': data['phone'],
+                'email': data['email'],
+                'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
+            })
+
+    def update_password(self, user: User, data: dict) -> None:
+        User.objects.update(
+            user=user,
+            defaults={
+                'password': data['password'],
+            })
+

@@ -8,7 +8,7 @@ from sellers.serializer import SellerUpdateSerializer, SellerViewSerializer
 from sellers.service import SellerService
 
 
-class SellerSettingsView(GenericAPIView, SellerService):
+class SellerSettingsView(GenericAPIView):
     """
     ## Get seller settings
 
@@ -120,8 +120,9 @@ class SellerSettingsView(GenericAPIView, SellerService):
         return response_ok({'seller': result})
 
     def put(self, request):
+        seller_service = SellerService()
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
-            self.create_seller(data=serializer.validated_data, user=request.user)
+            seller_service.create_seller(data=serializer.validated_data, user=request.user)
         return response_ok()

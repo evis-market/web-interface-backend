@@ -1,5 +1,10 @@
 mysqlclient
 markdown
+Faker
+mixer
+python-dateutil
+text-unidecode
+pytest
 django
 django-environ
 django-ipware
@@ -10,11 +15,7 @@ django-admin-list-filter-dropdown
 django-admin-rangefilter
 djangorestframework
 djangorestframework-simplejwt
+django-mptt
+django-money
 drf-yasg
 pytest-django
-Faker
-mixer
-python-dateutil
-text-unidecode
-pytest
-django-mptt
