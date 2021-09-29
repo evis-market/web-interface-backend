@@ -110,3 +110,45 @@ class SendConfirmationEmailView(APIView):
         user = User.objects.get_by_email(serializer.validated_data['email'])
         usersSvc.send_confirmation_email(user)
         return response_ok()
+
+
+class ConfirmEmailView(APIView, UsersService):
+    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    permission_classes = (AllowAny,)
+    """
+    ## Confirm email
+    
+    URL: `/api/v1/users/confirm_email`
+   
+    Method: `POST`
+    
+    **Request**
+        {
+          "email": "test@test.com",
+          "secret_code": "asd134df"
+        }
+    
+    **Successful response**
+    
+        HTTP status Code: 200
+        {
+          "status": "OK"
+        }
+        
+    **Failed response**
+    
+        HTTP status Code: 405
+        {
+          "status": "ERR",
+          "error": {
+              "code": 405,
+              "msg" : "invalid secret code"
+          }
+        }
+    """
+    def post(self, request, *args, **kwargs):
+        usersSvc = UsersService(domain=get_current_site(request))
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = usersSvc.confirm_email(data=serializer.validated_data)
+        return result

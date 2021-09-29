@@ -1,7 +1,24 @@
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.core import signing
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 
 from users.models import User
+
+from app import exceptions
+
+NOTFOUND_USER_MSG = 'User not found'
+INVALID_SECRET_CODE_MSG = 'invalid secret code'
+
+
+class TokenGenerator(PasswordResetTokenGenerator):
+    def _make_hash_value(self, user, timestamp):
+        return (
+            signing.dumps(obj=getattr(user, user.USERNAME_FIELD))
+        )
+
+
+account_activation_token = TokenGenerator()
 
 
 class UsersService:
@@ -27,3 +44,12 @@ class UsersService:
             'domain': self.domain,
         })
         send_mail('Confirm your email', message, None, [user.email])
+
+    def confirm_email(self, data: dict):
+        user = User.objects.get_by_login(data['email'])
+        if not user:
+            raise exceptions.NotFound(msg=NOTFOUND_USER_MSG)
+        if not account_activation_token.check_token(user, data['secret_code']):
+            raise exceptions.NotFound(msg=INVALID_SECRET_CODE_MSG)
+        user.is_active = True
+        user.save()
