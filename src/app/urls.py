@@ -24,7 +24,7 @@ urlpatterns = [
     path('api/v1/health_check/', include('health_check.urls')),
     path('api/v1/users/', include('users.urls')),
     path('api/v1/sellers/', include('sellers.urls')),
-    path('api/v1/seller-products/', include('seller_products.urls')),
+    path('api/v1/seller_products/', include('seller_products.urls')),
     path('api/v1/sales/', include('sales.urls')),
     path('api/v1/categories/', include('categories.urls')),
     path('api/v1/geo-regions/', include('geo_regions.urls')),

@@ -59,7 +59,7 @@ class SellerProductsListView(GenericAPIView):
           }
         }
 
-    URL: /api/v1/sellers/settings/my/
+    URL: `/api/v1/seller_products/my/`
 
     Method: `POST`
 
@@ -174,7 +174,7 @@ class SellerProductsView(APIView):
           }
         }
 
-    URL: `/api/v1/sellers/settings/my/`
+    URL: `/api/v1/seller_products/my/`
 
     Method: `PUT`
 
@@ -233,7 +233,7 @@ class SellerProductsView(APIView):
           }
         }
 
-    URL: `/api/v1/sellers/settings/my/:seller_product_id`
+    URL: `/api/v1/seller_products/my/:seller_product_id`
 
     Method: `DELETE`
 
