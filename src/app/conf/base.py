@@ -4,3 +4,5 @@
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 WSGI_APPLICATION = 'app.wsgi.application'
+
+MEDIA_ROOT = '/tmp'

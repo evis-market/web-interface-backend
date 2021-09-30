@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/v1/categories/', include('categories.urls')),
     path('api/v1/geo-regions/', include('geo_regions.urls')),
     path('api/v1/langs/', include('languages.urls')),
+    path('api/v1/upload/', include('upload.urls')),
     path('admin/', admin.site.urls),
 ]
 
