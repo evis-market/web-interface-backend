@@ -74,7 +74,36 @@ class SendConfirmationEmailView(APIView):
     serializer_class = serializers.SendConfirmationEmailRequestSerializer
     permission_classes = (AllowAny,)
     """
-    TODO: copy from API docs
+    ## Generates new secret_code and sends email with link to confirm email.
+
+    URL: `/api/v1/users/send_email_confirmation`
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "email": "test@test.com"
+        }
+
+    **Successful response**
+
+        {
+          "status": "OK",
+        }
+
+    **Failed response**
+
+        HTTP status Code: 400
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 400,
+              "msg": "email not found"
+          }
+        }
     """
 
     def post(self, request, *args, **kwargs):
@@ -119,3 +148,45 @@ class UserUpdatePasswordView(APIView):
         serializer.is_valid(raise_exception=True)
         self.users_service.update_user_password(user=request.user, data=serializer.validated_data)
         return response_ok()
+
+
+class ConfirmEmailView(APIView, UsersService):
+    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    permission_classes = (AllowAny,)
+    """
+    ## Confirm email
+    
+    URL: `/api/v1/users/confirm_email`
+   
+    Method: `POST`
+    
+    **Request**
+        {
+          "email": "test@test.com",
+          "secret_code": "asd134df"
+        }
+    
+    **Successful response**
+    
+        HTTP status Code: 200
+        {
+          "status": "OK"
+        }
+        
+    **Failed response**
+    
+        HTTP status Code: 405
+        {
+          "status": "ERR",
+          "error": {
+              "code": 405,
+              "msg" : "invalid secret code"
+          }
+        }
+    """
+    def post(self, request, *args, **kwargs):
+        usersSvc = UsersService(domain=get_current_site(request))
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = usersSvc.confirm_email(data=serializer.validated_data)
+        return result
