@@ -198,6 +198,8 @@ class SendResetPasswordEmailView(APIView, UsersService):
 
     """
     ## Reset password by email
+    
+    Generates new secret_code and sends email with link to set new password.
 
     URL: `/api/v1/users/send_reset_password_email`
 
