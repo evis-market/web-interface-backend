@@ -50,8 +50,19 @@ class SignupService:
         if not user:
             raise exceptions.NotFound(msg=NOTFOUND_USER_MSG)
         if not account_activation_token.check_token(user, data['secret_code']):
-            raise exceptions.NotFound(msg=INVALID_SECRET_CODE_MSG)
+            raise exceptions.BadRequest(msg=INVALID_SECRET_CODE_MSG)
         user.is_active = True
+        user.save()
+
+    def set_password_by_secret_code(self, data: dict):
+        if 'email' not in data or not data['email']:
+            raise exceptions.NotFound(msg='email not found')
+        user = User.objects.get_by_login(data['email'])
+        if not user:
+            raise exceptions.NotFound('User not found')
+        if not account_activation_token.check_token(user, data['secret_code']):
+            raise exceptions.BadRequest(msg=INVALID_SECRET_CODE_MSG)
+        user.password = data['password']
         user.save()
 
 
@@ -73,4 +84,3 @@ class UsersService:
             defaults={
                 'password': data['password'],
             })
-

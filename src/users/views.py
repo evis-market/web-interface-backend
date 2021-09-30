@@ -190,3 +190,52 @@ class ConfirmEmailView(APIView, UsersService):
         serializer.is_valid(raise_exception=True)
         result = usersSvc.confirm_email(data=serializer.validated_data)
         return result
+
+
+class SetPasswordBySecretCodeView(APIView, UsersService):
+    serializer_class = serializers.SetPasswordBySecretCodeRequestSerializer
+    permission_classes = (AllowAny,)
+
+    """
+    ## Set password by secret code
+
+    Sends email with link to set new password.
+
+    URL: `/api/v1/users/set_password_by_secret_code`
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "password": "new_strong_password",
+          "secret_code": "asd134df"
+        }
+
+    **Successful response**
+
+        HTTP status Code: 200
+    
+        {
+          "status": "OK"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 405
+    
+        {
+          "status": "ERR",
+    
+          "error": {
+              "code": 405,
+              "msg" : "invalid secret code"
+          }
+        }
+    """
+    def post(self, request):
+        usersSvc = UsersService(domain=get_current_site(request))
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = usersSvc.set_password_by_secret_code(self, data=serializer.validated_data)
+        return result
