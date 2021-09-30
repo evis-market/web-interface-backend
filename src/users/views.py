@@ -190,3 +190,49 @@ class ConfirmEmailView(APIView, UsersService):
         serializer.is_valid(raise_exception=True)
         result = usersSvc.confirm_email(data=serializer.validated_data)
         return result
+
+
+class SendResetPasswordEmailView(APIView, UsersService):
+    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    permission_classes = (AllowAny,)
+
+    """
+    ## Reset password by email
+
+    URL: `/api/v1/users/send_reset_password_email`
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "email": "test@test.com"
+        }
+    
+    **Successful response**
+    
+        HTTP status Code: 200
+    
+        {
+          "status": "OK"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 404
+    
+        {
+          "status": "ERR",
+    
+          "error": {
+              "code": 404,
+              "msg" : "email not found"
+          }
+        }
+    """
+    def post(self, request):
+        usersSvc = UsersService(domain=get_current_site(request))
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = usersSvc.send_reset_password_email(self, data=serializer.validated_data, domain=get_current_site(request))
+        return result

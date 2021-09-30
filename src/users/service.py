@@ -1,7 +1,9 @@
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core import signing
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage
 from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 
 from users.models import User
 
@@ -54,6 +56,22 @@ class SignupService:
         user.is_active = True
         user.save()
 
+    def send_reset_password_email(self, data: dict, domain):
+        if 'email' not in data or not data['email']:
+            raise exceptions.NotFound(msg='email not found')
+        user = User.objects.get_by_login(data['email'])
+        if not user:
+            raise exceptions.NotFound('User not found')
+        message = render_to_string('activate_account.html', {
+            'user': user,
+            'domain': domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+            'secret_code': account_activation_token.make_token(user),
+        })
+        to_email = data['email']
+        email = EmailMessage('Reset your password', message, to=[to_email])
+        email.send()
+
 
 class UsersService:
     def update_profile(self, user: User, data: dict) -> None:
@@ -73,4 +91,3 @@ class UsersService:
             defaults={
                 'password': data['password'],
             })
-
