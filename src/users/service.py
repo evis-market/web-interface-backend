@@ -9,7 +9,6 @@ from users.models import User
 
 from app import exceptions
 
-NOTFOUND_USER_MSG = 'User not found'
 INVALID_SECRET_CODE_MSG = 'invalid secret code'
 
 
@@ -49,11 +48,18 @@ class SignupService:
 
     def confirm_email(self, data: dict):
         user = User.objects.get_by_login(data['email'])
-        if not user:
-            raise exceptions.NotFound(msg=NOTFOUND_USER_MSG)
         if not account_activation_token.check_token(user, data['secret_code']):
-            raise exceptions.NotFound(msg=INVALID_SECRET_CODE_MSG)
-        user.is_active = True
+            raise exceptions.BadRequest(msg=INVALID_SECRET_CODE_MSG)
+        user.is_email_confirmed = True
+        user.save()
+
+    def set_password_by_secret_code(self, data: dict):
+        if 'email' not in data or not data['email']:
+            raise exceptions.NotFound(msg='email not found')
+        user = User.objects.get_by_login(data['email'])
+        if not account_activation_token.check_token(user, data['secret_code']):
+            raise exceptions.BadRequest(msg=INVALID_SECRET_CODE_MSG)
+        user.set_password(data['password'])
         user.save()
 
     def send_reset_password_email(self, data: dict, domain):
@@ -66,8 +72,7 @@ class SignupService:
             'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
             'secret_code': account_activation_token.make_token(user),
         })
-        to_email = data['email']
-        email = EmailMessage('Reset your password', message, to=[to_email])
+        email = EmailMessage('Reset your password', message, to=[data['email']])
         email.send()
 
 

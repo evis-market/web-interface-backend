@@ -10,8 +10,6 @@ from users.service import SignupService, UsersService
 
 
 class SignupView(APIView):
-    serializer_class = serializers.SignupRequestSerializer
-    permission_classes = (AllowAny,)
     """
     ## Signup by email or phone
 
@@ -61,6 +59,8 @@ class SignupView(APIView):
           }
         }
     """
+    serializer_class = serializers.SignupRequestSerializer
+    permission_classes = (AllowAny,)
 
     def post(self, request, *args, **kwargs):
         signup_service = SignupService(domain=get_current_site(request))
@@ -71,8 +71,6 @@ class SignupView(APIView):
 
 
 class SendConfirmationEmailView(APIView):
-    serializer_class = serializers.SendConfirmationEmailRequestSerializer
-    permission_classes = (AllowAny,)
     """
     ## Generates new secret_code and sends email with link to confirm email.
 
@@ -105,6 +103,8 @@ class SendConfirmationEmailView(APIView):
           }
         }
     """
+    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    permission_classes = (AllowAny,)
 
     def post(self, request, *args, **kwargs):
         signup_service = SignupService(domain=get_current_site(request))
@@ -116,13 +116,13 @@ class SendConfirmationEmailView(APIView):
 
 
 class UserProfileView(APIView):
+    """
+    TODO: copy from API docs
+    """
     serializer_class = serializers.UserProfileSerializer
     update_serializer = serializers.UserProfileUpdateSerializer
     permission_classes = (AllowAny,)
     users_service = UsersService()
-    """
-    TODO: copy from API docs
-    """
 
     def get(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -136,12 +136,12 @@ class UserProfileView(APIView):
 
 
 class UserUpdatePasswordView(APIView):
-    update_serializer = serializers.UserPasswordUpdateSerializer
-    permission_classes = (AllowAny,)
-    users_service = UsersService()
     """
     TODO: copy from API docs 
     """
+    update_serializer = serializers.UserPasswordUpdateSerializer
+    permission_classes = (AllowAny,)
+    users_service = UsersService()
 
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
@@ -193,18 +193,14 @@ class ConfirmEmailView(APIView, UsersService):
         return result
 
 
-class SendResetPasswordEmailView(APIView, UsersService):
+ class SendResetPasswordEmailView(APIView, UsersService):
     """
     ## Reset password by email
     
     Generates new secret_code and sends email with link to set new password.
-
     URL: `/api/v1/users/send_reset_password_email`
-
     Method: `POST`
-
     **Request**
-
         {
           "email": "test@test.com"
         }
@@ -216,9 +212,7 @@ class SendResetPasswordEmailView(APIView, UsersService):
         {
           "status": "OK"
         }
-
     **Failed response**
-
         HTTP status Code: 404
     
         {
@@ -239,3 +233,42 @@ class SendResetPasswordEmailView(APIView, UsersService):
         serializer.is_valid(raise_exception=True)
         result = usersSvc.send_reset_password_email(self, data=serializer.validated_data, domain=get_current_site(request))
         return result
+class SetPasswordBySecretCodeView(APIView, UsersService):
+    """
+    ## Set password by secret code
+    Sends email with link to set new password.
+    URL: `/api/v1/users/set_password_by_secret_code`
+    Method: `POST`
+    **Request**
+        {
+          "password": "new_strong_password",
+          "secret_code": "asd134df"
+        }
+    **Successful response**
+        HTTP status Code: 200
+    
+        {
+          "status": "OK"
+        }
+    **Failed response**
+        HTTP status Code: 405
+    
+        {
+          "status": "ERR",
+    
+          "error": {
+              "code": 405,
+              "msg" : "invalid secret code"
+          }
+        }
+    """
+    serializer_class = serializers.SetPasswordBySecretCodeRequestSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        usersSvc = UsersService(domain=get_current_site(request))
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = usersSvc.set_password_by_secret_code(self, data=serializer.validated_data)
+        return result
+  

@@ -36,6 +36,16 @@ class SendConfirmationEmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True, validators=[EmailValidator])
 
 
+class SetPasswordBySecretCodeRequestSerializer(serializers.Serializer):
+    password = serializers.CharField(required=True)
+    secret_code = serializers.CharField(required=True)
+
+    def is_valid(self, raise_exception=False):
+        super().is_valid(raise_exception)
+        if len(self.data['password']) < MIN_PASSWORD_LENGTH:
+            raise exceptions.BadRequest(f'The password should be {MIN_PASSWORD_LENGTH} or more symbols')
+
+
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
