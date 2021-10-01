@@ -88,9 +88,6 @@ class UsersService:
                 'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
             })
 
-    def update_password(self, user: User, data: dict) -> None:
-        User.objects.update(
-            user=user,
-            defaults={
-                'password': data['password'],
-            })
+    def update_user_password(self, user: User, password: str) -> None:
+        user.set_password(password)
+        user.save()
