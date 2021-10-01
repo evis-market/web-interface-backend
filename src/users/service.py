@@ -60,8 +60,6 @@ class SignupService:
         if 'email' not in data or not data['email']:
             raise exceptions.NotFound(msg='email not found')
         user = User.objects.get_by_login(data['email'])
-        if not user:
-            raise exceptions.NotFound('User not found')
         message = render_to_string('activate_account.html', {
             'user': user,
             'domain': domain,
