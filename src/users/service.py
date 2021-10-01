@@ -7,7 +7,6 @@ from users.models import User
 
 from app import exceptions
 
-NOTFOUND_USER_MSG = 'User not found'
 INVALID_SECRET_CODE_MSG = 'invalid secret code'
 
 
@@ -47,8 +46,6 @@ class SignupService:
 
     def confirm_email(self, data: dict):
         user = User.objects.get_by_login(data['email'])
-        if not user:
-            raise exceptions.NotFound(msg=NOTFOUND_USER_MSG)
         if not account_activation_token.check_token(user, data['secret_code']):
             raise exceptions.BadRequest(msg=INVALID_SECRET_CODE_MSG)
         user.is_active = True
@@ -58,8 +55,6 @@ class SignupService:
         if 'email' not in data or not data['email']:
             raise exceptions.NotFound(msg='email not found')
         user = User.objects.get_by_login(data['email'])
-        if not user:
-            raise exceptions.NotFound('User not found')
         if not account_activation_token.check_token(user, data['secret_code']):
             raise exceptions.BadRequest(msg=INVALID_SECRET_CODE_MSG)
         user.password = data['password']

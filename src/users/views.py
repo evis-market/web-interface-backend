@@ -151,8 +151,6 @@ class UserUpdatePasswordView(APIView):
 
 
 class ConfirmEmailView(APIView, UsersService):
-    serializer_class = serializers.SendConfirmationEmailRequestSerializer
-    permission_classes = (AllowAny,)
     """
     ## Confirm email
     
@@ -184,6 +182,9 @@ class ConfirmEmailView(APIView, UsersService):
           }
         }
     """
+    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    permission_classes = (AllowAny,)
+
     def post(self, request, *args, **kwargs):
         usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
@@ -193,9 +194,6 @@ class ConfirmEmailView(APIView, UsersService):
 
 
 class SetPasswordBySecretCodeView(APIView, UsersService):
-    serializer_class = serializers.SetPasswordBySecretCodeRequestSerializer
-    permission_classes = (AllowAny,)
-
     """
     ## Set password by secret code
 
@@ -233,7 +231,10 @@ class SetPasswordBySecretCodeView(APIView, UsersService):
           }
         }
     """
-    def post(self, request):
+    serializer_class = serializers.SetPasswordBySecretCodeRequestSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request, *args, **kwargs):
         usersSvc = UsersService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
