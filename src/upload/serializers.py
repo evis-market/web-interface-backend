@@ -9,5 +9,7 @@ class UploadedFileSerializer(serializers.ModelSerializer):
 
         fields = [
             'file_path',
+            'data_type',
+            'data_format',
             'created_by'
         ]

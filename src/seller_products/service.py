@@ -4,6 +4,7 @@ from app import exceptions
 from seller_products.models import (
     SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl, SellerProductDataUrlArchive)
 from sellers.models import Seller
+from upload.service import UploadService
 
 
 class SellerProductService:
@@ -23,6 +24,10 @@ class SellerProductService:
         return seller_product
 
     def create_object(self, data: typing.Dict):
+        upload_service = UploadService()
+        # will be used to create archive instances
+        data_sample_objects = []
+
         seller = data.pop('seller')
         categories = data.pop('data_categories_ids')
         geo_regions = data.pop('data_geo_regions_ids')
@@ -32,6 +37,8 @@ class SellerProductService:
         data_delivery_types = data.pop('data_delivery_types_ids')
         data_samples = data.pop('data_samples', None)
         data_urls = data.pop('data_urls', None)
+        data_samples_uploaded = data.pop('data_samples')
+        data_urls = data.pop('data_urls')
         seller_product = SellerProduct.objects.create(
             seller, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data,
         )
@@ -52,6 +59,28 @@ class SellerProductService:
             SellerProductDataUrlArchive.objects.bulk_create([
                 SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
             ])
+        for data_sample_uploaded in data_samples_uploaded:
+            file_path = upload_service.get_destination_path(SellerProductDataSample, 'file_path', data_sample_uploaded)
+            upload_service.copy_file_from_tmp(data_sample_uploaded.uuid, seller.seller, file_path)
+            data_sample_object = SellerProductDataSample(seller_product=seller_product, file_path=file_path,
+                                                         data_type=data_sample_uploaded.data_type,
+                                                         data_format=data_sample_uploaded.data_format)
+            data_sample_objects.append(data_sample_object)
+
+        SellerProductDataUrl.objects.bulk_create([
+            SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
+        ])
+
+        seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
+        SellerProductDataSampleArchive.objects.bulk_create([
+            SellerProductDataSampleArchive(
+                seller_product=seller_product_acrhive, data_type=ds.data_type, data_format=ds.data_format
+            )
+            for ds in data_sample_objects
+        ])
+        SellerProductDataUrlArchive.objects.bulk_create([
+            SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
+        ])
 
     def update_object(self, seller_product, data: typing.Dict):
         categories = data.pop('data_categories_ids')

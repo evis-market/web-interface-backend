@@ -7,6 +7,10 @@ from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from seller_products.models import SellerProduct, SellerProductDataSample, SellerProductDataUrl
 from sellers.models import Seller
+from rest_framework import serializers
+from rest_framework.fields import UUIDField
+
+from upload.models import UploadedFile
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -19,6 +23,22 @@ class SellerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Seller
         fields = ['seller_id', 'name']
+
+
+# class DataSampleSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = SellerProductDataSample
+#         fields = ['url', 'data_type', 'data_format']
+
+
+class DataSampleSerializer(serializers.Serializer):
+    uuid = serializers.UUIDField()
+
+
+class DataUrlsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SellerProductDataUrl
+        fields = ['url', 'data_type', 'data_format']
 
 
 class GeoRegionSerializer(serializers.ModelSerializer):
@@ -137,3 +157,7 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
             'data_samples',
             'data_urls'
         ]
+
+
+class UploadedFilesSerializer(serializers.Serializer):
+    data_samples = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), write_only=True, many=True)

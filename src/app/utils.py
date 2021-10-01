@@ -85,3 +85,9 @@ def copy_instance(instance, instance_copy, exclude_fields=None):
             text_relations.append(str(relation))
 
     return instance_copy
+
+
+def copy_instance_fields(instance, fields_to_copy, destination_instance):
+    for field in fields_to_copy:
+        setattr(destination_instance, field, getattr(instance, field))
+

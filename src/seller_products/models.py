@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 from categories.models import Category
@@ -83,7 +85,7 @@ class SellerProductArchive(SellerProductBase):
 
 class SellerProductDataSample(models.Model):
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_samples')
-    url = models.URLField('URL')
+    file_path = models.FileField(upload_to='seller_product_data_samples/')
     data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 
@@ -95,7 +97,7 @@ class SellerProductDataSample(models.Model):
         verbose_name_plural = 'Data samples'
 
     def __str__(self):
-        return f'{self.seller_product.name} - {self.url}'
+        return f'{self.seller_product.name} - {self.file_path}'
 
 
 class SellerProductDataUrl(models.Model):
