@@ -115,9 +115,86 @@ class SendConfirmationEmailView(APIView):
         return response_ok()
 
 
+class ConfirmEmailView(APIView):
+    """
+    ## Confirm email
+
+    URL: `/api/v1/users/confirm_email`
+
+    Method: `POST`
+
+    **Request**
+
+        {
+          "email": "test@test.com",
+          "secret_code": "asd134df"
+        }
+
+    **Successful response**
+
+        HTTP status Code: 200
+        {
+          "status": "OK"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 405
+        {
+          "status": "ERR",
+          "error": {
+              "code": 405,
+              "msg" : "invalid secret code"
+          }
+        }
+    """
+    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        signup_service = SignupService(domain=get_current_site(request))
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = signup_service.confirm_email(data=serializer.validated_data)
+        return result
+
+
 class UserProfileView(APIView):
     """
-    TODO: copy from API docs
+    ## Get logged in user profile
+
+    URL: `/api/v1/users/my/profile`
+
+    Method: `GET`
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK"
+          "profile": {
+            "first_name": "Evgeny",
+            "last_name": "Mamonov",
+            "phone": "15552223456",
+            "email": "test@test.com",
+            "wallet_erc20": "0xfe121fa29f72c239d289efaa5ab11fef94a2e946"
+          }
+        }
+
+    **Failed response**
+
+        HTTP status Code: 401
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 401,
+              "msg" : "Please provide token"
+          }
+        }
+
     """
     serializer_class = serializers.UserProfileSerializer
     update_serializer = serializers.UserProfileUpdateSerializer
@@ -137,7 +214,52 @@ class UserProfileView(APIView):
 
 class UserUpdatePasswordView(APIView):
     """
-    TODO: copy from API docs 
+
+    ## Update logged in user profile
+
+    URL: `/api/v1/users/my/profile`
+
+    Method: `PUT`
+
+    **Request**
+
+        {
+          "first_name": "Evgeny",
+          "last_name": "Mamonov",
+          "phone": "15552223456",
+          "email": "test@test.com",
+          "wallet_erc20": "0xfe121fa29f72c239d289efaa5ab11fef94a2e946"
+        }
+
+    **Required fields**
+    * one of: phone, email, wallet_erc20
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+          "status": "OK"
+        }
+
+    **Failed response**
+
+        HTTP status Code: 405
+
+        {
+          "status": "ERR",
+
+          "error": {
+              "code": 405,
+
+              "invalid_fields": {
+                "email": "alredy exists",
+                "password": "too short, 8 symbols minimum"
+              },
+
+              "msg" : "bad request"
+          }
+        }
     """
     update_serializer = serializers.UserPasswordUpdateSerializer
     permission_classes = (AllowAny,)
@@ -146,78 +268,41 @@ class UserUpdatePasswordView(APIView):
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.users_service.update_user_password(user=request.user, data=serializer.validated_data)
+        self.users_service.update_user_password(user=request.user, password=serializer.validated_data['password'])
         return response_ok()
 
 
-class ConfirmEmailView(APIView, UsersService):
-    """
-    ## Confirm email
-    
-    URL: `/api/v1/users/confirm_email`
-   
-    Method: `POST`
-    
-    **Request**
-        {
-          "email": "test@test.com",
-          "secret_code": "asd134df"
-        }
-    
-    **Successful response**
-    
-        HTTP status Code: 200
-        {
-          "status": "OK"
-        }
-        
-    **Failed response**
-    
-        HTTP status Code: 405
-        {
-          "status": "ERR",
-          "error": {
-              "code": 405,
-              "msg" : "invalid secret code"
-          }
-        }
-    """
-    serializer_class = serializers.SendConfirmationEmailRequestSerializer
-    permission_classes = (AllowAny,)
-
-    def post(self, request, *args, **kwargs):
-        usersSvc = UsersService(domain=get_current_site(request))
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        result = usersSvc.confirm_email(data=serializer.validated_data)
-        return result
-
-
- class SendResetPasswordEmailView(APIView, UsersService):
+class SendResetPasswordEmailView(APIView):
     """
     ## Reset password by email
-    
+
     Generates new secret_code and sends email with link to set new password.
+
     URL: `/api/v1/users/send_reset_password_email`
+
     Method: `POST`
+
     **Request**
+
         {
           "email": "test@test.com"
         }
-    
+
     **Successful response**
-    
+
         HTTP status Code: 200
-    
+
         {
           "status": "OK"
         }
+
     **Failed response**
+
         HTTP status Code: 404
-    
+
         {
           "status": "ERR",
-    
+
           "error": {
               "code": 404,
               "msg" : "email not found"
@@ -228,34 +313,45 @@ class ConfirmEmailView(APIView, UsersService):
     permission_classes = (AllowAny,)
 
     def post(self, request):
-        usersSvc = UsersService(domain=get_current_site(request))
+        signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = usersSvc.send_reset_password_email(self, data=serializer.validated_data, domain=get_current_site(request))
+        result = signup_service.send_reset_password_email(self, data=serializer.validated_data, domain=get_current_site(request))
         return result
+
+
 class SetPasswordBySecretCodeView(APIView, UsersService):
     """
     ## Set password by secret code
+
     Sends email with link to set new password.
+
     URL: `/api/v1/users/set_password_by_secret_code`
+
     Method: `POST`
+
     **Request**
+
         {
           "password": "new_strong_password",
           "secret_code": "asd134df"
         }
+
     **Successful response**
+
         HTTP status Code: 200
-    
+
         {
           "status": "OK"
         }
+
     **Failed response**
+
         HTTP status Code: 405
-    
+
         {
           "status": "ERR",
-    
+
           "error": {
               "code": 405,
               "msg" : "invalid secret code"
@@ -266,9 +362,8 @@ class SetPasswordBySecretCodeView(APIView, UsersService):
     permission_classes = (AllowAny,)
 
     def post(self, request, *args, **kwargs):
-        usersSvc = UsersService(domain=get_current_site(request))
+        signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = usersSvc.set_password_by_secret_code(self, data=serializer.validated_data)
+        result = signup_service.set_password_by_secret_code(self, serializer.validated_data)
         return result
-  
