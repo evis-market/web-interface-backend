@@ -8,8 +8,6 @@ class UploadedFileSerializer(serializers.ModelSerializer):
         model = UploadedFile
 
         fields = [
-            'file_path',
-            'data_type',
-            'data_format',
+            'file',
             'created_by'
         ]

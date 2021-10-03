@@ -60,11 +60,12 @@ class SellerProductService:
                 SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
             ])
         for data_sample_uploaded in data_samples_uploaded:
-            file_path = upload_service.get_destination_path(SellerProductDataSample, 'file_path', data_sample_uploaded)
-            upload_service.copy_file_from_tmp(data_sample_uploaded.uuid, seller.seller, file_path)
-            data_sample_object = SellerProductDataSample(seller_product=seller_product, file_path=file_path,
-                                                         data_type=data_sample_uploaded.data_type,
-                                                         data_format=data_sample_uploaded.data_format)
+            file = data_sample_uploaded['uuid']
+            absolute_file_path, relative_file_path = upload_service.get_destination_paths(SellerProductDataSample, 'file', file)
+            upload_service.copy_file_from_tmp(file, absolute_file_path)
+            data_sample_object = SellerProductDataSample(seller_product=seller_product, file=relative_file_path,
+                                                         data_type=data_sample_uploaded['data_type'],
+                                                         data_format=data_sample_uploaded['data_format'])
             data_sample_objects.append(data_sample_object)
 
         SellerProductDataUrl.objects.bulk_create([

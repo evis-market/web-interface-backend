@@ -2,7 +2,6 @@ import uuid
 import os
 from django.db import models
 from upload.managers import UploadedFileManager
-from product_data_types.models import DataFormat, DataType
 from django.utils.deconstruct import deconstructible
 
 
@@ -18,15 +17,10 @@ class PathAndRename:
         return path
 
 
-# path_and_rename = PathAndRename("uploaded_tmp/")
-
-
 class UploadedFile(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    file_path = models.FileField(upload_to=PathAndRename("uploaded_tmp/"))
-    file_name_original = models.CharField(max_length=255)  # todo: set on runtime
-    data_type = models.ForeignKey(DataType, blank=True, null=True, on_delete=models.CASCADE)
-    data_format = models.ForeignKey(DataFormat, blank=True, null=True, on_delete=models.CASCADE)
+    file = models.FileField(upload_to=PathAndRename("uploaded_files_tmp/"))
+    file_name_original = models.CharField(max_length=255)
     created_by = models.ForeignKey('users.User', related_name='upload_by', on_delete=models.CASCADE)
     created_at = models.DateTimeField('Created', auto_now_add=True)
     updated_at = models.DateTimeField('Updated', auto_now=True)
@@ -37,3 +31,8 @@ class UploadedFile(models.Model):
         db_table = 'uploaded_files'
         verbose_name = 'Uploaded File'
         verbose_name_plural = 'Uploaded Files'
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        self.file_name_original = self.file.name
+        super().save(force_insert, force_update, using, update_fields)

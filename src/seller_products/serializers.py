@@ -25,22 +25,6 @@ class SellerSerializer(serializers.ModelSerializer):
         fields = ['seller_id', 'name']
 
 
-# class DataSampleSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = SellerProductDataSample
-#         fields = ['url', 'data_type', 'data_format']
-
-
-class DataSampleSerializer(serializers.Serializer):
-    uuid = serializers.UUIDField()
-
-
-class DataUrlsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SellerProductDataUrl
-        fields = ['url', 'data_type', 'data_format']
-
-
 class GeoRegionSerializer(serializers.ModelSerializer):
     class Meta:
         model = GeoRegion
@@ -72,12 +56,13 @@ class DataDeliveryTypeSerializer(serializers.ModelSerializer):
 
 
 class DataSampleSerializer(serializers.ModelSerializer):
+    uuid = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), write_only=True)
     data_delivery_type_id = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True, source='data_delivery_type')
     data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, source='data_format')
 
     class Meta:
         model = SellerProductDataSample
-        fields = ['url', 'data_delivery_type_id', 'data_format_id']
+        fields = ['uuid', 'data_delivery_type_id', 'data_format_id']
 
 
 class DataUrlsSerializer(serializers.ModelSerializer):

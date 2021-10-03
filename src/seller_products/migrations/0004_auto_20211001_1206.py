@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='sellerproductdatasample',
-            name='file_path',
+            name='file',
             field=models.FileField(default='', upload_to='seller_product_data_samples/'),
             preserve_default=False,
         ),

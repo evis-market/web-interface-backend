@@ -8,7 +8,6 @@ from app.response import response_ok
 from seller_products.models import SellerProduct
 from seller_products.serializers import SellerProductsSerializer, SellerProductsUpdateSerializer, UploadedFilesSerializer
 from seller_products.service import SellerProductService
-from upload.models import UploadedFile
 from upload.service import UploadService
 
 
@@ -134,21 +133,12 @@ class SellerProductsListView(GenericAPIView):
 
     def post(self, request, format=None):
         seller_product_service = SellerProductService()
-        upload_service = UploadService()
         seller = seller_product_service.get_seller(request.user.id)
         request.data['seller'] = seller.seller_id
         serializer = self.update_serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        uploaded_files = self.uploaded_files_serializer(data={'data_samples': request.data['data_samples']})
-        uploaded_files.is_valid(raise_exception=True)
-
         with transaction.atomic():
             seller_product_service.create_object(serializer.validated_data)
-            upload_service.remove_objects(
-                uploaded_files.validated_data['data_samples'], request.user.id
-            )
-
-        upload_service.remove_files(uploaded_files.validated_data['data_samples'])
 
         return response_ok({}, http_code=status.HTTP_200_OK)
 

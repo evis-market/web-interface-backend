@@ -33,29 +33,25 @@ class UploadService:
                 file_hash.update(data)
         return file_hash.hexdigest()
 
-    def copy_file_from_tmp(self, uuid, user_id, destination_path):
-        uploaded_file = UploadedFile.objects.get_by_uuid_and_author(uuid, user_id)
-        if not uploaded_file:
-            raise exceptions.NotFound(self.NOTFOUND_UPLOADED_FILE_MSG)
-
+    def copy_file_from_tmp(self, uploaded_file, destination_path):
         os.makedirs(os.path.dirname(destination_path), exist_ok=True)
-        shutil.copy(uploaded_file.file_path.path, destination_path)
+        shutil.copy(uploaded_file.file.path, destination_path)
 
-        if self._get_file_hash(uploaded_file.file_path.path) != self._get_file_hash(destination_path):
+        if self._get_file_hash(uploaded_file.file.path) != self._get_file_hash(destination_path):
             raise exceptions.NotFound(self.INCORRECT_FILE_COPYING)
 
-    def remove_objects(self, files, user_id):
-        uuids = [file.uuid for file in files]
-        UploadedFile.objects.delete_by_uuids_and_user(uuids, user_id)
+    def remove_objects(self, files):
+        UploadedFile.objects.filter(uuid__in=[file.uuid for file in files]).delete()
 
     def remove_files(self, files):
         for file in files:
             os.remove(file.file_path.path)
 
-    def get_destination_path(self, model_class, model_field, source_instance):
+    def get_destination_paths(self, model_class, model_field, source_instance):
         model_field_value = getattr(source_instance, model_field)
-        return os.path.join(
-            MEDIA_ROOT,
-            model_class._meta.get_field('file_path').upload_to,
+        relative_path = os.path.join(
+            model_class._meta.get_field('file').upload_to,
             f'{str(source_instance.uuid)}.{model_field_value.name.split(".")[-1]}'
         )
+        absolute_path = os.path.join(MEDIA_ROOT, relative_path)
+        return absolute_path, relative_path
