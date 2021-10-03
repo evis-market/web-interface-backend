@@ -4,12 +4,12 @@ from sellers.models import Contact, Seller
 
 
 class ContactViewSerializer(serializers.ModelSerializer):
+    type_id = serializers.ReadOnlyField(source='type')
+
     class Meta:
         model = Contact
         fields = (
-            'id',
-            'seller',
-            'type',
+            'type_id',
             'value',
             'comment',
         )
@@ -17,13 +17,14 @@ class ContactViewSerializer(serializers.ModelSerializer):
 
 class SellerViewSerializer(serializers.ModelSerializer):
     contacts = ContactViewSerializer(many=True)
+    user_id = serializers.ReadOnlyField(source='seller.user_id')
 
     class Meta:
         model = Seller
         fields = (
-            'seller',
+            'user_id',
             'name',
-            'description',
+            'descr',
             'logo_url',
             'wallet_for_payments_erc20',
             'rating',
@@ -32,10 +33,12 @@ class SellerViewSerializer(serializers.ModelSerializer):
 
 
 class ContactUpdateSerializer(serializers.ModelSerializer):
+    type_id = serializers.IntegerField(source='type')
+
     class Meta:
         model = Contact
         fields = (
-            'type',
+            'type_id',
             'value',
             'comment',
         )
@@ -43,7 +46,7 @@ class ContactUpdateSerializer(serializers.ModelSerializer):
 
 class SellerUpdateSerializer(serializers.Serializer):
     name = serializers.CharField(required=True)
-    description = serializers.CharField(required=False)
+    descr = serializers.CharField(required=False)
     logo_url = serializers.URLField(required=False)
     wallet_for_payments_erc20 = serializers.CharField(required=False)
     contacts = ContactUpdateSerializer(many=True)

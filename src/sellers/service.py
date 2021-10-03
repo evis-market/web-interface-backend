@@ -9,7 +9,7 @@ class SellerService:
             seller=user,
             defaults={
                 'name': data['name'],
-                'description': data['description'],
+                'description': data['descr'],
                 'logo_url': data['logo_url'],
                 'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
             })
