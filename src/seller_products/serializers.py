@@ -21,18 +21,6 @@ class SellerSerializer(serializers.ModelSerializer):
         fields = ['seller_id', 'name']
 
 
-class DataSampleSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SellerProductDataSample
-        fields = ['url', 'data_type', 'data_format']
-
-
-class DataUrlsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SellerProductDataUrl
-        fields = ['url', 'data_type', 'data_format']
-
-
 class GeoRegionSerializer(serializers.ModelSerializer):
     class Meta:
         model = GeoRegion
@@ -63,14 +51,32 @@ class DataDeliveryTypeSerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 
+class DataSampleSerializer(serializers.ModelSerializer):
+    data_type_id = serializers.PrimaryKeyRelatedField(queryset=DataType.objects.all(), write_only=True, source='data_type')
+    data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, source='data_format')
+
+    class Meta:
+        model = SellerProductDataSample
+        fields = ['url', 'data_type_id', 'data_format_id']
+
+
+class DataUrlsSerializer(serializers.ModelSerializer):
+    data_type_id = serializers.PrimaryKeyRelatedField(queryset=DataType.objects.all(), write_only=True, source='data_type')
+    data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, source='data_format')
+
+    class Meta:
+        model = SellerProductDataUrl
+        fields = ['url', 'data_type_id', 'data_format_id']
+
+
 class SellerProductsSerializer(serializers.ModelSerializer):
     seller = SellerSerializer(read_only=True)
-    categories = CategorySerializer(read_only=True, many=True)
-    geo_regions = GeoRegionSerializer(read_only=True, many=True)
-    languages = LanguageSerializer(read_only=True, many=True)
-    data_type = DataTypeSerializer(read_only=True, many=True)
-    data_format = DataFormatSerializer(read_only=True, many=True)
-    data_delivery_type = DataDeliveryTypeSerializer(read_only=True, many=True)
+    data_categories_ids = CategorySerializer(read_only=True, many=True)
+    data_geo_regions_ids = GeoRegionSerializer(read_only=True, many=True)
+    data_langs_ids = LanguageSerializer(read_only=True, many=True)
+    data_types_ids = DataTypeSerializer(read_only=True, many=True)
+    data_formats_ids = DataFormatSerializer(read_only=True, many=True)
+    data_delivery_types_ids = DataDeliveryTypeSerializer(read_only=True, many=True)
     data_samples = DataSampleSerializer(read_only=True, many=True)
     data_urls = DataUrlsSerializer(read_only=True, many=True)
 
@@ -88,12 +94,12 @@ class SellerProductsSerializer(serializers.ModelSerializer):
             'price_per_usage_descr',
             'rating',
             'seller',
-            'categories',
-            'geo_regions',
-            'languages',
-            'data_type',
-            'data_format',
-            'data_delivery_type',
+            'data_categories_ids',
+            'data_geo_regions_ids',
+            'data_langs_ids',
+            'data_types_ids',
+            'data_formats_ids',
+            'data_delivery_types_ids',
             'data_samples',
             'data_urls',
         ]
@@ -101,12 +107,12 @@ class SellerProductsSerializer(serializers.ModelSerializer):
 
 class SellerProductsUpdateSerializer(serializers.ModelSerializer):
     seller = serializers.PrimaryKeyRelatedField(queryset=Seller.objects.all(), write_only=True)
-    categories = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True, many=True)
-    geo_regions = serializers.PrimaryKeyRelatedField(queryset=GeoRegion.objects.all(), write_only=True, many=True)
-    languages = serializers.PrimaryKeyRelatedField(queryset=Language.objects.all(), write_only=True, many=True)
-    data_types = serializers.PrimaryKeyRelatedField(queryset=DataType.objects.all(), write_only=True, many=True)
-    data_formats = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, many=True)
-    data_delivery_types = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True, many=True)
+    data_categories_ids = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True, many=True)
+    data_geo_regions_ids = serializers.PrimaryKeyRelatedField(queryset=GeoRegion.objects.all(), write_only=True, many=True)
+    data_langs_ids = serializers.PrimaryKeyRelatedField(queryset=Language.objects.all(), write_only=True, many=True)
+    data_types_ids = serializers.PrimaryKeyRelatedField(queryset=DataType.objects.all(), write_only=True, many=True)
+    data_formats_ids = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, many=True)
+    data_delivery_types_ids = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True, many=True)
     data_samples = serializers.ListField(child=DataSampleSerializer(), write_only=True)
     data_urls = serializers.ListField(child=DataUrlsSerializer(), write_only=True)
 
@@ -122,12 +128,12 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
             'price_per_usage',
             'price_per_usage_descr',
             'seller',
-            'categories',
-            'geo_regions',
-            'languages',
-            'data_types',
-            'data_formats',
-            'data_delivery_types',
+            'data_categories_ids',
+            'data_geo_regions_ids',
+            'data_langs_ids',
+            'data_types_ids',
+            'data_formats_ids',
+            'data_delivery_types_ids',
             'data_samples',
             'data_urls'
         ]

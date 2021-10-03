@@ -24,12 +24,12 @@ class SellerProductService:
 
     def create_object(self, data: typing.Dict):
         seller = data.pop('seller')
-        categories = data.pop('categories')
-        geo_regions = data.pop('geo_regions')
-        languages = data.pop('languages')
-        data_types = data.pop('data_types')
-        data_formats = data.pop('data_formats')
-        data_delivery_types = data.pop('data_delivery_types')
+        categories = data.pop('data_categories_ids')
+        geo_regions = data.pop('data_geo_regions_ids')
+        languages = data.pop('data_langs_ids')
+        data_types = data.pop('data_types_ids')
+        data_formats = data.pop('data_formats_ids')
+        data_delivery_types = data.pop('data_delivery_types_ids')
         data_samples = data.pop('data_samples')
         data_urls = data.pop('data_urls')
         seller_product = SellerProduct.objects.create(
@@ -52,12 +52,12 @@ class SellerProductService:
         ])
 
     def update_object(self, seller_product, data: typing.Dict):
-        categories = data.pop('categories')
-        geo_regions = data.pop('geo_regions')
-        languages = data.pop('languages')
-        data_types = data.pop('data_types')
-        data_formats = data.pop('data_formats')
-        data_delivery_types = data.pop('data_delivery_types')
+        categories = data.pop('data_categories_ids')
+        geo_regions = data.pop('data_geo_regions_ids')
+        languages = data.pop('data_langs_ids')
+        data_types = data.pop('data_types_ids')
+        data_formats = data.pop('data_formats_ids')
+        data_delivery_types = data.pop('data_delivery_types_ids')
         data_samples = data.pop('data_samples')
         data_urls = data.pop('data_urls')
 
