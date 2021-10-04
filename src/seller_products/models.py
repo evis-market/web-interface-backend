@@ -119,7 +119,7 @@ class SellerProductDataUrl(models.Model):
 
 class SellerProductDataSampleArchive(models.Model):
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_samples_archive')
-    url = models.URLField('URL')
+    file = models.FileField(upload_to='seller_product_data_samples_archive/')
     data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 

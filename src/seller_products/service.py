@@ -26,7 +26,6 @@ class SellerProductService:
     def create_object(self, data: typing.Dict):
         upload_service = UploadService()
         # will be used to create archive instances
-        data_sample_objects = []
 
         seller = data.pop('seller')
         categories = data.pop('data_categories_ids')
@@ -63,22 +62,28 @@ class SellerProductService:
             file = data_sample_uploaded['uuid']
             absolute_file_path, relative_file_path = upload_service.get_destination_paths(SellerProductDataSample, 'file', file)
             upload_service.copy_file_from_tmp(file, absolute_file_path)
-            data_sample_object = SellerProductDataSample(seller_product=seller_product, file=relative_file_path,
-                                                         data_type=data_sample_uploaded['data_type'],
-                                                         data_format=data_sample_uploaded['data_format'])
-            data_sample_objects.append(data_sample_object)
+            sp = SellerProductDataSample(seller_product=seller_product, file=relative_file_path,
+                                         data_type=data_sample_uploaded['data_type'],
+                                         data_format=data_sample_uploaded['data_format'])
+            sp.save()
 
         SellerProductDataUrl.objects.bulk_create([
             SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
         ])
 
         seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
-        SellerProductDataSampleArchive.objects.bulk_create([
-            SellerProductDataSampleArchive(
-                seller_product=seller_product_acrhive, data_type=ds.data_type, data_format=ds.data_format
+
+        for data_sample_uploaded in data_samples_uploaded:
+            file = data_sample_uploaded['uuid']
+            absolute_file_path, relative_file_path = upload_service.get_destination_paths(
+                SellerProductDataSampleArchive, 'file', file
             )
-            for ds in data_sample_objects
-        ])
+            upload_service.copy_file_from_tmp(file, absolute_file_path)
+            sp = SellerProductDataSampleArchive(seller_product=seller_product_acrhive, file=relative_file_path,
+                                                data_type=data_sample_uploaded['data_type'],
+                                                data_format=data_sample_uploaded['data_format'])
+            sp.save()
+
         SellerProductDataUrlArchive.objects.bulk_create([
             SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
         ])

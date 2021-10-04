@@ -15,7 +15,7 @@ class UploadService:
     TMP_FILE_NOT_FOUND = 'File not found in temp directory'
 
     def get_object(self, uuid, created_by):
-        uploaded_file = UploadedFile.objects.get_by_uuid_and_author(uuid=uuid, created_by=created_by)
+        uploaded_file = UploadedFile.objects.get_by_uuid_and_author(uuid, created_by)
         if not uploaded_file:
             raise exceptions.NotFound(msg=self.NOTFOUND_UPLOADED_FILE_MSG)
         return uploaded_file

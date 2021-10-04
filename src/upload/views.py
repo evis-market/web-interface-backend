@@ -18,7 +18,7 @@ class UploadedFileView(GenericAPIView):
     def get(self, request, uuid, format=None):
         created_by = request.user.id
         uploaded_file = self.upload_service.get_object(uuid, created_by)
-        serializer = self.serializer_class(data=uploaded_file)
+        serializer = self.serializer_class(uploaded_file)
         return response_ok({
             'uploaded_file': serializer.data
         })
