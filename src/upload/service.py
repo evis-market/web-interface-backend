@@ -45,7 +45,7 @@ class UploadService:
 
     def remove_files(self, files):
         for file in files:
-            os.remove(file.file_path.path)
+            os.remove(file)
 
     def get_destination_paths(self, model_class, model_field, source_instance):
         model_field_value = getattr(source_instance, model_field)

@@ -9,6 +9,25 @@ from upload.service import UploadService
 
 class UploadedFileView(GenericAPIView):
     """
+    URL: `/api/v1/upload/:uuid>`
+
+    Method: `GET`
+
+    **Successful response**
+
+        HTTP status Code: 200
+
+        {
+            "uploaded_file": {
+                "file": "/media/uploaded_files_tmp/b2da7db5bb8546549afd529fe9f3c8c3.pdf",
+                "created_by": 1
+            },
+            "status": "OK"
+        }
+
+    Method: `POST`
+
+    **Successful response**
 
     """
     serializer_class = UploadedFileSerializer
