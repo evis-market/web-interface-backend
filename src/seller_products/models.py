@@ -84,7 +84,7 @@ class SellerProductArchive(SellerProductBase):
 class SellerProductDataSample(models.Model):
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_samples')
     url = models.URLField('URL')
-    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 
     objects = SellerProductDataSampleManager()
@@ -101,7 +101,7 @@ class SellerProductDataSample(models.Model):
 class SellerProductDataUrl(models.Model):
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_urls')
     url = models.URLField('URL')
-    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 
     objects = SellerProductDataUrlManager()
@@ -118,7 +118,7 @@ class SellerProductDataUrl(models.Model):
 class SellerProductDataSampleArchive(models.Model):
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_samples_archive')
     url = models.URLField('URL')
-    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 
     objects = SellerProductDataSampleArchiveManager()
@@ -135,7 +135,7 @@ class SellerProductDataSampleArchive(models.Model):
 class SellerProductDataUrlArchive(models.Model):
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_urls_archive')
     url = models.URLField('URL')
-    data_type = models.ForeignKey(DataType, on_delete=models.CASCADE)
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
     data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
 
     objects = SellerProductDataUrlArchiveManager()
