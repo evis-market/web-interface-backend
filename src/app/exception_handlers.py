@@ -13,14 +13,35 @@ def extract_err_data_from_exc(exc):
         for field, detail in exc.detail.items():
             if isinstance(detail, dict):
                 invalid_fields[field] = detail
-            else:
-                invalid_fields[field] = ', '.join(detail)
+            elif isinstance(detail, list):
+                if isinstance(detail[0], dict):
+                    for item in detail:
+                        if not item:
+                            continue
+                        invalid_fields.update({k: v for k, v in item.items()})
+                else:
+                    invalid_fields[field] = ', '.join(detail)
         return 'bad request', invalid_fields
 
     if isinstance(exc.detail, list):
         return ', '.join(exc.detail), None
 
     return exc.detail, None
+
+
+    # if isinstance(exc.detail, dict):
+    #     invalid_fields = {}
+    #     for field, detail in exc.detail.items():
+    #         if isinstance(detail, list):
+    #             for field_errordict in detail:
+    #                 if field_errordict:
+    #                     invalid_fields[list(field_errordict.keys())[0]] = field_errordict.values()
+    #         elif isinstance(detail, dict) and detail:
+    #             invalid_fields[field] = detail
+    #         else:
+    #             invalid_fields[field] = ', '.join(detail)
+    #     return 'bad request', invalid_fields
+
 
 
 def default_exception_handler(exc, context):
