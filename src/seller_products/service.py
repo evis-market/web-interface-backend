@@ -30,26 +30,28 @@ class SellerProductService:
         data_types = data.pop('data_types_ids')
         data_formats = data.pop('data_formats_ids')
         data_delivery_types = data.pop('data_delivery_types_ids')
-        data_samples = data.pop('data_samples')
-        data_urls = data.pop('data_urls')
+        data_samples = data.pop('data_samples', None)
+        data_urls = data.pop('data_urls', None)
         seller_product = SellerProduct.objects.create(
             seller, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data,
         )
-
-        SellerProductDataSample.objects.bulk_create([
-            SellerProductDataSample(seller_product=seller_product, **ds) for ds in data_samples
-        ])
-        SellerProductDataUrl.objects.bulk_create([
-            SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
-        ])
-
         seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
-        SellerProductDataSampleArchive.objects.bulk_create([
-            SellerProductDataSampleArchive(seller_product=seller_product_acrhive, **ds) for ds in data_samples
-        ])
-        SellerProductDataUrlArchive.objects.bulk_create([
-            SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
-        ])
+
+        if data_samples:
+            SellerProductDataSample.objects.bulk_create([
+                SellerProductDataSample(seller_product=seller_product, **ds) for ds in data_samples
+            ])
+            SellerProductDataSampleArchive.objects.bulk_create([
+                SellerProductDataSampleArchive(seller_product=seller_product_acrhive, **ds) for ds in data_samples
+            ])
+
+        if data_urls:
+            SellerProductDataUrl.objects.bulk_create([
+                SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
+            ])
+            SellerProductDataUrlArchive.objects.bulk_create([
+                SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
+            ])
 
     def update_object(self, seller_product, data: typing.Dict):
         categories = data.pop('data_categories_ids')
@@ -58,29 +60,32 @@ class SellerProductService:
         data_types = data.pop('data_types_ids')
         data_formats = data.pop('data_formats_ids')
         data_delivery_types = data.pop('data_delivery_types_ids')
-        data_samples = data.pop('data_samples')
-        data_urls = data.pop('data_urls')
+        data_samples = data.pop('data_samples', None)
+        data_urls = data.pop('data_urls', None)
 
         seller_product = SellerProduct.objects.update(
             seller_product, categories, geo_regions, languages, data_types, data_formats, data_delivery_types, **data,
         )
+        seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
 
         SellerProductDataSample.objects.delete_by_seller_product(seller_product=seller_product)
         SellerProductDataUrl.objects.delete_by_seller_product(seller_product=seller_product)
-        SellerProductDataSample.objects.bulk_create([
-            SellerProductDataSample(seller_product=seller_product, **ds) for ds in data_samples
-        ])
-        SellerProductDataUrl.objects.bulk_create([
-            SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
-        ])
 
-        seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
-        SellerProductDataSampleArchive.objects.bulk_create([
-            SellerProductDataSampleArchive(seller_product=seller_product_acrhive, **ds) for ds in data_samples
-        ])
-        SellerProductDataUrlArchive.objects.bulk_create([
-            SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
-        ])
+        if data_samples:
+            SellerProductDataSample.objects.bulk_create([
+                SellerProductDataSample(seller_product=seller_product, **ds) for ds in data_samples
+            ])
+            SellerProductDataSampleArchive.objects.bulk_create([
+                SellerProductDataSampleArchive(seller_product=seller_product_acrhive, **ds) for ds in data_samples
+            ])
+
+        if data_urls:
+            SellerProductDataUrl.objects.bulk_create([
+                SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
+            ])
+            SellerProductDataUrlArchive.objects.bulk_create([
+                SellerProductDataUrlArchive(seller_product=seller_product_acrhive, **du) for du in data_urls
+            ])
 
     def delete_object(self, seller_product):
         seller_product.delete()
