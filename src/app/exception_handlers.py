@@ -29,21 +29,6 @@ def extract_err_data_from_exc(exc):
     return exc.detail, None
 
 
-    # if isinstance(exc.detail, dict):
-    #     invalid_fields = {}
-    #     for field, detail in exc.detail.items():
-    #         if isinstance(detail, list):
-    #             for field_errordict in detail:
-    #                 if field_errordict:
-    #                     invalid_fields[list(field_errordict.keys())[0]] = field_errordict.values()
-    #         elif isinstance(detail, dict) and detail:
-    #             invalid_fields[field] = detail
-    #         else:
-    #             invalid_fields[field] = ', '.join(detail)
-    #     return 'bad request', invalid_fields
-
-
-
 def default_exception_handler(exc, context):
     if issubclass(type(exc), Errno) or isinstance(exc, Errno):
         return response_err(exc.code, exc.msg, http_code=exc.http_code)
