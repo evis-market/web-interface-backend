@@ -9,40 +9,28 @@ from users.models import User
 
 
 class JWTAuthService:
-    """
-    Class representing JWT Authorization Service
-
-    ...
-        Attributes
-        ----------
-        GRANT_TYPE_PASSWORD : str
-            grant type password
-        GRANT_TYPE_REFRESH_TOKEN : str
-            grant type refresh token
-    """
+    """ JWT tokens autherntification service """
     GRANT_TYPE_PASSWORD = 'password'
     GRANT_TYPE_REFRESH_TOKEN = 'refresh_token'
 
     @staticmethod
     def valid_grant_types():
-        """Validation grant types function.
+        """ Returns list of valid values for grant_type field. """
 
-        Returns:
-            Validation types.
-
-        """
         return (JWTAuthService.GRANT_TYPE_PASSWORD, JWTAuthService.GRANT_TYPE_REFRESH_TOKEN)
 
     def grant_jwt_token(self,
                         data: dict) -> dict:
-        """Grant jwt token function.
+        """ Generates JWT token by request.
 
         Args:
-            data: request data dict.
+            data['grant_type'] (str): valid values are: password, refresh_token
+            data['login'] (str): login for grant type "password"
+            data['password'] (str): password for grant type "password"
+            data['refresh_token'] (str): refresh_token for grant type "refresh_token"
 
         Returns:
-            Grant jwt token dict.
-
+            Token dict with "access_token", "refresh_token", "token_type" keys.
         """
         if 'grant_type' not in data:
             raise exceptions.BadRequest(
@@ -60,15 +48,17 @@ class JWTAuthService:
     def grant_jwt_token_by_password(self,
                                     login: str,
                                     password: str) -> dict:
-        """Grant jwt token by password function.
+        """ Generate JWT token by login and password.
 
         Args:
-            login: login from request.
-            password: password from request.
+            login (str): login
+            password (str): password
+
+        Raises:
+            exceptions.BadRequest: if login or password invalid or user not found
 
         Returns:
-              Grant jwt token dict.
-
+            Token dict with "access_token", "refresh_token", "token_type" keys.
         """
         try:
             user = UserManager.get_by_login(login)
@@ -82,14 +72,16 @@ class JWTAuthService:
 
     def grant_jwt_token_by_refresh_token(self,
                                          token: str) -> dict:
-        """Grant jwt token by refresh token function.
+        """ Generate JWT token by refresh token.
 
         Args:
-            token: token from request.
+            refresh_token (str): refresh token
+
+        Raises:
+            exceptions.BadRequest: if refresh token invalid
 
         Returns:
-              Grant jwt token dict.
-
+            Token dict with "access_token", "refresh_token", "token_type" keys.
         """
         try:
             payload = jwt.decode(token, SECRET_KEY, algorithms=SIMPLE_JWT['ALGORITHM'])
@@ -104,14 +96,13 @@ class JWTAuthService:
 
     @staticmethod
     def get_tokens_for_user(user: User) -> dict:
-        """Function returns token for user.
+        """Generate access and refresh tokens for user.
 
         Args:
-            user: user requested tokens.
+            user (User): user requested tokens.
 
         Returns:
-            Token dict.
-
+            Token dict with "access_token", "refresh_token", "token_type" keys.
         """
         refresh = RefreshToken.for_user(user)
         return {
