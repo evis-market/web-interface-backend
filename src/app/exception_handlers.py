@@ -10,8 +10,17 @@ def extract_err_data_from_exc(exc):
 
     if isinstance(exc.detail, dict):
         invalid_fields = {}
-        for field in exc.detail:
-            invalid_fields[field] = ', '.join(exc.detail[field])
+        for field, detail in exc.detail.items():
+            if isinstance(detail, dict):
+                invalid_fields[field] = detail
+            elif isinstance(detail, list):
+                if isinstance(detail[0], dict):
+                    for item in detail:
+                        if not item:
+                            continue
+                        invalid_fields.update({k: v for k, v in item.items()})
+                else:
+                    invalid_fields[field] = ', '.join(detail)
         return 'bad request', invalid_fields
 
     if isinstance(exc.detail, list):
