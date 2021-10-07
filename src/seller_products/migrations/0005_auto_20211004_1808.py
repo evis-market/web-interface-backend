@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('seller_products', '0004_auto_20211001_1206'),
+        ('seller_products', '0004_auto_20211006_1559'),
     ]
 
     operations = [
@@ -18,6 +18,16 @@ class Migration(migrations.Migration):
             model_name='sellerproductdatasamplearchive',
             name='file',
             field=models.FileField(default='', upload_to='seller_product_data_samples_archive/'),
+            preserve_default=False,
+        ),
+        migrations.RemoveField(
+            model_name='sellerproductdatasample',
+            name='url',
+        ),
+        migrations.AddField(
+            model_name='sellerproductdatasample',
+            name='file',
+            field=models.FileField(default='', upload_to='seller_product_data_samples/'),
             preserve_default=False,
         ),
     ]
