@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 from django.core.management.base import BaseCommand
 
-from seller_products.models import SellerProductDataSample, SellerProductDataSampleArchive
+from seller_products.models import SellerProductDataSample
 from app.conf.base import MEDIA_ROOT
 
 
@@ -16,8 +16,7 @@ class Command(BaseCommand):
 
     # Folders of model fields that would be cleared
     MODEL_FIELDS_TO_CLEAR = [
-        {'model_class': SellerProductDataSample, 'model_field': SellerProductDataSample._meta.get_field('file')},
-        {'model_class': SellerProductDataSampleArchive, 'model_field': SellerProductDataSampleArchive._meta.get_field('file')}
+        {'model_class': SellerProductDataSample, 'model_field': SellerProductDataSample._meta.get_field('file')}
     ]
 
     class ModelFieldCleaner:
@@ -30,7 +29,10 @@ class Command(BaseCommand):
             self.remove_unbounded_files()
 
         def remove_unbounded_files(self):
-            print('Remove_unbounded_files started')
+            print(
+                'Remove_unbounded_files started, files created before %s will be removed'
+                % datetime.utcfromtimestamp(self.datetime_unix_from).strftime('%Y-%m-%d %H:%M:%S')
+            )
             upload_path = self.model_field.upload_to
             absolute_path = os.path.join(MEDIA_ROOT, upload_path)
             files_in_catalog = set(os.path.join(upload_path, f) for f in os.listdir(absolute_path))

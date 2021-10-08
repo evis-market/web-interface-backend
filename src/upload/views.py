@@ -27,7 +27,15 @@ class UploadedFileView(GenericAPIView):
 
     Method: `POST`
 
+    URL: `/api/v1/upload>`
+
     **Successful response**
+
+        HTTP status Code: 200
+
+        {
+            "status": "OK"
+        }
 
     """
     serializer_class = UploadedFileSerializer

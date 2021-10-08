@@ -1,6 +1,8 @@
+import os
 import typing
 
 from app import exceptions
+from app.conf.base import MEDIA_ROOT
 from seller_products.models import (
     SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl, SellerProductDataUrlArchive)
 from sellers.models import Seller
@@ -42,19 +44,15 @@ class SellerProductService:
         if data_samples_uploaded:
             for file in data_samples_uploaded:
                 # upload seller_product_data_samples
-                absolute_file_path, relative_file_path = upload_service.get_destination_paths(
-                    SellerProductDataSample, 'file', file
-                )
-                upload_service.copy_file_from_tmp(file, absolute_file_path)
-                sp = SellerProductDataSample(seller_product=seller_product, file=relative_file_path)
+                upload_to = upload_service.get_destination_path(SellerProductDataSample, 'file', file, file.uuid)
+                upload_service.copy_file_from_tmp(file, os.path.join(MEDIA_ROOT, upload_to))
+                sp = SellerProductDataSample(seller_product=seller_product, file=upload_to)
                 sp.save()
 
                 # upload seller_product_data_samples into archive
-                absolute_file_path, relative_file_path = upload_service.get_destination_paths(
-                    SellerProductDataSampleArchive, 'file', file
-                )
-                upload_service.copy_file_from_tmp(file, absolute_file_path)
-                sp = SellerProductDataSampleArchive(seller_product=seller_product_acrhive, file=relative_file_path)
+                upload_to = upload_service.get_destination_path(SellerProductDataSampleArchive, 'file', file, file.uuid)
+                upload_service.copy_file_from_tmp(file, os.path.join(MEDIA_ROOT, upload_to))
+                sp = SellerProductDataSampleArchive(seller_product=seller_product_acrhive, file=upload_to)
                 sp.save()
 
         if data_urls:
@@ -81,25 +79,28 @@ class SellerProductService:
         )
         seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
 
-        SellerProductDataSample.objects.delete_by_seller_product(seller_product=seller_product)
         SellerProductDataUrl.objects.delete_by_seller_product(seller_product=seller_product)
+        SellerProductDataSample.objects.delete_by_seller_product_except_excluded_files(
+            seller_product,
+            [data_sample.uuid for data_sample in data_samples_uploaded]
+        )
 
         if data_samples_uploaded:
             for file in data_samples_uploaded:
                 # upload seller_product_data_samples
-                absolute_file_path, relative_file_path = upload_service.get_destination_paths(
-                    SellerProductDataSample, 'file', file
-                )
-                upload_service.copy_file_from_tmp(file, absolute_file_path)
-                sp = SellerProductDataSample(seller_product=seller_product, file=relative_file_path)
-                sp.save()
+                if not SellerProductDataSample.objects.file_exists(file.uuid):
+                    upload_to = upload_service.get_destination_path(SellerProductDataSample, 'file', file, file.uuid)
+                    upload_service.copy_file_from_tmp(file, os.path.join(MEDIA_ROOT, upload_to))
+                    sp = SellerProductDataSample(seller_product=seller_product, file=upload_to)
+                    sp.save()
 
-                # upload seller_product_data_samples into archive
-                absolute_file_path, relative_file_path = upload_service.get_destination_paths(
-                    SellerProductDataSampleArchive, 'file', file
-                )
-                upload_service.copy_file_from_tmp(file, absolute_file_path)
-                sp = SellerProductDataSampleArchive(seller_product=seller_product_acrhive, file=relative_file_path)
+            # upload seller_product_data_samples into archive
+            for data_sample in SellerProductDataSample.objects.filter(seller_product=seller_product):
+                upload_to = upload_service.get_destination_path(SellerProductDataSampleArchive, 'file', data_sample,
+                                                                data_sample.get_filename_without_extension)
+                source_file_path = os.path.join(MEDIA_ROOT, data_sample.file.path)
+                upload_service.copy_file(source_file_path, os.path.join(MEDIA_ROOT, upload_to))
+                sp = SellerProductDataSampleArchive(seller_product=seller_product_acrhive, file=upload_to)
                 sp.save()
 
         if data_urls:

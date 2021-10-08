@@ -36,3 +36,11 @@ class UploadedFile(models.Model):
              update_fields=None):
         self.file_name_original = self.file.name
         super().save(force_insert, force_update, using, update_fields)
+
+    @property
+    def get_filename_without_extension(self):
+        return os.path.basename(self.file.name).split('.')[0]
+
+    @property
+    def get_filename_extension(self):
+        return os.path.basename(self.file.name).split('.')[-1]

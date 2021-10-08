@@ -1,3 +1,4 @@
+import os
 import uuid
 
 from django.db import models
@@ -98,6 +99,14 @@ class SellerProductDataSample(models.Model):
 
     def __str__(self):
         return f'{self.seller_product.name} - {self.file}'
+
+    @property
+    def get_filename_without_extension(self):
+        return os.path.basename(self.file.name).split('.')[0]
+
+    @property
+    def get_filename_extension(self):
+        return os.path.basename(self.file.name).split('.')[-1]
 
 
 class SellerProductDataUrl(models.Model):
