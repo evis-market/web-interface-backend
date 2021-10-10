@@ -4,14 +4,36 @@ from categories.models import Category
 
 
 class CategoryFilter(filters.FilterSet):
+    """ Class representing category filter
+
+    Attributes:
+        name (django_filters.filters): filter field
+        parent_id (django_filters.filters):filter field
+    """
     name = filters.CharFilter(lookup_expr='icontains')
     parent_id = filters.CharFilter(method='parent_id_filter')
 
     class Meta:
+        """ Meta class for class representing category filter
+
+        Attributes:
+            model (models.Model): data model
+            fields (list): class fields list
+        """
         model = Category
         fields = []
 
     def parent_id_filter(self, queryset, name, value):
+        """ Filter by parent_id.
+
+        Args:
+            queryset: filter query set
+            name: name value for filter
+            value: filter value
+
+        Returns:
+            Filter by parent_id.
+        """
         try:
             int_val = int(value)
         except ValueError:
