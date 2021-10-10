@@ -1,4 +1,6 @@
 from rest_framework.generics import GenericAPIView
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 
 from app.response import response_ok
 from categories.models import Category
@@ -45,6 +47,7 @@ class ProductCategoriesListView(GenericAPIView):
     """
     serializer_class = CategorySerializer
 
+    @method_decorator(never_cache)
     def get(self, request, format=None):
         categories = Category.objects.get_categories_with_products()
         serializer = self.serializer_class(categories, many=True)
@@ -96,14 +99,14 @@ class ProductsListView(GenericAPIView):
     def get(self, request, format=None):
         shop_service = ShopService()
         seller_products = shop_service.get_shop_products(
-            request.GET.getlist('category_id'), request.GET.getlist('order_by'), self.order_by_allowed_fields
+            request.GET.get('category_ids', '').split(','), request.GET.getlist('order_by'), self.order_by_allowed_fields
         )
         seller_products_page = self.paginate_queryset(seller_products)
         serializer = self.serializer_class(seller_products_page, many=True)
         return response_ok(
             {
                 'seller_products_count': seller_products.count(),
-                'seller_products': serializer.data
+                'seller_products': serializer.data,
             },
         )
 
