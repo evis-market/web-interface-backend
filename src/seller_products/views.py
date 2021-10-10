@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import transaction
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -5,9 +7,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
 from app.response import response_ok
-from seller_products.models import SellerProduct
-from seller_products.serializers import SellerProductsSerializer, SellerProductsUpdateSerializer
+from seller_products.models import SellerProduct, SellerProductDataSample
+from seller_products.serializers import SellerProductsSerializer, SellerProductsUpdateSerializer, UploadedFilesSerializer
 from seller_products.service import SellerProductService
+
 
 
 class SellerProductsListView(GenericAPIView):
@@ -121,13 +124,17 @@ class SellerProductsListView(GenericAPIView):
         }
     """
     serializer_class = SellerProductsSerializer
+    uploaded_files_serializer = UploadedFilesSerializer
     update_serializer_class = SellerProductsUpdateSerializer
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
-        seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
-        serializer = self.serializer_class(seller_products, many=True)
-        return response_ok({'seller-products': serializer.data})
+        return response_ok()
+
+    # def get(self, request, format=None):
+    #     seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
+    #     serializer = self.serializer_class(seller_products, many=True)
+    #     return response_ok({'seller-products': serializer.data})
 
     def post(self, request, format=None):
         seller_product_service = SellerProductService()
@@ -137,6 +144,7 @@ class SellerProductsListView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             seller_product_service.create_object(serializer.validated_data)
+
         return response_ok({}, http_code=status.HTTP_200_OK)
 
 

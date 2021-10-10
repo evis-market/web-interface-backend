@@ -15,10 +15,10 @@ def extract_err_data_from_exc(exc):
                 invalid_fields[field] = detail
             elif isinstance(detail, list):
                 if isinstance(detail[0], dict):
-                    for item in detail:
+                    for index, item in enumerate(detail, 0):
                         if not item:
                             continue
-                        invalid_fields.update({k: v for k, v in item.items()})
+                        invalid_fields.update({index: {k: v for k, v in item.items()}})
                 else:
                     invalid_fields[field] = ', '.join(detail)
         return 'bad request', invalid_fields

@@ -12,6 +12,7 @@ INSTALLED_APPS = [
     'geo_regions',
     'data_delivery_types',
     'product_data_types',
+    'upload',
 
     'mptt',
     'data_generator',

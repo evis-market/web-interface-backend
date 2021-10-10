@@ -4,6 +4,11 @@ from django.apps import apps
 from django.db import models
 
 from app.utils import copy_instance
+from django.db.models import F
+from django.db.models.functions import StrIndex, Reverse, Right
+from django.db.models import F, Func, functions, Value
+from django.db.models import CharField, F
+from django.db.models.functions import StrIndex, Substr
 
 
 class SellerProductBaseManager(models.Manager):
@@ -136,8 +141,29 @@ class SellerProductDataSampleManager(models.Manager):
     def get_by_seller_product(self, seller_product):
         return self.model.objects.filter(seller_product=seller_product)
 
-    def delete_by_seller_product(self, seller_product):
-        self.model.objects.filter(seller_product=seller_product).delete()
+    def delete_by_seller_product_except_excluded_files(self, seller_product, filename_uuids_without_extension):
+        objects = self.model.objects.annotate(
+            last_slash_pos=StrIndex(Reverse('file'), Value('/')),
+            filename=Right('file', F('last_slash_pos') - 1),
+            dot_extension_pos=StrIndex('filename', Value('.')),
+            filename_without_extension=Substr('filename', 1, F('dot_extension_pos') - 1)
+        ).filter(
+            seller_product=seller_product
+        ).exclude(
+            filename_without_extension__in=filename_uuids_without_extension
+        )
+        objects.delete()
+
+    def file_exists(self, uuid):
+        obj = self.model.objects.annotate(
+            last_slash_pos=StrIndex(Reverse('file'), Value('/')),
+            filename=Right('file', F('last_slash_pos') - 1),
+            dot_extension_pos=StrIndex('filename', Value('.')),
+            filename_without_extension=Substr('filename', 1, F('dot_extension_pos') - 1)
+        ).filter(
+            filename_without_extension=uuid
+        ).first()
+        return obj
 
 
 class SellerProductDataUrlManager(models.Manager):

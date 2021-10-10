@@ -1,3 +1,6 @@
+import os
+import uuid
+
 from django.db import models
 
 from categories.models import Category
@@ -83,9 +86,9 @@ class SellerProductArchive(SellerProductBase):
 
 class SellerProductDataSample(models.Model):
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_samples')
-    url = models.URLField('URL')
-    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
-    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='seller_product_data_samples/')
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE, blank=True, null=True)
 
     objects = SellerProductDataSampleManager()
 
@@ -95,14 +98,22 @@ class SellerProductDataSample(models.Model):
         verbose_name_plural = 'Data samples'
 
     def __str__(self):
-        return f'{self.seller_product.name} - {self.url}'
+        return f'{self.seller_product.name} - {self.file}'
+
+    @property
+    def get_filename_without_extension(self):
+        return os.path.basename(self.file.name).split('.')[0]
+
+    @property
+    def get_filename_extension(self):
+        return os.path.basename(self.file.name).split('.')[-1]
 
 
 class SellerProductDataUrl(models.Model):
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_urls')
     url = models.URLField('URL')
-    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
-    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE, blank=True, null=True)
 
     objects = SellerProductDataUrlManager()
 
@@ -117,9 +128,9 @@ class SellerProductDataUrl(models.Model):
 
 class SellerProductDataSampleArchive(models.Model):
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_samples_archive')
-    url = models.URLField('URL')
-    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
-    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='seller_product_data_samples_archive/')
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE, blank=True, null=True)
 
     objects = SellerProductDataSampleArchiveManager()
 
@@ -135,8 +146,8 @@ class SellerProductDataSampleArchive(models.Model):
 class SellerProductDataUrlArchive(models.Model):
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_urls_archive')
     url = models.URLField('URL')
-    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE)
-    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE)
+    data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
+    data_format = models.ForeignKey(DataFormat, on_delete=models.CASCADE, blank=True, null=True)
 
     objects = SellerProductDataUrlArchiveManager()
 

@@ -7,6 +7,10 @@ from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from seller_products.models import SellerProduct, SellerProductDataSample, SellerProductDataUrl
 from sellers.models import Seller
+from rest_framework import serializers
+from rest_framework.fields import UUIDField
+
+from upload.models import UploadedFile
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -52,12 +56,16 @@ class DataDeliveryTypeSerializer(serializers.ModelSerializer):
 
 
 class DataSampleSerializer(serializers.ModelSerializer):
-    data_delivery_type_id = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True, source='data_delivery_type')
-    data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, source='data_format')
+    data_delivery_type_id = serializers.PrimaryKeyRelatedField(
+        queryset=DataDeliveryType.objects.all(), write_only=True, source='data_delivery_type', required=False
+    )
+    data_format_id = serializers.PrimaryKeyRelatedField(
+        queryset=DataFormat.objects.all(), write_only=True, source='data_format', required=False
+    )
 
     class Meta:
         model = SellerProductDataSample
-        fields = ['url', 'data_delivery_type_id', 'data_format_id']
+        fields = ['file', 'data_delivery_type_id', 'data_format_id']
 
 
 class DataUrlsSerializer(serializers.ModelSerializer):
@@ -113,7 +121,7 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
     data_types_ids = serializers.PrimaryKeyRelatedField(queryset=DataType.objects.all(), write_only=True, many=True)
     data_formats_ids = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, many=True)
     data_delivery_types_ids = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True, many=True)
-    data_samples = serializers.ListField(child=DataSampleSerializer(), write_only=True, required=False)
+    data_samples = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), many=True, required=False)
     data_urls = serializers.ListField(child=DataUrlsSerializer(), write_only=True, required=False)
 
     class Meta:
@@ -137,3 +145,7 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
             'data_samples',
             'data_urls'
         ]
+
+
+class UploadedFilesSerializer(serializers.Serializer):
+    data_samples = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), write_only=True, many=True)
