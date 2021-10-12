@@ -12,20 +12,25 @@ from seller_products.managers import (
     SellerProductArchiveManager, SellerProductBaseManager, SellerProductDataSampleArchiveManager, SellerProductDataSampleManager,
     SellerProductDataUrlArchiveManager, SellerProductDataUrlManager, SellerProductManager)
 from sellers.models import Seller
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class SellerProductBase(models.Model):
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=500)
     descr = models.TextField('Description', blank=True, default='')
-    price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=True, default=None)
-    price_per_month = models.FloatField('Price per month', blank=True, null=True, default=None)
-    price_per_year = models.FloatField('Price per year', blank=True, null=True, default=None)
-    price_by_request = models.FloatField('Price by request', blank=True, null=True, default=None)
+    price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=True, default=None,
+                                           validators=[MinValueValidator(0.0)])
+    price_per_month = models.FloatField('Price per month', blank=True, null=True, default=None,
+                                        validators=[MinValueValidator(0.0)])
+    price_per_year = models.FloatField('Price per year', blank=True, null=True, default=None,
+                                       validators=[MinValueValidator(0.0)])
+    price_by_request = models.FloatField('Price by request', blank=True, null=True, default=None,
+                                         validators=[MinValueValidator(0.0)])
     price_per_usage = models.BooleanField('Price per usage True/False', blank=True, null=True, default=None)
     price_per_usage_descr = models.TextField('Purchase method description', blank=True, null=True, default=None)
-    rating = models.FloatField('Rating', blank=True, null=True, default=None)
-    total_reviews_cnt = models.IntegerField('Total count of reviews', default=0)
+    rating = models.FloatField('Rating', blank=True, null=True, default=None, validators=[MinValueValidator(0.0)])
+    total_reviews_cnt = models.IntegerField('Total count of reviews', default=0, validators=[MinValueValidator(0.0)])
     version = models.IntegerField('Version', default=1)
     created_at = models.DateTimeField('Created', auto_now_add=True)
     updated_at = models.DateTimeField('Updated', auto_now=True)
@@ -140,7 +145,7 @@ class SellerProductDataSampleArchive(models.Model):
         verbose_name_plural = 'Data samples archive'
 
     def __str__(self):
-        return f'{self.seller_product.name} - {self.url}'
+        return f'{self.seller_product.name} - {self.file}'
 
 
 class SellerProductDataUrlArchive(models.Model):

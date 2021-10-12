@@ -129,12 +129,9 @@ class SellerProductsListView(GenericAPIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, format=None):
-        return response_ok()
-
-    # def get(self, request, format=None):
-    #     seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
-    #     serializer = self.serializer_class(seller_products, many=True)
-    #     return response_ok({'seller-products': serializer.data})
+        seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
+        serializer = self.serializer_class(seller_products, many=True)
+        return response_ok({'seller-products': serializer.data})
 
     def post(self, request, format=None):
         seller_product_service = SellerProductService()

@@ -9,9 +9,9 @@ class SellerService:
             seller=user,
             defaults={
                 'name': data['name'],
-                'description': data['descr'],
-                'logo_url': data['logo_url'],
-                'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
+                'description': data.get('descr'),
+                'logo_url': data.get('logo_url'),
+                'wallet_for_payments_erc20': data.get('wallet_for_payments_erc20'),
             })
         self.save_contacts(
             contacts=data['contacts'], seller=seller if created else Seller.objects.get_seller_by_user_id(user.id)

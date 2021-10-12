@@ -33,10 +33,9 @@ class SalesBuyerShoppingListView(GenericAPIView):
 
     def get(self, request):
         sales_service = SalesService()
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
         buyer_shopping_list = sales_service.get_buyer_shopping_list(buyer_id=request.user.id)
-        return response_ok({'sales': buyer_shopping_list})
+        serializer = self.serializer_class(buyer_shopping_list, many=True)
+        return response_ok({'sales': serializer.data})
 
 
 class SellerSalesListView(GenericAPIView):
@@ -67,7 +66,6 @@ class SellerSalesListView(GenericAPIView):
 
     def get(self, request):
         sales_service = SalesService()
-        serializer = self.serializer_class(data=request.data)
-        serializer.is_valid(raise_exception=True)
         seller_sales_list = sales_service.get_seller_sales_list(seller_id=request.user.id)
-        return response_ok({'sales': seller_sales_list})
+        serializer = self.serializer_class(seller_sales_list, many=True)
+        return response_ok({'sales': serializer.data})
