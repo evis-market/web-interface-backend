@@ -4,6 +4,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
 from app.response import response_ok
+from app import exceptions
 from users import serializers
 from users.models import User
 from users.service import SignupService, UsersService
@@ -202,8 +203,10 @@ class UserProfileView(APIView):
     users_service = UsersService()
 
     def get(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        return response_ok({'profile': serializer.data})
+        if request.user.is_anonymous:
+            raise exceptions.Unauthorized
+        user = User.objects.get_by_id(request.user.id)
+        return response_ok({'profile': self.serializer_class(user).data})
 
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
