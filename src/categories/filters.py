@@ -14,12 +14,6 @@ class CategoryFilter(filters.FilterSet):
     parent_id = filters.CharFilter(method='parent_id_filter')
 
     class Meta:
-        """ Meta class for class representing category filter
-
-        Attributes:
-            model (models.Model): data model
-            fields (list): class fields list
-        """
         model = Category
         fields = []
 

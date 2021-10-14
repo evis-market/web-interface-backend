@@ -21,11 +21,6 @@ class CategoryAdmin(MPTTModelAdmin):
 
 
 class RecommendedForAdmin(admin.ModelAdmin):
-    """ Class representing recommended for admin
-
-      Attributes:
-          list_display (tuple): display fields tuple
-      """
     list_display = ('name',)
 
 

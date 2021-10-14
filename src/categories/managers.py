@@ -23,10 +23,10 @@ class CategoryManager(TreeManager):
         )
 
     def get_categories_with_recommended(self):
-        """ Get categories with recommended.
+        """ Get categories with the ones to whom the category is recommended.
 
         Returns:
-            Categories with recommended.
+            Categories with the ones to whom the category is recommended.
         """
         SellerProduct = apps.get_model('seller_products', 'SellerProduct')
 

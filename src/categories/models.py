@@ -6,22 +6,14 @@ from categories.managers import CategoryManager
 
 
 class RecommendedFor(models.Model):
-    """ Class representing recommended for model.
+    """ Class representing the ones for whom the category is recommended.
 
     Attributes:
           name (django.db.models.fields.CharField): model name
-
     """
     name = models.CharField('For whom is recommended', max_length=120, db_index=True, unique=True)
 
     class Meta:
-        """ Meta class for class representing category filter
-
-        Attributes:
-            db_table (str): db table name
-            verbose_name (str): verbose name
-            verbose_name_plural (str): verbose plural name
-        """
         db_table = 'recommended_for'
         verbose_name = 'Recommended for'
         verbose_name_plural = 'Recommended for'
@@ -31,7 +23,7 @@ class RecommendedFor(models.Model):
 
 
 class Category(mptt_models.MPTTModel):
-    """ Class representing recommended for model.
+    """ Class representing category.
 
     Attributes:
           name (django.db.models.fields.CharField): category name
@@ -64,14 +56,6 @@ class Category(mptt_models.MPTTModel):
         super().save(*args, **kwargs)
 
     class Meta:
-        """ Meta class for class representing category filter
-
-        Attributes:
-            db_table (str): db table name
-            verbose_name (str): verbose name
-            verbose_name_plural (str): verbose plural name
-            ordering (tuple): ordering fields
-        """
         db_table = 'categories'
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
