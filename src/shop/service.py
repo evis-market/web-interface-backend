@@ -3,8 +3,14 @@ from seller_products.models import SellerProduct
 
 
 class ShopService:
+    """ Class representing shop service """
 
     def get_shop_products(self, category_ids, order_by_fields, order_by_allowed_fields):
+        """ Get shop products.
+
+        Returns:
+            Shop products ordered by fields.
+        """
         shop_products = SellerProduct.objects.get_seller_products_by_categories(category_ids)
         if not set(order_by_fields).issubset(order_by_allowed_fields):
             raise exceptions.NotFound('One or more fields are set in order by conditions are not allowed'

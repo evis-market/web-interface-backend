@@ -7,6 +7,7 @@ from sellers.serializer import SellerViewSerializer
 
 
 class SellerProductSerializer(serializers.ModelSerializer):
+    """ Class representing serializer for the seller product """
     class Meta:
         model = SellerProduct
         fields = [
