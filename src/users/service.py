@@ -85,7 +85,7 @@ class UsersService:
                 'last_name': data['last_name'],
                 'phone': data['phone'],
                 'email': data['email'],
-                'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
+                'wallet_erc20': data['wallet_erc20'],
             })
 
     def update_user_password(self, user: User, password: str) -> None:

@@ -211,7 +211,7 @@ class UserProfileView(APIView):
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.users_service.update_user_profile(user=request.user, data=serializer.validated_data)
+        self.users_service.update_profile(user=request.user, data=serializer.validated_data)
         return response_ok()
 
 
