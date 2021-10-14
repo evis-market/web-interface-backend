@@ -45,7 +45,7 @@ class ContactUpdateSerializer(serializers.ModelSerializer):
 
 
 class SellerUpdateSerializer(serializers.ModelSerializer):
-    contacts = ContactUpdateSerializer(many=True)
+    contacts = serializers.ListField(child=ContactUpdateSerializer(), write_only=True, required=True)
 
     class Meta:
         model = Seller

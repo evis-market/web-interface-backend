@@ -27,7 +27,7 @@ class Seller(models.Model):
         return self.name
 
     def contacts(self):
-        return Contact.objects.get_seller_contacts_by_seller_id(seller_id=self)
+        return Contact.objects.get_all_by_seller(seller_id=self)
 
 
 class Contact(models.Model):

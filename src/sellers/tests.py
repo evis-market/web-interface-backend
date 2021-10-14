@@ -71,7 +71,7 @@ class TestSellerSettingsView:
         response = SellerSettingsView.as_view()(request=request)
         assert response.status_code == 200
         seller = Seller.objects.get_seller_by_user_id(user_id=user.id)
-        url_contact, phone_contact, email_contact = Contact.objects.get_seller_contacts_by_seller_id(seller_id=seller.id)
+        url_contact, phone_contact, email_contact = Contact.objects.get_all_by_seller(seller_id=seller.id)
         for key, value in data.items():
             if key == 'contacts':
                 for k, v in data['contacts'][0].items():
@@ -107,7 +107,7 @@ class TestSellerSettingsView:
         response = SellerSettingsView.as_view()(request=request)
         assert response.status_code == 200
         seller = Seller.objects.get_seller_by_user_id(user_id=user.id)
-        url_contact, phone_contact, email_contact = Contact.objects.get_seller_contacts_by_seller_id(seller_id=seller.id)
+        url_contact, phone_contact, email_contact = Contact.objects.get_all_by_seller(seller_id=seller.id)
         for key, value in data.items():
             if key == 'contacts':
                 for k, v in data['contacts'][0].items():

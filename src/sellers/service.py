@@ -1,24 +1,25 @@
+from app import exceptions
+
 from sellers.models import Contact, Seller
 from users.models import User
 
 
 class SellerService:
+    CONTACTS_NOT_SUPPLIED = "Contacts are not supplied"
 
-    def create_seller(self, user: User, data: dict) -> None:
-        seller, created = Seller.objects.update_or_create(
-            seller=user,
-            defaults={
-                'name': data['name'],
-                'description': data.get('descr'),
-                'logo_url': data.get('logo_url'),
-                'wallet_for_payments_erc20': data.get('wallet_for_payments_erc20'),
-            })
-        self.save_contacts(
-            contacts=data['contacts'], seller=seller if created else Seller.objects.get_seller_by_user_id(user.id)
-        )
+    def create_or_update_object(self, user: User, data: dict) -> None:
+        contacts = data.pop('contacts', None)
 
-    @staticmethod
-    def save_contacts(contacts: list, seller: Seller) -> None:
-        Contact.objects.delete_seller_contacts_by_seller_id(seller)
-        for contact in contacts:
-            Contact(seller=seller, type=contact['type'], value=contact['value'], comment=contact.get('comment', '')).save()
+        # todo: by some reason serializer couldn't make contacts field to be required;
+        #  here is workaround for now
+        if not contacts:
+            raise exceptions.NotFound(msg=self.CONTACTS_NOT_SUPPLIED)
+
+        seller = Seller.objects.get_seller_by_user_id(user)
+        if not seller:
+            seller = Seller.objects.create(seller=user, **data)
+        else:
+            Seller.objects.update(**data)
+
+        Contact.objects.delete_all_by_seller(seller)
+        Contact.objects.bulk_create([Contact(seller=seller, **contact) for contact in contacts])
