@@ -1,10 +1,12 @@
 import os
+
 import typing
 
 from app import exceptions
 from app.conf.base import MEDIA_ROOT
 from seller_products.models import (
-    SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl, SellerProductDataUrlArchive)
+    SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl,
+    SellerProductDataUrlArchive)
 from sellers.models import Seller
 from upload.service import UploadService
 
@@ -41,20 +43,27 @@ class SellerProductService:
         )
         seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
 
+        self._create_data_samples(data_samples_uploaded, upload_service, seller_product, seller_product_acrhive)
+        self._create_data_urls(data_urls, seller_product, seller_product_acrhive)
+
+    def _create_data_samples(self, data_samples_uploaded, upload_service, seller_product, seller_product_acrhive):
         if data_samples_uploaded:
-            for file in data_samples_uploaded:
+            for data_sample in data_samples_uploaded:
                 # upload seller_product_data_samples
-                upload_to = upload_service.get_destination_path(SellerProductDataSample, 'file', file, file.uuid)
-                upload_service.copy_file_from_tmp(file, os.path.join(MEDIA_ROOT, upload_to))
+                upload_to = upload_service.get_destination_path(SellerProductDataSample, 'file', data_sample,
+                                                                data_sample.uuid)
+                upload_service.copy_file_from_tmp(data_sample, os.path.join(MEDIA_ROOT, upload_to))
                 sp = SellerProductDataSample(seller_product=seller_product, file=upload_to)
                 sp.save()
 
                 # upload seller_product_data_samples into archive
-                upload_to = upload_service.get_destination_path(SellerProductDataSampleArchive, 'file', file, file.uuid)
-                upload_service.copy_file_from_tmp(file, os.path.join(MEDIA_ROOT, upload_to))
+                upload_to = upload_service.get_destination_path(SellerProductDataSampleArchive, 'file', data_sample,
+                                                                data_sample.uuid)
+                upload_service.copy_file_from_tmp(data_sample, os.path.join(MEDIA_ROOT, upload_to))
                 sp = SellerProductDataSampleArchive(seller_product=seller_product_acrhive, file=upload_to)
                 sp.save()
 
+    def _create_data_urls(self, data_urls, seller_product, seller_product_acrhive):
         if data_urls:
             SellerProductDataUrl.objects.bulk_create([
                 SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
@@ -79,8 +88,11 @@ class SellerProductService:
         )
         seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
 
-        SellerProductDataUrl.objects.delete_by_seller_product(seller_product=seller_product)
+        self._update_data_samples(data_samples_uploaded, upload_service, seller_product, seller_product_acrhive)
+        self._update_data_urls(data_urls, seller_product, seller_product_acrhive)
 
+    def _update_data_samples(self, data_samples_uploaded, upload_service, seller_product, seller_product_acrhive):
+        # todo: check if no files supplied - delete all SellerProductDataSample or not ?
         if data_samples_uploaded:
             # first, lets delete those files that are not longer presented as data_samples in updated seller_product
             SellerProductDataSample.objects.delete_by_seller_product_except_excluded_files(
@@ -89,7 +101,7 @@ class SellerProductService:
             )
 
             # then upload new files into respective directories and updated its data in seller_product models
-            for file in data_samples_uploaded:
+            for file in data_samples_uploaded:  # noqa: VNE002
                 if not SellerProductDataSample.objects.file_exists(file.uuid):
                     upload_to = upload_service.get_destination_path(SellerProductDataSample, 'file', file, file.uuid)
                     upload_service.copy_file_from_tmp(file, os.path.join(MEDIA_ROOT, upload_to))
@@ -105,6 +117,8 @@ class SellerProductService:
                 sp = SellerProductDataSampleArchive(seller_product=seller_product_acrhive, file=upload_to)
                 sp.save()
 
+    def _update_data_urls(self, data_urls, seller_product, seller_product_acrhive):
+        SellerProductDataUrl.objects.delete_by_seller_product(seller_product=seller_product)
         if data_urls:
             SellerProductDataUrl.objects.bulk_create([
                 SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls

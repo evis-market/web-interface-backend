@@ -4,7 +4,7 @@ from app.exceptions import BAD_REQUEST_CODE, Errno
 from app.response import response_err
 
 
-def extract_err_data_from_exc(exc):
+def extract_err_data_from_exc(exc):  # noqa: CCR001
     if isinstance(exc.detail, dict) and 'detail' in exc.detail:
         return exc.detail['detail'], None
 

@@ -1,9 +1,8 @@
 from rest_framework.generics import GenericAPIView
 
 from app.response import response_ok
-from sales.service import SalesService
-
 from sales.selializers import SalesSerializer
+from sales.service import SalesService
 
 
 class SalesBuyerShoppingListView(GenericAPIView):
@@ -50,7 +49,6 @@ class SellerSalesListView(GenericAPIView):
 
         {
           "status": "OK",
-        
           "sales": [
             {
               ...
@@ -60,7 +58,6 @@ class SellerSalesListView(GenericAPIView):
             }
           ]
         }
-
     """
     serializer_class = SalesSerializer
 

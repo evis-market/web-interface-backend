@@ -1,12 +1,11 @@
 from rest_framework import serializers
 
 from sales.models import Sale
-from seller_products.serializers import SellerProductsSerializer
 from seller_products.models import SellerProductArchive
+from seller_products.serializers import SellerProductsSerializer
 
 
 class SellerProductsArchiveSerializer(SellerProductsSerializer):
-
     class Meta:
         model = SellerProductArchive
         fields = [

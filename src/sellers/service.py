@@ -1,11 +1,10 @@
 from app import exceptions
-
 from sellers.models import Contact, Seller
 from users.models import User
 
 
 class SellerService:
-    CONTACTS_NOT_SUPPLIED = "Contacts are not supplied"
+    CONTACTS_NOT_SUPPLIED = 'Contacts are not supplied'
 
     def create_or_update_object(self, user: User, data: dict) -> None:
         contacts = data.pop('contacts', None)

@@ -54,5 +54,5 @@ class SellerUpdateSerializer(serializers.ModelSerializer):
             'descr',
             'logo_url',
             'wallet_for_payments_erc20',
-            'contacts'
+            'contacts',
         ]

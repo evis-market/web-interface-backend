@@ -2,13 +2,10 @@ import typing as tp
 
 from django.apps import apps
 from django.db import models
+from django.db.models import F, Value
+from django.db.models.functions import Reverse, Right, StrIndex, Substr
 
 from app.utils import copy_instance
-from django.db.models import F
-from django.db.models.functions import StrIndex, Reverse, Right
-from django.db.models import F, Func, functions, Value
-from django.db.models import CharField, F
-from django.db.models.functions import StrIndex, Substr
 
 
 class SellerProductBaseManager(models.Manager):
@@ -51,7 +48,7 @@ class SellerProductBaseManager(models.Manager):
             'price_by_request',
             'price_per_usage',
             'price_per_usage_descr',
-            'rating'
+            'rating',
         ).filter(
             categories__id__in=Category.objects.get_queryset_descendants(
                 Category.objects.filter(sellerproduct__id=pk),
@@ -71,7 +68,7 @@ class SellerProductBaseManager(models.Manager):
             'price_by_request',
             'price_per_usage',
             'price_per_usage_descr',
-            'rating'
+            'rating',
         ).filter(
             categories__id__in=Category.objects.get_queryset_descendants(
                 Category.objects.filter(id__in=categories),
@@ -85,14 +82,11 @@ class SellerProductBaseManager(models.Manager):
     price_by_request = models.FloatField('Price by request', blank=True, null=True, default=None)
     rating = models.FloatField('Rating', blank=True, null=True, default=None)
 
-    # def order_by_quersyset(self, order_by_fields):
-    #     return self.models.objects
-
 
 class SellerProductManager(SellerProductBaseManager):
     def create(
-        self, seller: int, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
-        data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
+            self, seller: int, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
+            data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
     ):
         instance = super().create(seller=seller, **kwargs)
         instance.categories.add(*categories)
@@ -105,8 +99,8 @@ class SellerProductManager(SellerProductBaseManager):
         return instance
 
     def update(
-        self, instance, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
-        data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
+            self, instance, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
+            data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
     ):
         for column, column_value in kwargs.items():
             setattr(instance, column, column_value)
@@ -155,7 +149,7 @@ class SellerProductDataSampleManager(models.Manager):
         objects.delete()
 
     def file_exists(self, uuid):
-        obj = self.model.objects.annotate(
+        return self.model.objects.annotate(
             last_slash_pos=StrIndex(Reverse('file'), Value('/')),
             filename=Right('file', F('last_slash_pos') - 1),
             dot_extension_pos=StrIndex('filename', Value('.')),
@@ -163,7 +157,6 @@ class SellerProductDataSampleManager(models.Manager):
         ).filter(
             filename_without_extension=uuid
         ).first()
-        return obj
 
 
 class SellerProductDataUrlManager(models.Manager):
