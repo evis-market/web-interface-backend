@@ -80,21 +80,23 @@ class SellerProductService:
         seller_product_acrhive = SellerProductArchive.objects.create_instance_from_seller_product(seller_product)
 
         SellerProductDataUrl.objects.delete_by_seller_product(seller_product=seller_product)
-        SellerProductDataSample.objects.delete_by_seller_product_except_excluded_files(
-            seller_product,
-            [data_sample.uuid for data_sample in data_samples_uploaded]
-        )
 
         if data_samples_uploaded:
+            # first, lets delete those files that are not longer presented as data_samples in updated seller_product
+            SellerProductDataSample.objects.delete_by_seller_product_except_excluded_files(
+                seller_product,
+                [data_sample.uuid for data_sample in data_samples_uploaded]
+            )
+
+            # then upload new files into respective directories and updated its data in seller_product models
             for file in data_samples_uploaded:
-                # upload seller_product_data_samples
                 if not SellerProductDataSample.objects.file_exists(file.uuid):
                     upload_to = upload_service.get_destination_path(SellerProductDataSample, 'file', file, file.uuid)
                     upload_service.copy_file_from_tmp(file, os.path.join(MEDIA_ROOT, upload_to))
                     sp = SellerProductDataSample(seller_product=seller_product, file=upload_to)
                     sp.save()
 
-            # upload seller_product_data_samples into archive
+            # copying files loaded on previous step into archive, updating seller_product archive model instances
             for data_sample in SellerProductDataSample.objects.filter(seller_product=seller_product):
                 upload_to = upload_service.get_destination_path(SellerProductDataSampleArchive, 'file', data_sample,
                                                                 data_sample.get_filename_without_extension)
