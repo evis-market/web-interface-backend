@@ -19,6 +19,12 @@ class Sale(models.Model):
         verbose_name = 'Sale'
         verbose_name_plural = 'Sales'
         ordering = ('created_at',)
+        constraints = [
+            models.CheckConstraint(
+                name="buyer_not_seller",
+                check=~models.Q(buyer=models.F("seller")),
+            ),
+        ]
 
     def __str__(self):
         return self.amount

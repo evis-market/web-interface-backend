@@ -156,8 +156,7 @@ class ProductDetailView(GenericAPIView):
         seller_product = SellerProduct.objects.get_seller_product_detailed(seller_product_id)
         related_products = SellerProduct.objects.get_related_seller_products(seller_product_id)
         related_products_serializer = self.seller_product_serializer_class(related_products, many=True)
-        seller = seller_product.seller
-        seller_serializer = self.seller_serializer_class(seller)
+        seller_serializer = self.seller_serializer_class(seller_product.seller)
         seller_product_serializer = self.seller_product_serializer_class(seller_product)
         return response_ok({
             'seller': seller_serializer.data,
@@ -203,10 +202,12 @@ class RelatedProductsListView(GenericAPIView):
         }
     """
     serializer_class = SellerProductSerializer
+    pagination_class = ProductsPaginator
 
     def get(self, request, seller_product_id, format=None):
         related_products = SellerProduct.objects.get_related_seller_products(seller_product_id)
-        serializer = self.serializer_class(related_products, many=True)
+        related_products_page = self.paginate_queryset(related_products)
+        serializer = self.serializer_class(related_products_page, many=True)
         return response_ok({
             'related_products': serializer.data,
         })
