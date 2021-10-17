@@ -51,7 +51,7 @@ class TestSellerSettingsView:
         for key, value in model_to_dict(email_contact).items():
             assert email_response_contacts[key] == value
 
-    def test_put_create(self):
+    def test_put_create(self):  # noqa: CCR001
         user = mixer.blend(User)
         url = reverse('SellerSettingsView')
         data = {
@@ -71,19 +71,19 @@ class TestSellerSettingsView:
         response = SellerSettingsView.as_view()(request=request)
         assert response.status_code == 200
         seller = Seller.objects.get_seller_by_user_id(user_id=user.id)
-        url_contact, phone_contact, email_contact = Contact.objects.get_seller_contacts_by_seller_id(seller_id=seller.id)
+        url_contact, phone_contact, email_contact = Contact.objects.get_all_by_seller(seller_id=seller.id)
         for key, value in data.items():
             if key == 'contacts':
-                for k, v in data['contacts'][0].items():
-                    assert model_to_dict(url_contact)[k] == v
-                for i, j in data['contacts'][1].items():
-                    assert model_to_dict(phone_contact)[i] == j
-                for x, y in data['contacts'][2].items():
-                    assert model_to_dict(email_contact)[x] == y
+                for _key, _value in data['contacts'][0].items():
+                    assert model_to_dict(url_contact)[_key] == _value
+                for _key, _value in data['contacts'][1].items():
+                    assert model_to_dict(phone_contact)[_key] == _value
+                for _key, _value in data['contacts'][2].items():
+                    assert model_to_dict(email_contact)[_key] == _value
             else:
                 assert model_to_dict(seller)[key] == value
 
-    def test_put_update(self):
+    def test_put_update(self):  # noqa: CCR001
         user = mixer.blend(User)
         seller = mixer.blend(Seller,
                              seller_id=user)
@@ -107,15 +107,15 @@ class TestSellerSettingsView:
         response = SellerSettingsView.as_view()(request=request)
         assert response.status_code == 200
         seller = Seller.objects.get_seller_by_user_id(user_id=user.id)
-        url_contact, phone_contact, email_contact = Contact.objects.get_seller_contacts_by_seller_id(seller_id=seller.id)
+        url_contact, phone_contact, email_contact = Contact.objects.get_all_by_seller(seller_id=seller.id)
         for key, value in data.items():
             if key == 'contacts':
-                for k, v in data['contacts'][0].items():
-                    assert model_to_dict(url_contact)[k] == v
-                for i, j in data['contacts'][1].items():
-                    assert model_to_dict(phone_contact)[i] == j
-                for x, y in data['contacts'][2].items():
-                    assert model_to_dict(email_contact)[x] == y
+                for _key, _value in data['contacts'][0].items():
+                    assert model_to_dict(url_contact)[_key] == _value
+                for _key, _value in data['contacts'][1].items():
+                    assert model_to_dict(phone_contact)[_key] == _value
+                for _key, _value in data['contacts'][2].items():
+                    assert model_to_dict(email_contact)[_key] == _value
             else:
                 assert model_to_dict(seller)[key] == value
         with pytest.raises(Contact.DoesNotExist):

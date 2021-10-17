@@ -1,9 +1,7 @@
-import factory
+import logging
 import random
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.db import transaction
-from factory.django import DjangoModelFactory
-from faker import Faker
 
 from categories.models import Category
 from data_generator import factories
@@ -20,21 +18,21 @@ class Command(BaseCommand):
             '-cu',
             '--count_users',
             default=50,
-            type=int
+            type=int,
         )
 
         parser.add_argument(
             '-cp',
             '--count_products',
             default=1000,
-            type=int
+            type=int,
         )
 
         parser.add_argument(
             '-ccp',
             '--count_categories_per_product',
             default=10,
-            type=int
+            type=int,
         )
 
     def handle(self, *args, **options):
@@ -49,19 +47,19 @@ class Command(BaseCommand):
 
     def _create_seller_products(self, categories, c_seller_products, c_categories_per_product):
         SellerProduct.objects.bulk_create(
-            SellerProduct(seller=seller) for _ in range(c_seller_products) 
+            SellerProduct(seller=seller) for _ in range(c_seller_products)
             for seller in Seller.objects.all()
         )
-        print('SellerProducts created..')
+        logging.info('SellerProducts created..')
 
         c_left = SellerProduct.objects.all().count()
         for seller_product in SellerProduct.objects.all():
-            category_ids = [choice.id for choice in random.choices(
-                categories, k=random.randint(1, c_categories_per_product)
-            )]
+            category_ids = [
+                choice.id for choice in random.choices(categories, k=random.randint(1, c_categories_per_product))
+            ]
             seller_product.categories.add(*category_ids)
             c_left -= 1
-            print('SellerProducts are left to processed %s..' % c_left)
+            logging.info('SellerProducts are left to processed %s..', c_left)
 
     def _create_sellers(self, user):
         pass
@@ -72,11 +70,11 @@ class Command(BaseCommand):
 
     def _create_models_data(self, categories, c_users, c_seller_products, c_categories_per_product):
         users = [factories.UserFactory() for _ in range(c_users)]
-        print('Users created..')
+        logging.info('Users created..')
 
         Seller.objects.bulk_create(
             Seller(seller=user) for user in users
         )
-        print('Sellers created..')
+        logging.info('Sellers created..')
 
         self._create_seller_products(categories, c_seller_products, c_categories_per_product)

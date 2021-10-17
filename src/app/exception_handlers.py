@@ -4,7 +4,7 @@ from app.exceptions import BAD_REQUEST_CODE, Errno
 from app.response import response_err
 
 
-def extract_err_data_from_exc(exc):
+def extract_err_data_from_exc(exc):  # noqa: CCR001
     if isinstance(exc.detail, dict) and 'detail' in exc.detail:
         return exc.detail['detail'], None
 
@@ -12,13 +12,21 @@ def extract_err_data_from_exc(exc):
         invalid_fields = {}
         for field, detail in exc.detail.items():
             if isinstance(detail, dict):
-                invalid_fields[field] = detail
+                if isinstance(detail, dict):
+                    index_details = {}
+                    invalid_fields.update({field: index_details})
+                    for index, details in detail.items():
+                        index_details.update({index: values[0] for values in details.values()})
+                else:
+                    invalid_fields[field] = detail
             elif isinstance(detail, list):
                 if isinstance(detail[0], dict):
+                    field_details = {}
+                    invalid_fields.update({field: field_details})
                     for index, item in enumerate(detail, 0):
                         if not item:
                             continue
-                        invalid_fields.update({index: {k: v for k, v in item.items()}})
+                        field_details.update({index: values[0] for values in item.values()})
                 else:
                     invalid_fields[field] = ', '.join(detail)
         return 'bad request', invalid_fields

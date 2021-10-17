@@ -124,5 +124,5 @@ class SellerSettingsView(GenericAPIView):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
-            seller_service.create_seller(data=serializer.validated_data, user=request.user)
+            seller_service.create_or_update_object(data=serializer.validated_data, user=request.user)
         return response_ok()

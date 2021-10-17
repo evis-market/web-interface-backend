@@ -9,8 +9,8 @@ class SellerManager(models.Manager):
 
 class ContactManager(models.Manager):
 
-    def get_seller_contacts_by_seller_id(self, seller_id):
+    def get_all_by_seller(self, seller_id):
         return self.model.objects.filter(seller_id=seller_id)
 
-    def delete_seller_contacts_by_seller_id(self, seller_id):
+    def delete_all_by_seller(self, seller_id):
         return self.model.objects.filter(seller_id=seller_id).delete()
