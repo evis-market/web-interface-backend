@@ -4,7 +4,7 @@ from categories.models import Category, RecommendedFor
 
 
 class RecommendedForSerializer(serializers.ModelSerializer):
-    """ Class representing serializer for the ones to whom the category is recommended """
+    """ Class representing serializer for categories with pre-filled data recommended_for """
     class Meta:
         model = RecommendedFor
         fields = ['id', 'name']

@@ -6,7 +6,7 @@ from categories.managers import CategoryManager
 
 
 class RecommendedFor(models.Model):
-    """ Class representing the ones for whom the category is recommended.
+    """ Class representing categories with pre-filled data recommended_for.
 
     Attributes:
           name (django.db.models.fields.CharField): model name
