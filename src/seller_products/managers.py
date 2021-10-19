@@ -2,7 +2,7 @@ import typing as tp
 
 from django.apps import apps
 from django.db import models
-from django.db.models import F, Value
+from django.db.models import F, Value, Q
 from django.db.models.functions import Reverse, Right, StrIndex, Substr
 
 from app.utils import copy_instance
@@ -56,8 +56,17 @@ class SellerProductBaseManager(models.Manager):
             ),
         ).distinct()
 
-    def get_seller_products_by_categories(self, categories):
+    def get_seller_products_by_categories_and_name(self, name, categories):
         Category = apps.get_model('categories', 'Category')
+
+        query_filter = Q()
+        if name:
+            query_filter = Q(name__icontains=name)
+        if categories:
+            query_filter &= Q(categories__id__in=Category.objects.get_queryset_descendants(
+                Category.objects.filter(id__in=categories),
+                include_self=True,
+            ))
 
         return self.model.objects.values(
             'id',
@@ -70,10 +79,7 @@ class SellerProductBaseManager(models.Manager):
             'price_per_usage_descr',
             'rating',
         ).filter(
-            categories__id__in=Category.objects.get_queryset_descendants(
-                Category.objects.filter(id__in=categories),
-                include_self=True,
-            ),
+            query_filter
         ).distinct()
 
     price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=True, default=None)
