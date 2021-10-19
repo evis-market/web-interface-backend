@@ -98,18 +98,17 @@ class ProductsListView(GenericAPIView):
 
     def get(self, request, format=None):
         shop_service = ShopService()
+        category_ids = shop_service.get_category_ids(request)
+        order_by_fields = shop_service.get_order_by(request)
         seller_products = shop_service.get_shop_products(
-            request.GET.get('category_ids', '').split(','), request.GET.getlist('order_by'),
-            self.order_by_allowed_fields,
+            request.GET.get('name', ''), category_ids, order_by_fields, self.order_by_allowed_fields
         )
         seller_products_page = self.paginate_queryset(seller_products)
         serializer = self.serializer_class(seller_products_page, many=True)
-        return response_ok(
-            {
-                'seller_products_count': seller_products.count(),
-                'seller_products': serializer.data,
-            },
-        )
+        return response_ok({
+            'seller_products_count': seller_products.count(),
+            'seller_products': serializer.data
+        })
 
 
 class ProductDetailView(GenericAPIView):
