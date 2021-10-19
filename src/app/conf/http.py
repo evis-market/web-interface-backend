@@ -7,11 +7,11 @@ DEBUG = env('DEBUG', cast=bool)
 
 APPEND_SLASH = False
 
-ALLOWED_HOSTS = ['evis.market']
+ALLOWED_HOSTS = ['evis.market', 'www.evis.market']
 
-CORS_ALLOWED_ORIGINS = ['https://evis.market']
+CORS_ALLOWED_ORIGINS = ['https://evis.market', 'https://www.evis.market']
 
-CSRF_TRUSTED_ORIGINS = ['evis.market']
+CSRF_TRUSTED_ORIGINS = ['evis.market', 'www.evis.market']
 
 if DEBUG:
     ALLOWED_HOSTS = ['*']
