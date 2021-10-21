@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-HTTP_PORT := 9000
+HTTP_PORT := 8000
 
 setup: venv upgrade-pip deps migrate load-initial-data createsuperuser ## Setup whole project for production
 
