@@ -4,8 +4,13 @@ from mptt.managers import TreeManager
 
 
 class CategoryManager(TreeManager):
-
+    """ Class representing category manager """
     def get_categories_with_products(self):
+        """ Get categories with products.
+
+        Returns:
+            Categories with products.
+        """
         SellerProduct = apps.get_model('seller_products', 'SellerProduct')
 
         return self.model.objects.prefetch_related(
@@ -18,6 +23,11 @@ class CategoryManager(TreeManager):
         )
 
     def get_categories_with_recommended(self):
+        """ Get categories with pre-filled data recommended_for.
+
+        Returns:
+            Categories with pre-filled data recommended_for
+        """
         return self.model.objects.prefetch_related(
             'recommended_for',
         )

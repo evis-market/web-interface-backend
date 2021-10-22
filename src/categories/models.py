@@ -6,6 +6,11 @@ from categories.managers import CategoryManager
 
 
 class RecommendedFor(models.Model):
+    """ Class representing categories with pre-filled data recommended_for.
+
+    Attributes:
+          name (django.db.models.fields.CharField): model name
+    """
     name = models.CharField('For whom is recommended', max_length=120, db_index=True, unique=True)
 
     class Meta:
@@ -18,6 +23,18 @@ class RecommendedFor(models.Model):
 
 
 class Category(mptt_models.MPTTModel):
+    """ Class representing category.
+
+    Attributes:
+          name (django.db.models.fields.CharField): category name
+          descr (django.db.models.fields.TextField): category description
+          logo_url (django.db.models.fields.URLField): category logo URL
+          slug (django.db.models.fields.SlugField): category slug
+          sort_id (django.db.models.fields.PositiveIntegerField): category sort id
+          parent (django.db.models.fields.TreeForeignKey): category parent
+          recommended_for (django.db.models.fields.ManyToManyField): category recommended for
+          objects (src.categories.managers): category manager
+    """
     name = models.CharField('Name', max_length=190, db_index=True, unique=True)
     descr = models.TextField('Description', blank=True, null=False, default='')
     logo_url = models.URLField('Logo URL', blank=True, null=False, default='')
@@ -33,6 +50,7 @@ class Category(mptt_models.MPTTModel):
         return self.name
 
     def save(self, *args, **kwargs):
+        """ Save category """
         if not self.slug:
             self.slug = slugify(self.name, allow_unicode=True)
         super().save(*args, **kwargs)
