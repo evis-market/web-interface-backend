@@ -1,6 +1,6 @@
-from rest_framework.generics import GenericAPIView
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+from rest_framework.generics import GenericAPIView
 
 from app.response import response_ok
 from categories.models import Category
@@ -13,10 +13,10 @@ from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from product_data_types.serializers import DataFormatSerializer, DataTypeSerializer
 from seller_products.models import SellerProduct
-from seller_products.serializers import SellerProductsSerializer, LanguageSerializer
+from seller_products.serializers import LanguageSerializer, SellerProductsSerializer
 from sellers.serializer import SellerViewSerializer
-from shop.serializers import SellerProductSerializer
 from shop.paginators import ProductsPaginator
+from shop.serializers import SellerProductSerializer
 from shop.service import ShopService
 
 
@@ -93,22 +93,22 @@ class ProductsListView(GenericAPIView):
     order_by_allowed_fields = [
         'id', '-id', 'name', '-name', 'rating', '-rating', 'price_per_one_time', '-price_per_one_time',
         'price_per_month', '-price_per_month', 'price_per_year', '-price_per_year', 'price_by_request',
-        '-price_by_request'
+        '-price_by_request',
     ]
 
     def get(self, request, format=None):
         shop_service = ShopService()
+        category_ids = shop_service.get_category_ids(request)
+        order_by_fields = shop_service.get_order_by(request)
         seller_products = shop_service.get_shop_products(
-            request.GET.get('category_ids', '').split(','), request.GET.getlist('order_by'), self.order_by_allowed_fields
+            request.GET.get('name', ''), category_ids, order_by_fields, self.order_by_allowed_fields
         )
         seller_products_page = self.paginate_queryset(seller_products)
         serializer = self.serializer_class(seller_products_page, many=True)
-        return response_ok(
-            {
-                'seller_products_count': seller_products.count(),
-                'seller_products': serializer.data,
-            },
-        )
+        return response_ok({
+            'seller_products_count': seller_products.count(),
+            'seller_products': serializer.data
+        })
 
 
 class ProductDetailView(GenericAPIView):
@@ -162,7 +162,7 @@ class ProductDetailView(GenericAPIView):
         return response_ok({
             'seller': seller_serializer.data,
             'seller_product': seller_product_serializer.data,
-            'related_products': related_products_serializer.data
+            'related_products': related_products_serializer.data,
         })
 
 
@@ -261,5 +261,5 @@ class ProductOptionsListView(GenericAPIView):
             'data_delivery_types': data_delivery_types.data,
             'data_formats': data_formats.data,
             'data_types': data_types.data,
-            'languages': languages.data
+            'languages': languages.data,
         })

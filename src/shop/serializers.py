@@ -1,9 +1,6 @@
 from rest_framework import serializers
 
-from geo_regions.serializers import GeoRegionSerializer
 from seller_products.models import SellerProduct
-from seller_products.serializers import CategorySerializer
-from sellers.serializer import SellerViewSerializer
 
 
 class SellerProductSerializer(serializers.ModelSerializer):
@@ -20,6 +17,5 @@ class SellerProductSerializer(serializers.ModelSerializer):
             'price_by_request',
             'price_per_usage',
             'price_per_usage_descr',
-            'rating'
+            'rating',
         ]
-

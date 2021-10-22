@@ -44,9 +44,15 @@ class ContactUpdateSerializer(serializers.ModelSerializer):
         )
 
 
-class SellerUpdateSerializer(serializers.Serializer):
-    name = serializers.CharField(required=True)
-    descr = serializers.CharField(required=False)
-    logo_url = serializers.URLField(required=False)
-    wallet_for_payments_erc20 = serializers.CharField(required=False)
-    contacts = ContactUpdateSerializer(many=True)
+class SellerUpdateSerializer(serializers.ModelSerializer):
+    contacts = serializers.ListField(child=ContactUpdateSerializer(), write_only=True, required=True)
+
+    class Meta:
+        model = Seller
+        fields = [
+            'name',
+            'descr',
+            'logo_url',
+            'wallet_for_payments_erc20',
+            'contacts',
+        ]

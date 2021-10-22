@@ -1,10 +1,9 @@
 from django.contrib.sites.shortcuts import get_current_site
-from django.db import transaction
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
-from app.response import response_ok
 from app import exceptions
+from app.response import response_ok
 from users import serializers
 from users.models import User
 from users.service import SignupService, UsersService
@@ -156,8 +155,7 @@ class ConfirmEmailView(APIView):
         signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = signup_service.confirm_email(data=serializer.validated_data)
-        return result
+        return signup_service.confirm_email(data=serializer.validated_data)
 
 
 class UserProfileView(APIView):
@@ -319,8 +317,8 @@ class SendResetPasswordEmailView(APIView):
         signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = signup_service.send_reset_password_email(self, data=serializer.validated_data, domain=get_current_site(request))
-        return result
+        return signup_service.send_reset_password_email(self, data=serializer.validated_data,
+                                                        domain=get_current_site(request))
 
 
 class SetPasswordBySecretCodeView(APIView, UsersService):
@@ -368,5 +366,4 @@ class SetPasswordBySecretCodeView(APIView, UsersService):
         signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = signup_service.set_password_by_secret_code(self, serializer.validated_data)
-        return result
+        return signup_service.set_password_by_secret_code(self, serializer.validated_data)

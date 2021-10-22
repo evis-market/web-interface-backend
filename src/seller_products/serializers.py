@@ -7,9 +7,6 @@ from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from seller_products.models import SellerProduct, SellerProductDataSample, SellerProductDataUrl
 from sellers.models import Seller
-from rest_framework import serializers
-from rest_framework.fields import UUIDField
-
 from upload.models import UploadedFile
 
 
@@ -69,8 +66,10 @@ class DataSampleSerializer(serializers.ModelSerializer):
 
 
 class DataUrlsSerializer(serializers.ModelSerializer):
-    data_delivery_type_id = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True, source='data_delivery_type')
-    data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, source='data_format')
+    data_delivery_type_id = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True,
+                                                               source='data_delivery_type')
+    data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True,
+                                                        source='data_format')
 
     class Meta:
         model = SellerProductDataUrl
@@ -115,12 +114,15 @@ class SellerProductsSerializer(serializers.ModelSerializer):
 
 class SellerProductsUpdateSerializer(serializers.ModelSerializer):
     seller = serializers.PrimaryKeyRelatedField(queryset=Seller.objects.all(), write_only=True)
-    data_categories_ids = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True, many=True)
-    data_geo_regions_ids = serializers.PrimaryKeyRelatedField(queryset=GeoRegion.objects.all(), write_only=True, many=True)
+    data_categories_ids = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True,
+                                                             many=True)
+    data_geo_regions_ids = serializers.PrimaryKeyRelatedField(queryset=GeoRegion.objects.all(), write_only=True,
+                                                              many=True)
     data_langs_ids = serializers.PrimaryKeyRelatedField(queryset=Language.objects.all(), write_only=True, many=True)
     data_types_ids = serializers.PrimaryKeyRelatedField(queryset=DataType.objects.all(), write_only=True, many=True)
     data_formats_ids = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True, many=True)
-    data_delivery_types_ids = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True, many=True)
+    data_delivery_types_ids = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(),
+                                                                 write_only=True, many=True)
     data_samples = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), many=True, required=False)
     data_urls = serializers.ListField(child=DataUrlsSerializer(), write_only=True, required=False)
 

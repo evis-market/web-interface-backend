@@ -1,10 +1,8 @@
+import hashlib
 import os
 import shutil
-import hashlib
 
-from django.core.exceptions import ObjectDoesNotExist
 from app import exceptions
-from app.conf.base import MEDIA_ROOT
 from upload.models import UploadedFile
 
 
@@ -51,13 +49,12 @@ class UploadService:
         UploadedFile.objects.filter(uuid__in=[file.uuid for file in files]).delete()
 
     def remove_files(self, files):
-        for file in files:
+        for file in files:  # noqa: VNE002
             os.remove(file)
 
     def get_destination_path(self, destination_model, source_model_field, source_instance, destination_file_name):
         source_model_field_value = getattr(source_instance, source_model_field)
-        upload_to = os.path.join(
+        return os.path.join(
             destination_model._meta.get_field('file').upload_to,
             f'{destination_file_name}.{source_model_field_value.name.split(".")[-1]}'
         )
-        return upload_to

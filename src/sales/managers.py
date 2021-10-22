@@ -3,11 +3,11 @@ from django.db import models
 
 class SaleManager(models.Manager):
 
-    def list_by_seller_id(self, seller):
-        return self.model.objects.select_related('seller').filter(seller=seller)
+    def filter_by_seller_id(self, seller):
+        return self.model.objects.filter(seller=seller)
 
-    def list_by_buyer_id(self, buyer):
-        return self.model.objects.select_related('users').filter(user=buyer)
+    def filter_by_buyer_id(self, buyer):
+        return self.model.objects.filter(buyer=buyer)
 
 
 class SaleProductManager(models.Manager):
