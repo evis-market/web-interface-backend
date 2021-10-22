@@ -4,9 +4,9 @@ from django.db import models
 class SellerManager(models.Manager):
     """ Class representing sellers manager """
     def get_seller_by_user_id(self, user_id):
-        """ Get sellers for user.
+        """ Get seller settings by user_id.
         Returns:
-            Sellers for user.
+            Seller settings.
         """
         return self.model.objects.filter(seller_id=user_id).first()
 
@@ -14,15 +14,12 @@ class SellerManager(models.Manager):
 class ContactManager(models.Manager):
     """ Class representing contacts manager """
     def get_all_by_seller(self, seller_id):
-        """ Get contacts for seller.
+        """ Get seller contacts.
         Returns:
-            Contacts for seller.
+            Seller contacts.
         """
         return self.model.objects.filter(seller_id=seller_id)
 
     def delete_all_by_seller(self, seller_id):
-        """ Delete all contacts for seller.
-        Returns:
-            Contacts without deleted.
-        """
+        """ Delete all seller contacts """
         return self.model.objects.filter(seller_id=seller_id).delete()
