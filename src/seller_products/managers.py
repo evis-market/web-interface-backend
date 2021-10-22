@@ -82,12 +82,6 @@ class SellerProductBaseManager(models.Manager):
             query_filter
         ).distinct()
 
-    price_per_one_time = models.FloatField('Price per one time usage', blank=True, null=True, default=None)
-    price_per_month = models.FloatField('Price per month', blank=True, null=True, default=None)
-    price_per_year = models.FloatField('Price per year', blank=True, null=True, default=None)
-    price_by_request = models.FloatField('Price by request', blank=True, null=True, default=None)
-    rating = models.FloatField('Rating', blank=True, null=True, default=None)
-
 
 class SellerProductManager(SellerProductBaseManager):
     def create(
