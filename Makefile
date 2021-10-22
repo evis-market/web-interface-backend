@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+HTTP_PORT := 8000
+
 setup: venv upgrade-pip deps migrate load-initial-data createsuperuser ## Setup whole project for production
 
 setup-dev: venv upgrade-pip deps-dev migrate load-initial-data createsuperuser ## Setup whole project for developer
@@ -32,10 +34,10 @@ lint: ## Run flake8 linter
 	@source .venv/bin/activate && flake8 src
 
 serve: ## Run server in development mode
-	@source .venv/bin/activate && cd src && ./manage.py runserver 0.0.0.0:8000
+	@source .venv/bin/activate && cd src && ./manage.py runserver 0.0.0.0:$(HTTP_PORT)
 
 serve-bg: ## Run server in development mode in background
-	@source .venv/bin/activate && cd src && nohup ./manage.py runserver 0.0.0.0:8000 > ../serve.log 2>&1 &
+	@source .venv/bin/activate && cd src && nohup ./manage.py runserver 0.0.0.0:$(HTTP_PORT) > ../serve.log 2>&1 &
 
 shell: ## Run django shell
 	@source .venv/bin/activate && cd src && ./manage.py shell

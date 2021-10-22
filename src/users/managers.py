@@ -59,6 +59,13 @@ class UserManager(BaseUserManager):
         return False
 
     @staticmethod
+    def get_by_id(user_id):
+        try:
+            return models.User.objects.get(pk=user_id)
+        except ObjectDoesNotExist:
+            raise exceptions.NotFound('User not found')
+
+    @staticmethod
     def get_by_email(email):
         try:
             return models.User.objects.get(email=email)

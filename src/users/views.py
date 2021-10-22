@@ -1,8 +1,8 @@
 from django.contrib.sites.shortcuts import get_current_site
-from django.db import transaction
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
+from app import exceptions
 from app.response import response_ok
 from users import serializers
 from users.models import User
@@ -155,8 +155,7 @@ class ConfirmEmailView(APIView):
         signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = signup_service.confirm_email(data=serializer.validated_data)
-        return result
+        return signup_service.confirm_email(data=serializer.validated_data)
 
 
 class UserProfileView(APIView):
@@ -202,13 +201,15 @@ class UserProfileView(APIView):
     users_service = UsersService()
 
     def get(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data=request.data)
-        return response_ok({'profile': serializer.data})
+        if request.user.is_anonymous:
+            raise exceptions.Unauthorized
+        user = User.objects.get_by_id(request.user.id)
+        return response_ok({'profile': self.serializer_class(user).data})
 
     def put(self, request, *args, **kwargs):
         serializer = self.update_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.users_service.update_user_profile(user=request.user, data=serializer.validated_data)
+        self.users_service.update_profile(user=request.user, data=serializer.validated_data)
         return response_ok()
 
 
@@ -316,8 +317,8 @@ class SendResetPasswordEmailView(APIView):
         signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = signup_service.send_reset_password_email(self, data=serializer.validated_data, domain=get_current_site(request))
-        return result
+        return signup_service.send_reset_password_email(self, data=serializer.validated_data,
+                                                        domain=get_current_site(request))
 
 
 class SetPasswordBySecretCodeView(APIView, UsersService):
@@ -365,5 +366,4 @@ class SetPasswordBySecretCodeView(APIView, UsersService):
         signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        result = signup_service.set_password_by_secret_code(self, serializer.validated_data)
-        return result
+        return signup_service.set_password_by_secret_code(self, serializer.validated_data)

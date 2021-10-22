@@ -1,11 +1,12 @@
+import logging
 import os
 import time
 from datetime import datetime, timedelta
 
 from django.core.management.base import BaseCommand
 
-from seller_products.models import SellerProductDataSample
 from app.conf.base import MEDIA_ROOT
+from seller_products.models import SellerProductDataSample
 
 
 class Command(BaseCommand):
@@ -29,21 +30,21 @@ class Command(BaseCommand):
             self.remove_unbounded_files()
 
         def remove_unbounded_files(self):
-            print(
-                'Remove_unbounded_files started, files created before %s will be removed'
-                % datetime.utcfromtimestamp(self.datetime_unix_from).strftime('%Y-%m-%d %H:%M:%S')
+            logging.info(
+                'Remove_unbounded_files started, files created before %s will be removed',
+                datetime.utcfromtimestamp(self.datetime_unix_from).strftime('%Y-%m-%d %H:%M:%S')
             )
             upload_path = self.model_field.upload_to
             absolute_path = os.path.join(MEDIA_ROOT, upload_path)
             files_in_catalog = set(os.path.join(upload_path, f) for f in os.listdir(absolute_path))
             model_files = set(self.model_class.objects.all().values_list(self.model_field.name, flat=True))
 
-            for file in files_in_catalog.difference(model_files):
+            for file in files_in_catalog.difference(model_files):  # noqa: VNE002
                 filepath = os.path.join(MEDIA_ROOT, file)
                 if os.path.getmtime(filepath) < self.datetime_unix_from:
-                    print('File =', filepath, ' removed..')
+                    logging.info('File =', filepath, ' removed..')
                     os.remove(filepath)
-            print('Remove_unbounded_files finished')
+            logging.info('Remove_unbounded_files finished')
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -60,14 +61,14 @@ class Command(BaseCommand):
         return time.mktime(from_datetime.timetuple())
 
     def handle(self, *args, **options):
-        print('Removing unbounded files... Started')
+        logging.info('Removing unbounded files... Started')
         current_datetime = datetime.now()
         datetime_unix_from = self._get_from_unixtime(current_datetime, int(options['time_in_seconds']))
         for model_field_dict in self.MODEL_FIELDS_TO_CLEAR:
             model_field_cleaner = self.ModelFieldCleaner(**model_field_dict, datetime_unix_from=datetime_unix_from)
-            print(
-                'Removing files started for model = %s; field = %s;' %
+            logging.info(
+                'Removing files started for model = %s; field = %s;',
                 (model_field_cleaner.model_class, model_field_cleaner.model_field)
             )
             model_field_cleaner()
-        print('Removing unbounded files... Finished')
+        logging.info('Removing unbounded files... Finished')

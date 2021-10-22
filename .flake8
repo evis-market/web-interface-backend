@@ -1,6 +1,6 @@
 [flake8]
-ignore = E501, E265, F811, B010, PT001, VNE003, DJ01, PIE783, PIE785, SIM113, SIM102, FS003, W504, PIE801
-max-line-length = 160
+ignore = E501, E265, F811, B010, PT001, VNE003, DJ01, PIE783, PIE785, SIM113, SIM102, FS003, W504, PIE801, C812, C816, C815
+max-line-length = 120
 max-cognitive-complexity = 8
 exclude =
       static,
@@ -8,3 +8,4 @@ exclude =
       .git,
       .venv,
       __pycache__
+application_import_names = seller_products

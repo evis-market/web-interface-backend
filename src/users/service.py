@@ -1,13 +1,13 @@
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core import signing
-from django.core.mail import send_mail, EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
+from app import exceptions
 from users.models import User
 
-from app import exceptions
 
 INVALID_SECRET_CODE_MSG = 'invalid secret code'
 
@@ -27,9 +27,9 @@ class SignupService:
         self.domain = domain
 
     def signup(self, data: dict):
-        for p in ('phone', 'email', 'wallet_erc20'):
-            if p in data and not data[p]:
-                del data[p]
+        for signup_attribute in ('phone', 'email', 'wallet_erc20'):
+            if signup_attribute in data and not data[signup_attribute]:
+                del data[signup_attribute]
 
         user = User.objects.create_user(**data)
 
@@ -85,7 +85,7 @@ class UsersService:
                 'last_name': data['last_name'],
                 'phone': data['phone'],
                 'email': data['email'],
-                'wallet_for_payments_erc20': data['wallet_for_payments_erc20'],
+                'wallet_erc20': data['wallet_erc20'],
             })
 
     def update_user_password(self, user: User, password: str) -> None:

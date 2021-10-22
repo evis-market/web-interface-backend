@@ -28,8 +28,6 @@ class CategoryManager(TreeManager):
         Returns:
             Categories with pre-filled data recommended_for
         """
-        SellerProduct = apps.get_model('seller_products', 'SellerProduct')
-
         return self.model.objects.prefetch_related(
             'recommended_for',
         )
