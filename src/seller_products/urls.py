@@ -6,7 +6,7 @@ from seller_products.views import SellerProductsListView, SellerProductsView
 
 urlpatterns = [
     path('my/', SellerProductsListView.as_view(), name='SellerProductsView'),
-    path('my/<int:pk>/', SellerProductsView.as_view(), name='SellerProductsView'),
+    path('my/<int:pk>', SellerProductsView.as_view(), name='SellerProductsView'),
 
 ]
 
