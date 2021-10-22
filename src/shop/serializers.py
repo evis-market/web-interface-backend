@@ -4,6 +4,7 @@ from seller_products.models import SellerProduct
 
 
 class SellerProductSerializer(serializers.ModelSerializer):
+    """ Class representing serializer for the seller product """
     class Meta:
         model = SellerProduct
         fields = [
