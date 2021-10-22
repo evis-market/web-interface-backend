@@ -1,4 +1,5 @@
 from rest_framework.generics import GenericAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from app.response import response_ok
 from sales.selializers import SalesSerializer
@@ -39,7 +40,7 @@ class SalesBuyerShoppingListView(GenericAPIView):
 
 class SellerSalesListView(GenericAPIView):
     """
-    ## Get seller sales list
+    ## Get seller sold products
 
     URL: `/api/v1/sales/seller_sales_list`
 
@@ -60,6 +61,7 @@ class SellerSalesListView(GenericAPIView):
         }
     """
     serializer_class = SalesSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         sales_service = SalesService()

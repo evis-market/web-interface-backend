@@ -23,14 +23,12 @@ account_activation_token = TokenGenerator()
 
 
 class SignupService:
+    SECRET_CODE_LENGTH = 8
+
     def __init__(self, domain: str):
         self.domain = domain
 
     def signup(self, data: dict):
-        for signup_attribute in ('phone', 'email', 'wallet_erc20'):
-            if signup_attribute in data and not data[signup_attribute]:
-                del data[signup_attribute]
-
         user = User.objects.create_user(**data)
 
         if 'email' in data and data['email']:
@@ -39,7 +37,7 @@ class SignupService:
         return user
 
     def send_confirmation_email(self, user: User):
-        User.objects.update_secret_code(user, user.gen_secret_code())
+        User.objects.update_secret_code(user, User.objects.make_random_password(length=self.SECRET_CODE_LENGTH))
         message = render_to_string('confirm_email.txt', {
             'user': user,
             'domain': self.domain,

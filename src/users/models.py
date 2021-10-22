@@ -95,4 +95,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     @staticmethod
     def gen_secret_code():
-        return UserManager.make_random_password(8)
+        return UserManager.make_random_password(length=8)
