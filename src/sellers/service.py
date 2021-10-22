@@ -4,9 +4,19 @@ from users.models import User
 
 
 class SellerService:
+    """ Seller service """
     CONTACTS_NOT_SUPPLIED = 'Contacts are not supplied'
 
     def create_or_update_object(self, user: User, data: dict) -> None:
+        """ Creates or updates object.
+
+            Args:
+                user (src.users.models.User): user
+                data (dict): params dict
+
+            Attributes:
+                contacts (list): contact list
+        """
         contacts = data.pop('contacts', None)
 
         # todo: by some reason serializer couldn't make contacts field to be required;
