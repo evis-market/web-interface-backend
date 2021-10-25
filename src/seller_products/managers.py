@@ -209,13 +209,13 @@ class SellerProductDataSampleManager(models.Manager):
     """ Class representing seller products data sample manager """
 
     def get_by_seller_product(self, seller_product):
-        """ Get seller products data sample manager by seller product.
+        """ Get seller products data sample by seller product.
 
         Attributes:
                 seller_product (src.seller_products.models.SellerProduct): seller product
 
         Returns:
-            Seller products data sample manager by seller product.
+            Seller products data sample by seller product.
         """
         return self.model.objects.filter(seller_product=seller_product)
 
