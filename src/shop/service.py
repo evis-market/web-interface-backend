@@ -3,19 +3,23 @@ from seller_products.models import SellerProduct
 
 
 class ShopService:
+    ORDER_BY_FIELDS_ALLOWED = [
+        'id', '-id', 'name', '-name', 'rating', '-rating', 'price_per_one_time', '-price_per_one_time',
+        'price_per_month', '-price_per_month', 'price_per_year', '-price_per_year', 'price_by_request',
+        '-price_by_request',
+    ]
     """ Class representing shop service """
 
-    def get_shop_products(self, name, category_ids, order_by_fields, order_by_allowed_fields):
+    def get_shop_products(self, name, category_ids, order_by_fields):
         """ Get shop products.
 
         Returns:
             Filtered and ordered products.
         """
         shop_products = SellerProduct.objects.get_seller_products_by_categories_and_name(name, category_ids)
-
-        if not set(order_by_fields).issubset(order_by_allowed_fields):
+        if not set(order_by_fields).issubset(self.ORDER_BY_FIELDS_ALLOWED):
             raise exceptions.NotFound('One or more fields are set in order by conditions are not allowed'
-                                      f'Allowed fields = {", ".join(order_by_allowed_fields)}'
+                                      f'Allowed fields = {", ".join(self.ORDER_BY_FIELDS_ALLOWED)}'
                                       f'Set fields = {", ".join(order_by_fields)}')
         return shop_products.order_by(*order_by_fields)
 
