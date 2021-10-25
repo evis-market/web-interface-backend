@@ -5,7 +5,7 @@ from seller_products.models import SellerProduct
 class ShopService:
     """ Class representing shop service """
 
-    def get_shop_products(self, category_ids, order_by_fields, order_by_allowed_fields):
+    def get_shop_products(self, name, category_ids, order_by_fields, order_by_allowed_fields):
         """ Get shop products.
 
         Returns:
