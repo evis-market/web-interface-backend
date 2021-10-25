@@ -2,7 +2,7 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from app.response import response_ok
-from sales.selializers import SalesSerializer
+from sales.selializers import SellerSalesListSerializer, ShoppingListSerializer
 from sales.service import SalesService
 
 
@@ -29,13 +29,13 @@ class SalesBuyerShoppingListView(GenericAPIView):
           ]
         }
     """
-    serializer_class = SalesSerializer
+    serializer_class = ShoppingListSerializer
 
     def get(self, request):
         sales_service = SalesService()
         buyer_shopping_list = sales_service.get_buyer_shopping_list(buyer_id=request.user.id)
         serializer = self.serializer_class(buyer_shopping_list, many=True)
-        return response_ok({'sales': serializer.data})
+        return response_ok({'shopping_list': serializer.data})
 
 
 class SellerSalesListView(GenericAPIView):
@@ -60,7 +60,7 @@ class SellerSalesListView(GenericAPIView):
           ]
         }
     """
-    serializer_class = SalesSerializer
+    serializer_class = SellerSalesListSerializer
     permission_classes = [IsAuthenticated]
 
     def get(self, request):

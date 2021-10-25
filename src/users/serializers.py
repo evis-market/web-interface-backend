@@ -3,6 +3,7 @@ from django.core.validators import EmailValidator
 from django.contrib.auth import password_validation
 
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from app import exceptions
 from users.models import User
@@ -26,9 +27,14 @@ class SignupRequestSerializer(serializers.ModelSerializer):
         password_validation.validate_password(self.data['password'])
 
         phone = self.data['phone'] if self.data.get('phone') else None
-        if phone and not (phone.isdigit() or len(phone) < MIN_PHONE_LENGTH or len(phone) > MAX_PHONE_LENGTH):
+
+        if phone and not phone.isdigit():
+            raise exceptions.BadRequest(f'The phone should contain only digits')
+
+        if phone and (len(phone) < MIN_PHONE_LENGTH or len(phone) > MAX_PHONE_LENGTH):
             raise exceptions.BadRequest(
-                f'The phone should be only digits with length from {MIN_PHONE_LENGTH} to {MAX_PHONE_LENGTH}')
+                f'The phone should have length from {MIN_PHONE_LENGTH} to {MAX_PHONE_LENGTH}'
+            )
 
         erc20_wallet = self.data['wallet_erc20'] if self.data.get('wallet_erc20') else ''
         if erc20_wallet and not re.fullmatch(WALLET_ERC_20_PATTERN, erc20_wallet):
@@ -37,6 +43,11 @@ class SignupRequestSerializer(serializers.ModelSerializer):
 
 class SendConfirmationEmailRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(required=True, validators=[EmailValidator])
+
+
+class ConfirmEmailViewSerializer(serializers.Serializer):
+    email = serializers.EmailField(required=True, validators=[EmailValidator])
+    secret_code = serializers.CharField(required=True)
 
 
 class SetPasswordBySecretCodeRequestSerializer(serializers.Serializer):
@@ -61,11 +72,10 @@ class UserProfileUpdateSerializer(serializers.Serializer):
     email = serializers.EmailField(required=False)
     wallet_erc20 = serializers.CharField(required=False)
 
-    def is_valid(self, raise_exception=False):
-        super().is_valid(raise_exception)
-        return True
-        # TODO: FIX  # noqa: T101
-        # return self.email or self.phone or self.wallet_erc20  # noqa E800
+    def validate(self, data):
+        if not(data['email'] and data['phone'] and data['wallet_erc20']):
+            raise ValidationError('At least one of the fields: email, phone or wallet_erc20 should be specified')
+        return data
 
 
 class UserPasswordUpdateSerializer(serializers.Serializer):

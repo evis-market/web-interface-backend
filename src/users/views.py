@@ -150,7 +150,7 @@ class ConfirmEmailView(APIView):
           }
         }
     """
-    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    serializer_class = serializers.ConfirmEmailViewSerializer
     permission_classes = (AllowAny,)
 
     def post(self, request, *args, **kwargs):

@@ -28,7 +28,7 @@ class SellerService:
         if not seller:
             seller = Seller.objects.create(seller=user, **data)
         else:
-            Seller.objects.update(**data)
+            Seller.objects.filter(seller=seller).update(**data)
 
         Contact.objects.delete_all_by_seller(seller)
         Contact.objects.bulk_create([Contact(seller=seller, **contact) for contact in contacts])
