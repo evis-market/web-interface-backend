@@ -1,6 +1,7 @@
 import hashlib
 import os
 import shutil
+import uuid
 
 from app import exceptions
 from upload.models import UploadedFile
@@ -11,6 +12,12 @@ class UploadService:
     NOTFOUND_UPLOADED_FILE_MSG = 'File does not exist or you do not have access permissions to it'
     INCORRECT_FILE_COPYING = 'File from source destination copied incorrectly'
     TMP_FILE_NOT_FOUND = 'File not found in temp directory'
+
+    def uuid_valid(self, file_uuid):
+        try:
+            uuid.UUID(str(file_uuid))
+        except ValueError:
+            raise exceptions.BadRequest("UUID is not valid")
 
     def get_object(self, uuid, created_by):
         uploaded_file = UploadedFile.objects.get_by_uuid_and_author(uuid, created_by)
