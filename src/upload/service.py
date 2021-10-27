@@ -15,7 +15,7 @@ class UploadService:
 
     def check_form_data(self, data):
         if 'file' not in data:
-            raise exceptions.BadRequest("File not sumbitted")
+            raise exceptions.BadRequest("No file was submitted")
 
     def uuid_valid(self, file_uuid):
         try:
