@@ -5,6 +5,8 @@ import uuid
 
 from app import exceptions
 from upload.models import UploadedFile
+from django.core.files.uploadhandler import TemporaryFileUploadHandler, InMemoryUploadedFile
+from django.core.files.base import File
 
 
 class UploadService:
@@ -12,16 +14,22 @@ class UploadService:
     NOTFOUND_UPLOADED_FILE_MSG = 'File does not exist or you do not have access permissions to it'
     INCORRECT_FILE_COPYING = 'File from source destination copied incorrectly'
     TMP_FILE_NOT_FOUND = 'File not found in temp directory'
+    NO_FILE_SUBMITTED = 'No file was submitted'
+    NOT_FILE = 'The submitted data was not a file. Check the encoding type on the form'
+    UUID_INVALID = 'UUID is not valid'
 
-    def check_form_data(self, data):
-        if 'file' not in data:
-            raise exceptions.BadRequest("No file was submitted")
+    def check_file_uploaded(self, request):
+        if 'file' not in request.data:
+            raise exceptions.BadRequest(self.NO_FILE_SUBMITTED)
+
+        if not issubclass(request.data['file'].__class__, File):
+            raise exceptions.BadRequest(self.NOT_FILE)
 
     def uuid_valid(self, file_uuid):
         try:
             uuid.UUID(str(file_uuid))
         except ValueError:
-            raise exceptions.BadRequest("UUID is not valid")
+            raise exceptions.BadRequest(self.UUID_INVALID)
 
     def get_object(self, uuid, created_by):
         uploaded_file = UploadedFile.objects.get_by_uuid_and_author(uuid, created_by)
