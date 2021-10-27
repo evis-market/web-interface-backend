@@ -203,9 +203,9 @@ class SellerProductsView(APIView):
             { "data_delivery_type_id": 1, "data_format_id": 1, "url": "http://domain.com/data1.xlsx" },
             { "data_delivery_type_id": 1, "data_format_id": 2, "url": "http://domain.com/data1.xml" }
           ],
-          "data_sample_urls": [
-            "http://domain.com/data_sample1.xls",
-            "http://domain.com/data_sample2.xls"
+          "data_samples": [
+            "06ed84be-0eac-42a6-9020-213329db3737",
+            "4f41af44-6f82-48b1-ba97-c86f5469ce04"
           ]
         }
     **Successful response**

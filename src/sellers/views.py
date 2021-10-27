@@ -74,7 +74,7 @@ class SellerSettingsView(GenericAPIView):
             "seller_id": 1,
             "name": "Seller name",
             "description": "Seller description",
-            "logo_url": "https://domain.com/logo.jpg",
+            "logo_url": "1d5f2241-d55b-43bb-af9f-36d2ce76ab87",
             "wallet_for_payments_erc20": "0x....",
             "contacts": [
               { "id": 1, "type_id": 1, "value": "https://domain1.com/", "comment": "main site" },

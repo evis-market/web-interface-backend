@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from sellers.models import Contact, Seller
+from upload.models import UploadedFile
 
 
 class ContactViewSerializer(serializers.ModelSerializer):
@@ -67,6 +68,7 @@ class SellerUpdateSerializer(serializers.ModelSerializer):
                 contacts (rest_framework.fields.ListField): seller contacts
     """
     contacts = serializers.ListField(child=ContactUpdateSerializer(), write_only=True, required=True)
+    logo_url = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), required=False)
 
     class Meta:
         model = Seller

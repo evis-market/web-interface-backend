@@ -59,9 +59,10 @@ class UploadService:
         for file in files:  # noqa: VNE002
             os.remove(file)
 
-    def get_destination_path(self, destination_model, source_model_field, source_instance, destination_file_name):
+    def get_destination_path(self, destination_model, source_model_field, source_instance, destination_file_name,
+                             destination_file_field='file'):
         source_model_field_value = getattr(source_instance, source_model_field)
         return os.path.join(
-            destination_model._meta.get_field('file').upload_to,
+            destination_model._meta.get_field(destination_file_field).upload_to,
             f'{destination_file_name}.{source_model_field_value.name.split(".")[-1]}'
         )
