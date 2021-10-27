@@ -13,6 +13,10 @@ class UploadService:
     INCORRECT_FILE_COPYING = 'File from source destination copied incorrectly'
     TMP_FILE_NOT_FOUND = 'File not found in temp directory'
 
+    def check_form_data(self, data):
+        if 'file' not in data:
+            raise exceptions.BadRequest("File not sumbitted")
+
     def uuid_valid(self, file_uuid):
         try:
             uuid.UUID(str(file_uuid))

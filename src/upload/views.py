@@ -66,6 +66,7 @@ class UploadedFileView(GenericAPIView):
         })
 
     def post(self, request, format=None):
+        self.upload_service.check_form_data(request.data)
         data = OrderedDict({'created_by': request.user.id})
         data.update(request.data)
         serializer = self.update_serializer_class(data=data)
