@@ -4,10 +4,10 @@ from django.core.mail import EmailMessage, send_mail
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from django.db.models import Q
 
 from app import exceptions
 from users.models import User
-
 
 INVALID_SECRET_CODE_MSG = 'invalid secret code'
 
@@ -23,14 +23,12 @@ account_activation_token = TokenGenerator()
 
 
 class SignupService:
+    SECRET_CODE_LENGTH = 8
+
     def __init__(self, domain: str):
         self.domain = domain
 
     def signup(self, data: dict):
-        for signup_attribute in ('phone', 'email', 'wallet_erc20'):
-            if signup_attribute in data and not data[signup_attribute]:
-                del data[signup_attribute]
-
         user = User.objects.create_user(**data)
 
         if 'email' in data and data['email']:
@@ -39,7 +37,7 @@ class SignupService:
         return user
 
     def send_confirmation_email(self, user: User):
-        User.objects.update_secret_code(user, user.gen_secret_code())
+        User.objects.update_secret_code(user, User.objects.gen_secret_code())
         message = render_to_string('confirm_email.txt', {
             'user': user,
             'domain': self.domain,
@@ -78,15 +76,16 @@ class SignupService:
 
 class UsersService:
     def update_profile(self, user: User, data: dict) -> None:
-        User.objects.update(
-            user=user,
-            defaults={
-                'first_name': data['first_name'],
-                'last_name': data['last_name'],
-                'phone': data['phone'],
-                'email': data['email'],
-                'wallet_erc20': data['wallet_erc20'],
-            })
+        if User.objects.filter(~Q(uuid=user.uuid), Q(email=data['email'])).first():
+            raise exceptions.BadRequest('Email has been already taken by someone else')
+
+        if User.objects.filter(~Q(uuid=user.uuid), Q(email=data['phone'])).first():
+            raise exceptions.BadRequest('Phone has been already taken by someone else')
+
+        if User.objects.filter(~Q(uuid=user.uuid), Q(email=data['wallet_erc20'])).first():
+            raise exceptions.BadRequest('Wallet_erc20 has been already taken by someone else')
+
+        User.objects.filter(uuid=user.uuid).update(**data)
 
     def update_user_password(self, user: User, password: str) -> None:
         user.set_password(password)

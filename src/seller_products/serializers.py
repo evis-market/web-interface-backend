@@ -59,10 +59,14 @@ class DataSampleSerializer(serializers.ModelSerializer):
     data_format_id = serializers.PrimaryKeyRelatedField(
         queryset=DataFormat.objects.all(), write_only=True, source='data_format', required=False
     )
+    file_url = serializers.SerializerMethodField('get_file_url')
+
+    def get_file_url(self, obj):
+        return f'{self.context["request"].scheme}://{self.context["request"].get_host()}{obj.file.url}'
 
     class Meta:
         model = SellerProductDataSample
-        fields = ['file', 'data_delivery_type_id', 'data_format_id']
+        fields = ['file_url', 'data_delivery_type_id', 'data_format_id']
 
 
 class DataUrlsSerializer(serializers.ModelSerializer):

@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
+from app.conf.base import MEDIA_URL
 from sellers.models import Contact, Seller
+from upload.models import UploadedFile
 
 
 class ContactViewSerializer(serializers.ModelSerializer):
@@ -29,6 +31,10 @@ class SellerViewSerializer(serializers.ModelSerializer):
     """
     contacts = ContactViewSerializer(many=True)
     user_id = serializers.ReadOnlyField(source='seller.user_id')
+    logo_url = serializers.SerializerMethodField('get_logo_url')
+
+    def get_logo_url(self, obj):
+        return f'{self.context["request"].scheme}://{self.context["request"].get_host()}{obj.logo_url.url}'
 
     class Meta:
         model = Seller
@@ -67,6 +73,7 @@ class SellerUpdateSerializer(serializers.ModelSerializer):
                 contacts (rest_framework.fields.ListField): seller contacts
     """
     contacts = serializers.ListField(child=ContactUpdateSerializer(), write_only=True, required=True)
+    logo_url = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), required=False)
 
     class Meta:
         model = Seller

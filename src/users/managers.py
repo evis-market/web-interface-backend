@@ -40,6 +40,9 @@ class UserManager(BaseUserManager):
 
         return self._create_user(email=email, phone=phone, wallet_erc20=wallet_erc20, password=password, **extra_fields)
 
+    def gen_secret_code(self):
+        return self.model.objects.make_random_password(length=8)
+
     @staticmethod
     def is_exists(email=None, phone=None, wallet_erc20=None):
         if not email and not phone and not wallet_erc20:

@@ -90,19 +90,13 @@ class ProductsListView(GenericAPIView):
     """
     serializer_class = SellerProductSerializer
     pagination_class = ProductsPaginator
-    order_by_allowed_fields = [
-        'id', '-id', 'name', '-name', 'rating', '-rating', 'price_per_one_time', '-price_per_one_time',
-        'price_per_month', '-price_per_month', 'price_per_year', '-price_per_year', 'price_by_request',
-        '-price_by_request',
-    ]
 
     def get(self, request, format=None):
         shop_service = ShopService()
+        product_name = request.GET.get('name', '')
         category_ids = shop_service.get_category_ids(request)
         order_by_fields = shop_service.get_order_by(request)
-        seller_products = shop_service.get_shop_products(
-            request.GET.get('name', ''), category_ids, order_by_fields, self.order_by_allowed_fields
-        )
+        seller_products = shop_service.get_shop_products(product_name, category_ids, order_by_fields)
         seller_products_page = self.paginate_queryset(seller_products)
         serializer = self.serializer_class(seller_products_page, many=True)
         return response_ok({
@@ -156,8 +150,7 @@ class ProductDetailView(GenericAPIView):
         seller_product = SellerProduct.objects.get_seller_product_detailed(seller_product_id)
         related_products = SellerProduct.objects.get_related_seller_products(seller_product_id)
         related_products_serializer = self.seller_product_serializer_class(related_products, many=True)
-        seller = seller_product.seller
-        seller_serializer = self.seller_serializer_class(seller)
+        seller_serializer = self.seller_serializer_class(seller_product.seller)
         seller_product_serializer = self.seller_product_serializer_class(seller_product)
         return response_ok({
             'seller': seller_serializer.data,
@@ -203,10 +196,12 @@ class RelatedProductsListView(GenericAPIView):
         }
     """
     serializer_class = SellerProductSerializer
+    pagination_class = ProductsPaginator
 
     def get(self, request, seller_product_id, format=None):
         related_products = SellerProduct.objects.get_related_seller_products(seller_product_id)
-        serializer = self.serializer_class(related_products, many=True)
+        related_products_page = self.paginate_queryset(related_products)
+        serializer = self.serializer_class(related_products_page, many=True)
         return response_ok({
             'related_products': serializer.data,
         })

@@ -1,6 +1,7 @@
 from django.contrib.sites.shortcuts import get_current_site
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
+from django.db import transaction
 
 from app import exceptions
 from app.response import response_ok
@@ -28,7 +29,7 @@ class SignupView(APIView):
         }
 
     **Required fields**
-    * phone or email (one of)
+    * phone or email or erc_wallet (one of)
     * password
 
     **Successful response**
@@ -66,7 +67,8 @@ class SignupView(APIView):
         signup_service = SignupService(domain=get_current_site(request))
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = signup_service.signup(data=serializer.validated_data)
+        with transaction.atomic():
+            user = signup_service.signup(data=serializer.validated_data)
         return response_ok({'user_id': user.id})
 
 
@@ -148,7 +150,7 @@ class ConfirmEmailView(APIView):
           }
         }
     """
-    serializer_class = serializers.SendConfirmationEmailRequestSerializer
+    serializer_class = serializers.ConfirmEmailViewSerializer
     permission_classes = (AllowAny,)
 
     def post(self, request, *args, **kwargs):
@@ -225,15 +227,11 @@ class UserUpdatePasswordView(APIView):
     **Request**
 
         {
-          "first_name": "Evgeny",
-          "last_name": "Mamonov",
-          "phone": "15552223456",
-          "email": "test@test.com",
-          "wallet_erc20": "0xfe121fa29f72c239d289efaa5ab11fef94a2e946"
+          "password: "very_strong_password"
         }
 
     **Required fields**
-    * one of: phone, email, wallet_erc20
+    * password
 
     **Successful response**
 
@@ -253,12 +251,7 @@ class UserUpdatePasswordView(APIView):
           "error": {
               "code": 405,
 
-              "invalid_fields": {
-                "email": "alredy exists",
-                "password": "too short, 8 symbols minimum"
-              },
-
-              "msg" : "bad request"
+              "msg" : "password too short, 8 symbols minimum"
           }
         }
     """

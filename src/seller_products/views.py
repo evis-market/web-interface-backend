@@ -128,7 +128,7 @@ class SellerProductsListView(GenericAPIView):
 
     def get(self, request, format=None):
         seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
-        serializer = self.serializer_class(seller_products, many=True)
+        serializer = self.serializer_class(seller_products, many=True, context={'request': request})
         return response_ok({'seller-products': serializer.data})
 
     def post(self, request, format=None):
@@ -203,9 +203,9 @@ class SellerProductsView(APIView):
             { "data_delivery_type_id": 1, "data_format_id": 1, "url": "http://domain.com/data1.xlsx" },
             { "data_delivery_type_id": 1, "data_format_id": 2, "url": "http://domain.com/data1.xml" }
           ],
-          "data_sample_urls": [
-            "http://domain.com/data_sample1.xls",
-            "http://domain.com/data_sample2.xls"
+          "data_samples": [
+            "06ed84be-0eac-42a6-9020-213329db3737",
+            "4f41af44-6f82-48b1-ba97-c86f5469ce04"
           ]
         }
     **Successful response**
@@ -267,7 +267,7 @@ class SellerProductsView(APIView):
 
     def get(self, request, pk, format=None):
         seller_product = SellerProduct.objects.get_product_by_seller_id(pk, request.user.id)
-        serializer = self.serializer_class(seller_product)
+        serializer = self.serializer_class(seller_product, context={'request': request})
         return response_ok(serializer.data)
 
     def put(self, request, pk, format=None):
