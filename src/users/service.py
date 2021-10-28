@@ -37,7 +37,7 @@ class SignupService:
         return user
 
     def send_confirmation_email(self, user: User):
-        User.objects.update_secret_code(user, User.objects.make_random_password(length=self.SECRET_CODE_LENGTH))
+        User.objects.update_secret_code(user, User.objects.gen_secret_code())
         message = render_to_string('confirm_email.txt', {
             'user': user,
             'domain': self.domain,

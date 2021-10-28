@@ -128,7 +128,7 @@ class SellerProductsListView(GenericAPIView):
 
     def get(self, request, format=None):
         seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
-        serializer = self.serializer_class(seller_products, many=True)
+        serializer = self.serializer_class(seller_products, many=True, context={'request': request})
         return response_ok({'seller-products': serializer.data})
 
     def post(self, request, format=None):
@@ -267,7 +267,7 @@ class SellerProductsView(APIView):
 
     def get(self, request, pk, format=None):
         seller_product = SellerProduct.objects.get_product_by_seller_id(pk, request.user.id)
-        serializer = self.serializer_class(seller_product)
+        serializer = self.serializer_class(seller_product, context={'request': request})
         return response_ok(serializer.data)
 
     def put(self, request, pk, format=None):
