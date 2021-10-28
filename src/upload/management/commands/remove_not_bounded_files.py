@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 from django.core.management.base import BaseCommand
 
-from app.conf.base import MEDIA_ROOT
+from app.conf.upload import MEDIA_ROOT
 from seller_products.models import SellerProductDataSample
 
 

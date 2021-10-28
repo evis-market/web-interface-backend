@@ -39,6 +39,7 @@ include(
     'conf/i18n.py',
     'conf/security.py',
     'conf/static.py',
+    'conf/upload.py',
     'conf/mptt_settings.py',
     optional('conf/local_settings.py'),
 )

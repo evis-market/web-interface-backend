@@ -1,7 +1,7 @@
 import os
 
 from app import exceptions
-from app.conf.base import MEDIA_ROOT
+from app.conf.upload import MEDIA_ROOT
 from sellers.models import Contact, Seller
 from upload.service import UploadService
 from users.models import User

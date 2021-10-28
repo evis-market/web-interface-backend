@@ -3,7 +3,7 @@ import os
 import typing
 
 from app import exceptions
-from app.conf.base import MEDIA_ROOT
+from app.conf.upload import MEDIA_ROOT
 from seller_products.models import (
     SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl,
     SellerProductDataUrlArchive)
