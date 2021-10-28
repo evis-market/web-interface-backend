@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from app.conf.base import MEDIA_URL
+from app.conf.upload import MEDIA_URL
 from sellers.models import Contact, Seller
 from upload.models import UploadedFile
 
