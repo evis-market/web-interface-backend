@@ -36,7 +36,7 @@ class SellerProductBaseManager(models.Manager):
                 seller (str): seller id
 
         Returns:
-            Products by seller.
+            Seller product.
         """
         return self.model.objects.filter(pk=pk, seller=seller).first()
 
@@ -47,7 +47,7 @@ class SellerProductBaseManager(models.Manager):
                 pk (str): private key
 
         Returns:
-            Detailed info of seller product.
+            Seller product with seller settings prefetched.
         """
         return self.model.objects.select_related(
             'seller',
@@ -246,7 +246,7 @@ class SellerProductDataSampleManager(models.Manager):
                 uuid (models.UUIDField): file uuid
 
         Returns:
-            True if file exists of False if not.
+            True if file exists or False if not.
         """
         return self.model.objects.annotate(
             last_slash_pos=StrIndex(Reverse('file'), Value('/')),
