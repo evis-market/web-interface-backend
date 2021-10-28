@@ -3,12 +3,13 @@ from seller_products.models import SellerProduct
 
 
 class ShopService:
+    """ Class representing shop service """
+
     ORDER_BY_FIELDS_ALLOWED = [
         'id', '-id', 'name', '-name', 'rating', '-rating', 'price_per_one_time', '-price_per_one_time',
         'price_per_month', '-price_per_month', 'price_per_year', '-price_per_year', 'price_by_request',
         '-price_by_request',
     ]
-    """ Class representing shop service """
 
     def get_shop_products(self, name, category_ids, order_by_fields):
         """ Get shop products.
