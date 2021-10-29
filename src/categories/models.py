@@ -27,6 +27,7 @@ class Category(mptt_models.MPTTModel):
 
     Attributes:
           name (django.db.models.fields.CharField): category name
+          short_descr (django.db.models.fields.TextField): category short description
           descr (django.db.models.fields.TextField): category description
           logo_url (django.db.models.fields.URLField): category logo URL
           slug (django.db.models.fields.SlugField): category slug
@@ -36,6 +37,7 @@ class Category(mptt_models.MPTTModel):
           objects (src.categories.managers): category manager
     """
     name = models.CharField('Name', max_length=190, db_index=True, unique=True)
+    short_descr = models.TextField('Short description', blank=True, null=False, default='')
     descr = models.TextField('Description', blank=True, null=False, default='')
     logo_url = models.URLField('Logo URL', blank=True, null=False, default='')
     slug = models.SlugField('Slug', max_length=190, blank=True, db_index=True, unique=True)
