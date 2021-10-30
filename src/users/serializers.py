@@ -1,4 +1,3 @@
-import re
 from django.core.validators import EmailValidator
 from django.contrib.auth import password_validation
 
@@ -6,12 +5,8 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from app import exceptions
+from users import models
 from users.models import User
-
-
-WALLET_ERC_20_PATTERN = r'^0x[a-fA-F0-9]{40}$'
-MIN_PHONE_LENGTH = 11
-MAX_PHONE_LENGTH = 15
 
 
 class SignupRequestSerializer(serializers.ModelSerializer):
@@ -31,13 +26,13 @@ class SignupRequestSerializer(serializers.ModelSerializer):
         if phone and not phone.isdigit():
             raise exceptions.BadRequest(f'The phone should contain only digits')
 
-        if phone and (len(phone) < MIN_PHONE_LENGTH or len(phone) > MAX_PHONE_LENGTH):
+        if phone and (len(phone) < models.User.MIN_PHONE_LENGTH or len(phone) > models.User.MAX_PHONE_LENGTH):
             raise exceptions.BadRequest(
-                f'The phone should have length from {MIN_PHONE_LENGTH} to {MAX_PHONE_LENGTH}'
+                f'The phone should have length from {models.User.MIN_PHONE_LENGTH} to {models.User.MAX_PHONE_LENGTH}'
             )
 
         erc20_wallet = self.data['wallet_erc20'] if self.data.get('wallet_erc20') else ''
-        if erc20_wallet and not re.fullmatch(WALLET_ERC_20_PATTERN, erc20_wallet):
+        if erc20_wallet and not User.is_erc_20_wallet_valid(erc20_wallet):
             raise exceptions.BadRequest('The wallet ERC-20 is Invalid')
 
 
@@ -73,7 +68,7 @@ class UserProfileUpdateSerializer(serializers.Serializer):
     wallet_erc20 = serializers.CharField(required=False)
 
     def validate(self, data):
-        if not(data['email'] and data['phone'] and data['wallet_erc20']):
+        if not (data['email'] and data['phone'] and data['wallet_erc20']):
             raise ValidationError('At least one of the fields: email, phone or wallet_erc20 should be specified')
         return data
 

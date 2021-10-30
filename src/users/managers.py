@@ -76,11 +76,11 @@ class UserManager(BaseUserManager):
             raise exceptions.NotFound('User not found')
 
     @staticmethod
-    def get_by_login(login: str):
+    def get_by_login(login: str) -> models.User or Exception:
         try:
             if login.count('@'):
                 user = models.User.objects.get(email=login)
-            elif login.startswith('0x') and len(login) == 42:
+            elif models.User.is_erc_20_wallet_valid(login):
                 user = models.User.objects.get(wallet_erc20=login)
             else:
                 user = models.User.objects.get(phone=login)
