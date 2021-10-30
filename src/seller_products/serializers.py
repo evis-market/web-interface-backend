@@ -62,10 +62,10 @@ class DataDeliveryTypeSerializer(serializers.ModelSerializer):
 class DataSampleSerializer(serializers.ModelSerializer):
     """ Class representing data sample serializer
 
-        Attributes:
-            data_delivery_type_id (rest_framework.relations.PrimaryKeyRelatedField): data delivery type id
-            data_format_id (rest_framework.relations.PrimaryKeyRelatedField): data format id
-        """
+    Attributes:
+        data_delivery_type_id (rest_framework.relations.PrimaryKeyRelatedField): data delivery type id
+        data_format_id (rest_framework.relations.PrimaryKeyRelatedField): data format id
+    """
     data_delivery_type_id = serializers.PrimaryKeyRelatedField(
         queryset=DataDeliveryType.objects.all(), write_only=True, source='data_delivery_type', required=False
     )
@@ -79,6 +79,12 @@ class DataSampleSerializer(serializers.ModelSerializer):
 
 
 class DataUrlsSerializer(serializers.ModelSerializer):
+    """ Class representing data urls serializer
+
+    Attributes:
+        data_delivery_type_id (rest_framework.relations.PrimaryKeyRelatedField): data delivery type id
+        data_format_id (rest_framework.relations.PrimaryKeyRelatedField): data format id
+    """
     data_delivery_type_id = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True,
                                                                source='data_delivery_type')
     data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True,
