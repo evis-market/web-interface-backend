@@ -219,6 +219,15 @@ class SellerProductDataUrl(models.Model):
 
 
 class SellerProductDataSampleArchive(models.Model):
+    """ Class representing seller product data sample archive.
+
+    Attributes:
+          seller_product (django.db.models.fields.related.ForeignKey): seller product
+          file (django.db.models.fields.FileField): seller product data sample file
+          data_delivery_type (django.db.models.fields.related.ForeignKey): data delivery type
+          data_format (django.db.models.fields.related.ForeignKey): data format
+          objects (src.seller_products.managers): seller product data sample archive manager
+    """
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE,
                                        related_name='data_samples_archive')
     file = models.FileField(upload_to='seller_product_data_samples_archive/')  # noqa: VNE002
@@ -237,6 +246,15 @@ class SellerProductDataSampleArchive(models.Model):
 
 
 class SellerProductDataUrlArchive(models.Model):
+    """ Class representing seller product data URL archive.
+
+    Attributes:
+          seller_product (django.db.models.fields.related.ForeignKey): seller product
+          url (django.db.models.fields.URLField): seller product URL
+          data_delivery_type (django.db.models.fields.related.ForeignKey): data delivery type
+          data_format (django.db.models.fields.related.ForeignKey): data format
+          objects (src.seller_products.managers): seller product data url archive manager
+    """
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_urls_archive')
     url = models.URLField('URL')
     data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
