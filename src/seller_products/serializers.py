@@ -11,42 +11,49 @@ from upload.models import UploadedFile
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    """ Class representing category serializer """
     class Meta:
         model = Category
         fields = ['id', 'name']
 
 
 class SellerSerializer(serializers.ModelSerializer):
+    """ Class representing seller serializer """
     class Meta:
         model = Seller
         fields = ['seller_id', 'name']
 
 
 class GeoRegionSerializer(serializers.ModelSerializer):
+    """ Class representing geo region serializer """
     class Meta:
         model = GeoRegion
         fields = ['id', 'name', 'iso_code']
 
 
 class LanguageSerializer(serializers.ModelSerializer):
+    """ Class representing language serializer """
     class Meta:
         model = Language
         fields = ['id', 'name_native', 'name_en', 'slug']
 
 
 class DataTypeSerializer(serializers.ModelSerializer):
+    """ Class representing data type serializer """
     class Meta:
         model = DataType
         fields = ['id', 'name']
 
 
 class DataFormatSerializer(serializers.ModelSerializer):
+    """ Class representing data format serializer """
     class Meta:
         model = DataFormat
         fields = ['id', 'name']
 
 
 class DataDeliveryTypeSerializer(serializers.ModelSerializer):
+    """ Class representing data delivery type serializer """
     class Meta:
         model = DataDeliveryType
         fields = ['id', 'name']
