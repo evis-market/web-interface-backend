@@ -60,6 +60,12 @@ class DataDeliveryTypeSerializer(serializers.ModelSerializer):
 
 
 class DataSampleSerializer(serializers.ModelSerializer):
+    """ Class representing data sample serializer
+
+        Attributes:
+            data_delivery_type_id (rest_framework.relations.PrimaryKeyRelatedField): data delivery type id
+            data_format_id (rest_framework.relations.PrimaryKeyRelatedField): data format id
+        """
     data_delivery_type_id = serializers.PrimaryKeyRelatedField(
         queryset=DataDeliveryType.objects.all(), write_only=True, source='data_delivery_type', required=False
     )
