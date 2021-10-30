@@ -193,6 +193,15 @@ class SellerProductDataSample(models.Model):
 
 
 class SellerProductDataUrl(models.Model):
+    """ Class representing seller product data URL.
+
+    Attributes:
+          seller_product (django.db.models.fields.related.ForeignKey): seller product
+          url (django.db.models.fields.URLField): seller product URL
+          data_delivery_type (django.db.models.fields.related.ForeignKey): data delivery type
+          data_format (django.db.models.fields.related.ForeignKey): data format
+          objects (src.seller_products.managers): seller product data url manager
+    """
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_urls')
     url = models.URLField('URL')
     data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
