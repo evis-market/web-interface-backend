@@ -96,6 +96,20 @@ class DataUrlsSerializer(serializers.ModelSerializer):
 
 
 class SellerProductsSerializer(serializers.ModelSerializer):
+    """ Class representing seller products serializer
+
+    Attributes:
+        seller (SellerSerializer): seller
+        data_categories_ids (CategorySerializer): data categories ids
+        data_geo_regions_ids (GeoRegionSerializer): data geo regions ids
+        data_langs_ids (LanguageSerializer): data langs ids
+        data_types_ids (DataTypeSerializer): data types ids
+        data_formats_ids (DataFormatSerializer): data formats ids
+        data_delivery_types_ids (DataDeliveryTypeSerializer): data delivery types ids
+        data_samples (DataSampleSerializer): data samples
+        data_urls (DataUrlsSerializer): data urls
+
+    """
     seller = SellerSerializer(read_only=True)
     data_categories_ids = CategorySerializer(read_only=True, many=True)
     data_geo_regions_ids = GeoRegionSerializer(read_only=True, many=True)
