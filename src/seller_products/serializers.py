@@ -108,7 +108,6 @@ class SellerProductsSerializer(serializers.ModelSerializer):
         data_delivery_types_ids (DataDeliveryTypeSerializer): data delivery types ids
         data_samples (DataSampleSerializer): data samples
         data_urls (DataUrlsSerializer): data urls
-
     """
     seller = SellerSerializer(read_only=True)
     data_categories_ids = CategorySerializer(read_only=True, many=True)
@@ -146,6 +145,19 @@ class SellerProductsSerializer(serializers.ModelSerializer):
 
 
 class SellerProductsUpdateSerializer(serializers.ModelSerializer):
+    """ Class representing seller products update serializer
+
+        Attributes:
+            seller (rest_framework.relations.PrimaryKeyRelatedField): seller
+            data_categories_ids (rest_framework.relations.PrimaryKeyRelatedField): data categories ids
+            data_geo_regions_ids (rest_framework.relations.PrimaryKeyRelatedField): data geo regions ids
+            data_langs_ids (rest_framework.relations.PrimaryKeyRelatedField): data langs ids
+            data_types_ids (rest_framework.relations.PrimaryKeyRelatedField): data types ids
+            data_formats_ids (rest_framework.relations.PrimaryKeyRelatedField): data formats ids
+            data_delivery_types_ids (rest_framework.relations.PrimaryKeyRelatedField): data delivery types ids
+            data_samples (rest_framework.relations.PrimaryKeyRelatedField): data samples
+            data_urls (rest_framework.relations.PrimaryKeyRelatedField): data urls
+    """
     seller = serializers.PrimaryKeyRelatedField(queryset=Seller.objects.all(), write_only=True)
     data_categories_ids = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True,
                                                              many=True)
@@ -183,4 +195,9 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
 
 
 class UploadedFilesSerializer(serializers.Serializer):
+    """ Class representing seller uploaded files serializer
+
+        Attributes:
+            data_samples (rest_framework.relations.PrimaryKeyRelatedField): data samples
+    """
     data_samples = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), write_only=True, many=True)
