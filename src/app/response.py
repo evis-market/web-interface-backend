@@ -8,7 +8,7 @@ def response_ok(data=None, http_code=None, template_name=None, headers=None, con
     return Response(data, status=http_code, template_name=template_name, headers=headers, content_type=content_type)
 
 
-def response_err(code: int, msg: str, http_code=None, template_name=None, headers=None, content_type=None):
+def response_err(code: int, msg: str, invalid_fields=None, http_code=None, template_name=None, headers=None, content_type=None):
     data = {
         'status': 'ERR',
         'error': {
@@ -22,5 +22,8 @@ def response_err(code: int, msg: str, http_code=None, template_name=None, header
 
     if msg:
         data['error']['msg'] = msg
+
+    if invalid_fields:
+       data['error']['invalid_fields'] = invalid_fields
 
     return Response(data, status=http_code, template_name=template_name, headers=headers, content_type=content_type)

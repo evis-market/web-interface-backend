@@ -9,16 +9,26 @@ CONFLICT_CODE = 409
 
 
 class Errno(Exception):
-    def __init__(self, msg=None, code=None, http_code=None):
+    def __init__(self, msg=None, invalid_fields=None, code=None, http_code=None):
         self.msg = msg or self.default_msg
         self.code = code or self.default_code
         self.http_code = http_code or self.default_http_code
+        self.invalid_fields = invalid_fields
 
 
 class BadRequest(Errno):
     default_code = BAD_REQUEST_CODE
     default_msg = 'Bad request'
     default_http_code = status.HTTP_400_BAD_REQUEST
+
+
+class InvalidFields(Errno):
+    default_code = BAD_REQUEST_CODE
+    default_msg = 'Bad request'
+    default_http_code = status.HTTP_400_BAD_REQUEST
+
+    def __init__(self, msg=None, code=None, http_code=None, invalid_fields=None):
+        super().__init__(self, msg=msg, code=code, http_code=http_code, invalid_fields=invalid_fields)
 
 
 class Unauthorized(Errno):
