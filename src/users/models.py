@@ -1,3 +1,5 @@
+import re
+
 import pytz
 import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
@@ -39,6 +41,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    WALLET_ERC_20_PATTERN = r'^0x[a-fA-F0-9]{40}$'
+    MIN_PHONE_LENGTH = 11
+    MAX_PHONE_LENGTH = 15
 
     objects = UserManager()
 
@@ -92,3 +97,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    @staticmethod
+    def is_erc_20_wallet_valid(erc20_wallet: str) -> bool:
+        """Checked the ERC-20 wallet"""
+        return re.fullmatch(User.WALLET_ERC_20_PATTERN, erc20_wallet)

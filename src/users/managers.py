@@ -76,10 +76,12 @@ class UserManager(BaseUserManager):
             raise exceptions.NotFound('User not found')
 
     @staticmethod
-    def get_by_login(login):
+    def get_by_login(login: str) -> models.User or Exception:
         try:
             if login.count('@'):
                 user = models.User.objects.get(email=login)
+            elif models.User.is_erc_20_wallet_valid(login):
+                user = models.User.objects.get(wallet_erc20=login)
             else:
                 user = models.User.objects.get(phone=login)
         except ObjectDoesNotExist:
@@ -87,6 +89,7 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def update_secret_code(self, user, secret_code=''):
+    @staticmethod
+    def update_secret_code(user, secret_code=''):
         user.secret_code = secret_code
         user.save(update_fields=['secret_code'])
