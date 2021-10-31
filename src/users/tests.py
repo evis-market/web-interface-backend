@@ -17,8 +17,8 @@ class TestSignupView:
         Test: normal signup with all and valid fields
         """
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
+            "first_name": "John",
+            "last_name": "Smith",
             "phone": "15552223456",
             "email": "test@test.com",
             "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
@@ -30,6 +30,12 @@ class TestSignupView:
         assert response.status_code == 200
         assert response.data['user_id'] == 1
         assert response.data['status'] == 'OK'
+        user = User.objects.get(first_name=request_data['first_name'],
+                                last_name=request_data['last_name'],
+                                phone=request_data['phone'],
+                                email=request_data['email'],
+                                wallet_erc20=request_data['wallet_erc20'])
+        assert user.password is not None and user.password != request_data['password']
 
     def test_post_with_only_one_required_field_and_password(self):
         """
@@ -38,25 +44,17 @@ class TestSignupView:
         case 1: signup with phone only
         case 2: signup with email only
         case 3: signup with wallet_erc20 only
-
-        first_name and last_name are the same in each case
         """
         request_data_cases = [
             {
-                "first_name": "Evis",
-                "last_name": "Testovich",
                 "phone": "15552223456",
                 "password": "some_very_strong_password"
             },
             {
-                "first_name": "Evis",
-                "last_name": "Testovich",
                 "email": "test@test.com",
                 "password": "some_very_strong_password"
             },
             {
-                "first_name": "Evis",
-                "last_name": "Testovich",
                 "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
                 "password": "some_very_strong_password"
             },
@@ -76,8 +74,6 @@ class TestSignupView:
         Test: signup without password
         """
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "phone": "15552223456",
             "email": "test@test.com",
             "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
@@ -86,7 +82,9 @@ class TestSignupView:
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = SignupView.as_view()(request=request)
         assert response.status_code == 400
-        assert response.data['error'] == {'code': 400, 'msg': 'bad request', 'invalid_fields': {'password': 'This field is required.'}}
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'password' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_invalid_password(self):
@@ -94,8 +92,6 @@ class TestSignupView:
         Test: signup with invalid password
         """
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "phone": "15552223456",
             "password": "1111"
         }
@@ -103,7 +99,9 @@ class TestSignupView:
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = SignupView.as_view()(request=request)
         assert response.status_code == 400
-        assert response.data['error'] == {'code': 400, 'msg': 'This password is too short. It must contain at least 8 characters.'}
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'password' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_not_unique_phone(self):
@@ -113,8 +111,6 @@ class TestSignupView:
         mixer.blend(User,
                     phone='15552223456')
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "phone": "15552223456",
             "password": "some_very_strong_password"
         }
@@ -122,7 +118,9 @@ class TestSignupView:
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = SignupView.as_view()(request=request)
         assert response.status_code == 400
-        assert response.data['error'] == {'code': 400, 'msg': 'bad request', 'invalid_fields': {'phone': 'User with this Phone already exists.'}}
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'phone' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_not_unique_email(self):
@@ -132,8 +130,6 @@ class TestSignupView:
         mixer.blend(User,
                     email="test@test.com")
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "email": "test@test.com",
             "password": "some_very_strong_password"
         }
@@ -141,7 +137,9 @@ class TestSignupView:
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = SignupView.as_view()(request=request)
         assert response.status_code == 400
-        assert response.data['error'] == {'code': 400, 'msg': 'bad request', 'invalid_fields': {'email': 'User with this Email already exists.'}}
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'email' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_not_unique_wallet_erc20(self):
@@ -151,8 +149,6 @@ class TestSignupView:
         mixer.blend(User,
                     wallet_erc20="0xC88E53eda9A20C9aE52e8a222f1a56793188d196")
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
             "password": "some_very_strong_password"
         }
@@ -160,7 +156,9 @@ class TestSignupView:
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = SignupView.as_view()(request=request)
         assert response.status_code == 400
-        assert response.data['error'] == {'code': 400, 'msg': 'bad request', 'invalid_fields': {'wallet_erc20': 'User with this ERC-20 wallet already exists.'}}
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'wallet_erc20' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_invalid_phone_case_min_length(self):
@@ -168,8 +166,6 @@ class TestSignupView:
         Test: signup with invalid MIN_PHONE_LENGTH
         """
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "phone": "123456789101234567890"[:User.MIN_PHONE_LENGTH - 1],
             "password": "some_very_strong_password"
         }
@@ -178,7 +174,9 @@ class TestSignupView:
         response = SignupView.as_view()(request=request)
         assert len(request_data['phone']) < User.MIN_PHONE_LENGTH
         assert response.status_code == 400
-        assert response.data['error'] == {'code': 400, 'msg': 'The phone should have length from 11 to 15'}
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'phone' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_invalid_phone_case_max_length(self):
@@ -186,8 +184,6 @@ class TestSignupView:
         Test: signup with invalid MAX_PHONE_LENGTH
         """
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "phone": "123456789101234567890"[:User.MAX_PHONE_LENGTH + 1],
             "password": "some_very_strong_password"
         }
@@ -196,7 +192,9 @@ class TestSignupView:
         response = SignupView.as_view()(request=request)
         assert len(request_data['phone']) > User.MAX_PHONE_LENGTH
         assert response.status_code == 400
-        assert response.data['error'] == {'code': 400, 'msg': 'bad request', 'invalid_fields': {'phone': 'Ensure this field has no more than 15 characters.'}}
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'phone' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_invalid_wallet_erc20(self):
@@ -208,14 +206,10 @@ class TestSignupView:
         """
         request_data_cases = [
             {
-                "first_name": "Evis",
-                "last_name": "Testovich",
                 "wallet_erc20": "1xC88E53eda9A20C9aE52e8a222f1a56793188d196",
                 "password": "some_very_strong_password"
             },
             {
-                "first_name": "Evis",
-                "last_name": "Testovich",
                 "wallet_erc20": "0xC88E53eda9A20C9aE5",
                 "password": "some_very_strong_password"
             },
@@ -225,7 +219,9 @@ class TestSignupView:
             request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
             response = SignupView.as_view()(request=request)
             assert response.status_code == 400
-            assert response.data['error'] == {'code': 400, 'msg': 'The wallet ERC-20 is Invalid'}
+            assert response.data['error']['code'] == 400
+            assert 'msg' in response.data['error']
+            assert 'wallet_erc20' in response.data['error']['invalid_fields']
             assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_invalid_wallet_erc20_case_with_wrong_chars(self):
@@ -233,8 +229,6 @@ class TestSignupView:
         Test: signup with invalid wallet_erc20 where wallet_erc20 has some wrong char
         """
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "wallet_erc20": "0xC8853eda9A20C9aE52e8a222f1a56793188d196G",
             "password": "some_very_strong_password"
         }
@@ -245,7 +239,9 @@ class TestSignupView:
             request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
             response = SignupView.as_view()(request=request)
             assert response.status_code == 400
-            assert response.data['error'] == {'code': 400, 'msg': 'The wallet ERC-20 is Invalid'}
+            assert response.data['error']['code'] == 400
+            assert 'msg' in response.data['error']
+            assert 'wallet_erc20' in response.data['error']['invalid_fields']
             assert response.data['status'] == 'ERR'
 
     def test_post_signup_with_invalid_wallet_erc20_case_with_length_more_then_42(self):
@@ -253,8 +249,6 @@ class TestSignupView:
         Test: signup with invalid wallet_erc20 where length more then 42
         """
         request_data = {
-            "first_name": "Evis",
-            "last_name": "Testovich",
             "wallet_erc20": "0xC8853eda9A20C9aE52e8a222f1a56793188d196G11",
             "password": "some_very_strong_password"
         }
@@ -263,6 +257,6 @@ class TestSignupView:
         response = SignupView.as_view()(request=request)
         assert response.status_code == 400
         assert response.data['error']['code'] == 400
-        assert response.data['error']['msg'] == 'bad request'
-        assert response.data['error']['invalid_fields'] == {'wallet_erc20': 'Ensure this field has no more than 42 characters.'}
+        assert 'msg' in response.data['error']
+        assert 'wallet_erc20' in response.data['error']['invalid_fields']
         assert response.data['status'] == 'ERR'
