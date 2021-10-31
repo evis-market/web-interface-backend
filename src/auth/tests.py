@@ -8,7 +8,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from auth.views import GrantJWTTokenView
 from users.models import User
 
-
 pytestmark = pytest.mark.django_db
 
 
@@ -24,7 +23,7 @@ class TestCustomLoginView:
                            password='test_password_1')
         user.set_password('test_password_1')
         user.save()
-        data_cases = [
+        request_data_cases = [
             {
                 'grant_type': 'password',
                 'login': user.email,
@@ -37,13 +36,39 @@ class TestCustomLoginView:
             },
         ]
         url = reverse('GrantJWTTokenView')
-        for data in data_cases:
-            request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
+        for request_data in request_data_cases:
+            request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
             response = GrantJWTTokenView.as_view()(request=request)
             assert response.status_code == 200
             fields = ['refresh_token', 'access_token', 'token_type', 'status']
+            assert response.data['token_type'] == 'Bearer'
+            assert response.data['status'] == 'OK'
             for field in fields:
                 assert field in response.data
+
+    def test_post_with_wallet_erc20(self):
+        """
+        Test: login by user with wallet ERC-20
+        """
+        user = mixer.blend(User,
+                           wallet_erc20='0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
+                           password='test_password_1')
+        user.set_password('test_password_1')
+        user.save()
+        request_data = {
+                'grant_type': 'password',
+                'login': user.wallet_erc20,
+                'password': 'test_password_1',
+        }
+        url = reverse('GrantJWTTokenView')
+        request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
+        response = GrantJWTTokenView.as_view()(request=request)
+        assert response.status_code == 200
+        fields = ['refresh_token', 'access_token', 'token_type', 'status']
+        assert response.data['token_type'] == 'Bearer'
+        assert response.data['status'] == 'OK'
+        for field in fields:
+            assert field in response.data
 
     def test_post_with_refresh_token(self):
         """
@@ -51,16 +76,18 @@ class TestCustomLoginView:
         """
         user = mixer.blend(User)
         token = RefreshToken.for_user(user)
-        data = {
+        request_data = {
             'grant_type': 'refresh_token',
             'refresh_token': str(token),
         }
         url = reverse('GrantJWTTokenView')
-        request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
+        request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = GrantJWTTokenView.as_view()(request=request)
         assert response.status_code == 200
         assert response.data['refresh_token'] != token
         fields = ['refresh_token', 'access_token', 'token_type', 'status']
+        assert response.data['token_type'] == 'Bearer'
+        assert response.data['status'] == 'OK'
         for field in fields:
             assert field in response.data
 
@@ -70,12 +97,12 @@ class TestCustomLoginView:
         """
         user = mixer.blend(User)
         token = RefreshToken.for_user(user)
-        data = {
+        request_data = {
             'grant_type': 'refresh_token',
             'refresh_token': str(token) + '1234',
         }
         url = reverse('GrantJWTTokenView')
-        request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
+        request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = GrantJWTTokenView.as_view()(request=request)
         assert response.status_code == 400
         assert response.data['status'] == 'ERR'
@@ -91,7 +118,7 @@ class TestCustomLoginView:
                            password='test_password_1')
         user.set_password('test_password_1')
         user.save()
-        data_cases = [
+        request_data_cases = [
             {
                 'grant_type': 'password',
                 'login': user.email,
@@ -107,8 +134,8 @@ class TestCustomLoginView:
             },
         ]
         url = reverse('GrantJWTTokenView')
-        for data in data_cases:
-            request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
+        for request_data in request_data_cases:
+            request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
             response = GrantJWTTokenView.as_view()(request=request)
             assert response.status_code == 400
             assert response.data['status'] == 'ERR'
@@ -118,11 +145,11 @@ class TestCustomLoginView:
         """
         Test: login by user with wrong grant_type
         """
-        data = {
+        request_data = {
             'grant_type': 'wrong_grant_type',
         }
         url = reverse('GrantJWTTokenView')
-        request = APIRequestFactory().post(url, data=json.dumps(data), content_type='application/json')
+        request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
         response = GrantJWTTokenView.as_view()(request=request)
         assert response.status_code == 400
         assert response.data['status'] == 'ERR'
