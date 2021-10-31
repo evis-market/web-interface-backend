@@ -76,7 +76,7 @@ class UserManager(BaseUserManager):
             raise exceptions.NotFound('User not found')
 
     @staticmethod
-    def get_by_login(login: str) -> models.User or Exception:
+    def get_by_login(login: str):
         try:
             if login.count('@'):
                 user = models.User.objects.get(email=login)

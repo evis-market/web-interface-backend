@@ -79,10 +79,10 @@ class UsersService:
         if User.objects.filter(~Q(uuid=user.uuid), Q(email=data['email'])).first():
             raise exceptions.BadRequest('Email has been already taken by someone else')
 
-        if User.objects.filter(~Q(uuid=user.uuid), Q(email=data['phone'])).first():
+        if User.objects.filter(~Q(uuid=user.uuid), Q(phone=data['phone'])).first():
             raise exceptions.BadRequest('Phone has been already taken by someone else')
 
-        if User.objects.filter(~Q(uuid=user.uuid), Q(email=data['wallet_erc20'])).first():
+        if User.objects.filter(~Q(uuid=user.uuid), Q(wallet_erc20=data['wallet_erc20'])).first():
             raise exceptions.BadRequest('Wallet_erc20 has been already taken by someone else')
 
         User.objects.filter(uuid=user.uuid).update(**data)
