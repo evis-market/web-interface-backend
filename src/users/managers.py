@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 
 from app import exceptions
-from app.validatore import is_erc_20_wallet_valid
+from app.validators import is_erc_20_wallet_valid
 from users import models
 
 
@@ -57,7 +57,7 @@ class UserManager(BaseUserManager):
         if wallet_erc20:
             conds.add(Q(wallet_erc20=wallet_erc20), Q.OR)
 
-        if models.User.objects.filter(conds).first():
+        if models.User.objects.filter(conds).count() > 0:
             return True
 
         return False
