@@ -1,3 +1,4 @@
+import django
 from django.core.validators import EmailValidator
 from django.contrib.auth import password_validation
 
@@ -19,7 +20,10 @@ class SignupRequestSerializer(serializers.ModelSerializer):
     def is_valid(self, raise_exception=False):
         super().is_valid(raise_exception)
 
-        password_validation.validate_password(self.data['password'])
+        try:
+            password_validation.validate_password(self.data['password'])
+        except django.core.exceptions.ValidationError as e:
+            raise exceptions.BadRequest(e.messages[0])
 
         phone = self.data['phone'] if self.data.get('phone') else None
 
