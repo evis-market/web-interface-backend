@@ -139,3 +139,5 @@ tmp/
 *.log
 *_log
 init/*
+media/
+upload/
