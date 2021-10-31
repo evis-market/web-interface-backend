@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 
 from app import exceptions
+from app.validatore import is_erc_20_wallet_valid
 from users import models
 
 
@@ -80,7 +81,7 @@ class UserManager(BaseUserManager):
         try:
             if login.count('@'):
                 user = models.User.objects.get(email=login)
-            elif models.User.is_erc_20_wallet_valid(login):
+            elif is_erc_20_wallet_valid(login):
                 user = models.User.objects.get(wallet_erc20=login)
             else:
                 user = models.User.objects.get(phone=login)
