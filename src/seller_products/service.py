@@ -17,12 +17,29 @@ class SellerProductService:
     NOTFOUND_SELLER_MSG = 'SellerProduct not found'
 
     def get_seller(self, user_id: int):
+        """ Get seller by user id.
+
+        Attributes:
+                user_id (int): user id
+
+        Returns:
+            Seller.
+        """
         seller = Seller.objects.get_seller_by_user_id(user_id)
         if not seller:
             raise exceptions.NotFound(msg=self.FORBIDDEN_SELLER_ACCESS_MSG)
         return seller
 
     def get_seller_product(self, pk: int, user_id: int):
+        """ Get seller product by user id.
+
+        Attributes:
+                pk (str): private key
+                user_id (int): user id
+
+        Returns:
+            Seller product.
+        """
         seller_product = SellerProduct.objects.get_product_by_seller_id(pk, user_id)
         if not seller_product:
             raise exceptions.NotFound(self.NOTFOUND_SELLER_MSG)
@@ -68,6 +85,15 @@ class SellerProductService:
         self._create_data_urls(data_urls, seller_product, seller_product_acrhive)
 
     def _create_data_samples(self, data_samples_uploaded, upload_service, seller_product, seller_product_acrhive):
+        """ Creates or updates object.
+
+            Args:
+                data_samples_uploaded (list): data samples uploaded list
+                upload_service (src.upload.service.UploadService): upload service
+
+            Attributes:
+                contacts (list): contact list
+        """
         if data_samples_uploaded:
             for data_sample in data_samples_uploaded:
                 # upload seller_product_data_samples
@@ -149,4 +175,9 @@ class SellerProductService:
             ])
 
     def delete_object(self, seller_product):
+        """ Delete object.
+
+        Attributes:
+                seller_product (src.seller_products.models.SellerProduct): seller product
+        """
         seller_product.delete()
