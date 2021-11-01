@@ -34,7 +34,9 @@ class SellerViewSerializer(serializers.ModelSerializer):
     logo_url = serializers.SerializerMethodField('get_logo_url')
 
     def get_logo_url(self, obj):
-        return f'{self.context["request"].scheme}://{self.context["request"].get_host()}{obj.logo_url.url}'
+        if obj.logo_url:
+            return f'{self.context["request"].scheme}://{self.context["request"].get_host()}{obj.logo_url.url}'
+        return ''
 
     class Meta:
         model = Seller
