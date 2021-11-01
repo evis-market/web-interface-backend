@@ -111,6 +111,13 @@ class SellerProductService:
                 sp.save()
 
     def _create_data_urls(self, data_urls, seller_product, seller_product_acrhive):
+        """ Creates data urls.
+
+            Args:
+                data_urls (list): data urls list
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+        """
         if data_urls:
             SellerProductDataUrl.objects.bulk_create([
                 SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
@@ -120,6 +127,12 @@ class SellerProductService:
             ])
 
     def update_object(self, seller_product, data: typing.Dict):
+        """ Updates object.
+
+            Args:
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                data (dict): params dict
+        """
         upload_service = UploadService()
         categories = data.pop('data_categories_ids')
         geo_regions = data.pop('data_geo_regions_ids')
@@ -139,6 +152,14 @@ class SellerProductService:
         self._update_data_urls(data_urls, seller_product, seller_product_acrhive)
 
     def _update_data_samples(self, data_samples_uploaded, upload_service, seller_product, seller_product_acrhive):
+        """ Updates data samples.
+
+            Args:
+                data_samples_uploaded (list): data samples uploaded list
+                upload_service (src.upload.service.UploadService): upload service
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+        """
         # todo: check if no files supplied - delete all SellerProductDataSample or not ?
         if data_samples_uploaded:
             # first, lets delete those files that are not longer presented as data_samples in updated seller_product
@@ -165,6 +186,13 @@ class SellerProductService:
                 sp.save()
 
     def _update_data_urls(self, data_urls, seller_product, seller_product_acrhive):
+        """ Updates data urls.
+
+            Args:
+                data_urls (list): data urls list
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+        """
         SellerProductDataUrl.objects.delete_by_seller_product(seller_product=seller_product)
         if data_urls:
             SellerProductDataUrl.objects.bulk_create([
@@ -177,7 +205,7 @@ class SellerProductService:
     def delete_object(self, seller_product):
         """ Delete object.
 
-        Attributes:
-                seller_product (src.seller_products.models.SellerProduct): seller product
+        Args:
+            seller_product (src.seller_products.models.SellerProduct): seller product
         """
         seller_product.delete()
