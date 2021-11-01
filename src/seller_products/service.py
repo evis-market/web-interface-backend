@@ -12,6 +12,7 @@ from upload.service import UploadService
 
 
 class SellerProductService:
+    """ Seller product service """
     FORBIDDEN_SELLER_ACCESS_MSG = 'The current user is not registered as a Seller'
     NOTFOUND_SELLER_MSG = 'SellerProduct not found'
 
@@ -28,6 +29,26 @@ class SellerProductService:
         return seller_product
 
     def create_object(self, data: typing.Dict):
+        """ Creates object.
+
+            Args:
+                data (dict): params dict
+
+            Attributes:
+                upload_service (src.upload.service.UploadService): upload service
+                seller (str): seller
+                categories (list): categories list
+                geo_regions (list): geo regions list
+                languages (list): languages list
+                data_types (list): data types list
+                data_formats (list): data formats list
+                data_delivery_types (list): data delivery types list
+                data_samples_uploaded (list): data samples uploaded list
+                data_urls (list): data urls list
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+
+        """
         upload_service = UploadService()
         seller = data.pop('seller')
         categories = data.pop('data_categories_ids')
