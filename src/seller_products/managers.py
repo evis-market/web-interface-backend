@@ -36,7 +36,7 @@ class SellerProductBaseManager(models.Manager):
         ).filter(pk=pk).first()
 
     def get_related_seller_products(self, pk):
-        Category = apps.get_model('categories', 'Category')
+        category = apps.get_model('categories', 'Category')
 
         return self.model.objects.values(
             'id',
@@ -50,21 +50,21 @@ class SellerProductBaseManager(models.Manager):
             'price_per_usage_descr',
             'rating',
         ).filter(
-            categories__id__in=Category.objects.get_queryset_descendants(
-                Category.objects.filter(sellerproduct__id=pk),
+            categories__id__in=category.objects.get_queryset_descendants(
+                category.objects.filter(sellerproduct__id=pk),
                 include_self=True,
             ),
         ).distinct()
 
     def get_seller_products_by_categories_and_name(self, name, categories):
-        Category = apps.get_model('categories', 'Category')
+        category = apps.get_model('categories', 'Category')
 
         query_filter = Q()
         if name:
             query_filter = Q(name__icontains=name)
         if categories:
-            query_filter &= Q(categories__id__in=Category.objects.get_queryset_descendants(
-                Category.objects.filter(id__in=categories),
+            query_filter &= Q(categories__id__in=category.objects.get_queryset_descendants(
+                category.objects.filter(id__in=categories),
                 include_self=True,
             ))
 
