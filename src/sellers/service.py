@@ -30,11 +30,11 @@ class SellerService:
         if not contacts:
             raise exceptions.NotFound(msg=self.CONTACTS_NOT_SUPPLIED)
 
-        seller = Seller.objects.get_seller_by_user_id(user)
-        if not seller:
-            seller = Seller.objects.create(seller=user, **data)
-        else:
-            Seller.objects.filter(seller=seller).update(**data)
+        seller, _ = Seller.objects.update_or_create(
+            seller=user,
+            defaults={'name': data['name'],
+                      'descr': data['descr'],
+                      'wallet_for_payments_erc20': data['wallet_for_payments_erc20']})
 
         if logo_url:
             upload_to = upload_service.get_destination_path(Seller, 'file', logo_url, logo_url.uuid, 'logo_url')

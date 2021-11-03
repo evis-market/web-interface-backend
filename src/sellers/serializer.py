@@ -57,12 +57,11 @@ class ContactUpdateSerializer(serializers.ModelSerializer):
         Attributes:
                 type_id (rest_framework.fields.IntegerField): type of contact
     """
-    type_id = serializers.IntegerField(source='type')
 
     class Meta:
         model = Contact
         fields = (
-            'type_id',
+            'type',
             'value',
             'comment',
         )

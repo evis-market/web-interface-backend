@@ -34,12 +34,12 @@ class SellerSettingsView(GenericAPIView):
             "wallet_for_payments_erc20": "0x....",
             "rating": 4.97,
             "contacts": [
-              { "id": 1, "type_id": 1, "value": "https://domain1.com/", "comment": "main site" },
-              { "id": 2, "type_id": 1, "value": "https://domain2.com/", "comment": "" },
-              { "id": 3, "type_id": 2, "value": "1231231231", "comment": "phone1 comment" },
-              { "id": 4, "type_id": 2, "value": "1231231232", "comment": "phone2 comment" }
-              { "id": 5, "type_id": 3: "value": "email1@test.com", "comment": "email1 comment" },
-              { "id": 6, "type_id": 3: "value": "email2@test.com", "comment": "" },
+              { "id": 1, "type": 1, "value": "https://domain1.com/", "comment": "main site" },
+              { "id": 2, "type": 1, "value": "https://domain2.com/", "comment": "" },
+              { "id": 3, "type": 2, "value": "1231231231", "comment": "phone1 comment" },
+              { "id": 4, "type": 2, "value": "1231231232", "comment": "phone2 comment" }
+              { "id": 5, "type": 3: "value": "email1@test.com", "comment": "email1 comment" },
+              { "id": 6, "type": 3: "value": "email2@test.com", "comment": "" },
             ]
           }
         }
@@ -71,15 +71,15 @@ class SellerSettingsView(GenericAPIView):
           "status": "OK",
 
           "seller": {
-            "seller_id": 1,
+            "seller": 1,
             "name": "Seller name",
             "description": "Seller description",
             "logo_url": "1d5f2241-d55b-43bb-af9f-36d2ce76ab87",
             "wallet_for_payments_erc20": "0x....",
             "contacts": [
-              { "id": 1, "type_id": 1, "value": "https://domain1.com/", "comment": "main site" },
-              { "id": 3, "type_id": 2, "value": "1231231231", "comment": "phone1 comment" },
-              { "id": 5, "type_id": 3, "value": "email1@test.com", "comment": "email1 comment" }
+              { "type": 1, "value": "https://domain1.com/", "comment": "main site" },
+              { "type": 2, "value": "1231231231", "comment": "phone1 comment" },
+              { "type": 3, "value": "email1@test.com", "comment": "email1 comment" }
             ]
           }
         }
