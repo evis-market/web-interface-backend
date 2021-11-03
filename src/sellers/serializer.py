@@ -52,10 +52,8 @@ class SellerViewSerializer(serializers.ModelSerializer):
 
 
 class ContactUpdateSerializer(serializers.ModelSerializer):
-    """ Class representing serializer for contact updates
-
-        Attributes:
-                type_id (rest_framework.fields.IntegerField): type of contact
+    """
+    Class representing serializer for contact updates
     """
 
     class Meta:

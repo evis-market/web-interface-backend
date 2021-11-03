@@ -33,8 +33,8 @@ class SellerService:
         seller, _ = Seller.objects.update_or_create(
             seller=user,
             defaults={'name': data['name'],
-                      'descr': data['descr'],
-                      'wallet_for_payments_erc20': data['wallet_for_payments_erc20']})
+                      'descr': data.get('descr', ''),
+                      'wallet_for_payments_erc20': data.get('wallet_for_payments_erc20', '')})
 
         if logo_url:
             upload_to = upload_service.get_destination_path(Seller, 'file', logo_url, logo_url.uuid, 'logo_url')
