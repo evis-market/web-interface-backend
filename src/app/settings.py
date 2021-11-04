@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from split_settings.tools import include, optional
 
-from app.conf.environ import env
+from app.conf.environ_app import env
 
 
 # Quick-start development settings - unsuitable for production

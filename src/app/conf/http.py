@@ -1,4 +1,4 @@
-from app.conf.environ import env
+from app.conf.environ_app import env
 
 
 ROOT_URLCONF = 'app.urls'
