@@ -12,22 +12,60 @@ from upload.service import UploadService
 
 
 class SellerProductService:
+    """ Seller product service """
     FORBIDDEN_SELLER_ACCESS_MSG = 'The current user is not registered as a Seller'
     NOTFOUND_SELLER_MSG = 'SellerProduct not found'
 
     def get_seller(self, user_id: int):
+        """ Get seller by user id.
+
+        Attributes:
+                user_id (int): user id
+
+        Returns:
+            Seller.
+        """
         seller = Seller.objects.get_seller_by_user_id(user_id)
         if not seller:
             raise exceptions.NotFound(msg=self.FORBIDDEN_SELLER_ACCESS_MSG)
         return seller
 
     def get_seller_product(self, pk: int, user_id: int):
+        """ Get seller product by user id.
+
+        Attributes:
+                pk (str): private key
+                user_id (int): user id
+
+        Returns:
+            Seller product.
+        """
         seller_product = SellerProduct.objects.get_product_by_seller_id(pk, user_id)
         if not seller_product:
             raise exceptions.NotFound(self.NOTFOUND_SELLER_MSG)
         return seller_product
 
     def create_object(self, data: typing.Dict):
+        """ Creates object.
+
+            Args:
+                data (dict): params dict
+
+            Attributes:
+                upload_service (src.upload.service.UploadService): upload service
+                seller (str): seller
+                categories (list): categories list
+                geo_regions (list): geo regions list
+                languages (list): languages list
+                data_types (list): data types list
+                data_formats (list): data formats list
+                data_delivery_types (list): data delivery types list
+                data_samples_uploaded (list): data samples uploaded list
+                data_urls (list): data urls list
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+
+        """
         upload_service = UploadService()
         seller = data.pop('seller')
         categories = data.pop('data_categories_ids')
@@ -47,6 +85,15 @@ class SellerProductService:
         self._create_data_urls(data_urls, seller_product, seller_product_acrhive)
 
     def _create_data_samples(self, data_samples_uploaded, upload_service, seller_product, seller_product_acrhive):
+        """ Creates or updates object.
+
+            Args:
+                data_samples_uploaded (list): data samples uploaded list
+                upload_service (src.upload.service.UploadService): upload service
+
+            Attributes:
+                contacts (list): contact list
+        """
         if data_samples_uploaded:
             for data_sample in data_samples_uploaded:
                 # upload seller_product_data_samples
@@ -64,6 +111,13 @@ class SellerProductService:
                 sp.save()
 
     def _create_data_urls(self, data_urls, seller_product, seller_product_acrhive):
+        """ Creates data urls.
+
+            Args:
+                data_urls (list): data urls list
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+        """
         if data_urls:
             SellerProductDataUrl.objects.bulk_create([
                 SellerProductDataUrl(seller_product=seller_product, **du) for du in data_urls
@@ -73,6 +127,12 @@ class SellerProductService:
             ])
 
     def update_object(self, seller_product, data: typing.Dict):
+        """ Updates object.
+
+            Args:
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                data (dict): params dict
+        """
         upload_service = UploadService()
         categories = data.pop('data_categories_ids')
         geo_regions = data.pop('data_geo_regions_ids')
@@ -92,6 +152,14 @@ class SellerProductService:
         self._update_data_urls(data_urls, seller_product, seller_product_acrhive)
 
     def _update_data_samples(self, data_samples_uploaded, upload_service, seller_product, seller_product_acrhive):
+        """ Updates data samples.
+
+            Args:
+                data_samples_uploaded (list): data samples uploaded list
+                upload_service (src.upload.service.UploadService): upload service
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+        """
         # todo: check if no files supplied - delete all SellerProductDataSample or not ?
         if data_samples_uploaded:
             # first, lets delete those files that are not longer presented as data_samples in updated seller_product
@@ -118,6 +186,13 @@ class SellerProductService:
                 sp.save()
 
     def _update_data_urls(self, data_urls, seller_product, seller_product_acrhive):
+        """ Updates data urls.
+
+            Args:
+                data_urls (list): data urls list
+                seller_product (src.seller_products.models.SellerProduct): seller product
+                seller_product_acrhive (src.seller_products.models.SellerProductArchive): seller product archive
+        """
         SellerProductDataUrl.objects.delete_by_seller_product(seller_product=seller_product)
         if data_urls:
             SellerProductDataUrl.objects.bulk_create([
@@ -128,4 +203,9 @@ class SellerProductService:
             ])
 
     def delete_object(self, seller_product):
+        """ Delete object.
+
+        Args:
+            seller_product (src.seller_products.models.SellerProduct): seller product
+        """
         seller_product.delete()

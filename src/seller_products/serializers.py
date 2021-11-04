@@ -11,48 +11,61 @@ from upload.models import UploadedFile
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    """ Class representing category serializer """
     class Meta:
         model = Category
         fields = ['id', 'name']
 
 
 class SellerSerializer(serializers.ModelSerializer):
+    """ Class representing seller serializer """
     class Meta:
         model = Seller
         fields = ['seller_id', 'name']
 
 
 class GeoRegionSerializer(serializers.ModelSerializer):
+    """ Class representing geo region serializer """
     class Meta:
         model = GeoRegion
         fields = ['id', 'name', 'iso_code']
 
 
 class LanguageSerializer(serializers.ModelSerializer):
+    """ Class representing language serializer """
     class Meta:
         model = Language
         fields = ['id', 'name_native', 'name_en', 'slug']
 
 
 class DataTypeSerializer(serializers.ModelSerializer):
+    """ Class representing data type serializer """
     class Meta:
         model = DataType
         fields = ['id', 'name']
 
 
 class DataFormatSerializer(serializers.ModelSerializer):
+    """ Class representing data format serializer """
     class Meta:
         model = DataFormat
         fields = ['id', 'name']
 
 
 class DataDeliveryTypeSerializer(serializers.ModelSerializer):
+    """ Class representing data delivery type serializer """
     class Meta:
         model = DataDeliveryType
         fields = ['id', 'name']
 
 
 class DataSampleSerializer(serializers.ModelSerializer):
+    """ Class representing data sample serializer
+
+    Attributes:
+        data_delivery_type_id (rest_framework.relations.PrimaryKeyRelatedField): data delivery type id
+        data_format_id (rest_framework.relations.PrimaryKeyRelatedField): data format id
+    """
     data_delivery_type_id = serializers.PrimaryKeyRelatedField(
         queryset=DataDeliveryType.objects.all(), write_only=True, source='data_delivery_type', required=False
     )
@@ -70,6 +83,12 @@ class DataSampleSerializer(serializers.ModelSerializer):
 
 
 class DataUrlsSerializer(serializers.ModelSerializer):
+    """ Class representing data urls serializer
+
+    Attributes:
+        data_delivery_type_id (rest_framework.relations.PrimaryKeyRelatedField): data delivery type id
+        data_format_id (rest_framework.relations.PrimaryKeyRelatedField): data format id
+    """
     data_delivery_type_id = serializers.PrimaryKeyRelatedField(queryset=DataDeliveryType.objects.all(), write_only=True,
                                                                source='data_delivery_type')
     data_format_id = serializers.PrimaryKeyRelatedField(queryset=DataFormat.objects.all(), write_only=True,
@@ -81,6 +100,19 @@ class DataUrlsSerializer(serializers.ModelSerializer):
 
 
 class SellerProductsSerializer(serializers.ModelSerializer):
+    """ Class representing seller products serializer
+
+    Attributes:
+        seller (SellerSerializer): seller
+        data_categories_ids (CategorySerializer): data categories ids
+        data_geo_regions_ids (GeoRegionSerializer): data geo regions ids
+        data_langs_ids (LanguageSerializer): data langs ids
+        data_types_ids (DataTypeSerializer): data types ids
+        data_formats_ids (DataFormatSerializer): data formats ids
+        data_delivery_types_ids (DataDeliveryTypeSerializer): data delivery types ids
+        data_samples (DataSampleSerializer): data samples
+        data_urls (DataUrlsSerializer): data urls
+    """
     seller = SellerSerializer(read_only=True)
     data_categories_ids = CategorySerializer(read_only=True, many=True)
     data_geo_regions_ids = GeoRegionSerializer(read_only=True, many=True)
@@ -117,6 +149,19 @@ class SellerProductsSerializer(serializers.ModelSerializer):
 
 
 class SellerProductsUpdateSerializer(serializers.ModelSerializer):
+    """ Class representing seller products update serializer
+
+        Attributes:
+            seller (rest_framework.relations.PrimaryKeyRelatedField): seller
+            data_categories_ids (rest_framework.relations.PrimaryKeyRelatedField): data categories ids
+            data_geo_regions_ids (rest_framework.relations.PrimaryKeyRelatedField): data geo regions ids
+            data_langs_ids (rest_framework.relations.PrimaryKeyRelatedField): data langs ids
+            data_types_ids (rest_framework.relations.PrimaryKeyRelatedField): data types ids
+            data_formats_ids (rest_framework.relations.PrimaryKeyRelatedField): data formats ids
+            data_delivery_types_ids (rest_framework.relations.PrimaryKeyRelatedField): data delivery types ids
+            data_samples (rest_framework.relations.PrimaryKeyRelatedField): data samples
+            data_urls (rest_framework.relations.PrimaryKeyRelatedField): data urls
+    """
     seller = serializers.PrimaryKeyRelatedField(queryset=Seller.objects.all(), write_only=True)
     data_categories_ids = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all(), write_only=True,
                                                              many=True)
@@ -154,4 +199,9 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
 
 
 class UploadedFilesSerializer(serializers.Serializer):
+    """ Class representing seller uploaded files serializer
+
+        Attributes:
+            data_samples (rest_framework.relations.PrimaryKeyRelatedField): data samples
+    """
     data_samples = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), write_only=True, many=True)
