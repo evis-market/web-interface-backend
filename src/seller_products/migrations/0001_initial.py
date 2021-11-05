@@ -3,9 +3,12 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
+CONTENT_DATA_TYPES_NAME = 'Content data types'
+PRODUCT_DATA_TYPES_DATAFORMAT = 'product_data_types.dataformat'
+PRODUCT_DATA_TYPES_DATA_TYPE = 'product_data_types.DataType'
+
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -34,11 +37,17 @@ class Migration(migrations.Migration):
                 ('version', models.IntegerField(default=1, verbose_name='Version')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated')),
-                ('categories', models.ManyToManyField(blank=True, db_table='seller_product_categories', to='categories.Category', verbose_name='Content categories')),
-                ('data_delivery_types', models.ManyToManyField(blank=True, db_table='seller_product_data_delivery_types', to='data_delivery_types.DataDeliveryType', verbose_name='Content data types')),
-                ('data_formats', models.ManyToManyField(blank=True, db_table='seller_product_data_formats', to='product_data_types.DataFormat', verbose_name='Content data formats')),
-                ('data_types', models.ManyToManyField(blank=True, db_table='seller_product_data_types', to='product_data_types.DataType', verbose_name='Content data types')),
-                ('geo_regions', models.ManyToManyField(blank=True, db_table='seller_product_geo_regions', to='geo_regions.GeoRegion', verbose_name='Content geo regions')),
+                ('categories',
+                 models.ManyToManyField(blank=True, db_table='seller_product_categories', to='categories.Category', verbose_name='Content categories')),
+                ('data_delivery_types',
+                 models.ManyToManyField(blank=True, db_table='seller_product_data_delivery_types', to='data_delivery_types.DataDeliveryType',
+                                        verbose_name=CONTENT_DATA_TYPES_NAME)),
+                ('data_formats', models.ManyToManyField(blank=True, db_table='seller_product_data_formats', to='product_data_types.DataFormat',
+                                                        verbose_name=CONTENT_DATA_TYPES_NAME)),
+                ('data_types', models.ManyToManyField(blank=True, db_table='seller_product_data_types', to=PRODUCT_DATA_TYPES_DATA_TYPE,
+                                                      verbose_name=CONTENT_DATA_TYPES_NAME)),
+                ('geo_regions',
+                 models.ManyToManyField(blank=True, db_table='seller_product_geo_regions', to='geo_regions.GeoRegion', verbose_name='Content geo regions')),
                 ('seller', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='sellers.seller')),
             ],
             options={
@@ -65,11 +74,17 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(primary_key=True, serialize=False)),
                 ('seller_product_id', models.IntegerField()),
                 ('is_deleted', models.BooleanField(default=False)),
-                ('categories', models.ManyToManyField(blank=True, db_table='seller_product_categories_archive', to='categories.Category', verbose_name='Content categories')),
-                ('data_delivery_types', models.ManyToManyField(blank=True, db_table='seller_product_data_delivery_types_archive', to='data_delivery_types.DataDeliveryType', verbose_name='Content data types')),
-                ('data_formats', models.ManyToManyField(blank=True, db_table='seller_product_data_formats_archive', to='product_data_types.DataFormat', verbose_name='Content data formats')),
-                ('data_types', models.ManyToManyField(blank=True, db_table='seller_product_data_types_archive', to='product_data_types.DataType', verbose_name='Content data types')),
-                ('geo_regions', models.ManyToManyField(blank=True, db_table='seller_product_geo_regions_archive', to='geo_regions.GeoRegion', verbose_name='Content geo-regions')),
+                ('categories',
+                 models.ManyToManyField(blank=True, db_table='seller_product_categories_archive', to='categories.Category', verbose_name='Content categories')),
+                ('data_delivery_types',
+                 models.ManyToManyField(blank=True, db_table='seller_product_data_delivery_types_archive', to='data_delivery_types.DataDeliveryType',
+                                        verbose_name=CONTENT_DATA_TYPES_NAME)),
+                ('data_formats', models.ManyToManyField(blank=True, db_table='seller_product_data_formats_archive', to='product_data_types.DataFormat',
+                                                        verbose_name='Content data formats')),
+                ('data_types', models.ManyToManyField(blank=True, db_table='seller_product_data_types_archive', to=PRODUCT_DATA_TYPES_DATA_TYPE,
+                                                      verbose_name=CONTENT_DATA_TYPES_NAME)),
+                ('geo_regions', models.ManyToManyField(blank=True, db_table='seller_product_geo_regions_archive', to='geo_regions.GeoRegion',
+                                                       verbose_name='Content geo-regions')),
                 ('seller', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='sellers.seller')),
             ],
             options={
@@ -83,9 +98,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('url', models.URLField(verbose_name='URL')),
-                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat')),
-                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.datatype')),
-                ('seller_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_urls_archive', to='seller_products.sellerproductarchive')),
+                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATAFORMAT)),
+                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATA_TYPE)),
+                ('seller_product',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_urls_archive', to='seller_products.sellerproductarchive')),
             ],
             options={
                 'verbose_name': 'Data url archive',
@@ -98,9 +114,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('url', models.URLField(verbose_name='URL')),
-                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat')),
-                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.datatype')),
-                ('seller_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_urls', to='seller_products.sellerproduct')),
+                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATAFORMAT)),
+                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATA_TYPE)),
+                (
+                'seller_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_urls', to='seller_products.sellerproduct')),
             ],
             options={
                 'verbose_name': 'Data url',
@@ -113,9 +130,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('url', models.URLField(verbose_name='URL')),
-                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat')),
-                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.datatype')),
-                ('seller_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_samples_archive', to='seller_products.sellerproductarchive')),
+                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATAFORMAT)),
+                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATA_TYPE)),
+                ('seller_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_samples_archive',
+                                                     to='seller_products.sellerproductarchive')),
             ],
             options={
                 'verbose_name': 'Data sample archive',
@@ -128,9 +146,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('url', models.URLField(verbose_name='URL')),
-                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat')),
-                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product_data_types.datatype')),
-                ('seller_product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_samples', to='seller_products.sellerproduct')),
+                ('data_format', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATAFORMAT)),
+                ('data_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=PRODUCT_DATA_TYPES_DATA_TYPE)),
+                ('seller_product',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='data_samples', to='seller_products.sellerproduct')),
             ],
             options={
                 'verbose_name': 'Data sample',
