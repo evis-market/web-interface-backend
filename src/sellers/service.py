@@ -37,6 +37,6 @@ class SellerService:
             seller.logo_url = upload_to
             seller.save()
 
+        Contact.objects.delete_all_by_seller(seller)
         if contacts:
-            Contact.objects.delete_all_by_seller(seller)
             Contact.objects.bulk_create([Contact(seller=seller, **contact) for contact in contacts])
