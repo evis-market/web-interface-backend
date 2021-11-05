@@ -41,7 +41,7 @@ class SellerViewSerializer(serializers.ModelSerializer):
         fields = (
             'user_id',
             'name',
-            'description',
+            'descr',
             'logo_url',
             'wallet_for_payments_erc20',
             'rating',
@@ -80,7 +80,7 @@ class SellerUpdateSerializer(serializers.ModelSerializer):
         model = Seller
         fields = [
             'name',
-            'description',
+            'descr',
             'logo_url',
             'wallet_for_payments_erc20',
             'contacts',

@@ -50,7 +50,7 @@ class TestSellerSettingsView:
         seller = Seller.objects.get(seller=user)
         seller_fields = {
             'name': seller.name,
-            'description': seller.description,
+            'descr': seller.descr,
             'logo_url': f'http://testserver{seller.logo_url.url}',
             'wallet_for_payments_erc20': seller.wallet_for_payments_erc20,
             'rating': seller.rating
@@ -83,7 +83,7 @@ class TestSellerSettingsView:
         data = {
             'seller': user.id,
             'name': 'Seller name',
-            'description': 'Seller description',
+            'descr': 'Seller description',
             'logo_url': str(file.uuid),
             'wallet_for_payments_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
             'contacts': [
@@ -134,7 +134,7 @@ class TestSellerSettingsView:
         data = {
             'seller': user.id,
             'name': 'New seller name',
-            'description': 'New seller description',
+            'descr': 'New seller description',
             'logo_url': str(file.uuid),
             'wallet_for_payments_erc20': '0x....',
             'contacts': [

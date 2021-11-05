@@ -29,7 +29,7 @@ class SellerSettingsView(GenericAPIView):
             "id": 1,
             "seller_id": 1,
             "name": "Seller name",
-            "description": "Seller description",
+            "descr": "Seller description",
             "logo_url": "https://domain.com/logo.jpg",
             "wallet_for_payments_erc20": "0x....",
             "rating": 4.97,
@@ -73,7 +73,7 @@ class SellerSettingsView(GenericAPIView):
           "seller": {
             "seller": 1,
             "name": "Seller name",
-            "description": "Seller description",
+            "descr": "Seller description",
             "logo_url": "1d5f2241-d55b-43bb-af9f-36d2ce76ab87",
             "wallet_for_payments_erc20": "0x....",
             "contacts": [
