@@ -28,7 +28,7 @@ class SellerService:
         seller, _ = Seller.objects.update_or_create(
             seller=user,
             defaults={'name': data['name'],
-                      'descr': data.get('descr', ''),
+                      'description': data.get('description', ''),
                       'wallet_for_payments_erc20': data.get('wallet_for_payments_erc20', '')})
 
         if logo_url:

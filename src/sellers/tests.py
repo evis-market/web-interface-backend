@@ -50,7 +50,7 @@ class TestSellerSettingsView:
         seller = Seller.objects.get(seller=user)
         seller_fields = {
             'name': seller.name,
-            'descr': seller.descr,
+            'description': seller.description,
             'logo_url': f'http://testserver{seller.logo_url.url}',
             'wallet_for_payments_erc20': seller.wallet_for_payments_erc20,
             'rating': seller.rating
@@ -83,13 +83,13 @@ class TestSellerSettingsView:
         data = {
             'seller': user.id,
             'name': 'Seller name',
-            'descr': 'Seller description',
+            'description': 'Seller description',
             'logo_url': str(file.uuid),
             'wallet_for_payments_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
             'contacts': [
-                {'type': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
-                {'type': 2, 'value': '12312312311', 'comment': 'phone1 comment'},
-                {'type': 3, 'value': 'email1@test.com', 'comment': 'email1 comment'},
+                {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
+                {'type_id': 2, 'value': '12312312311', 'comment': 'phone1 comment'},
+                {'type_id': 3, 'value': 'email1@test.com', 'comment': 'email1 comment'},
             ],
         }
         request = APIRequestFactory().put(url, data=json.dumps(data), content_type='application/json')
@@ -134,13 +134,13 @@ class TestSellerSettingsView:
         data = {
             'seller': user.id,
             'name': 'New seller name',
-            'descr': 'New seller description',
+            'description': 'New seller description',
             'logo_url': str(file.uuid),
             'wallet_for_payments_erc20': '0x....',
             'contacts': [
-                {'type': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
-                {'type': 2, 'value': '12312311231', 'comment': 'phone1 comment'},
-                {'type': 3, 'value': 'email1@test.com', 'comment': 'email1 comment'},
+                {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
+                {'type_id': 2, 'value': '12312311231', 'comment': 'phone1 comment'},
+                {'type_id': 3, 'value': 'email1@test.com', 'comment': 'email1 comment'},
             ],
         }
         request = APIRequestFactory().put(url, data=json.dumps(data), content_type='application/json')
@@ -177,11 +177,11 @@ class TestSellerSettingsView:
             'seller': user.id,
             'name': 'New seller name',
             'contacts': [
-                {'type': Contact.TYPE_ID_PHONE, 'value': '131231231', 'comment': 'phone1 comment'},
-                {'type': Contact.TYPE_ID_PHONE, 'value': '12312d31231', 'comment': 'phone2 comment'},
-                {'type': Contact.TYPE_ID_EMAIL, 'value': 'email1#test.com', 'comment': 'email1 comment'},
-                {'type': Contact.TYPE_ID_EMAIL, 'value': 'email1@test.com', 'comment': 'email2 comment'},
-                {'type': Contact.TYPE_ID_URL, 'value': 'domain1.com', 'comment': 'main site'},
+                {'type_id': Contact.TYPE_ID_PHONE, 'value': '131231231', 'comment': 'phone1 comment'},
+                {'type_id': Contact.TYPE_ID_PHONE, 'value': '12312d31231', 'comment': 'phone2 comment'},
+                {'type_id': Contact.TYPE_ID_EMAIL, 'value': 'email1#test.com', 'comment': 'email1 comment'},
+                {'type_id': Contact.TYPE_ID_EMAIL, 'value': 'email1@test.com', 'comment': 'email2 comment'},
+                {'type_id': Contact.TYPE_ID_URL, 'value': 'domain1.com', 'comment': 'main site'},
             ],
         }
         request = APIRequestFactory().put(url, data=json.dumps(data), content_type='application/json')
@@ -191,8 +191,6 @@ class TestSellerSettingsView:
         assert response.data['error']['code'] == 400
         assert response.data['status'] == 'ERR'
         assert 'msg' in response.data['error']
-        print(response)
-        print(response.data)
         assert 0 in response.data['error']['invalid_fields']['contacts']
         assert 1 in response.data['error']['invalid_fields']['contacts']
         assert 2 in response.data['error']['invalid_fields']['contacts']

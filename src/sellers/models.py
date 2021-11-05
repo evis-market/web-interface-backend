@@ -7,7 +7,7 @@ from sellers.managers import ContactManager, SellerManager
 class Seller(models.Model):
     seller = models.OneToOneField('users.User', related_name='Seller', on_delete=models.CASCADE, primary_key=True)
     name = models.CharField('Name', max_length=190, db_index=True)
-    descr = models.TextField('Description', blank=True, null=True)
+    description = models.TextField('Description', blank=True, null=True)
     logo_url = models.FileField('Logo', upload_to='seller_logo/', help_text='Logo', blank=True, null=True)
     wallet_for_payments_erc20 = models.CharField('ERC-20 wallet', blank=True, null=True, max_length=42)
     rating = models.FloatField('Rating', null=False, default=0,
@@ -42,7 +42,7 @@ class Contact(models.Model):
 
     id = models.AutoField('ID', primary_key=True)
     seller = models.ForeignKey('Seller', related_name='Contact', on_delete=models.CASCADE)
-    type = models.IntegerField('Contact types', choices=TYPES)
+    type_id = models.IntegerField('Contact type', choices=TYPES)
     value = models.CharField('Value', max_length=190)
     comment = models.CharField('Comment', max_length=190, blank=True, default='')
 
@@ -51,7 +51,7 @@ class Contact(models.Model):
     class Meta:
         db_table = 'seller_contacts'
         verbose_name_plural = 'Seller contacts'
-        ordering = ('type',)
+        ordering = ('type_id',)
 
     def __str__(self):
         return self.value
