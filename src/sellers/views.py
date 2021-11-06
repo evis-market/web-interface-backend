@@ -29,7 +29,7 @@ class SellerSettingsView(GenericAPIView):
             "id": 1,
             "seller_id": 1,
             "name": "Seller name",
-            "description": "Seller description",
+            "descr": "Seller description",
             "logo_url": "https://domain.com/logo.jpg",
             "wallet_for_payments_erc20": "0x....",
             "rating": 4.97,
@@ -71,15 +71,15 @@ class SellerSettingsView(GenericAPIView):
           "status": "OK",
 
           "seller": {
-            "seller_id": 1,
+            "seller": 1,
             "name": "Seller name",
-            "description": "Seller description",
+            "descr": "Seller description",
             "logo_url": "1d5f2241-d55b-43bb-af9f-36d2ce76ab87",
             "wallet_for_payments_erc20": "0x....",
             "contacts": [
-              { "id": 1, "type_id": 1, "value": "https://domain1.com/", "comment": "main site" },
-              { "id": 3, "type_id": 2, "value": "1231231231", "comment": "phone1 comment" },
-              { "id": 5, "type_id": 3, "value": "email1@test.com", "comment": "email1 comment" }
+              { "type_id": 1, "value": "https://domain1.com/", "comment": "main site" },
+              { "type_id": 2, "value": "1231231231", "comment": "phone1 comment" },
+              { "type_id": 3, "value": "email1@test.com", "comment": "email1 comment" }
             ]
           }
         }

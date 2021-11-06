@@ -9,6 +9,7 @@ from app.utils import copy_instance
 
 
 class SellerProductBaseManager(models.Manager):
+    """ Class representing base seller products manager """
 
     def get_seller_product(self, pk):
         return self.model.objects.filter(pk=pk).first()
@@ -28,15 +29,40 @@ class SellerProductBaseManager(models.Manager):
         ).filter(seller=seller)
 
     def get_product_by_seller_id(self, pk, seller):
+        """ Get products by seller.
+
+        Attributes:
+                pk (str): private key
+                seller (str): seller id
+
+        Returns:
+            Seller product.
+        """
         return self.model.objects.filter(pk=pk, seller=seller).first()
 
     def get_seller_product_detailed(self, pk):
+        """ Get detailed info of seller product.
+
+        Attributes:
+                pk (str): private key
+
+        Returns:
+            Seller product with seller settings prefetched.
+        """
         return self.model.objects.select_related(
             'seller',
         ).filter(pk=pk).first()
 
     def get_related_seller_products(self, pk):
-        category = apps.get_model('categories', 'Category')
+        """ Get related seller products.
+
+        Attributes:
+                pk (str): private key
+
+        Returns:
+            Related seller products.
+        """
+        Category = apps.get_model('categories', 'Category')
 
         return self.model.objects.values(
             'id',
@@ -57,7 +83,16 @@ class SellerProductBaseManager(models.Manager):
         ).distinct()
 
     def get_seller_products_by_categories_and_name(self, name, categories):
-        category = apps.get_model('categories', 'Category')
+        """ Get seller products by categories and name.
+
+        Attributes:
+                name (str): product name
+                categories (list): categories list
+
+        Returns:
+            Seller products by categories and name.
+        """
+        Category = apps.get_model('categories', 'Category')
 
         query_filter = Q()
         if name:
@@ -84,10 +119,26 @@ class SellerProductBaseManager(models.Manager):
 
 
 class SellerProductManager(SellerProductBaseManager):
+    """ Class representing seller products manager """
+
     def create(
-            self, seller: int, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
-            data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
+        self, seller: int, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
+        data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
     ):
+        """ Create seller product manager.
+
+        Attributes:
+                seller (int): seller id
+                categories (list): categories list
+                geo_regions (list): geo regions list
+                languages (list): languages list
+                data_types (list): data types list
+                data_formats (list): data formats list
+                data_delivery_types (list): data delivery types list
+
+        Returns:
+            Seller product manager instance.
+        """
         instance = super().create(seller=seller, **kwargs)
         instance.categories.add(*categories)
         instance.geo_regions.add(*geo_regions)
@@ -99,9 +150,23 @@ class SellerProductManager(SellerProductBaseManager):
         return instance
 
     def update(
-            self, instance, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
-            data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
+        self, instance, categories: tp.List[int], geo_regions: tp.List[int], languages: tp.List[int],
+        data_types: tp.List[int], data_formats: tp.List[int], data_delivery_types: tp.List[int], **kwargs
     ):
+        """ Update seller product manager.
+
+        Attributes:
+                instance (models.Manager): seller product manager instance
+                categories (list): categories list
+                geo_regions (list): geo regions list
+                languages (list): languages list
+                data_types (list): data types list
+                data_formats (list): data formats list
+                data_delivery_types (list): data delivery types list
+
+        Returns:
+            Seller product manager instance.
+        """
         for column, column_value in kwargs.items():
             setattr(instance, column, column_value)
         instance.version += 1
@@ -122,7 +187,17 @@ class SellerProductManager(SellerProductBaseManager):
 
 
 class SellerProductArchiveManager(SellerProductBaseManager):
+    """ Class representing seller products archive manager """
+
     def create_instance_from_seller_product(self, seller_product):
+        """ Create seller product manager.
+
+        Attributes:
+                seller_product (src.seller_products.models.SellerProduct): seller product
+
+        Returns:
+            Seller product archive manager instance.
+        """
         instance = self.model()
         instance.seller_product_id = seller_product.id
         instance = copy_instance(seller_product, instance, exclude_fields=['id'])
@@ -131,11 +206,27 @@ class SellerProductArchiveManager(SellerProductBaseManager):
 
 
 class SellerProductDataSampleManager(models.Manager):
+    """ Class representing seller products data sample manager """
 
     def get_by_seller_product(self, seller_product):
+        """ Get seller products data sample by seller product.
+
+        Attributes:
+                seller_product (src.seller_products.models.SellerProduct): seller product
+
+        Returns:
+            Seller products data sample by seller product.
+        """
         return self.model.objects.filter(seller_product=seller_product)
 
     def delete_by_seller_product_except_excluded_files(self, seller_product, filename_uuids_without_extension):
+        """ Delete by seller product except excluded.
+
+        Attributes:
+               seller_product (src.seller_products.models.SellerProduct): seller product
+               filename_uuids_without_extension (list): filenames list
+
+        """
         objects = self.model.objects.annotate(
             last_slash_pos=StrIndex(Reverse('file'), Value('/')),
             filename=Right('file', F('last_slash_pos') - 1),
@@ -149,6 +240,14 @@ class SellerProductDataSampleManager(models.Manager):
         objects.delete()
 
     def file_exists(self, uuid):
+        """ Check file exists.
+
+        Attributes:
+                uuid (models.UUIDField): file uuid
+
+        Returns:
+            True if file exists or False if not.
+        """
         return self.model.objects.annotate(
             last_slash_pos=StrIndex(Reverse('file'), Value('/')),
             filename=Right('file', F('last_slash_pos') - 1),
@@ -160,10 +259,26 @@ class SellerProductDataSampleManager(models.Manager):
 
 
 class SellerProductDataUrlManager(models.Manager):
+    """ Class representing seller products data url manager """
+
     def get_by_seller_product(self, seller_product):
+        """ Get product data url by seller product.
+
+        Attributes:
+                seller_product (src.seller_products.models.SellerProduct): seller product
+
+        Returns:
+            Product data url by seller product.
+        """
         return self.model.objects.filter(seller_product=seller_product)
 
     def delete_by_seller_product(self, seller_product):
+        """ Delete by seller product.
+
+        Attributes:
+               seller_product (src.seller_products.models.SellerProduct): seller product
+
+        """
         self.model.objects.filter(seller_product=seller_product).delete()
 
 

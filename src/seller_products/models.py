@@ -18,6 +18,25 @@ from sellers.models import Seller
 CONTENT_DATA_TYPES_NAME = 'Content data types'
 
 class SellerProductBase(models.Model):
+    """ Class representing base seller product.
+
+    Attributes:
+          seller (django.db.models.fields.related.ForeignKey): seller
+          name (django.db.models.fields.CharField): seller product name
+          descr (django.db.models.fields.TextField): seller product description
+          price_per_one_time (django.db.models.fields.FloatField): price per one time
+          price_per_month (django.db.models.fields.FloatField): price per month
+          price_per_year (django.db.models.fields.FloatField): price per year
+          price_by_request (django.db.models.fields.BooleanField): price by request or not
+          price_per_usage (django.db.models.fields.BooleanField): price per usage or not
+          price_per_usage_descr (django.db.models.fields.TextField): price per usage description
+          rating (django.db.models.fields.FloatField): rating
+          total_reviews_cnt (django.db.models.fields.IntegerField): total reviews count
+          version (django.db.models.fields.IntegerField): version
+          created_at (django.db.models.fields.DateTimeField): created at date time
+          updated_at (django.db.models.fields.DateTimeField): updated at date time
+          objects (src.seller_products.managers): seller product base manager
+    """
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=500)
     descr = models.TextField('Description', blank=True, default='')
@@ -50,6 +69,16 @@ class SellerProductQuerySet(models.QuerySet):
 
 
 class SellerProduct(SellerProductBase):
+    """ Class representing seller products.
+
+    Attributes:
+          categories (django.db.models.fields.related.ManyToManyField): categories list
+          geo_regions (django.db.models.fields.related.ManyToManyField): geo regions list
+          languages (django.db.models.fields.related.ManyToManyField): languages list
+          data_types (django.db.models.fields.related.ManyToManyField): data types list
+          data_formats (django.db.models.fields.related.ManyToManyField): data formats list
+          data_delivery_types (django.db.models.fields.related.ManyToManyField): data delivery types list
+    """
     categories = models.ManyToManyField(Category, verbose_name='Content categories', blank=True,
                                         db_table='seller_product_categories')
     geo_regions = models.ManyToManyField(GeoRegion, verbose_name='Content geo regions', blank=True,
@@ -72,6 +101,21 @@ class SellerProduct(SellerProductBase):
 
 
 class SellerProductArchive(SellerProductBase):
+    """ Class representing seller product archive.
+
+    Attributes:
+          id (django.db.models.fields.BigAutoField): seller product archive id
+          seller_product_id (django.db.models.fields.IntegerField): seller product id
+          seller (django.db.models.fields.related.ForeignKey): seller
+          categories (django.db.models.fields.related.ManyToManyField): categories list
+          geo_regions (django.db.models.fields.related.ManyToManyField): geo regions list
+          languages (django.db.models.fields.CharField): languages list
+          data_types (django.db.models.fields.CharField): data types list
+          data_formats (django.db.models.fields.CharField): data formats list
+          data_delivery_types (django.db.models.fields.CharField): data delivery types list
+          is_deleted (django.db.models.fields.BooleanField): seller product archive is deleted or not
+          objects (src.seller_products.managers): seller product archive manager
+    """
     id = models.BigAutoField(primary_key=True)
     seller_product_id = models.IntegerField()  # this field would be populated from id field of SellerProduct model
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
@@ -100,6 +144,21 @@ class SellerProductArchive(SellerProductBase):
 
 
 class SellerProductDataSample(models.Model):
+    """ Class representing seller product data sample.
+
+    Attributes:
+          id (django.db.models.fields.BigAutoField): seller product archive id
+          seller_product_id (django.db.models.fields.IntegerField): seller product id
+          seller (django.db.models.fields.related.ForeignKey): seller
+          categories (django.db.models.fields.related.ManyToManyField): categories list
+          geo_regions (django.db.models.fields.related.ManyToManyField): geo regions list
+          languages (django.db.models.fields.CharField): languages list
+          data_types (django.db.models.fields.CharField): data types list
+          data_formats (django.db.models.fields.CharField): data formats list
+          data_delivery_types (django.db.models.fields.CharField): data delivery types list
+          is_deleted (django.db.models.fields.BooleanField): seller product archive is deleted or not
+          objects (src.seller_products.managers): seller product archive manager
+    """
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_samples')
     file = models.FileField(upload_to='seller_product_data_samples/')  # noqa: VNE002
     data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
@@ -117,14 +176,33 @@ class SellerProductDataSample(models.Model):
 
     @property
     def get_filename_without_extension(self):
+        """ Get filename without extension
+
+        Returns:
+            Filename without extension.
+        """
         return os.path.basename(self.file.name).split('.')[0]
 
     @property
     def get_filename_extension(self):
+        """ Get filename extension
+
+        Returns:
+            Filename extension.
+        """
         return os.path.basename(self.file.name).split('.')[-1]
 
 
 class SellerProductDataUrl(models.Model):
+    """ Class representing seller product data URL.
+
+    Attributes:
+          seller_product (django.db.models.fields.related.ForeignKey): seller product
+          url (django.db.models.fields.URLField): seller product URL
+          data_delivery_type (django.db.models.fields.related.ForeignKey): data delivery type
+          data_format (django.db.models.fields.related.ForeignKey): data format
+          objects (src.seller_products.managers): seller product data url manager
+    """
     seller_product = models.ForeignKey(SellerProduct, on_delete=models.CASCADE, related_name='data_urls')
     url = models.URLField('URL')
     data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
@@ -142,6 +220,15 @@ class SellerProductDataUrl(models.Model):
 
 
 class SellerProductDataSampleArchive(models.Model):
+    """ Class representing seller product data sample archive.
+
+    Attributes:
+          seller_product (django.db.models.fields.related.ForeignKey): seller product
+          file (django.db.models.fields.FileField): seller product data sample file
+          data_delivery_type (django.db.models.fields.related.ForeignKey): data delivery type
+          data_format (django.db.models.fields.related.ForeignKey): data format
+          objects (src.seller_products.managers): seller product data sample archive manager
+    """
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE,
                                        related_name='data_samples_archive')
     file = models.FileField(upload_to='seller_product_data_samples_archive/')  # noqa: VNE002
@@ -160,6 +247,15 @@ class SellerProductDataSampleArchive(models.Model):
 
 
 class SellerProductDataUrlArchive(models.Model):
+    """ Class representing seller product data URL archive.
+
+    Attributes:
+          seller_product (django.db.models.fields.related.ForeignKey): seller product
+          url (django.db.models.fields.URLField): seller product URL
+          data_delivery_type (django.db.models.fields.related.ForeignKey): data delivery type
+          data_format (django.db.models.fields.related.ForeignKey): data format
+          objects (src.seller_products.managers): seller product data url archive manager
+    """
     seller_product = models.ForeignKey(SellerProductArchive, on_delete=models.CASCADE, related_name='data_urls_archive')
     url = models.URLField('URL')
     data_delivery_type = models.ForeignKey(DataDeliveryType, on_delete=models.CASCADE, blank=True, null=True)
