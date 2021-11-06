@@ -3,6 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
+TYPES_DATADELIVERYTYPE = 'data_delivery_types.datadeliverytype'
+
 
 class Migration(migrations.Migration):
 
@@ -31,25 +33,25 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='sellerproductdatasample',
             name='data_delivery_type',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='sellerproductdatasamplearchive',
             name='data_delivery_type',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='sellerproductdataurl',
             name='data_delivery_type',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='sellerproductdataurlarchive',
             name='data_delivery_type',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
             preserve_default=False,
         ),
     ]
