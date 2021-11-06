@@ -3,9 +3,11 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
+TYPES_DATADELIVERYTYPE = 'data_delivery_types.datadeliverytype'
+DATA_TYPES_DATAFORMAT = 'product_data_types.dataformat'
+
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('product_data_types', '0001_initial'),
         ('data_delivery_types', '0001_initial'),
@@ -16,41 +18,41 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='sellerproductdatasample',
             name='data_delivery_type',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
         ),
         migrations.AlterField(
             model_name='sellerproductdatasample',
             name='data_format',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=DATA_TYPES_DATAFORMAT),
         ),
         migrations.AlterField(
             model_name='sellerproductdatasamplearchive',
             name='data_delivery_type',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
         ),
         migrations.AlterField(
             model_name='sellerproductdatasamplearchive',
             name='data_format',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=DATA_TYPES_DATAFORMAT),
         ),
         migrations.AlterField(
             model_name='sellerproductdataurl',
             name='data_delivery_type',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
         ),
         migrations.AlterField(
             model_name='sellerproductdataurl',
             name='data_format',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=DATA_TYPES_DATAFORMAT),
         ),
         migrations.AlterField(
             model_name='sellerproductdataurlarchive',
             name='data_delivery_type',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='data_delivery_types.datadeliverytype'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=TYPES_DATADELIVERYTYPE),
         ),
         migrations.AlterField(
             model_name='sellerproductdataurlarchive',
             name='data_format',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='product_data_types.dataformat'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=DATA_TYPES_DATAFORMAT),
         ),
     ]
