@@ -24,6 +24,6 @@ def response_err(code: int, msg: str, invalid_fields=None, http_code=None, templ
         data['error']['msg'] = msg
 
     if invalid_fields:
-       data['error']['invalid_fields'] = invalid_fields
+        data['error']['invalid_fields'] = invalid_fields
 
     return Response(data, status=http_code, template_name=template_name, headers=headers, content_type=content_type)
