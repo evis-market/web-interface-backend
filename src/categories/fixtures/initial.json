@@ -1,3218 +1,3241 @@
 [
-  {
+{
     "model": "categories.recommendedfor",
-    "pk": 1,
+    "pk": 8,
     "fields": {
-      "name": "For Scientists"
+        "name": "Determine the location of the next store, warehouse, real estate"
     }
-  },
-  {
+},
+{
     "model": "categories.recommendedfor",
-    "pk": 2,
+    "pk": 9,
     "fields": {
-      "name": "For Traders"
+        "name": "Find out about the population of the area and select the area with the most activity"
     }
-  },
-  {
+},
+{
     "model": "categories.recommendedfor",
-    "pk": 3,
+    "pk": 10,
     "fields": {
-      "name": "For Analytics"
+        "name": "To find out which applications are most often used in a certain location and how users behave in these areas by the comp"
     }
-  },
-  {
+},
+{
     "model": "categories.recommendedfor",
-    "pk": 4,
+    "pk": 11,
     "fields": {
-      "name": "For Personal Use"
+        "name": "Remain competitive merchants"
     }
-  },
-  {
+},
+{
     "model": "categories.recommendedfor",
-    "pk": 6,
+    "pk": 12,
     "fields": {
-      "name": "For Developers"
+        "name": "Understand and analyze customer needs, wants, spending, and eating habits to create the best experience for their custo"
     }
-  },
-  {
+},
+{
     "model": "categories.recommendedfor",
-    "pk": 7,
+    "pk": 13,
     "fields": {
-      "name": "For Government"
+        "name": "Find the right customer at the right time for your sales team and choose the best time to work"
     }
-  },
-  {
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 14,
+    "fields": {
+        "name": "Predict the future in financial markets"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 15,
+    "fields": {
+        "name": "Make decisions to buy and sell stocks and maximize profits"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 16,
+    "fields": {
+        "name": "Analyze the economic condition of a country"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 17,
+    "fields": {
+        "name": "Target advertising campaigns to those who are interested in them"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 18,
+    "fields": {
+        "name": "Increase click-through rates and sales opportunities"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 19,
+    "fields": {
+        "name": "Understand your audience and potential customers better"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 20,
+    "fields": {
+        "name": "Prioritize and plan information campaigns for better results"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 21,
+    "fields": {
+        "name": "Increase profits and find the right tools for the business"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 22,
+    "fields": {
+        "name": "Create unique profiles, to identify each potential user by marketers"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 23,
+    "fields": {
+        "name": "Personally interact with applications"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 24,
+    "fields": {
+        "name": "Conduct effective promotions"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 25,
+    "fields": {
+        "name": "Ensure the smooth and efficient operation of their business by companies"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 26,
+    "fields": {
+        "name": "Guarantee timely and fast deliveries"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 27,
+    "fields": {
+        "name": "Solve the problems of the drivers of the transport fleet by transport companies"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 28,
+    "fields": {
+        "name": "Reduce excess costs and increase profits"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 29,
+    "fields": {
+        "name": "Environmental data are data based on measurements of environmental pressures, environmental conditions, and ecosystem im"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 30,
+    "fields": {
+        "name": "Understand and predict ecosystems by scientists"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 31,
+    "fields": {
+        "name": "Analyze environmental data to find out information about a particular place by the public"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 32,
+    "fields": {
+        "name": "Plan infrastructure, environment and energy consumption"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 33,
+    "fields": {
+        "name": "Conduct a thorough analysis of environmental data and make important changes in environmental policy by policy makers"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 34,
+    "fields": {
+        "name": "Comply with regulatory requirements, improve their image by companies"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 35,
+    "fields": {
+        "name": "Operate smoothly in the sector"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 36,
+    "fields": {
+        "name": "Analyze credit risk when granting a loan to a person or entity"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 37,
+    "fields": {
+        "name": "Manage credit risk, predict other usage scenarios related to financial information"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 38,
+    "fields": {
+        "name": "Develop a strategy for expanding credit rating"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 39,
+    "fields": {
+        "name": "Get the best deal"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 40,
+    "fields": {
+        "name": "Invest and trading"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 41,
+    "fields": {
+        "name": "Evaluate potential projects"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 42,
+    "fields": {
+        "name": "Service customers"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 43,
+    "fields": {
+        "name": "Adapting their advertising campaigns and subsequently increase advertising revenue and profits for marketers and online"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 44,
+    "fields": {
+        "name": "Conducting market research by researchers"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 45,
+    "fields": {
+        "name": "Use Mobile App Data To Gain Insights"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 46,
+    "fields": {
+        "name": "Devise Strategies With Behavior Patterns from Mobile App Data"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 47,
+    "fields": {
+        "name": "Boosting Ads Based On User Responses"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 48,
+    "fields": {
+        "name": "As an Engagement Tool"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 49,
+    "fields": {
+        "name": "Use Data To Derive Analytics"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 50,
+    "fields": {
+        "name": "Use Data For Mobile Monetization"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 51,
+    "fields": {
+        "name": "Developing App Intelligence"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 52,
+    "fields": {
+        "name": "Highlighting trends and patterns in past litigation by the judiciary"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 53,
+    "fields": {
+        "name": "Checking biographical data"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 54,
+    "fields": {
+        "name": "Improve patient care by clinics and hospitals"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 55,
+    "fields": {
+        "name": "Reducing fraud, improving the delivery of their services, by insurance companies"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 56,
+    "fields": {
+        "name": "Creating better and more innovative products by manufacturers"
+    }
+},
+{
+    "model": "categories.recommendedfor",
+    "pk": 57,
+    "fields": {
+        "name": "Collection and analysis of data by medical organizations and pharmaceutical companies to improve efficiency"
+    }
+},
+{
     "model": "categories.category",
     "pk": 1,
     "fields": {
-      "name": "Geospatial Data",
-      "descr": "Geospatial data is time-based data that is related to a specific location on the Earth's surface. It can provide insights into relationships between variables and reveal patterns and trends.",
-      "logo_url": "",
-      "slug": "geospatial-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 20,
-      "tree_id": 1,
-      "level": 0,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Geospatial Data",
+        "short_descr": "Geospatial data is any data associated with or containing information about specific locations on the Earth's surface, including three-dimensional information. In simple terms, geospatial data is any data related to an object which has its position on the earth",
+        "descr": "Geospatial data is any data associated with or containing information about specific locations on the Earth's surface, including  three-dimensional information. In simple terms, geospatial data is any data related to an object which has its position on the earth - a mountain, horse, lake, river, road, building and countless others. There is a set of programs that enable the collection and analysis of spatial data and geographic data. Geospatial analysis includes the collection, display, processing, and analysis of imagery, as well as the use of GPS, satellite imagery, and historical data.Geospatial data is very important to the benefits of people all over the Earth.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "geospatial-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 20,
+        "tree_id": 1,
+        "level": 0,
+        "recommended_for": [
+            8,
+            9,
+            10
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 2,
     "fields": {
-      "name": "Location Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "location-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Location Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "location-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 3,
     "fields": {
-      "name": "Point of Interest (POI) Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "point-of-interest-poi-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Point of Interest (POI) Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "point-of-interest-poi-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 4,
     "fields": {
-      "name": "Map Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "map-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Map Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "map-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 5,
     "fields": {
-      "name": "Satellite Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "satellite-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Satellite Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "satellite-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 6,
     "fields": {
-      "name": "Cell Tower Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "cell-tower-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Cell Tower Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "cell-tower-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 7,
     "fields": {
-      "name": "GIS Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "gis-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "GIS Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "gis-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 8,
     "fields": {
-      "name": "Geographic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "geographic-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Geographic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "geographic-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 9,
     "fields": {
-      "name": "Mobility Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "mobility-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Mobility Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "mobility-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 10,
     "fields": {
-      "name": "Geodemographic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "geodemographic-data",
-      "sort_id": 2147483647,
-      "parent": 1,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 1,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Geodemographic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "geodemographic-data",
+        "sort_id": 2147483647,
+        "parent": 1,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 1,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 11,
     "fields": {
-      "name": "Commerce Data",
-      "descr": "Commerce data is a set of purchase and intent data that gives insight into consumer behaviors and journeys. It typically includes, but is not limited to, information such as demographics, location, pages and products viewed, last product purchase, offline sales, and other intent signals such as ad clicks.",
-      "logo_url": "",
-      "slug": "commerce-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 26,
-      "tree_id": 2,
-      "level": 0,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Commerce Data",
+        "short_descr": "Retail data is a set of data about your retail customers or a specific industry. This data serves to improve your business and allows you to make better decisions, to make better profits.",
+        "descr": "Retail data is a set of data about your retail customers or a specific industry. This data serves to improve your business and allows you to make better decisions, to make better profits.\r\nOne type of retail data includes point-of-sale information, loyalty card data, and market data. While the other includes supply chain and merchandising data.\r\nAttendance data is also used to determine which departments of your business are popular. This gives you insight into how to better attract customers. Accordingly, the customers of that store are more satisfied and the store itself is more competitive.\r\nIn simple words, if businessman uses this data correctly, it increases business efficiency, saves money and increases sales.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "commerce-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 26,
+        "tree_id": 2,
+        "level": 0,
+        "recommended_for": [
+            11,
+            12,
+            13
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 12,
     "fields": {
-      "name": "Transaction Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "transaction-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Transaction Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "transaction-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 13,
     "fields": {
-      "name": "Retail Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "retail-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Retail Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "retail-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 14,
     "fields": {
-      "name": "Ecommerce Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "ecommerce-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Ecommerce Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "ecommerce-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 15,
     "fields": {
-      "name": "Receipt Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "receipt-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Receipt Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "receipt-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 16,
     "fields": {
-      "name": "Consumer Review Data ",
-      "descr": "",
-      "logo_url": "",
-      "slug": "consumer-review-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Consumer Review Data ",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "consumer-review-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 17,
     "fields": {
-      "name": "Consumer Spending Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "consumer-spending-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Consumer Spending Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "consumer-spending-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 18,
     "fields": {
-      "name": "Shopper Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "shopper-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Shopper Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "shopper-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 19,
     "fields": {
-      "name": "Product Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "product-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Product Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "product-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 20,
     "fields": {
-      "name": "In-store Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "in-store-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "In-store Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "in-store-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 21,
     "fields": {
-      "name": "Brand Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "brand-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Brand Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "brand-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 22,
     "fields": {
-      "name": "O2O Commerce Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "o2o-commerce-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "O2O Commerce Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "o2o-commerce-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 23,
     "fields": {
-      "name": "Brand Sentiment Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "brand-sentiment-data",
-      "sort_id": 2147483647,
-      "parent": 11,
-      "lft": 24,
-      "rght": 25,
-      "tree_id": 2,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Brand Sentiment Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "brand-sentiment-data",
+        "sort_id": 2147483647,
+        "parent": 11,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 2,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 24,
     "fields": {
-      "name": "Financial Market Data",
-      "descr": "In finance, market data is price and other related data for a financial instrument reported by a trading venue such as a stock exchange. Market data allows traders and investors to know the latest price and see historical trends for instruments such as equities, fixed-income products, derivatives, and currencies.",
-      "logo_url": "",
-      "slug": "financial-market-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 30,
-      "tree_id": 3,
-      "level": 0,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Financial Market Data",
+        "short_descr": "Financial market data, or simply market data, is information that is usually published by a trading platform such as a stock exchange. This is designed to keep traders informed of the latest prices of financial instruments such as stocks, derivatives, commodities and currencies.",
+        "descr": "Financial market data, or simply market data, is information that is usually published by a trading platform such as a stock exchange.\r\nThe financial marketplace has a system of economic relationships involving the borrowing, issuance, buying, and selling of securities, precious metals, currencies, and other investment instruments.\r\nThis is designed to keep traders informed of the latest prices of financial instruments such as stocks, derivatives, commodities and currencies.\r\nSubsequently, investors and traders use this data to decide whether to sell or buy stocks in the market. But in addition to information about the financial market at the moment, historical information is just as important and is used to analyze and calculate risk.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "financial-market-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 30,
+        "tree_id": 3,
+        "level": 0,
+        "recommended_for": [
+            14,
+            15,
+            16
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 25,
     "fields": {
-      "name": "ESG Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "esg-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "ESG Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "esg-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 26,
     "fields": {
-      "name": "Alternative Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "alternative-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Alternative Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "alternative-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 27,
     "fields": {
-      "name": "Proprietary Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "proprietary-market-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Proprietary Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "proprietary-market-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 28,
     "fields": {
-      "name": "Real-Time Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "real-time-market-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Real-Time Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "real-time-market-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 29,
     "fields": {
-      "name": "Delayed Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "delayed-market-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Delayed Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "delayed-market-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 30,
     "fields": {
-      "name": "Equity Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "equity-market-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Equity Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "equity-market-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 31,
     "fields": {
-      "name": "Share Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "share-market-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Share Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "share-market-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 32,
     "fields": {
-      "name": "Stock Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "stock-market-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Stock Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "stock-market-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 33,
     "fields": {
-      "name": "Reference Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "reference-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Reference Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "reference-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 34,
     "fields": {
-      "name": "Commodity Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "commodity-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Commodity Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "commodity-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 35,
     "fields": {
-      "name": "Currency Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "currency-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Currency Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "currency-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 36,
     "fields": {
-      "name": "Implied Volatility Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "implied-volatility-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 24,
-      "rght": 25,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Implied Volatility Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "implied-volatility-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 37,
     "fields": {
-      "name": "Fixed Income Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "fixed-income-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 26,
-      "rght": 27,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Fixed Income Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "fixed-income-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 26,
+        "rght": 27,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 38,
     "fields": {
-      "name": "Derivatives Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "derivatives-data",
-      "sort_id": 2147483647,
-      "parent": 24,
-      "lft": 28,
-      "rght": 29,
-      "tree_id": 3,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3,
-        4
-      ]
+        "name": "Derivatives Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "derivatives-data",
+        "sort_id": 2147483647,
+        "parent": 24,
+        "lft": 28,
+        "rght": 29,
+        "tree_id": 3,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 39,
     "fields": {
-      "name": "Consumer Data",
-      "descr": "Consumer data is the information trail customers leave behind as a result of their Internet use. This data, which sometimes comprises personal information, comes from such sources and channels as social media networks, marketing campaigns, customer service requests, call center communications, online browsing data, mobile applications, purchasing history and preferences, and more.",
-      "logo_url": "",
-      "slug": "consumer-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 28,
-      "tree_id": 4,
-      "level": 0,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Consumer Data",
+        "short_descr": "Consumer data is all the information about consumers that marketing companies and their departments collect from their customer base. It includes details of their household, demographics and lifestyle to their behavior and buying habits.",
+        "descr": "Consumer data is all the information about consumers that marketing companies and their departments collect from their customer base. It includes details of their household, demographics and lifestyle to their behavior and buying habits.\r\nThe first thing to do is to gain insight into customers' online buying behavior, which is to collect data. The collected data is then processed in customer analytics. This creates an understanding of customer behavior and a portrait of the customer. Which allows you to sell specific products to specific people or demographic groups.\r\nAlso, collecting customer data allows you to see customer satisfaction and serves to increase overall customer satisfaction.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "consumer-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 28,
+        "tree_id": 4,
+        "level": 0,
+        "recommended_for": [
+            17,
+            18
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 40,
     "fields": {
-      "name": "Demographic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "demographic-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Demographic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "demographic-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 41,
     "fields": {
-      "name": "Marketing Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "marketing-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Marketing Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "marketing-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 42,
     "fields": {
-      "name": "Audience Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "audience-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Audience Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "audience-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 43,
     "fields": {
-      "name": "Ownership Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "ownership-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Ownership Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "ownership-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 44,
     "fields": {
-      "name": "Psychographic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "psychographic-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Psychographic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "psychographic-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 45,
     "fields": {
-      "name": "Social Media Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "social-media-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Social Media Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "social-media-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 46,
     "fields": {
-      "name": "Consumer Purchase Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "consumer-purchase-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Consumer Purchase Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "consumer-purchase-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 47,
     "fields": {
-      "name": "Consumer Finance Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "consumer-finance-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Consumer Finance Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "consumer-finance-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 48,
     "fields": {
-      "name": "Consumer Panel Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "consumer-panel-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Consumer Panel Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "consumer-panel-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 49,
     "fields": {
-      "name": "Consented Consumer Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "consented-consumer-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Consented Consumer Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "consented-consumer-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 50,
     "fields": {
-      "name": "Household-Level Consumer Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "household-level-consumer-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Household-Level Consumer Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "household-level-consumer-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 51,
     "fields": {
-      "name": "Individual-Level Consumer Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "individual-level-consumer-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 24,
-      "rght": 25,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Individual-Level Consumer Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "individual-level-consumer-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 52,
     "fields": {
-      "name": "Zip-Code Level Consumer Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "zip-code-level-consumer-data",
-      "sort_id": 2147483647,
-      "parent": 39,
-      "lft": 26,
-      "rght": 27,
-      "tree_id": 4,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Zip-Code Level Consumer Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "zip-code-level-consumer-data",
+        "sort_id": 2147483647,
+        "parent": 39,
+        "lft": 26,
+        "rght": 27,
+        "tree_id": 4,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 53,
     "fields": {
-      "name": "B2B Data",
-      "descr": "B2B data is any information that is of benefit to B2B companies, especially their sales, marketing or revenue operations teams. It is gathered from a variety of public and private sources and can be applied to many business tasks.",
-      "logo_url": "",
-      "slug": "b2b-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 24,
-      "tree_id": 5,
-      "level": 0,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "B2B Data",
+        "short_descr": "B2B - basically refers to a business database, and defines who do you sell your product to. In simple terms, if your company sells a product to another business, it is a B2B company.",
+        "descr": "B2B - basically refers to a business database, and defines who do you sell your product to. In simple terms, if your company sells a product to another business, it is a B2B company. Sales, marketing, business development, recruiters and even founders use B2B data to contact other businesses and offer them their services/products. \r\nSales data is any data associated with a company. It can be branded graphics and graphic information or any other type of information. Let's say a person needs to contact the purchasing managers of a company that provides a particular product. This is where B2B database providers come to your rescue.\r\nIn addition to everything B2B data also helps to attract and retain customers, allows you to find new customers and contact them.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "b2b-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 24,
+        "tree_id": 5,
+        "level": 0,
+        "recommended_for": [
+            19,
+            20,
+            21
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 54,
     "fields": {
-      "name": "B2B Contact Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "b2b-contact-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "B2B Contact Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "b2b-contact-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 55,
     "fields": {
-      "name": "B2B Leads Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "b2b-leads-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "B2B Leads Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "b2b-leads-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 56,
     "fields": {
-      "name": "B2B Intent Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "b2b-intent-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "B2B Intent Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "b2b-intent-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 57,
     "fields": {
-      "name": "B2B Marketing Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "b2b-marketing-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "B2B Marketing Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "b2b-marketing-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 58,
     "fields": {
-      "name": "Firmographic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "firmographic-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Firmographic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "firmographic-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 59,
     "fields": {
-      "name": "Technographic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "technographic-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Technographic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "technographic-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 60,
     "fields": {
-      "name": "Business Ownership Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "business-ownership-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Business Ownership Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "business-ownership-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 61,
     "fields": {
-      "name": "Company Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "company-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Company Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "company-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 62,
     "fields": {
-      "name": "Job Postings Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "job-postings-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Job Postings Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "job-postings-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 63,
     "fields": {
-      "name": "Salary Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "salary-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Salary Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "salary-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 64,
     "fields": {
-      "name": "Employee Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "employee-data",
-      "sort_id": 2147483647,
-      "parent": 53,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 5,
-      "level": 1,
-      "recommended_for": [
-        2,
-        3
-      ]
+        "name": "Employee Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "employee-data",
+        "sort_id": 2147483647,
+        "parent": 53,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 5,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 65,
     "fields": {
-      "name": "Identity Data",
-      "descr": "An identity repository is a data store where information about users and groups in an organization is stored. Because more than one identity data store can be configured per realm OpenSSO Enterprise can access the many profiles of one identity across multiple data repositories.",
-      "logo_url": "",
-      "slug": "identity-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 18,
-      "tree_id": 6,
-      "level": 0,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Identity Data",
+        "short_descr": "Digital marketing is increasingly connected to each individual user. This is the case because a better-informed consumer wants to see in their field the kind of advertising that will resonate with their needs and tastes.",
+        "descr": "Digital marketing is increasingly connected to each individual user. This is the case because a better-informed consumer wants to see in their field the kind of advertising that will resonate with their needs and tastes. In essence, identity data is this personalized information. Personal information, contact information for online consumers is what identifying information is all about. All of this allows us to accurately identify users, their perceived interests and needs, which marketers can use to develop targeted advertising campaigns.\r\nSo collecting customer identify data allows you to see customer satisfaction and serves to increase overall customer satisfaction.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "identity-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 18,
+        "tree_id": 6,
+        "level": 0,
+        "recommended_for": [
+            22,
+            23,
+            24
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 66,
     "fields": {
-      "name": "Consumer Identity Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "consumer-identity-data",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Consumer Identity Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "consumer-identity-data",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 67,
     "fields": {
-      "name": "Identity Graph Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "identity-graph-data",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Identity Graph Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "identity-graph-data",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 68,
     "fields": {
-      "name": "Cross-Device Identity Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "cross-device-identity-data",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Cross-Device Identity Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "cross-device-identity-data",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 69,
     "fields": {
-      "name": "Deterministic Identity Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "deterministic-identity-data",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Deterministic Identity Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "deterministic-identity-data",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 70,
     "fields": {
-      "name": "First-Party Identity Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "first-party-identity-data",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "First-Party Identity Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "first-party-identity-data",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 71,
     "fields": {
-      "name": "Identity Data US",
-      "descr": "",
-      "logo_url": "",
-      "slug": "identity-data-us",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Identity Data US",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "identity-data-us",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 72,
     "fields": {
-      "name": "Identity Data LATAM",
-      "descr": "",
-      "logo_url": "",
-      "slug": "identity-data-latam",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Identity Data LATAM",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "identity-data-latam",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 73,
     "fields": {
-      "name": "Identity Data EU",
-      "descr": "",
-      "logo_url": "",
-      "slug": "identity-data-eu",
-      "sort_id": 2147483647,
-      "parent": 65,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 6,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Identity Data EU",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "identity-data-eu",
+        "sort_id": 2147483647,
+        "parent": 65,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 6,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 74,
     "fields": {
-      "name": "Transport and Logistics Data",
-      "descr": "Transport and logistics data is information to do with the transportation of goods and the logistics that is involved in this process. This information is used to improve supply chains and for the most efficient logistics management.",
-      "logo_url": "",
-      "slug": "transport-and-logistics-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 16,
-      "tree_id": 7,
-      "level": 0,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Transport and Logistics Data",
+        "short_descr": "Transportation and logistics data is information related to the transportation of goods and the logistics, handling, and storage of goods assisting their customers in the process of moving goods from producer to consumer.",
+        "descr": "Transportation and logistics data is information related to the transportation of goods and the logistics, handling, and storage of goods assisting their customers in the process of moving goods from producer to consumer. This information contributes to better shipments and the most efficient logistics management.\r\nLogistics data enables: expanding markets, reducing shipping costs and as a result reducing costs, facilitating export/import and customs clearance and much more.\r\nFor this reason that transportation and logistics data sets are among the most important; because this information is used by businesses to make sure they are operating at maximum efficiency.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "transport-and-logistics-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 16,
+        "tree_id": 7,
+        "level": 0,
+        "recommended_for": [
+            25,
+            26,
+            27,
+            28
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 75,
     "fields": {
-      "name": "Traffic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "traffic-data",
-      "sort_id": 2147483647,
-      "parent": 74,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 7,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Traffic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "traffic-data",
+        "sort_id": 2147483647,
+        "parent": 74,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 7,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 76,
     "fields": {
-      "name": "Trucking Fleet Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "trucking-fleet-data",
-      "sort_id": 2147483647,
-      "parent": 74,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 7,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Trucking Fleet Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "trucking-fleet-data",
+        "sort_id": 2147483647,
+        "parent": 74,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 7,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 77,
     "fields": {
-      "name": "Aviation Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "aviation-data",
-      "sort_id": 2147483647,
-      "parent": 74,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 7,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Aviation Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "aviation-data",
+        "sort_id": 2147483647,
+        "parent": 74,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 7,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 78,
     "fields": {
-      "name": "Road Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "road-data",
-      "sort_id": 2147483647,
-      "parent": 74,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 7,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Road Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "road-data",
+        "sort_id": 2147483647,
+        "parent": 74,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 7,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 79,
     "fields": {
-      "name": "Freight Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "freight-data",
-      "sort_id": 2147483647,
-      "parent": 74,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 7,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Freight Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "freight-data",
+        "sort_id": 2147483647,
+        "parent": 74,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 7,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 80,
     "fields": {
-      "name": "Trade Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "trade-data",
-      "sort_id": 2147483647,
-      "parent": 74,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 7,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Trade Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "trade-data",
+        "sort_id": 2147483647,
+        "parent": 74,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 7,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 81,
     "fields": {
-      "name": "Maritime Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "maritime-data",
-      "sort_id": 2147483647,
-      "parent": 74,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 7,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3
-      ]
+        "name": "Maritime Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "maritime-data",
+        "sort_id": 2147483647,
+        "parent": 74,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 7,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 82,
     "fields": {
-      "name": "Environmental Data",
-      "descr": "Environmental data is that which is based on the measurement of environmental pressures, the state of the environment and the impacts on ecosystems.",
-      "logo_url": "",
-      "slug": "environmental-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 28,
-      "tree_id": 8,
-      "level": 0,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Environmental Data",
+        "short_descr": "Environmental data are data based on measurements of environmental pressures, environmental conditions, and ecosystem impacts. They are usually the \"P\", \"S\", and \"I\" models of DPSIR, where D = drivers, P = pressure, S = state, I = impact, R = response.",
+        "descr": "Environmental data are data based on measurements of environmental pressures, environmental conditions, and ecosystem impacts. They are usually the \"P\", \"S\", and \"I\" models of DPSIR, where D = drivers, P = pressure, S = state, I = impact, R = response. This data is usually collected by environmental law or environmental research agencies. Environmental statistics are usually collected by statistical offices, so it is also considered environmental data.\r\nThe collection and analysis of environmental data is now error-free and accurate thanks to a new method of data collection. It is also possible to obtain environmental data remotely without the need for data entry thanks to satellite and sensor technology.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "environmental-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 28,
+        "tree_id": 8,
+        "level": 0,
+        "recommended_for": [
+            30,
+            31,
+            32,
+            33,
+            34
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 83,
     "fields": {
-      "name": "Weather Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "weather-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Weather Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "weather-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 84,
     "fields": {
-      "name": "Climate Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "climate-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Climate Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "climate-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 85,
     "fields": {
-      "name": "Air Quality Index",
-      "descr": "",
-      "logo_url": "",
-      "slug": "air-quality-index",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Air Quality Index",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "air-quality-index",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 86,
     "fields": {
-      "name": "Pollen Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "pollen-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Pollen Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "pollen-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 87,
     "fields": {
-      "name": "Wildfires Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "wildfires-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Wildfires Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "wildfires-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 88,
     "fields": {
-      "name": "Marine Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "marine-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Marine Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "marine-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 89,
     "fields": {
-      "name": "Water Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "water-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Water Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "water-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 90,
     "fields": {
-      "name": "Land Use Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "land-use-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Land Use Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "land-use-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 91,
     "fields": {
-      "name": "Geological Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "geological-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Geological Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "geological-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 92,
     "fields": {
-      "name": "Surface Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "surface-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Surface Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "surface-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 93,
     "fields": {
-      "name": "Atmosphere Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "atmosphere-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Atmosphere Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "atmosphere-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 94,
     "fields": {
-      "name": "Ionospheric Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "ionospheric-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 24,
-      "rght": 25,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Ionospheric Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "ionospheric-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 95,
     "fields": {
-      "name": "Thermosphere Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "thermosphere-data",
-      "sort_id": 2147483647,
-      "parent": 82,
-      "lft": 26,
-      "rght": 27,
-      "tree_id": 8,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Thermosphere Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "thermosphere-data",
+        "sort_id": 2147483647,
+        "parent": 82,
+        "lft": 26,
+        "rght": 27,
+        "tree_id": 8,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 96,
     "fields": {
-      "name": "Credit Rating Data",
-      "descr": "The term credit rating refers to a quantified assessment of a borrower's creditworthiness in general terms or with respect to a particular debt or financial obligation. A credit rating can be assigned to any entity that seeks to borrow money—an individual, a corporation, a state or provincial authority, or a sovereign government.",
-      "logo_url": "",
-      "slug": "credit-rating-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 14,
-      "tree_id": 9,
-      "level": 0,
-      "recommended_for": [
-        2
-      ]
+        "name": "Credit Rating Data",
+        "short_descr": "Credit rating data is a set of information about the credit history of an individual or a legal entity. Thus, before approving a loan, the financial capacity of the person or entity requesting the loan must be taken into consideration.",
+        "descr": "Credit rating data is a set of information about the credit history of an individual or a legal entity. Thus, before approving a loan, the financial capacity of the person or entity requesting the loan must be taken into consideration. Without this, it is impossible to determine whether the debtor has the right and ability to obtain a credit facility, and whether they will be able to repay the debt at a certain time. This analysis is done based on their financial performance. \r\nCredit rating data provides information about the financial capabilities of individuals or companies seeking credit. Based on the credit history, a credit rating is calculated and a decision is made as to whether the credit line is feasible.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "credit-rating-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 14,
+        "tree_id": 9,
+        "level": 0,
+        "recommended_for": [
+            35,
+            36,
+            37,
+            38
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 97,
     "fields": {
-      "name": "Corporate Credit Rating Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "corporate-credit-rating-data",
-      "sort_id": 2147483647,
-      "parent": 96,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 9,
-      "level": 1,
-      "recommended_for": [
-        2
-      ]
+        "name": "Corporate Credit Rating Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "corporate-credit-rating-data",
+        "sort_id": 2147483647,
+        "parent": 96,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 9,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 98,
     "fields": {
-      "name": "Bank Credit Rating Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "bank-credit-rating-data",
-      "sort_id": 2147483647,
-      "parent": 96,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 9,
-      "level": 1,
-      "recommended_for": [
-        2
-      ]
+        "name": "Bank Credit Rating Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "bank-credit-rating-data",
+        "sort_id": 2147483647,
+        "parent": 96,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 9,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 99,
     "fields": {
-      "name": "Financial Institution Credit Rating Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "financial-institution-credit-rating-data",
-      "sort_id": 2147483647,
-      "parent": 96,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 9,
-      "level": 1,
-      "recommended_for": [
-        2
-      ]
+        "name": "Financial Institution Credit Rating Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "financial-institution-credit-rating-data",
+        "sort_id": 2147483647,
+        "parent": 96,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 9,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 100,
     "fields": {
-      "name": "Sovereign Credit Rating Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "sovereign-credit-rating-data",
-      "sort_id": 2147483647,
-      "parent": 96,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 9,
-      "level": 1,
-      "recommended_for": [
-        2
-      ]
+        "name": "Sovereign Credit Rating Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "sovereign-credit-rating-data",
+        "sort_id": 2147483647,
+        "parent": 96,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 9,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 101,
     "fields": {
-      "name": "Bond Credit Rating Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "bond-credit-rating-data",
-      "sort_id": 2147483647,
-      "parent": 96,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 9,
-      "level": 1,
-      "recommended_for": [
-        2
-      ]
+        "name": "Bond Credit Rating Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "bond-credit-rating-data",
+        "sort_id": 2147483647,
+        "parent": 96,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 9,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 102,
     "fields": {
-      "name": "Corporate Loan Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "corporate-loan-data",
-      "sort_id": 2147483647,
-      "parent": 96,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 9,
-      "level": 1,
-      "recommended_for": [
-        2
-      ]
+        "name": "Corporate Loan Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "corporate-loan-data",
+        "sort_id": 2147483647,
+        "parent": 96,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 9,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 103,
     "fields": {
-      "name": "Real Estate Data",
-      "descr": "Real estate data gives you information about properties, their purpose, their value, and their ownership. It's most used by data-driven real estate investors so that they can make informed decisions about where to invest their money most wisely, based on real-time property values.",
-      "logo_url": "",
-      "slug": "real-estate-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 26,
-      "tree_id": 10,
-      "level": 0,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Real Estate Data",
+        "short_descr": "Real estate data is a collection of information about properties, their purpose, value, and ownership. Investors use this data to make an informed decision about investing in the most profitable deal, based on real-time property values.",
+        "descr": "Real estate data is a collection of information about properties, their purpose, value, and ownership. Investors use this data to make an informed decision about investing in the most profitable deal, based on real-time property values.\r\nThis data is easy to use not only for investors, but also for anyone else who is involved in buying/selling/renting real estate in one way or another. In fact, real estate data can be divided into the following four categories: residential real estate data, commercial real estate data, industrial real estate data and land data.\r\nIn any case, whatever type of real estate investors or anyone is interested in, there is data for them.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "real-estate-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 26,
+        "tree_id": 10,
+        "level": 0,
+        "recommended_for": [
+            39,
+            40,
+            41,
+            42
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 104,
     "fields": {
-      "name": "Real Estate Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "real-estate-market-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Real Estate Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "real-estate-market-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 105,
     "fields": {
-      "name": "Property Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "property-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Property Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "property-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 106,
     "fields": {
-      "name": "Mortgage Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "mortgage-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Mortgage Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "mortgage-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 107,
     "fields": {
-      "name": "Construction Project Leads Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "construction-project-leads-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Construction Project Leads Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "construction-project-leads-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 108,
     "fields": {
-      "name": "Commercial Real Estate Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "commercial-real-estate-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Commercial Real Estate Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "commercial-real-estate-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 109,
     "fields": {
-      "name": "Flexible Workspace Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "flexible-workspace-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Flexible Workspace Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "flexible-workspace-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 110,
     "fields": {
-      "name": "Residential Real Estate Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "residential-real-estate-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Residential Real Estate Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "residential-real-estate-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 111,
     "fields": {
-      "name": "Real Estate Valuation Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "real-estate-valuation-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Real Estate Valuation Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "real-estate-valuation-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 112,
     "fields": {
-      "name": "Public Real Estate Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "public-real-estate-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Public Real Estate Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "public-real-estate-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 113,
     "fields": {
-      "name": "Global Real Estate Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "global-real-estate-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Global Real Estate Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "global-real-estate-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 114,
     "fields": {
-      "name": "Real-Time Real Estate Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "real-time-real-estate-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Real-Time Real Estate Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "real-time-real-estate-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 115,
     "fields": {
-      "name": "Real Estate Transaction Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "real-estate-transaction-data",
-      "sort_id": 2147483647,
-      "parent": 103,
-      "lft": 24,
-      "rght": 25,
-      "tree_id": 10,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Real Estate Transaction Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "real-estate-transaction-data",
+        "sort_id": 2147483647,
+        "parent": 103,
+        "lft": 24,
+        "rght": 25,
+        "tree_id": 10,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 116,
     "fields": {
-      "name": "Web Data",
-      "descr": "Web data services refers to service-oriented architecture (SOA) applied to data sourced from the World Wide Web and the Internet as a whole.",
-      "logo_url": "",
-      "slug": "web-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 24,
-      "tree_id": 11,
-      "level": 0,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Web Data",
+        "short_descr": "Web data is information about the browsing history, behavior, and preferences of various users on the Internet collected from various websites and applications.",
+        "descr": "Web data is information about the browsing history, behavior, and preferences of various users on the Internet collected from various websites and applications.\r\nUser data is collected from both first-party and third-party sources, which web providers later combine to create an accurate online consumer profile.\r\nThe proprietary data information shows how much time a user spent on a website, which pages they clicked on in the same domain. Whereas sources collecting information about third-party data show information about a user's online habits and create an accurate consumer profile.\r\nThese two types of data together make it possible to compile a set of web data.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "web-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 24,
+        "tree_id": 11,
+        "level": 0,
+        "recommended_for": [
+            43,
+            44
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 117,
     "fields": {
-      "name": "Clickstream Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "clickstream-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Clickstream Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "clickstream-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 118,
     "fields": {
-      "name": "IP Address Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "ip-address-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "IP Address Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "ip-address-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 119,
     "fields": {
-      "name": "Web Search Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "web-search-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Web Search Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "web-search-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 120,
     "fields": {
-      "name": "Web Activity Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "web-activity-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Web Activity Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "web-activity-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 121,
     "fields": {
-      "name": "Web Browsing Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "web-browsing-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Web Browsing Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "web-browsing-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 122,
     "fields": {
-      "name": "Web Traffic Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "web-traffic-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Web Traffic Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "web-traffic-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 123,
     "fields": {
-      "name": "Web Scraping Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "web-scraping-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Web Scraping Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "web-scraping-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 124,
     "fields": {
-      "name": "News Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "news-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "News Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "news-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 125,
     "fields": {
-      "name": "Semantic Website Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "semantic-website-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Semantic Website Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "semantic-website-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 126,
     "fields": {
-      "name": "Sentiment Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "sentiment-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Sentiment Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "sentiment-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 127,
     "fields": {
-      "name": "Domain Name Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "domain-name-data",
-      "sort_id": 2147483647,
-      "parent": 116,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 11,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Domain Name Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "domain-name-data",
+        "sort_id": 2147483647,
+        "parent": 116,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 11,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 128,
     "fields": {
-      "name": "Mobile App Data",
-      "descr": "App data is collected and used by businesses owning mobile applications, app developers, and app marketers for insights into the performance of their app. This data may include measuring the amount of time spent on a particular feature, tracking screen swipes, or anything.",
-      "logo_url": "",
-      "slug": "mobile-app-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 20,
-      "tree_id": 12,
-      "level": 0,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Mobile App Data",
+        "short_descr": "Mobile app data or in other words, the data that is collected from the mobile app. It is termed as first-party data. This data is derived from mobile applications to analyze and identify unique users",
+        "descr": "Mobile app data or in other words, the data that is collected from the mobile app. It is termed as first-party data. This data is derived from mobile applications to analyze and identify unique users, record their behavior online and real-time, and then leverage this data into the existing workflow, CRM, dashboards, communication platforms and many more.\r\nThe first party data could be user-centric information wherein each data point can be user profiles, upgrades, installs, processes, location tracking data and even push notifications.\r\nMobile App Data is similar to Environmental Data, B2B Data, Energy Data, Real Estate Data, and Geospatial Data. These data categories are commonly used for Mobile Advertising and App Intelligence.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "mobile-app-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 20,
+        "tree_id": 12,
+        "level": 0,
+        "recommended_for": [
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 129,
     "fields": {
-      "name": "App Store Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "app-store-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "App Store Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "app-store-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 130,
     "fields": {
-      "name": "App Usage Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "app-usage-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "App Usage Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "app-usage-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 131,
     "fields": {
-      "name": "App Install Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "app-install-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "App Install Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "app-install-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 132,
     "fields": {
-      "name": "App Revenue Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "app-revenue-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "App Revenue Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "app-revenue-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 133,
     "fields": {
-      "name": "App Market Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "app-market-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "App Market Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "app-market-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 134,
     "fields": {
-      "name": "App Industry Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "app-industry-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "App Industry Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "app-industry-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 135,
     "fields": {
-      "name": "App Session Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "app-session-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "App Session Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "app-session-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 136,
     "fields": {
-      "name": "Android App Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "android-app-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "Android App Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "android-app-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 137,
     "fields": {
-      "name": "YouTube Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "youtube-data",
-      "sort_id": 2147483647,
-      "parent": 128,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 12,
-      "level": 1,
-      "recommended_for": [
-        3,
-        4
-      ]
+        "name": "YouTube Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "youtube-data",
+        "sort_id": 2147483647,
+        "parent": 128,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 12,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 138,
     "fields": {
-      "name": "Legal Data",
-      "descr": "Legal and judicial data are used to study the law with quantitative or empirical methods.",
-      "logo_url": "",
-      "slug": "legal-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 16,
-      "tree_id": 13,
-      "level": 0,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Legal Data",
+        "short_descr": "Legal data is data about the law, it includes court records, cases, court documents, judges, attorney information, contact information, law firms, litigation history and parties involved.",
+        "descr": "Legal data includes court records, cases, court documents, judges, attorney information, contact information, law firms, litigation history and parties involved. In simple terms, it is data about the law.\r\nThis information is gathered from various court and law firm reports, news articles, government websites and federal records centers. This information is exclusively verified.\r\nData providers carefully analyze and organize the data they receive. It is also their responsibility to update the information frequently to ensure that it is current and timely.\r\nChoosing the right legal data provider is a very important business and it really depends on the data requirements, including budget and geographic coverage",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "legal-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 16,
+        "tree_id": 13,
+        "level": 0,
+        "recommended_for": [
+            52,
+            53
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 139,
     "fields": {
-      "name": "Intellectual Property Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "intellectual-property-data",
-      "sort_id": 2147483647,
-      "parent": 138,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 13,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Intellectual Property Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "intellectual-property-data",
+        "sort_id": 2147483647,
+        "parent": 138,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 13,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 140,
     "fields": {
-      "name": "Patent Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "patent-data",
-      "sort_id": 2147483647,
-      "parent": 138,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 13,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Patent Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "patent-data",
+        "sort_id": 2147483647,
+        "parent": 138,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 13,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 141,
     "fields": {
-      "name": "Court Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "court-data",
-      "sort_id": 2147483647,
-      "parent": 138,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 13,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Court Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "court-data",
+        "sort_id": 2147483647,
+        "parent": 138,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 13,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 142,
     "fields": {
-      "name": "Bankruptcy Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "bankruptcy-data",
-      "sort_id": 2147483647,
-      "parent": 138,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 13,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Bankruptcy Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "bankruptcy-data",
+        "sort_id": 2147483647,
+        "parent": 138,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 13,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 143,
     "fields": {
-      "name": "Litigation Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "litigation-data",
-      "sort_id": 2147483647,
-      "parent": 138,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 13,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Litigation Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "litigation-data",
+        "sort_id": 2147483647,
+        "parent": 138,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 13,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 144,
     "fields": {
-      "name": "Royalty Rates Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "royalty-rates-data",
-      "sort_id": 2147483647,
-      "parent": 138,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 13,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Royalty Rates Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "royalty-rates-data",
+        "sort_id": 2147483647,
+        "parent": 138,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 13,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 145,
     "fields": {
-      "name": "Trademark Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "trademark-data",
-      "sort_id": 2147483647,
-      "parent": 138,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 13,
-      "level": 1,
-      "recommended_for": [
-        1,
-        4
-      ]
+        "name": "Trademark Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "trademark-data",
+        "sort_id": 2147483647,
+        "parent": 138,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 13,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 146,
     "fields": {
-      "name": "Healthcare Data",
-      "descr": "Health data is any data \"related to health conditions, reproductive outcomes, causes of death, and quality of life\" for an individual or population. Health data includes clinical metrics along with environmental, socioeconomic, and behavioral information pertinent to health and wellness.",
-      "logo_url": "",
-      "slug": "healthcare-data",
-      "sort_id": 2147483647,
-      "parent": null,
-      "lft": 1,
-      "rght": 24,
-      "tree_id": 14,
-      "level": 0,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Healthcare Data",
+        "short_descr": "Healthcare data is data about a patient's health; in other words, it is all the information that is collected when a patient is being cared for. The information collected is subsequently processed, stored and disseminated.",
+        "descr": "Healthcare data is data about a patient's health; in other words, it is all the information that is collected when a patient is being cared for. The information collected is subsequently processed, stored and disseminated. This data reveals key points such as: medical costs, patient behavior and necessary pharmaceuticals. This makes it possible to understand the level of public health, reduce costs, improve treatment methods and subsequently raise the general level of health.\r\nIn this way, medical data solve both local organizational problems like reducing workload and global problems like predicting epidemics and better controlling existing diseases.",
+        "logo_url": "https://dev.evis.market/img/category_demo_logo.jpg",
+        "slug": "healthcare-data",
+        "sort_id": 2147483647,
+        "parent": null,
+        "lft": 1,
+        "rght": 24,
+        "tree_id": 14,
+        "level": 0,
+        "recommended_for": [
+            54,
+            55,
+            56,
+            57
+        ]
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 147,
     "fields": {
-      "name": "Patient Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "patient-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 2,
-      "rght": 3,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Patient Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "patient-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 148,
     "fields": {
-      "name": "Electronic Health Record (EHR) Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "electronic-health-record-ehr-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 4,
-      "rght": 5,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Electronic Health Record (EHR) Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "electronic-health-record-ehr-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 4,
+        "rght": 5,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 149,
     "fields": {
-      "name": "Wearables Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "wearables-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 6,
-      "rght": 7,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Wearables Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "wearables-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 6,
+        "rght": 7,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 150,
     "fields": {
-      "name": "Clinical Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "clinical-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 8,
-      "rght": 9,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Clinical Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "clinical-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 8,
+        "rght": 9,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 151,
     "fields": {
-      "name": "Healthcare Provider (HCP) Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "healthcare-provider-hcp-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 10,
-      "rght": 11,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Healthcare Provider (HCP) Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "healthcare-provider-hcp-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 10,
+        "rght": 11,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 152,
     "fields": {
-      "name": "Medical Imagery Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "medical-imagery-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 12,
-      "rght": 13,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Medical Imagery Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "medical-imagery-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 12,
+        "rght": 13,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 153,
     "fields": {
-      "name": "Pharma Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "pharma-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 14,
-      "rght": 15,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Pharma Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "pharma-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 14,
+        "rght": 15,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 154,
     "fields": {
-      "name": "Telemedicine Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "telemedicine-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 16,
-      "rght": 17,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Telemedicine Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "telemedicine-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 16,
+        "rght": 17,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 155,
     "fields": {
-      "name": "Medical Claims Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "medical-claims-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 18,
-      "rght": 19,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Medical Claims Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "medical-claims-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 18,
+        "rght": 19,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 156,
     "fields": {
-      "name": "COVID-19 Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "covid-19-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 20,
-      "rght": 21,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "COVID-19 Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "covid-19-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 20,
+        "rght": 21,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  },
-  {
+},
+{
     "model": "categories.category",
     "pk": 157,
     "fields": {
-      "name": "Xray Data",
-      "descr": "",
-      "logo_url": "",
-      "slug": "xray-data",
-      "sort_id": 2147483647,
-      "parent": 146,
-      "lft": 22,
-      "rght": 23,
-      "tree_id": 14,
-      "level": 1,
-      "recommended_for": [
-        1,
-        3,
-        4
-      ]
+        "name": "Xray Data",
+        "short_descr": "",
+        "descr": "",
+        "logo_url": "",
+        "slug": "xray-data",
+        "sort_id": 2147483647,
+        "parent": 146,
+        "lft": 22,
+        "rght": 23,
+        "tree_id": 14,
+        "level": 1,
+        "recommended_for": []
     }
-  }
+}
 ]
