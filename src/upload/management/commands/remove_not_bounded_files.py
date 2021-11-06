@@ -42,7 +42,7 @@ class Command(BaseCommand):
             for file in files_in_catalog.difference(model_files):  # noqa: VNE002
                 filepath = os.path.join(MEDIA_ROOT, file)
                 if os.path.getmtime(filepath) < self.datetime_unix_from:
-                    logging.info('File =', filepath, ' removed..')
+                    logging.info('File = %s removed..', filepath)
                     os.remove(filepath)
             logging.info('Remove_unbounded_files finished')
 
@@ -68,7 +68,7 @@ class Command(BaseCommand):
             model_field_cleaner = self.ModelFieldCleaner(**model_field_dict, datetime_unix_from=datetime_unix_from)
             logging.info(
                 'Removing files started for model = %s; field = %s;',
-                (model_field_cleaner.model_class, model_field_cleaner.model_field)
+                model_field_cleaner.model_class, model_field_cleaner.model_field
             )
             model_field_cleaner()
         logging.info('Removing unbounded files... Finished')
