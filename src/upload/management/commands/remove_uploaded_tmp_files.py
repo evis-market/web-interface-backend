@@ -1,6 +1,5 @@
 import logging
 import os
-
 from django.core.management.base import BaseCommand
 
 from app.conf.upload import MEDIA_ROOT

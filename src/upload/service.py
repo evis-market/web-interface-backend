@@ -2,11 +2,10 @@ import hashlib
 import os
 import shutil
 import uuid
+from django.core.files.base import File
 
 from app import exceptions
 from upload.models import UploadedFile
-from django.core.files.uploadhandler import TemporaryFileUploadHandler, InMemoryUploadedFile
-from django.core.files.base import File
 
 
 class UploadService:

@@ -1,7 +1,5 @@
 from collections import OrderedDict
-
 from django.db import transaction
-from django.http import QueryDict
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 
