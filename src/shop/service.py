@@ -29,9 +29,9 @@ class ShopService:
 
         for category_id in request.GET.get('category_ids', '').split(','):
             try:
-                category_ids.append(int(category_id))
+                category_ids.append(int(category_id))  # noqa: SIM105
             except ValueError:
-                pass
+                continue
         return category_ids
 
     def get_order_by(self, request):
