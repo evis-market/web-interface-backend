@@ -1,13 +1,14 @@
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core import signing
 from django.core.mail import EmailMessage, send_mail
+from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from django.db.models import Q
 
 from app import exceptions
 from users.models import User
+
 
 INVALID_SECRET_CODE_MSG = 'invalid secret code'
 

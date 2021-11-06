@@ -4,9 +4,10 @@ from django.urls import reverse
 from mixer.backend.django import mixer
 from rest_framework.test import APIRequestFactory
 
+from app.validators import MAX_PHONE_LENGTH, MIN_PHONE_LENGTH
 from users.models import User
 from users.views import SignupView
-from app.validators import MIN_PHONE_LENGTH, MAX_PHONE_LENGTH
+
 
 pytestmark = pytest.mark.django_db
 
@@ -18,12 +19,12 @@ class TestSignupView:
         Test: normal signup with all and valid fields
         """
         request_data = {
-            "first_name": "John",
-            "last_name": "Smith",
-            "phone": "15552223456",
-            "email": "test@test.com",
-            "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
-            "password": "some_very_strong_password"
+            'first_name': 'John',
+            'last_name': 'Smith',
+            'phone': '15552223456',
+            'email': 'test@test.com',
+            'wallet_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -36,7 +37,8 @@ class TestSignupView:
                                 phone=request_data['phone'],
                                 email=request_data['email'],
                                 wallet_erc20=request_data['wallet_erc20'])
-        assert user.password is not None and user.password != request_data['password']
+        assert user.password is not None
+        assert user.password != request_data['password']
 
     def test_post_empty_request(self):
         """
@@ -55,7 +57,7 @@ class TestSignupView:
         Test: signup with password only request.
         """
         request_data = {
-            "password": "00_very_strong_password"
+            'password': '00_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -64,7 +66,6 @@ class TestSignupView:
         assert response.data['status'] == 'ERR'
         assert 'msg' in response.data['error']
         assert 'invalid_fields' not in response.data['error']
-
 
     def test_post_valid_login_and_password(self):
         """
@@ -76,16 +77,16 @@ class TestSignupView:
         """
         request_data_cases = [
             {
-                "phone": "15552223456",
-                "password": "some_very_strong_password"
+                'phone': '15552223456',
+                'password': 'some_very_strong_password'
             },
             {
-                "email": "test@test.com",
-                "password": "some_very_strong_password"
+                'email': 'test@test.com',
+                'password': 'some_very_strong_password'
             },
             {
-                "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
-                "password": "some_very_strong_password"
+                'wallet_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
+                'password': 'some_very_strong_password'
             },
         ]
         url = reverse('signup')
@@ -101,9 +102,9 @@ class TestSignupView:
         Test: signup without password
         """
         request_data = {
-            "phone": "15552223456",
-            "email": "test@test.com",
-            "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
+            'phone': '15552223456',
+            'email': 'test@test.com',
+            'wallet_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -119,8 +120,8 @@ class TestSignupView:
         Test: signup with invalid password
         """
         request_data = {
-            "phone": "15552223456",
-            "password": "1111"
+            'phone': '15552223456',
+            'password': '1111'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -138,8 +139,8 @@ class TestSignupView:
         mixer.blend(User,
                     phone='15552223456')
         request_data = {
-            "phone": "15552223456",
-            "password": "some_very_strong_password"
+            'phone': '15552223456',
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -155,10 +156,10 @@ class TestSignupView:
         Test: signup with not unique email
         """
         mixer.blend(User,
-                    email="test@test.com")
+                    email='test@test.com')
         request_data = {
-            "email": "test@test.com",
-            "password": "some_very_strong_password"
+            'email': 'test@test.com',
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -174,10 +175,10 @@ class TestSignupView:
         Test: signup with not unique wallet_erc20
         """
         mixer.blend(User,
-                    wallet_erc20="0xC88E53eda9A20C9aE52e8a222f1a56793188d196")
+                    wallet_erc20='0xC88E53eda9A20C9aE52e8a222f1a56793188d196')
         request_data = {
-            "wallet_erc20": "0xC88E53eda9A20C9aE52e8a222f1a56793188d196",
-            "password": "some_very_strong_password"
+            'wallet_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -193,8 +194,8 @@ class TestSignupView:
         Test: signup with invalid MIN_PHONE_LENGTH
         """
         request_data = {
-            "phone": "123456789101234567890"[:MIN_PHONE_LENGTH - 1],
-            "password": "some_very_strong_password"
+            'phone': '123456789101234567890'[:MIN_PHONE_LENGTH - 1],
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -211,8 +212,8 @@ class TestSignupView:
         Test: signup with invalid MAX_PHONE_LENGTH
         """
         request_data = {
-            "phone": "123456789101234567890"[:MAX_PHONE_LENGTH + 1],
-            "password": "some_very_strong_password"
+            'phone': '123456789101234567890'[:MAX_PHONE_LENGTH + 1],
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
@@ -233,12 +234,12 @@ class TestSignupView:
         """
         request_data_cases = [
             {
-                "wallet_erc20": "1xC88E53eda9A20C9aE52e8a222f1a56793188d196",
-                "password": "some_very_strong_password"
+                'wallet_erc20': '1xC88E53eda9A20C9aE52e8a222f1a56793188d196',
+                'password': 'some_very_strong_password'
             },
             {
-                "wallet_erc20": "0xC88E53eda9A20C9aE5",
-                "password": "some_very_strong_password"
+                'wallet_erc20': '0xC88E53eda9A20C9aE5',
+                'password': 'some_very_strong_password'
             },
         ]
         url = reverse('signup')
@@ -256,8 +257,8 @@ class TestSignupView:
         Test: signup with invalid wallet_erc20 where wallet_erc20 has some wrong char
         """
         request_data = {
-            "wallet_erc20": "0xC8853eda9A20C9aE52e8a222f1a56793188d196G",
-            "password": "some_very_strong_password"
+            'wallet_erc20': '0xC8853eda9A20C9aE52e8a222f1a56793188d196G',
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         wrong_chars = ['-', '.', ';', ':', '\\', '|', '?', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '"', "'", '`', '+']
@@ -276,8 +277,8 @@ class TestSignupView:
         Test: signup with invalid wallet_erc20 where length more then 42
         """
         request_data = {
-            "wallet_erc20": "0xC8853eda9A20C9aE52e8a222f1a56793188d196G11",
-            "password": "some_very_strong_password"
+            'wallet_erc20': '0xC8853eda9A20C9aE52e8a222f1a56793188d196G11',
+            'password': 'some_very_strong_password'
         }
         url = reverse('signup')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')

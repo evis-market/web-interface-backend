@@ -1,14 +1,14 @@
 from django.core.validators import EmailValidator
-
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from app import exceptions
-from app.validators import PhoneValidator, ERC20Validator, PasswordValidator
+from app.validators import ERC20Validator, PasswordValidator, PhoneValidator
 from users.models import User
 
 
 LOGIN_NOT_SET_ERR_MSG = 'At least one of the fields: email, phone or wallet_erc20 should be specified'
+
 
 def is_login_field_exists(data):
     if 'email' in data and data['email']:
@@ -35,21 +35,16 @@ class SignupRequestSerializer(serializers.Serializer):
         if not is_login_field_exists(data):
             raise exceptions.BadRequest(LOGIN_NOT_SET_ERR_MSG)
 
-        if 'phone' in data:
-            if User.objects.filter(phone=data['phone']).count() > 0:
-                raise ValidationError({"phone": "user with this phone already exists"})
+        if 'phone' in data and User.objects.filter(phone=data['phone']).count() > 0:
+            raise ValidationError({'phone': 'user with this phone already exists'})
 
-        if 'email' in data:
-            if User.objects.filter(email=data['email']).count() > 0:
-                raise ValidationError({"email": "user with this email already exists"})
+        if 'email' in data and User.objects.filter(email=data['email']).count() > 0:
+            raise ValidationError({'email': 'user with this email already exists'})
 
-        if 'wallet_erc20' in data:
-            if User.objects.filter(wallet_erc20=data['wallet_erc20']).count() > 0:
-                raise ValidationError({"wallet_erc20": "user with this wallet already exists"})
-
+        if 'wallet_erc20' in data and User.objects.filter(wallet_erc20=data['wallet_erc20']).count() > 0:
+            raise ValidationError({'wallet_erc20': 'user with this wallet already exists'})
 
         return data
-
 
 
 class SendConfirmationEmailRequestSerializer(serializers.Serializer):

@@ -1,5 +1,3 @@
-import re
-
 import pytz
 import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
