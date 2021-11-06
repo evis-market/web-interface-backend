@@ -1,7 +1,7 @@
 import re
-
-from django.core.exceptions import ValidationError
 from django.core import validators
+from django.core.exceptions import ValidationError
+
 
 MIN_PASSWORD_LEN = 8
 

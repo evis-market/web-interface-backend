@@ -1,6 +1,5 @@
 import os
 
-from app.conf.environ import env
 from app.settings import BASE_DIR
 
 
