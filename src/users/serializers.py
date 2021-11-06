@@ -1,12 +1,10 @@
 from django.core.validators import EmailValidator
-from django.contrib.auth import password_validation
 
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from app import exceptions
 from app.validators import PhoneValidator, ERC20Validator, PasswordValidator
-from users import models
 from users.models import User
 
 

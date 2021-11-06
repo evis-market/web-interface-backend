@@ -1,17 +1,15 @@
 from rest_framework import serializers
 
-from app.conf.upload import MEDIA_URL
+from app import validators
+from app.exceptions import BadRequest
 from sellers.models import Contact, Seller
 from upload.models import UploadedFile
 
 
 class ContactViewSerializer(serializers.ModelSerializer):
-    """ Class representing serializer for contacts
-
-        Attributes:
-                type_id (rest_framework.fields.ReadOnlyField): type of contact
     """
-    type_id = serializers.ReadOnlyField(source='type')
+    Class representing serializer for contacts
+    """
 
     class Meta:
         model = Contact
@@ -51,31 +49,32 @@ class SellerViewSerializer(serializers.ModelSerializer):
         )
 
 
-class ContactUpdateSerializer(serializers.ModelSerializer):
-    """ Class representing serializer for contact updates
-
-        Attributes:
-                type_id (rest_framework.fields.IntegerField): type of contact
-    """
-    type_id = serializers.IntegerField(source='type')
-
-    class Meta:
-        model = Contact
-        fields = (
-            'type_id',
-            'value',
-            'comment',
-        )
-
-
 class SellerUpdateSerializer(serializers.ModelSerializer):
     """ Class representing serializer for seller updates
 
         Attributes:
                 contacts (rest_framework.fields.ListField): seller contacts
     """
-    contacts = serializers.ListField(child=ContactUpdateSerializer(), write_only=True, required=True)
+    contacts = serializers.ListField()
     logo_url = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), required=False)
+
+    def validate(self, data):
+        if not data.get('contacts', None):
+            raise BadRequest(invalid_fields={'contacts': {0: 'This field is required'}})
+
+        invalid_fields = {}
+        for i, contact in enumerate(data['contacts']):
+            if contact['type_id'] == Contact.TYPE_ID_URL and not validators.is_url_valid(contact['value']):
+                invalid_fields[i] = 'URL is invalid'
+            elif contact['type_id'] == Contact.TYPE_ID_EMAIL and not validators.is_email_valid(contact['value']):
+                invalid_fields[i] = 'Email is invalid'
+            elif contact['type_id'] == Contact.TYPE_ID_PHONE and not validators.is_phone_valid(contact['value']):
+                invalid_fields[i] = 'Phone is invalid'
+
+        if invalid_fields:
+            raise BadRequest(invalid_fields={'contacts': invalid_fields})
+
+        return data
 
     class Meta:
         model = Seller

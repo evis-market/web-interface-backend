@@ -27,7 +27,7 @@ class Seller(models.Model):
         return self.name
 
     def contacts(self):
-        return Contact.objects.get_all_by_seller(seller_id=self)
+        return Contact.objects.get_all_by_seller(seller=self)
 
 
 class Contact(models.Model):
@@ -42,7 +42,7 @@ class Contact(models.Model):
 
     id = models.AutoField('ID', primary_key=True)
     seller = models.ForeignKey('Seller', related_name='Contact', on_delete=models.CASCADE)
-    type = models.IntegerField('Contact types', choices=TYPES)
+    type_id = models.IntegerField('Contact type', choices=TYPES)
     value = models.CharField('Value', max_length=190)
     comment = models.CharField('Comment', max_length=190, blank=True, default='')
 
@@ -51,7 +51,7 @@ class Contact(models.Model):
     class Meta:
         db_table = 'seller_contacts'
         verbose_name_plural = 'Seller contacts'
-        ordering = ('type',)
+        ordering = ('type_id',)
 
     def __str__(self):
         return self.value
