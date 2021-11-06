@@ -6,7 +6,7 @@ from sellers.models import Contact, Seller
 from upload.models import UploadedFile
 
 
-class ContactViewSerializer(serializers.ModelSerializer):
+class ContactSerializer(serializers.ModelSerializer):
     """
     Class representing serializer for contacts
     """
@@ -27,13 +27,13 @@ class SellerViewSerializer(serializers.ModelSerializer):
                 contacts (src.sellers.serializer): seller contacts
                 user_id (rest_framework.fields.ReadOnlyField): seller user id
     """
-    contacts = ContactViewSerializer(many=True)
+    contacts = ContactSerializer(many=True)
     user_id = serializers.ReadOnlyField(source='seller.user_id')
     logo_url = serializers.SerializerMethodField('get_logo_url')
 
     def get_logo_url(self, obj):
-        if obj.logo_url:
-            return f'{self.context["request"].scheme}://{self.context["request"].get_host()}{obj.logo_url.url}'
+        if obj.logo:
+            return f'{self.context["request"].scheme}://{self.context["request"].get_host()}{obj.logo.url}'
         return ''
 
     class Meta:
@@ -55,8 +55,8 @@ class SellerUpdateSerializer(serializers.ModelSerializer):
         Attributes:
                 contacts (rest_framework.fields.ListField): seller contacts
     """
-    contacts = serializers.ListField()
-    logo_url = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), required=False)
+    contacts = ContactSerializer(many=True)
+    logo = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), required=False)
 
     def validate(self, data):  # noqa: CCR001
         if not data.get('contacts', None):
@@ -81,7 +81,7 @@ class SellerUpdateSerializer(serializers.ModelSerializer):
         fields = [
             'name',
             'descr',
-            'logo_url',
+            'logo',
             'wallet_for_payments_erc20',
             'contacts',
         ]

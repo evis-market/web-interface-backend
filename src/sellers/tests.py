@@ -86,7 +86,7 @@ class TestSellerSettingsView:
             'seller': user.id,
             'name': 'Seller name',
             'descr': 'Seller description',
-            'logo_url': str(uploaded_file.uuid),
+            'logo': str(uploaded_file.uuid),
             'wallet_for_payments_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
             'contacts': [
                 {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
@@ -111,7 +111,7 @@ class TestSellerSettingsView:
                     assert phone_contact[_key] == _value
                 for _key, _value in data['contacts'][2].items():
                     assert email_contact[_key] == _value
-            elif key == 'logo_url':
+            elif key == 'logo':
                 assert str(seller[key]) == f'seller_logo/{uploaded_file.uuid}.png'
             else:
                 assert seller[key] == value
@@ -125,7 +125,7 @@ class TestSellerSettingsView:
         user = mixer.blend(User)
         seller = mixer.blend(Seller,
                              seller=user,
-                             logo_url='')
+                             logo='')
         uploaded_file = mixer.blend(
             UploadedFile,
             file=File(open('../sellers/test-files/test-logo.png', 'rb')),  # noqa: SIM115
@@ -138,7 +138,7 @@ class TestSellerSettingsView:
             'seller': user.id,
             'name': 'New seller name',
             'descr': 'New seller description',
-            'logo_url': str(uploaded_file.uuid),
+            'logo': str(uploaded_file.uuid),
             'wallet_for_payments_erc20': '0x....',
             'contacts': [
                 {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
@@ -163,7 +163,7 @@ class TestSellerSettingsView:
                     assert phone_contact[_key] == _value
                 for _key, _value in data['contacts'][2].items():
                     assert email_contact[_key] == _value
-            elif key == 'logo_url':
+            elif key == 'logo':
                 assert str(seller[key]) == f'seller_logo/{uploaded_file.uuid}.png'
             else:
                 assert seller[key] == value

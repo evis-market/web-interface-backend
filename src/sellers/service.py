@@ -20,7 +20,7 @@ class SellerService:
                 contacts (list): contact list
         """
         contacts = data.pop('contacts', None)
-        logo_url = data.pop('logo_url', None)
+        logo = data.pop('logo', None)
         upload_service = UploadService()
 
         seller, _ = Seller.objects.update_or_create(
@@ -31,10 +31,10 @@ class SellerService:
                 'wallet_for_payments_erc20': data.get('wallet_for_payments_erc20', '')
             })
 
-        if logo_url:
-            upload_to = upload_service.get_destination_path(Seller, 'file', logo_url, logo_url.uuid, 'logo_url')
-            upload_service.copy_file_from_tmp(logo_url, os.path.join(MEDIA_ROOT, upload_to))
-            seller.logo_url = upload_to
+        if logo:
+            upload_to = upload_service.get_destination_path(Seller, 'file', logo, logo.uuid, 'logo')
+            upload_service.copy_file_from_tmp(logo, os.path.join(MEDIA_ROOT, upload_to))
+            seller.logo = upload_to
             seller.save()
 
         Contact.objects.delete_all_by_seller(seller)

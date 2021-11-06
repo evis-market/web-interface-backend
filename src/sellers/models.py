@@ -8,7 +8,7 @@ class Seller(models.Model):
     seller = models.OneToOneField('users.User', related_name='Seller', on_delete=models.CASCADE, primary_key=True)
     name = models.CharField('Name', max_length=190, db_index=True)
     descr = models.TextField('Description', blank=True, null=True)
-    logo_url = models.FileField('Logo', upload_to='seller_logo/', help_text='Logo', blank=True, null=True)
+    logo = models.FileField('Logo', upload_to='seller_logo/', help_text='Logo', blank=True, null=True)
     wallet_for_payments_erc20 = models.CharField('ERC-20 wallet', blank=True, null=True, max_length=42)
     rating = models.FloatField('Rating', null=False, default=0,
                                validators=[MinValueValidator(0), MaxValueValidator(5.0)])
