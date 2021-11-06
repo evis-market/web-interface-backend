@@ -1,5 +1,4 @@
 import os
-
 from django.core.validators import MinValueValidator
 from django.db import models
 
@@ -9,10 +8,8 @@ from geo_regions.models import GeoRegion
 from languages.models import Language
 from product_data_types.models import DataFormat, DataType
 from seller_products.managers import (
-    SellerProductArchiveManager, SellerProductBaseManager, SellerProductDataSampleArchiveManager,
-    SellerProductDataSampleManager, SellerProductDataUrlArchiveManager, SellerProductDataUrlManager,
-    SellerProductManager
-)
+    SellerProductArchiveManager, SellerProductBaseManager, SellerProductDataSampleArchiveManager, SellerProductDataSampleManager,
+    SellerProductDataUrlArchiveManager, SellerProductDataUrlManager, SellerProductManager)
 from sellers.models import Seller
 
 

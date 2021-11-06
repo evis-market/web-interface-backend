@@ -1,12 +1,11 @@
-import os
-
 import typing
+
+import os
 
 from app import exceptions
 from app.conf.upload import MEDIA_ROOT
 from seller_products.models import (
-    SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl,
-    SellerProductDataUrlArchive)
+    SellerProduct, SellerProductArchive, SellerProductDataSample, SellerProductDataSampleArchive, SellerProductDataUrl, SellerProductDataUrlArchive)
 from sellers.models import Seller
 from upload.service import UploadService
 

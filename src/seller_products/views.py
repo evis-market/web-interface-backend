@@ -6,9 +6,8 @@ from rest_framework.views import APIView
 
 from app.response import response_ok
 from seller_products.models import SellerProduct
+from seller_products.serializers import SellerProductsSerializer, SellerProductsUpdateSerializer, UploadedFilesSerializer
 from seller_products.service import SellerProductService
-from seller_products.serializers import UploadedFilesSerializer, SellerProductsSerializer, \
-    SellerProductsUpdateSerializer
 
 
 class SellerProductsListView(GenericAPIView):

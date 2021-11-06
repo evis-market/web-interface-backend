@@ -2,7 +2,7 @@ import typing as tp
 
 from django.apps import apps
 from django.db import models
-from django.db.models import F, Value, Q
+from django.db.models import F, Q, Value
 from django.db.models.functions import Reverse, Right, StrIndex, Substr
 
 from app.utils import copy_instance
