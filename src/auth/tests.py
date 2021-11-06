@@ -8,6 +8,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from auth.views import GrantJWTTokenView
 from users.models import User
 
+
 pytestmark = pytest.mark.django_db
 
 
@@ -56,9 +57,9 @@ class TestCustomLoginView:
         user.set_password('test_password_1')
         user.save()
         request_data = {
-                'grant_type': 'password',
-                'login': user.wallet_erc20,
-                'password': 'test_password_1',
+            'grant_type': 'password',
+            'login': user.wallet_erc20,
+            'password': 'test_password_1',
         }
         url = reverse('GrantJWTTokenView')
         request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
