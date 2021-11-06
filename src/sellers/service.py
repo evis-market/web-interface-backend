@@ -1,9 +1,7 @@
 import os
 
-from app import exceptions
 from app.conf.upload import MEDIA_ROOT
 from sellers.models import Contact, Seller
-from upload.models import UploadedFile
 from upload.service import UploadService
 from users.models import User
 
@@ -27,9 +25,11 @@ class SellerService:
 
         seller, _ = Seller.objects.update_or_create(
             seller=user,
-            defaults={'name': data['name'],
-                      'descr': data.get('descr', ''),
-                      'wallet_for_payments_erc20': data.get('wallet_for_payments_erc20', '')})
+            defaults={
+                'name': data['name'],
+                'descr': data.get('descr', ''),
+                'wallet_for_payments_erc20': data.get('wallet_for_payments_erc20', '')
+            })
 
         if logo_url:
             upload_to = upload_service.get_destination_path(Seller, 'file', logo_url, logo_url.uuid, 'logo_url')

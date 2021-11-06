@@ -6,6 +6,7 @@ from django.db.transaction import atomic
 
 from sellers.models import Seller
 
+
 """
 Note: Migrations includes data migration that set to null logo_url field for currently existing records.  
 Logo_url field would be change to FileField type in this migration

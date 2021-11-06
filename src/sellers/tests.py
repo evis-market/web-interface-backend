@@ -11,12 +11,12 @@ from sellers.views import SellerSettingsView
 from upload.models import UploadedFile
 from users.models import User
 
+
 pytestmark = pytest.mark.django_db
 
 
 class TestSellerSettingsView:
-
-    def test_get(self):
+    def test_get(self):  # noqa: CCR001
         """
         Test: get seller with contacts
         Returns:
@@ -25,7 +25,7 @@ class TestSellerSettingsView:
         user = mixer.blend(User)
         seller = mixer.blend(Seller,
                              seller=user,
-                             logo_url=File(open("test-files/test-logo.png", 'rb')))
+                             logo_url=File(open('test-files/test-logo.png', 'rb')))  # noqa: SIM115
         url_contact = mixer.blend(Contact,
                                   seller=seller,
                                   type_id=Contact.TYPE_ID_URL,
@@ -70,21 +70,23 @@ class TestSellerSettingsView:
                     assert email_contact[_key] == _value
             assert response.data['seller'][key] == value
 
-    def test_put_create(self):
+    def test_put_create(self):  # noqa: CCR001
         """
         Test: create new seller with contacts
         """
         user = mixer.blend(User)
-        file = mixer.blend(UploadedFile,
-                           file=File(open("../sellers/test-files/test-logo.png", 'rb')),
-                           file_name_original='test-logo',
-                           created_by=user)
+        uploaded_file = mixer.blend(
+            UploadedFile,
+            file=File(open('../sellers/test-files/test-logo.png', 'rb')),  # noqa: SIM115
+            file_name_original='test-logo',
+            created_by=user)
+
         url = reverse('SellerSettingsView')
         data = {
             'seller': user.id,
             'name': 'Seller name',
             'descr': 'Seller description',
-            'logo_url': str(file.uuid),
+            'logo_url': str(uploaded_file.uuid),
             'wallet_for_payments_erc20': '0xC88E53eda9A20C9aE52e8a222f1a56793188d196',
             'contacts': [
                 {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
@@ -110,11 +112,11 @@ class TestSellerSettingsView:
                 for _key, _value in data['contacts'][2].items():
                     assert email_contact[_key] == _value
             elif key == 'logo_url':
-                assert str(seller[key]) == f'seller_logo/{file.uuid}.png'
+                assert str(seller[key]) == f'seller_logo/{uploaded_file.uuid}.png'
             else:
                 assert seller[key] == value
 
-    def test_put_update(self):
+    def test_put_update(self):  # noqa: CCR001
         """
         Test: update old seller information and his contacts
         Returns:
@@ -124,18 +126,19 @@ class TestSellerSettingsView:
         seller = mixer.blend(Seller,
                              seller=user,
                              logo_url='')
-        file = mixer.blend(UploadedFile,
-                           file=File(open("../sellers/test-files/test-logo.png", 'rb')),
-                           file_name_original='test-logo',
-                           created_by=user)
-        old_contact = mixer.blend(Contact,
-                                  seller=seller)
+        uploaded_file = mixer.blend(
+            UploadedFile,
+            file=File(open('../sellers/test-files/test-logo.png', 'rb')),  # noqa: SIM115
+            file_name_original='test-logo',
+            created_by=user)
+
+        old_contact = mixer.blend(Contact, seller=seller)
         url = reverse('SellerSettingsView')
         data = {
             'seller': user.id,
             'name': 'New seller name',
             'descr': 'New seller description',
-            'logo_url': str(file.uuid),
+            'logo_url': str(uploaded_file.uuid),
             'wallet_for_payments_erc20': '0x....',
             'contacts': [
                 {'type_id': 1, 'value': 'https://domain1.com/', 'comment': 'main site'},
@@ -161,7 +164,7 @@ class TestSellerSettingsView:
                 for _key, _value in data['contacts'][2].items():
                     assert email_contact[_key] == _value
             elif key == 'logo_url':
-                assert str(seller[key]) == f'seller_logo/{file.uuid}.png'
+                assert str(seller[key]) == f'seller_logo/{uploaded_file.uuid}.png'
             else:
                 assert seller[key] == value
         with pytest.raises(Contact.DoesNotExist):

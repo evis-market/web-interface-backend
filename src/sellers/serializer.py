@@ -58,7 +58,7 @@ class SellerUpdateSerializer(serializers.ModelSerializer):
     contacts = serializers.ListField()
     logo_url = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), required=False)
 
-    def validate(self, data):
+    def validate(self, data):  # noqa: CCR001
         if not data.get('contacts', None):
             raise BadRequest(invalid_fields={'contacts': {0: 'This field is required'}})
 
