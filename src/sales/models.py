@@ -21,8 +21,8 @@ class Sale(models.Model):
         ordering = ('created_at',)
         constraints = [
             models.CheckConstraint(
-                name="buyer_not_seller",
-                check=~models.Q(buyer=models.F("seller")),
+                name='buyer_not_seller',
+                check=~models.Q(buyer=models.F('seller')),
             ),
         ]
 
