@@ -110,18 +110,18 @@ class SellerSettingsView(GenericAPIView):
           }
         }
     """
-    serializer = SellerViewSerializer
-    update_serializer = SellerUpdateSerializer
+    serializer_class = SellerViewSerializer
+    update_serializer_class = SellerUpdateSerializer
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         seller = Seller.objects.get_seller_by_user_id(user_id=request.user.id)
-        result = self.serializer(seller, context={'request': request}).data
+        result = self.serializer_class(seller, context={'request': request}).data
         return response_ok({'seller': result})
 
     def put(self, request):
         seller_service = SellerService()
-        serializer = self.update_serializer(data=request.data)
+        serializer = self.update_serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             seller_service.create_or_update_object(data=serializer.validated_data, user=request.user)
