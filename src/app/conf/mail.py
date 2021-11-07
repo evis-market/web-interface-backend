@@ -1,4 +1,4 @@
-from app.conf.environ import env
+from app.conf.environ_app import env
 
 
 DEFAULT_FROM_EMAIL = 'EVIS <no-reply@evis.market>'

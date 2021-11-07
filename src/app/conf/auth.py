@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from app import settings
-from app.conf.environ import env
+from app.conf.environ_app import env
 
 
 AUTH_USER_MODEL = 'users.User'
