@@ -54,9 +54,11 @@ def geo_regions():
 @pytest.fixture
 def languages():
     language_1 = mixer.blend(Language,
-                             name_en='language_1')
+                             name_en='language_1',
+                             name_native='language-1-native-name')
     language_2 = mixer.blend(Language,
-                             name_en='language_2')
+                             name_en='language_2',
+                             name_native='language-2-native-name')
     return language_1, language_2
 
 
