@@ -13,6 +13,7 @@ INSTALLED_APPS = [
     'data_delivery_types',
     'product_data_types',
     'upload',
+    'reviews',
 
     'mptt',
     'data_generator',
