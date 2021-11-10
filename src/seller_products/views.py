@@ -91,7 +91,6 @@ class SellerProductsListView(GenericAPIView):
           "price_by_request": false,
           "price_per_usage": true,
           "price_per_usage_descr": "$10 per 1000 API requests",
-
           "data_categories_ids": [1, 2, 3],
           "data_langs_ids": [1, 2, 3],
           "data_geo_regions_ids": [1, 2, 3],
@@ -155,7 +154,6 @@ class SellerProductsListView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             seller_product_service.create_object(serializer.validated_data)
-
         return response_ok({}, http_code=status.HTTP_200_OK)
 
 

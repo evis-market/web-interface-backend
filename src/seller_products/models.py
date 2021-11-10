@@ -35,7 +35,7 @@ class SellerProductBase(models.Model):
     """
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     name = models.CharField('Name', max_length=500)
-    descr = models.TextField('Description', blank=True, default='')
+    descr = models.TextField('Description', blank=True, default='', max_length=300)
     price_per_one_time = models.FloatField('Price per one time usage', blank=True, default=0,
                                            validators=[MinValueValidator(0.0)])
     price_per_month = models.FloatField('Price per month', blank=True, default=0, validators=[MinValueValidator(0.0)])

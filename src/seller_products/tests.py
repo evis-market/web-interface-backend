@@ -15,6 +15,12 @@ from users.models import User
 
 pytestmark = pytest.mark.django_db
 
+"""
+case 1: without name
+case 2: with too long description
+case 3: invalid data_urls
+"""
+
 
 class TestSellerProductsListView:
 
@@ -88,7 +94,10 @@ class TestSellerProductsListView:
             for field in must_exists_fields:
                 assert field in product
 
-    def test_post(self, categories, geo_regions, languages, data_types, data_formats, data_delivery_types):
+    def test_post_create_seller_product(self, categories, geo_regions, languages, data_types, data_formats, data_delivery_types):
+        """
+        Test: create seller-product
+        """
         user = mixer.blend(User)
         # seller
         mixer.blend(Seller,
@@ -152,3 +161,44 @@ class TestSellerProductsListView:
 
         SellerProductDataUrlArchive.objects.get(seller_product=seller_product_archive, url=request_data['data_urls'][0]['url'])
         SellerProductDataUrlArchive.objects.get(seller_product=seller_product_archive, url=request_data['data_urls'][1]['url'])
+
+    def test_post_create_seller_product_with_invalid_fields(self, categories, geo_regions, languages, data_types, data_formats, data_delivery_types):
+        user = mixer.blend(User)
+        # seller
+        mixer.blend(Seller,
+                    seller=user,
+                    logo=None)
+        request_data = {
+            "name": "",
+            "descr": "Product description" * 20,
+            "price_one_time": 99.99,
+            "price_per_month": 199,
+            "price_per_year": 999,
+            "price_by_request": False,
+            "price_per_usage": True,
+            "price_per_usage_descr": "$10 per 1000 API requests",
+            "data_categories_ids": [1, 2],
+            "data_langs_ids": [1, 2],
+            "data_geo_regions_ids": [1, 2],
+            "data_types_ids": [1, 2],
+            "data_formats_ids": [1, 2],
+            "data_delivery_types_ids": [1, 2],
+            "data_urls": [
+                {"data_delivery_type_id": 1, "data_format_id": 1, "url": "domain.com"},
+                {"data_delivery_type_id": 2, "data_format_id": 2, "url": "domain.ru"},
+            ],
+        }
+        url = reverse('SellerProductsView')
+        request = APIRequestFactory().post(url, data=json.dumps(request_data), content_type='application/json')
+        force_authenticate(request, user=user)
+        response = SellerProductsListView.as_view()(request=request)
+        assert response.status_code == 400
+        assert response.data['status'] == 'ERR'
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'name' in response.data['error']['invalid_fields']
+        assert 'descr' in response.data['error']['invalid_fields']
+        assert 'data_urls' in response.data['error']['invalid_fields']
+        assert 'url' in response.data['error']['invalid_fields']['data_urls'][0]
+        assert 'url' in response.data['error']['invalid_fields']['data_urls'][1]
+
