@@ -350,5 +350,81 @@ class TestSellerProductsView:
         SellerProductDataUrlArchive.objects.get(seller_product=seller_product_archive, url=request_data['data_urls'][0]['url'])
         SellerProductDataUrlArchive.objects.get(seller_product=seller_product_archive, url=request_data['data_urls'][1]['url'])
 
+    def test_post_update_seller_product_with_invalid_fields(self, categories, geo_regions, languages, data_types, data_formats, data_delivery_types):
+        user = mixer.blend(User)
+        # seller
+        seller = mixer.blend(Seller,
+                             seller=user,
+                             logo=None)
+        seller_product = mixer.blend(SellerProduct,
+                                     seller=seller,
+                                     name='seller_product_1',
+                                     descr='seller_product_1_description',
+                                     price_per_one_time=1.1,
+                                     price_per_month=12.1,
+                                     price_per_year=123.1,
+                                     price_by_request=True,
+                                     price_per_usage=True,
+                                     price_per_usage_descr="$10 per 1000 requests",
+                                     rating=1.1)
+        request_data = {
+            "name": "",
+            "descr": "Product description" * 20,
+            "price_one_time": 99.99,
+            "price_per_month": 199,
+            "price_per_year": 999,
+            "price_by_request": False,
+            "price_per_usage": True,
+            "price_per_usage_descr": "$10 per 1000 API requests",
+            "data_categories_ids": [1, 2],
+            "data_langs_ids": [1, 2],
+            "data_geo_regions_ids": [1, 2],
+            "data_types_ids": [1, 2],
+            "data_formats_ids": [1, 2],
+            "data_delivery_types_ids": [1, 2],
+            "data_urls": [
+                {"data_delivery_type_id": 1, "data_format_id": 1, "url": "domain.com"},
+                {"data_delivery_type_id": 2, "data_format_id": 2, "url": "domain.ru"},
+            ],
+        }
+        url = reverse('SellerProductsView', kwargs={'pk': seller_product.id})
+        request = APIRequestFactory().put(url, data=json.dumps(request_data), content_type='application/json')
+        force_authenticate(request, user=user)
+        response = SellerProductsView.as_view()(request=request, pk=seller_product.id)
+        assert response.status_code == 400
+        assert response.data['status'] == 'ERR'
+        assert response.data['error']['code'] == 400
+        assert 'msg' in response.data['error']
+        assert 'name' in response.data['error']['invalid_fields']
+        assert 'descr' in response.data['error']['invalid_fields']
+        assert 'data_urls' in response.data['error']['invalid_fields']
+        assert 'url' in response.data['error']['invalid_fields']['data_urls'][0]
+        assert 'url' in response.data['error']['invalid_fields']['data_urls'][1]
 
-
+    def test_delete(self):
+        user = mixer.blend(User)
+        seller = mixer.blend(Seller,
+                             seller=user,
+                             logo=None)
+        seller_product = mixer.blend(SellerProduct,
+                                     seller=seller,
+                                     name='seller_product_1',
+                                     descr='seller_product_1_description',
+                                     price_per_one_time=1.1,
+                                     price_per_month=12.1,
+                                     price_per_year=123.1,
+                                     price_by_request=True,
+                                     price_per_usage=True,
+                                     price_per_usage_descr="$10 per 1000 requests",
+                                     rating=1.1)
+        # check taht seller-product exist
+        SellerProduct.objects.get(seller=seller, name='seller_product_1')
+        url = reverse('SellerProductsView', kwargs={'pk': seller_product.id})
+        request = APIRequestFactory().delete(url)
+        force_authenticate(request, user=user)
+        response = SellerProductsView.as_view()(request=request, pk=seller_product.id)
+        assert response.status_code == 204
+        assert response.data['status'] == 'OK'
+        # check that seller-product deleted
+        with pytest.raises(SellerProduct.DoesNotExist):
+            SellerProduct.objects.get(seller=seller, name='seller_product_1')
