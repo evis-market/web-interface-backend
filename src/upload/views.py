@@ -71,4 +71,8 @@ class UploadedFileView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             uploaded_file = self.upload_service.create_object(data=serializer.validated_data)
-        return response_ok({'uuid': uploaded_file.uuid})
+            file_url = uploaded_file.get_url(scheme=request.scheme, host=request.get_host())
+        return response_ok({
+            'uuid': uploaded_file.uuid,
+            'file_url': file_url
+        })
