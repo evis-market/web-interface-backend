@@ -80,7 +80,7 @@ class SellerProductBaseManager(models.Manager):
                 Category.objects.filter(sellerproduct__id=pk),
                 include_self=True,
             ),
-        ).distinct()
+        ).exclude(pk=pk).distinct()
 
     def get_seller_products_by_categories_and_name(self, name, categories):
         """ Get seller products by categories and name.
@@ -106,6 +106,7 @@ class SellerProductBaseManager(models.Manager):
         return self.model.objects.values(
             'id',
             'name',
+            'descr',
             'price_per_one_time',
             'price_per_month',
             'price_per_year',

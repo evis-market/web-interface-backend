@@ -25,15 +25,32 @@ class SellerProductsListView(GenericAPIView):
 
           "products": [
             {
+              "id": 1,
               "name": "Product1 name",
               "descr": "Product1 description",
-              ...
+              "price_by_request": false,
+              "price_per_month": 9,
+              "price_per_one_time": 100,
+              "price_per_usage": true,
+              "price_per_usage_descr": "$1 per 100 API requests",
+              "price_per_year": 70,
+              "rating": 0,
+              "data_urls": [
+                {
+                  "url": "https://drive.google.com/some_file_location1",
+                  "data_delivery_type_id": 1,
+                  "data_format_id": 1,
+                },
+                {
+                  "url": "https://drive.google.com/some_file_location2",
+                  "data_delivery_type_id": 1,
+                  "data_format_id": 2,
+                }
+              ]
             },
             {
-              "name": "Product2 name",
-              "descr": "Product2 description",
-              ...
-            }
+                ...
+            },
           ]
         }
     **Successful empty response**
@@ -74,7 +91,6 @@ class SellerProductsListView(GenericAPIView):
           "price_by_request": false,
           "price_per_usage": true,
           "price_per_usage_descr": "$10 per 1000 API requests",
-
           "data_categories_ids": [1, 2, 3],
           "data_langs_ids": [1, 2, 3],
           "data_geo_regions_ids": [1, 2, 3],
@@ -128,7 +144,7 @@ class SellerProductsListView(GenericAPIView):
     def get(self, request, format=None):
         seller_products = SellerProduct.objects.get_products_by_seller_id(request.user.id)
         serializer = self.serializer_class(seller_products, many=True, context={'request': request})
-        return response_ok({'seller-products': serializer.data})
+        return response_ok({'products': serializer.data})
 
     def post(self, request, format=None):
         seller_product_service = SellerProductService()
@@ -138,7 +154,6 @@ class SellerProductsListView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
             seller_product_service.create_object(serializer.validated_data)
-
         return response_ok({}, http_code=status.HTTP_200_OK)
 
 
