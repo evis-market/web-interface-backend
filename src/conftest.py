@@ -21,19 +21,25 @@ def superuser():
 
 
 @pytest.fixture
-def categories():
+def recommended_for():
     recommended_for_1 = mixer.blend(RecommendedFor,
                                     name='recommended_for->category-1')
+    recommended_for_2 = mixer.blend(RecommendedFor,
+                                    name='recommended_for->category-2')
+    return recommended_for_1, recommended_for_2
+
+
+@pytest.fixture
+def categories(recommended_for):
     category_1 = mixer.blend(Category,
                              name='category-1',
                              logo_url='',
-                             recommended_for=recommended_for_1)
-    recommended_for_2 = mixer.blend(RecommendedFor,
-                                    name='recommended_for->category-2')
+                             recommended_for=recommended_for[0])
+
     category_2 = mixer.blend(Category,
                              name='category-2',
                              logo_url='',
-                             recommended_for=recommended_for_2)
+                             recommended_for=recommended_for[1])
     return category_1, category_2
 
 

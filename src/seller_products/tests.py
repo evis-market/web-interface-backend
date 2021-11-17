@@ -55,7 +55,7 @@ class TestSellerProductsListView:
         # seller_product_data_sample_1
         mixer.blend(SellerProductDataSample,
                     seller_product=seller_product_1,
-                    file=File(open('test-files/test-file-1.py', 'rb')),
+                    file=File(open('app/test-files/test-file-1.py', 'rb')),
                     data_delivery_type=data_delivery_types[0],
                     data_format=data_formats[0])
         # seller_product_data_url_1
@@ -100,7 +100,7 @@ class TestSellerProductsListView:
                     logo=None)
         uploaded_file = mixer.blend(
             UploadedFile,
-            file=File(open('test-files/test-file-1.py', 'rb')),
+            file=File(open('app/test-files/test-file-1.py', 'rb')),
             file_name_original='test-file-1',
             created_by=user)
 
@@ -221,7 +221,7 @@ class TestSellerProductsView:
                                      rating=1.1)
         seller_product_data_sample = mixer.blend(SellerProductDataSample,
                                                  seller_product=seller_product,
-                                                 file=File(open('test-files/test-file-1.py', 'rb')),
+                                                 file=File(open('app/test-files/test-file-1.py', 'rb')),
                                                  data_delivery_type=data_delivery_types[0],
                                                  data_format=data_formats[0])
         seller_product_data_url = mixer.blend(SellerProductDataUrl,
@@ -285,7 +285,7 @@ class TestSellerProductsView:
         # seller_product_data_sample_1
         mixer.blend(SellerProductDataSample,
                     seller_product=seller_product,
-                    file=File(open('test-files/test-file-1.py', 'rb')),
+                    file=File(open('app/test-files/test-file-1.py', 'rb')),
                     data_delivery_type=data_delivery_types[0],
                     data_format=data_formats[0])
         # seller_product_data_url_1
@@ -297,7 +297,7 @@ class TestSellerProductsView:
 
         uploaded_file = mixer.blend(
             UploadedFile,
-            file=File(open('test-files/test-file-2.py', 'rb')),
+            file=File(open('app/test-files/test-file-2.py', 'rb')),
             file_name_original='test-file-2',
             created_by=user)
 
