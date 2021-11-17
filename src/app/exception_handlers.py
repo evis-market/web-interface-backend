@@ -34,6 +34,9 @@ def extract_err_data_from_exc(exc):  # noqa: CCR001
     if isinstance(exc.detail, list):
         return ', '.join(exc.detail), None
 
+    if isinstance(exc.detail, str) and 'Authentication' in exc.detail:
+        return 'unauthorized', None
+
     return exc.detail, None
 
 

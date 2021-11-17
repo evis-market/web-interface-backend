@@ -1,5 +1,7 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
+from app.exceptions import BadRequest
 from categories.models import Category
 from data_delivery_types.models import DataDeliveryType
 from geo_regions.models import GeoRegion
@@ -12,6 +14,7 @@ from upload.models import UploadedFile
 
 class CategorySerializer(serializers.ModelSerializer):
     """ Class representing category serializer """
+
     class Meta:
         model = Category
         fields = ['id', 'name']
@@ -19,6 +22,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class SellerSerializer(serializers.ModelSerializer):
     """ Class representing seller serializer """
+
     class Meta:
         model = Seller
         fields = ['seller_id', 'name']
@@ -26,6 +30,7 @@ class SellerSerializer(serializers.ModelSerializer):
 
 class GeoRegionSerializer(serializers.ModelSerializer):
     """ Class representing geo region serializer """
+
     class Meta:
         model = GeoRegion
         fields = ['id', 'name', 'iso_code']
@@ -33,6 +38,7 @@ class GeoRegionSerializer(serializers.ModelSerializer):
 
 class LanguageSerializer(serializers.ModelSerializer):
     """ Class representing language serializer """
+
     class Meta:
         model = Language
         fields = ['id', 'name_native', 'name_en', 'slug']
@@ -40,6 +46,7 @@ class LanguageSerializer(serializers.ModelSerializer):
 
 class DataTypeSerializer(serializers.ModelSerializer):
     """ Class representing data type serializer """
+
     class Meta:
         model = DataType
         fields = ['id', 'name']
@@ -47,6 +54,7 @@ class DataTypeSerializer(serializers.ModelSerializer):
 
 class DataFormatSerializer(serializers.ModelSerializer):
     """ Class representing data format serializer """
+
     class Meta:
         model = DataFormat
         fields = ['id', 'name']
@@ -54,6 +62,7 @@ class DataFormatSerializer(serializers.ModelSerializer):
 
 class DataDeliveryTypeSerializer(serializers.ModelSerializer):
     """ Class representing data delivery type serializer """
+
     class Meta:
         model = DataDeliveryType
         fields = ['id', 'name']
@@ -174,6 +183,33 @@ class SellerProductsUpdateSerializer(serializers.ModelSerializer):
                                                                  write_only=True, many=True)
     data_samples = serializers.PrimaryKeyRelatedField(queryset=UploadedFile.objects.all(), many=True, required=False)
     data_urls = serializers.ListField(child=DataUrlsSerializer(), write_only=True, required=False)
+
+    def is_valid(self, raise_exception=False):
+        if not hasattr(self, '_validated_data'):
+            self._errors = {}
+            try:
+                self._validated_data = self.run_validation(self.initial_data)
+            except ValidationError as exc:
+                self._validated_data = {}
+
+                if 'descr' in exc.detail and '300' in exc.detail['descr'][0]:
+                    exc.detail['descr'] = 'to long, 300 symbols maximum'
+
+                if 'name' in exc.detail and 'blank' in exc.detail['name'][0]:
+                    exc.detail['name'] = 'required field'
+
+                if 'data_urls' in exc.detail:
+                    for i in exc.detail['data_urls']:
+                        if 'url' in exc.detail['data_urls'][i]:
+                            exc.detail['data_urls'][i]['url'] = 'URL is invalid'
+
+                # add other errors
+                self._errors = exc.detail
+
+        if self._errors and raise_exception:
+            raise BadRequest(invalid_fields=self.errors)
+
+        return not bool(self._errors)
 
     class Meta:
         model = SellerProduct

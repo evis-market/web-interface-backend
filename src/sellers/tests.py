@@ -25,7 +25,7 @@ class TestSellerSettingsView:
         user = mixer.blend(User)
         seller = mixer.blend(Seller,
                              seller=user,
-                             logo_url=File(open('test-files/test-logo.png', 'rb')))  # noqa: SIM115
+                             logo=File(open('app/test-files/test-logo.png', 'rb')))  # noqa: SIM115
         url_contact = mixer.blend(Contact,
                                   seller=seller,
                                   type_id=Contact.TYPE_ID_URL,
@@ -51,7 +51,7 @@ class TestSellerSettingsView:
         seller_fields = {
             'name': seller.name,
             'descr': seller.descr,
-            'logo_url': f'http://testserver{seller.logo_url.url}',
+            'logo_url': f'http://testserver{seller.logo.url}',
             'wallet_for_payments_erc20': seller.wallet_for_payments_erc20,
             'rating': seller.rating
         }
@@ -77,7 +77,7 @@ class TestSellerSettingsView:
         user = mixer.blend(User)
         uploaded_file = mixer.blend(
             UploadedFile,
-            file=File(open('../sellers/test-files/test-logo.png', 'rb')),  # noqa: SIM115
+            file=File(open('app/test-files/test-logo.png', 'rb')),  # noqa: SIM115
             file_name_original='test-logo',
             created_by=user)
 
@@ -128,7 +128,7 @@ class TestSellerSettingsView:
                              logo='')
         uploaded_file = mixer.blend(
             UploadedFile,
-            file=File(open('../sellers/test-files/test-logo.png', 'rb')),  # noqa: SIM115
+            file=File(open('app/test-files/test-logo.png', 'rb')),  # noqa: SIM115
             file_name_original='test-logo',
             created_by=user)
 

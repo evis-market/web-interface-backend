@@ -149,9 +149,9 @@ class ProductDetailView(GenericAPIView):
     def get(self, request, seller_product_id, format=None):
         seller_product = SellerProduct.objects.get_seller_product_detailed(seller_product_id)
         related_products = SellerProduct.objects.get_related_seller_products(seller_product_id)
-        related_products_serializer = self.seller_product_serializer_class(related_products, many=True)
+        related_products_serializer = self.seller_product_serializer_class(related_products, many=True, context={'request': request})
         seller_serializer = self.seller_serializer_class(seller_product.seller)
-        seller_product_serializer = self.seller_product_serializer_class(seller_product)
+        seller_product_serializer = self.seller_product_serializer_class(seller_product, context={'request': request})
         return response_ok({
             'seller': seller_serializer.data,
             'seller_product': seller_product_serializer.data,

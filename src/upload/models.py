@@ -45,5 +45,8 @@ class UploadedFile(models.Model):
     def get_filename_extension(self):
         return os.path.basename(self.file.name).split('.')[-1]
 
+    def get_url(self, scheme, host):
+        return f'{scheme}://{host}{self.file.url}'
+
     def __str__(self):
         return f'{self.uuid}-{self.file}'
